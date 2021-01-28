@@ -1,0 +1,249 @@
+<div class="container-fluid ">
+    <div class="row ">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="background-color: #F5F8FA;">
+
+    <div class="row bg-white" style="justify-content: inherit;justify-content: start;padding: 5px 20px 5px 10px;">
+        <span class="pl-4 pb-3 pt-3" style="font-size: 14px;font-weight: 600;letter-spacing: 0.3;">
+            Test Records
+        </span>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-md-6">
+            <input type="text" [(ngModel)]="term" class=" p-2 w-100 form-control t-12" placeholder="Search" style="border: none; outline-style: none !important;font-size: 14px; font-weight: 500;padding-right: 100%;
+                 height: 34px;padding-left: 40px !important;background-color: #ffffff ;" (keyup)="findText(term)">
+            <div class="searchIcon" style="margin-left: 10px;margin-top: -30px;">
+                <img style="width: 1.5rem;"
+                    src="../../../../assets/images/ui/Icons/patient-medical-module/Icon feather-search@2x.png">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-control t-12" style="height: 33px;border: none;">
+                <mat-select (selectionChange)="showData($event.value)" style="color: black;">
+                    <!--[value]="selected" -->
+                    <mat-option *ngFor="let letSearch of searchByValue" [value]="letSearch.viewValue">
+                        {{letSearch.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-control" style="height: 33px;border: none;padding: 0px;">
+                <div class="input-group">
+                    <input type="text" class="form-control t-12" placeholder="Any Date"
+                        aria-label="Recipient's username" style="height: 33px;border: none;"
+                        aria-describedby="basic-addon2">
+                    <div class="input-group-append" style="height: 33px;">
+                        <span class="input-group-text" style="border: none;background: white;" id="basic-addon2">
+                            <img (click)="openCalender()" style="width: 1rem;"
+                                src="../../../../assets/images/ui/Icons/1x/calender.png">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div id="dateFunctionOpen" class="dateVisible" *ngIf="isDateVisible">
+                <ul>
+                    <li id="hideDates">
+                        <label style="font-size: 14px;font-weight: 600;color: #434343;">From</label>
+                        <div class="row" style="padding: 0 0 20px 15px;">
+                            <input type="date" style="width: 45%;font-size: 11px;font-weight: 600;color: #434343; "
+                                [min]="minDate | date:'yyyy-MM-dd'" [max]="maxDate | date:'yyyy-MM-dd'">
+                            <span style="font-weight: 600;">~</span>
+                            <input type="date" style="width: 45%;font-size: 11px;font-weight: 600;color: #434343;">
+                        </div>
+                    </li>
+                    <li (click)="callCustomWise()">
+                        <ul>
+                            <li style="margin: 5px 0;">
+                                <div (click)="fetchTodayTests()" [ngClass]="{ 'active' : isValue == 1 }"
+                                    class="btn btn-sm" style="width: 100%;
+                                background: white;border: 1px solid #dcd8d8;">Today</div>
+                            </li>
+                            <li style="margin: 5px 0;">
+                                <div (click)="fetchYesterdayTests()" [ngClass]="{ 'active' : isValue == 2 }"
+                                    class="btn btn-sm" style="width: 100%;
+                                background: white;border: 1px solid #dcd8d8;">Yesterday</div>
+                            </li>
+                            <li style="margin: 5px 0;">
+                                <div (click)="fetchThisWeekTests()" [ngClass]="{ 'active' : isValue == 3 }"
+                                    class="btn btn-sm" style="width: 100%;
+                                background: white;border: 1px solid #dcd8d8;">This Week</div>
+                            </li>
+                            <li style="margin: 5px 0;">
+                                <div (click)="fetchThisMonthTests()" [ngClass]="{ 'active' : isValue == 4 }"
+                                    class="btn btn-sm" style="width: 100%;
+                                background: white;border: 1px solid #dcd8d8;">This Month</div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive p-2">
+        <div class="scroll tableFixHead">
+            <table class="table text-center ">
+                <thead class="" style="background-color: #3E454C;color: white;">
+                    <tr class="p-0" style="font-weight: normal;">
+                        <th class="p-0" scope="col" class="border text-center">No</th>
+                        <th class="p-0" scope="col" class="border  text-center">Patient Name</th>
+                        <th class="p-0" scope="col" class="border text-center">Date & Time</th>
+                        <th class="p-0" scope="col" class="border text-center">Test Name</th>
+                        <th class="p-0" scope="col" class="border text-center">Total</th>
+                        <th class="p-0" scope="col" class="border text-center">Normal</th>
+                        <th class="p-0" scope="col" class="border  text-center">Abnormal</th>
+                        <th class="p-0" scope="col" class="border  text-center">Tested By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!(listOfTestRecords && listOfTestRecords.length)"
+                        style="text-align: center;background-color: white;padding: 20px;">
+                        <td style="text-align: center;font-size: 12px;font-weight: 600;" colspan="8">
+                            Don't have Test Records
+                        </td>
+                    </tr>
+                    <tr class="bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
+                    box-shadow: 0px 6px 12px #44444414;
+                    border-radius: 6px;
+                    opacity: 1;" *ngFor="let patient of listOfTestRecords | filter:term; let i = index">
+                        <td scope="row" class="text-center">{{i+1}}</td>
+                        <td class="p-2" style="">
+                            <div class="row" style="justify-content: space-around;">
+                                <div class="col-2">
+                                    <!--style="border-radius: 50% !important;width: 50px;height: 50px;"-->
+                                    <img class="pat-img"
+                                        style=" border: 2px solid rgb(150, 211, 235);border-radius: 50%;"
+                                        src="../../../assets/images/ui/Icons/1x/profile-1.png"
+                                        onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                </div>
+                                <div class="col-10">
+                                    <div>{{patient.name}}</div>
+                                    <div>{{patient.id}}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div> {{(patient.date)}}
+                            </div> <!-- | date:"MM/dd/yy" -->
+                            <div>{{patient.time}}</div>
+                        </td>
+                        <td>{{patient.testname}}</td>
+                        <td>{{patient.total}}</td>
+
+                        <td>{{patient.normal}}</td>
+                        <td>{{patient.abnormal}}</td>
+                        <td class="menu" style="text-align: center; overflow: hidden; ">
+                            {{patient.testedby}}
+                            <button [matMenuTriggerFor]="beforeMenu" aria-label="Example icon-button with a menu" style="color: #53b8c5;background-color: Transparent;
+                                background-repeat:no-repeat;
+                                border: none;
+                                cursor:pointer;
+                                overflow: hidden;
+                                outline:none;">
+                                <img style="" class="crossImg" src="../../../assets/images/ui/Icons/1x/menu.png">
+                            </button>
+                            <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu" xPosition="before">
+                                <button mat-menu-item class="menuItembtn"
+                                    (click)="openViewTestReportMethod(viewTestReportModelContent,patient)"
+                                    style="outline: none !important;"
+                                    *ngIf=" 'Cancelled' !== patient.appointmentStatus">
+                                    <span>View Test Reports</span>
+                                </button>
+                                <ng-template #viewTestReportModelContent let-modal>
+                                    <div class="modal-header"
+                                        style="background-color: #53B9C6;color: white;font-weight: bold;">
+                                        <span class="modal-title justify-content-center" id="modal-basic-title">
+                                            Test Report Information</span>
+                                        <img style="width:18px;cursor: pointer;" class="crossImg"
+                                            (click)="modal.dismiss('Cross click')"
+                                            src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                    </div>
+                                    <div class="modal-body scroll1">
+
+                                    </div>
+                                </ng-template>
+                                <button mat-menu-item class="menuItembtn" style="outline: none !important;"
+                                    (click)="openAddCommentMethod(openAddCommentModelContent,patient)">
+                                    <span>Add Comment</span>
+                                </button>
+                                <ng-template #openAddCommentModelContent let-modal>
+                                    <div class="modal-header"
+                                        style="background-color: #53B9C6;color: white;font-weight: bold;">
+                                        <span class="modal-title justify-content-center" id="modal-basic-title">
+                                            Add Comment on Test Report</span>
+                                        <img style="width:18px;cursor: pointer;" class="crossImg"
+                                            (click)="modal.dismiss('Cross click')"
+                                            src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                    </div>
+                                    <div class="modal-body scroll1">
+
+                                    </div>
+                                </ng-template>
+                                <button mat-menu-item class="menuItembtn"
+                                    (click)="openDeleteTestMethod(viewDeleteTestModelContent,patient)"
+                                    style="outline: none !important;"
+                                    *ngIf=" 'Cancelled' !== patient.appointmentStatus">
+                                    <span>Delete</span>
+                                </button>
+                                <ng-template #viewDeleteTestModelContent let-modal>
+                                    <div class="modal-body" style="padding: 0px !important;">
+
+                                        <div class="d-flex">
+                                            <div class="col-md-4 text-center p-3 m-0">
+                                                <img src="../../../assets/images/ui/Icons/1x/delete_1.png"
+                                                    style="width: 80%; margin-top: 10px;">
+                                            </div>
+                                            <div class="col-md-8"
+                                                style="text-align: center;padding: 30px 30px 15px 30px;">
+                                                <span style="font-size: 14px;font-weight: 600;color: #474747;">
+                                                    Delete Test Record
+                                                </span><br><br>
+                                                <span class=""
+                                                    style="font-size: 12px;font-weight: 500;color: #000000;">Are you
+                                                    sure you want to
+                                                    delete this test
+                                                    record ? </span>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: center;margin-top: -10px;
+                                        margin-bottom: 25px;" class="py-2">
+                                            <!-- <div *ngIf="isLoading"
+                                                style="display: flex; justify-content: center; padding-bottom: 5px;">
+                                                <mat-progress-spinner class="example-margin" color="primary"
+                                                    mode="indeterminate" [diameter]="30">
+                                                </mat-progress-spinner> 
+                                        </div>-->
+                                            <div class="row">
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-8">
+                                                    <button class="btn btn-sm mr-3"
+                                                        style="outline-style: none; font-weight: 500;font-size: 14px; background-color:transparent; 
+                                                  color: #474747;border: 1px solid #707070;height: 30px;line-height: 1;width: 25%;border-radius: 10px;"
+                                                        (click)="modal.close('Close click')">Cancel
+                                                    </button>
+                                                    <button class="btn btn-sm"
+                                                        style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                                   color: white;height: 30px;line-height: 1;width: 25%;border-radius: 10px;">Delete
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </ng-template>
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,13 @@
+* {
+    font-family: "Muli reg", sans-serif !important;
+}
+
+label {
+    font-weight: bold;
+}
+
+.btn:hover {
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}

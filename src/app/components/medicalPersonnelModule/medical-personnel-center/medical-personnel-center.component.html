@@ -1,0 +1,148 @@
+<div class="container-fluid m-0 p-0 ">
+    <div class="row">
+        <div class="col-md-2 sidehigh" [ngStyle]="{'width': isSidenavOpen ? '100%' : '0'}">
+            <!-- <mat-sidenav #sidenav mode="over" opened (opened)="events.push('open!')" (closed)="events.push('close!')"> -->
+            <div class="">
+                <div class="name p-4 text-center" style="background-color: #3E454C ;">
+                    <span class="" style="font-size: 18px;font-weight: bold;color: white;">SpectroCare</span>
+                    <div style="width: 1rem; margin-left: auto;margin-top: -27px;" class="d-block d-md-none">
+                        <img src="../../../assets/images/ui/Icons/1x/ic_cancel.png" (click)="closeSideBar()">
+                    </div>
+                </div>
+
+                <div class="sidebar" style="width: 100%; height: 100vh; background-color: #2d3136;">
+                    <nav class="navbar align-items-center justify-content-center m-0 p-0 " id="sidebar-wrapper">
+                        <div class="w-100 ml-1">
+                            <div class="text-center p-2 m-2">
+                                <img src="{{pic}}" style="cursor: pointer; width: 80px; height: 80px;border-radius: 50%;
+                     border: 1px solid #707070;padding: 5px;" class="profile mb-1" [routerLink]="['/admincenter/home']"
+                                    onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                <br>
+                                <span class="profile text-white mb-1 "
+                                    style="text-transform: uppercase; cursor: pointer;font-weight: bold;"
+                                    [routerLink]="['/admincenter/home']">
+                                    {{signObj.medicalPersonnel.profile.userProfile.firstName}}
+                                    {{signObj.medicalPersonnel.profile.userProfile.lastName}}</span>
+                                <br>
+
+                                <span style="color:  #53b9c6;font-weight: bold;">
+                                    <i class="dot fa fa-circle fa-sm mr-1 " aria-hidden="true"></i>
+                                    Doctor
+                                </span>
+                            </div>
+                            <div class="theListOne">
+                                <ul class="nav  flex-column ">
+                                    <li class="nav-item">
+                                        <a class="nav-link  pl-3 " [routerLink]="['/medicalpersonnelmodule/dashboard']"
+                                            routerLinkActive="active" (click)="closeSubList()"
+                                            style="cursor: pointer;color: #B8B8B8;">Dashboard</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link pl-3"
+                                            [routerLink]="['/medicalpersonnelmodule/accountcenter']"
+                                            (click)="openSubList()" routerLinkActive="active"
+                                            style="cursor: pointer;color: #B8B8B8;">Account
+                                            Center</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link pl-3" [routerLink]="['/medicalpersonnelmodule/patient']"
+                                            (click)="openPatientList()" routerLinkActive="active"
+                                            style="cursor: pointer;color: #B8B8B8;">Patient</a>
+                                        <div *ngIf="listInPatient">
+                                            <ul class="nav  flex-column  " style="background-color:#1C1F22;">
+                                                <li class="nav-item pl-4">
+                                                    <a class="nav-link  pl-4  "
+                                                        [routerLink]="['/medicalpersonnelmodule/patient']"
+                                                        routerLinkActive="active"
+                                                        style="cursor: pointer;color: #949494;">Search
+                                                        Patient</a>
+                                                </li>
+                                                <li class="nav-item pl-4">
+                                                    <a class="nav-link  pl-4  "
+                                                        [routerLink]="['/medicalpersonnelmodule/allmedicalrecord']"
+                                                        routerLinkActive="active"
+                                                        style="cursor: pointer;color: #949494;">Create Medical
+                                                        Record</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link  pl-3 "
+                                            [routerLink]="['/medicalpersonnelmodule/medicalpersonappointments']"
+                                            (click)="openAppointmentList()" routerLinkActive="active"
+                                            style="cursor: pointer;color: #B8B8B8;">Appointment</a>
+                                        <div *ngIf="listInAppointment">
+                                            <ul class="nav  flex-column  " style="background-color:#1C1F22;">
+                                                <li class="nav-item pl-4">
+                                                    <a class="nav-link  pl-4  "
+                                                        [routerLink]="['/medicalpersonnelmodule/medicalpersonappointments']"
+                                                        routerLinkActive="active"
+                                                        style="cursor: pointer;color: #949494;">Appointment
+                                                        List</a>
+                                                </li>
+                                                <li class="nav-item pl-4">
+                                                    <a class="nav-link  pl-4  "
+                                                        [routerLink]="['/medicalpersonnelmodule/bookappointment']"
+                                                        routerLinkActive="active"
+                                                        style="cursor: pointer;color: #949494;">Book
+                                                        Appointment</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link  pl-3 "
+                                            [routerLink]="['/medicalpersonnelmodule/testrecords']"
+                                            (click)="openScreeningList()" routerLinkActive="active"
+                                            style="cursor: pointer;color: #B8B8B8;">Screening
+                                            Center</a>
+                                        <div *ngIf="listInScreening">
+                                            <ul class="nav  flex-column  " style="background-color:#1C1F22;">
+                                                <li class="nav-item pl-4">
+                                                    <a class="nav-link  pl-4  "
+                                                        [routerLink]="['/medicalpersonnelmodule/testrecords']"
+                                                        routerLinkActive="active"
+                                                        style="cursor: pointer;color: #949494;">Test
+                                                        Records</a>
+                                                </li>
+                                                <li class="nav-item pl-4">
+                                                    <a class="nav-link  pl-4  "
+                                                        [routerLink]="['/medicalpersonnelmodule/createnewtest']"
+                                                        routerLinkActive="active"
+                                                        style="cursor: pointer;color: #949494;">Create New
+                                                        Test</a>
+                                                </li>
+                                                <li class="nav-item pl-4">
+                                                    <a class="nav-link  pl-4  "
+                                                        [routerLink]="['/medicalpersonnelmodule/managedevice']"
+                                                        routerLinkActive="active"
+                                                        style="cursor: pointer;color: #949494;">Manage
+                                                        Device</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
+            <!-- </mat-sidenav> -->
+
+        </div>
+        <div class="col-md-10">
+            <img src="../../../assets/images/ui/Icons/open-menu.png" style="width: 2rem;"
+                class="btn btn-sm d-block d-md-none sideButton" (click)="openSideBar()">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

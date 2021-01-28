@@ -1,0 +1,1391 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid bg-light" style="padding-bottom: 20px;">
+    <div class="row bg-white" style="">
+        <span class="pl-4 pb-3 pt-3" style="font-size: 14px;font-weight: 600;letter-spacing: 0.3;color: #2C3136;">
+            Profile
+        </span>
+    </div>
+    <div class="card mt-2">
+        <div class="card-body p-2">
+            <div class="container">
+                <div class="row" style="justify-content: space-around;">
+                    <div class="col-6" style="padding-left: 20px;">
+                        <button class="btn btn-sm mr-1 " style="width: 30%; height: 35px; background-color: #3E454C ;
+                                font-size: 15px;font-weight: 500;color: #8D8D8D;"
+                            [ngClass]="{ 'active' : isValue == 1 }" (click)="openProfile()">Profile</button>
+                        <button class="btn btn-sm  mr-1 " style="width: 30%; height: 35px; background-color: #3E454C ;
+                                font-size: 15px;font-weight: 500;color: #8D8D8D;"
+                            [ngClass]="{ 'active' : isValue == 2 }" (click)="openClinicalService()">Clinical
+                            Service</button>
+                        <button class="btn btn-sm mr-1 " style="width: 30%; height: 35px; background-color: #3E454C ;
+                                font-size: 15px;font-weight: 500;color: #8D8D8D;"
+                            [ngClass]="{ 'active' : isValue == 3 }" (click)="openServiceTime()">Service
+                            Time</button>
+                    </div>
+                    <div class="col-4"></div>
+                    <div class="col-2" style="">
+                        <button *ngIf="openProfileScreen" class="btn btn-sm"
+                            style="width: inherit; border-radius: 5px; background-color: #53b9c6; color: white;font-size: 14px; font-weight: bold; ">
+                            Edit Profile</button>
+                        <button *ngIf="openServiceScreen" class="btn btn-sm"
+                            (click)="editMedicalPersonnelProfileMethod(editMedicalPersonnelContent,clinicalService)"
+                            style="width: inherit; border-radius: 5px; background-color: #53b9c6; color: white;font-size: 14px; font-weight: bold; ">
+                            Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mt-2">
+        <div class="card-body p-0">
+            <div *ngIf="openProfileScreen" class="p-2" style="padding-bottom: 40px;">
+                <div style="background-color: #f8f8f8;">
+                    <div class="row" style="padding: 10px 0 10px 40px;font-size: 16px;font-weight: 600;color: #171819;">
+                        User Profile
+                    </div>
+                </div>
+                <div class="pt-4">
+                    <div class="" style="padding: 2px;margin-bottom: 15px;">
+
+                        <form [formGroup]="medicalPersonnelForm">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row" style="margin-bottom:15px">
+                                            <div class="col-md-2">
+
+                                                <div class="justify-content-center mt-5"
+                                                    style="text-align: -webkit-center;">
+                                                    <div
+                                                        style="border-radius: 50% !important;width: 100px;height: 100px;">
+                                                        <img class=""
+                                                            style="border: 2px solid rgb(150, 211, 235);border-radius: 50%;min-width: 100px;min-height: 100px;width: 100%;height: 100%;"
+                                                            src="{{previewImg}}" (click)="fileInput.click()">
+
+                                                    </div>
+
+                                                    <div class="container">
+                                                        <div class="row ">
+                                                            <div class="img-move input-group mb-3 mt-3">
+                                                                <input type="file" class="form-control" name="file"
+                                                                    id="inputGroupFile01" #fileInput
+                                                                    aria-describedby="inputGroupFileAddon01"
+                                                                    accept=".png, .jpg, .jpeg"
+                                                                    (change)="fileProgress($event)" class="d-none">
+                                                                <button class="btn m-auto btn-sm d-none"
+                                                                    style="background-color: transparent; color: #53B9C6 !important;border: 1px solid #53B9C6;font-weight: 500;font-size: 12px;"
+                                                                    (click)="fileInput.click()" type="button">
+                                                                    Choose Photo
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="margin-top: -20px;">
+                                                            <div class="container">
+                                                                <div style="margin: auto;display: flex;">
+
+                                                                    <div class="col-md-6">
+                                                                        <input formControlName="firstName" disabled
+                                                                            style="border: none;background-color: transparent;font-size: 16px;
+                                                                            font-weight: 600;">
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <input formControlName="lastName" disabled
+                                                                            style="border: none;background-color: transparent;font-size: 16px;
+                                                                            font-weight: 600;">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="justify-content: center;">
+                                                            <div class="">
+                                                                <input formControlName="department" disabled style="border: none;background-color: transparent;text-align: center;font-size: 16px;
+                                                                    font-weight: 600;">
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-8">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">User ID</label>
+                                                                <input type="text"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="userID">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">Identity</label>
+                                                                <input type="text"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="userType">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">First Name</label>
+                                                                <input type="text"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="firstName">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">Last Name</label>
+                                                                <input type="text"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="lastName">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">Gender</label>
+                                                                <input type="text"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="gender">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">Department</label>
+                                                                <select class="form-control bg-white profile-input"
+                                                                    formControlName="department"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;padding-top: 3px;">
+                                                                    <option *ngFor="let identity of listOfDepartments"
+                                                                        [value]="identity.value">
+                                                                        {{identity.value}}
+                                                                    </option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">Phone Number</label>
+
+                                                                <ngx-intl-tel-input
+                                                                    class="form-control text-white profile-input "
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;padding-top: 4px;"
+                                                                    [cssClass]="'custom'"
+                                                                    [preferredCountries]="preferredCountries"
+                                                                    [enableAutoCountrySelect]="false"
+                                                                    [enablePlaceholder]="false"
+                                                                    [searchCountryFlag]="true"
+                                                                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                                                    [selectFirstCountry]="false"
+                                                                    [selectedCountryISO]="CountryISO.India"
+                                                                    [maxLength]="15" [tooltipField]="TooltipLabel.Name"
+                                                                    [phoneValidation]="true"
+                                                                    [separateDialCode]="separateDialCode" name="phone"
+                                                                    formControlName="checkPhone">
+                                                                </ngx-intl-tel-input>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">Emergency Number</label>
+                                                                <input type="text"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="emergencyPhoneNumber">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="">
+                                                                <label class="profile-lable">Email</label>
+                                                                <input type="text"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="emailID">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="">
+                                                                <label class="profile-lable">Password</label>
+                                                                <input type="password" disabled
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;background-color: white;"
+                                                                    class=" form-control profile-input"
+                                                                    formControlName="password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6" style="margin-top: auto;">
+                                                            <div class="changepwd">
+                                                                <button mat-raised-button
+                                                                    style="outline-style: none;border-radius: 10px;
+                                                                     font-size: 12px;font-weight: 600;line-height: 2;margin-bottom: 6px;"
+                                                                    (click)="openChangePasswordMethod(changePasswordModel)"
+                                                                    routerLinkActive="active">Change Password</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div style="background-color: #f8f8f8;">
+                                <div class="row"
+                                    style="padding: 10px 0 10px 40px;font-size: 16px;font-weight: 600;color: #171819;">
+                                    General Information
+                                </div>
+                            </div>
+
+                            <div class="row" style="padding: 10px 30px 10px 30px;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-2">Speciality</div>
+                                        <div class="col-md-9">
+                                            <textarea class="profile-textarea" rows="2" cols="50"
+                                                style="width: inherit;padding: 5px;resize: inherit;"
+                                                formControlName="speciality"></textarea>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">Experience</div>
+                                        <div class="col-md-9">
+                                            <textarea class="profile-textarea" rows="2" cols="50"
+                                                style="width: inherit;padding: 5px;resize: inherit;"
+                                                formControlName="experience"></textarea>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">Spoken Languages</div>
+                                        <div class="col-md-9">
+                                            <textarea class="profile-textarea" rows="2" cols="50"
+                                                style="width: inherit;padding: 5px;resize: inherit;"
+                                                formControlName="spokenLanguages"></textarea>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background-color: #f8f8f8;">
+                                <div class="row"
+                                    style="padding: 10px 0 10px 40px;font-size: 16px;font-weight: 600;color: #171819;">
+                                    Biography
+                                </div>
+                            </div>
+
+                            <div class="pt-3">
+                                <div class="col-md-12" style="padding: initial;">
+                                    <textarea class="profile-textarea" rows="2" cols="50"
+                                        style="width: inherit;padding: 5px;resize: inherit;"
+                                        formControlName="biography"></textarea>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+                <div class=" justify-content-center p-0 pt-3 pt-4" style="">
+                    <div *ngIf="isLoading" style="display: flex; justify-content: center;">
+                        <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate"
+                            [diameter]="30">
+                        </mat-progress-spinner>
+                    </div>
+                    <div style="text-align: center;width: 100%;">
+                        <button type="submit" class="btn btn-sm "
+                            style="width: 10%;height: 30px;padding-top: 0px;font-weight: 500;font-size: 14px; background-color: white;
+                                         color: #474747;border: 1px solid #707070; margin-right: 10px;border-radius: 10px;line-height: 2;">Cancel</button>
+                        <!--(click)="modal.close('Close click')"-->
+                        <button type="submit" class="btn btn-sm " style="width: 16%; height: 30px;
+                                        padding-top: 0px;font-weight: bold;font-size: 14px;
+                                           background-color: #53B9C6; color: white;border-radius: 10px;line-height: 2;"
+                            (click)="updateMedicalPersonSubmit()">Save Changes</button>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="openServiceScreen" style="padding: 20px;">
+                <div *ngFor="let selectedClinicalService of clinicalService;let i=index;">
+                    <fieldset class=" " style=" width: inherit;padding: 0 10px 10px 10px;border: 1px solid #171819;">
+                        <legend style="font-size: 12px;font-weight: 600;color: #171819;" class="w-auto p-2 pt-3">
+                            {{selectedClinicalService.serviceName}}</legend>
+                        <div class="border-0 p-3">
+                            <div style="font-weight: 500;font-size: 12px;color: #171819;">
+                                {{selectedClinicalService.serviceDescription}}
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div *ngIf="openServiceTimeScreen" class="p-2" style="padding-bottom: 40px;">
+                <div style="background-color: #f8f8f8;">
+                    <div class="row" style="padding: 10px 0 10px 40px;font-size: 14px;font-weight: bold;">
+                        Office Hours
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="scroll tableFixHead setResponsive ">
+                        <table class="table text-center" id="header-fixed" style="margin-top: 10px;">
+                            <thead border="0" class=" "
+                                style="position: sticky;top: 0;background-color:white;color: #FFFFFF;font-size: 15px;">
+                                <tr class="medium" style="font-weight: normal;">
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center" style="padding: 0px 20px 0px 0px;">
+                                        <div class="btn btn-sm" style="background: #3E454C;color: white;font-size: 14px;font-weight: normal;width: 60%;text-align-last: justify;
+                                padding: 5px 20px 5px 20px;">
+                                            <img src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-feather-sunrise@2x.png"
+                                                style="width: 1.5rem;">
+                                            Morning
+                                        </div>
+                                    </th>
+                                    <!-- <th scope="col" class="text-center"></th> -->
+                                    <th scope="col" class="text-center" style="padding: 0px 20px 0px 0px;">
+                                        <div class="btn btn-sm" style="background: #3E454C;color: white;font-size: 14px;font-weight: normal;width: 60%;text-align-last: justify;
+                                padding: 5px 20px 5px 20px;">
+                                            <img src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-feather-sun@2x.png"
+                                                style="width: 1.5rem;">
+                                            Afternoon
+                                        </div>
+                                    </th>
+                                    <!-- <th scope="col" class="text-center"></th> -->
+                                    <th scope="col" class="text-center" style="padding: 0px 20px 0px 0px;">
+                                        <div class="btn btn-sm" style="background: #3E454C;color: white;font-size: 14px;font-weight: normal;width: 60%;text-align-last: justify;
+                                padding: 5px 20px 5px 20px;">
+                                            <img src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-feather-moon@2x.png"
+                                                style="width: 1.5rem;">
+                                            Evening
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class=" small " style="background: #FFFFFF 0% 0% no-repeat padding-box;
+                            opacity: 1;" *ngFor="let selectedDay of officeHours; let i = index">
+                                    <td class="text-center">
+                                        <div
+                                            style="font-size: 14px;font-weight: 600;text-align: start;padding: 0 0 0 20px;">
+                                            {{selectedDay.dayName}}</div>
+                                    </td>
+                                    <td class="" style="text-transform: capitalize;">
+                                        <div class="row" style="justify-content: center;"
+                                            *ngIf="selectedDay.sessions[0] && selectedDay.sessions.length">
+                                            <div style="border: 1px solid black;width: 60%;
+                                            text-align: center;padding: 3px;font-size: small;font-weight: 500;"
+                                                *ngIf="selectedDay.sessions[0].isOn === true">
+                                                {{selectedDay.sessions[0].startTime}}-{{selectedDay.sessions[0].endTime}}
+                                            </div>
+
+                                            <div style="border: 1px solid black;width: 60%;
+                                            text-align: center;padding: 3px;font-size: small;font-weight: 500;"
+                                                *ngIf="selectedDay.sessions[0].isOn === false">
+                                                Off
+                                            </div>
+                                            <div style="padding: 0px 0px 0px 15px;">
+                                                <button [matMenuTriggerFor]="beforeMenu"
+                                                    aria-label="Example icon-button with a menu" style="color: #53b9c6;background-color: Transparent;background-repeat: no-repeat;border: none;cursor: pointer;
+                                                overflow: hidden;outline: none;">
+                                                    <img style="width: 0.32rem;" class="crossImg"
+                                                        src="../../../assets/images/ui/Icons/1x/menu.png">
+                                                </button>
+                                                <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu"
+                                                    xPosition="before">
+                                                    <button mat-menu-item class="menuItembtn"
+                                                        style="outline: none !important;"
+                                                        (click)="editOfficeHoursMethod(editOfficeHoursModel,selectedDay)">
+                                                        <span>Edit</span>
+                                                    </button>
+
+                                                    <ng-template #editOfficeHoursModel let-modal>
+                                                        <div class="modal-header"
+                                                            style="background-color: #53b9c6;color: white;font-weight: bold;">
+                                                            <span class="modal-title justify-content-center"
+                                                                id="modal-basic-title">
+                                                                Set up Service Time
+                                                            </span>
+                                                            <img style="width:18px;cursor: pointer;" class="crossImg"
+                                                                (click)="modal.dismiss('Cross click')"
+                                                                src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                                        </div>
+                                                        <div class="modal-body scroll1">
+                                                            <div class="col-md-12">
+                                                                <label>Select Day</label>
+                                                                <select class="form-control bg-white"
+                                                                    class=" form-control"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #707070;border-radius: 2px;padding-top: 3px;">
+                                                                    <option>
+                                                                        <!--*ngFor="let selectedDay of listOfDays"-->
+                                                                        {{selectedDay.dayName}}
+                                                                    </option>
+                                                                </select>
+                                                                <div
+                                                                    style="margin: 15px 0 20px 0;border: 1px dashed gray;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="container">
+                                                                <div class="row"
+                                                                    *ngFor="let timings of selectedDayData.sessions;let i = index"
+                                                                    style="margin-bottom: 5px;">
+                                                                    <div class="col-md-3">{{timings.sessionName}}
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: inherit;">
+                                                                        <div [ngClass]="{'border-change':!timings.isOn}"
+                                                                            style="border: 1px solid black;text-align: center;">
+                                                                            {{timings.startTime}}</div>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: center;">
+                                                                        <div>to</div>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: inherit;">
+                                                                        <div [ngClass]="{'border-change':!timings.isOn}"
+                                                                            style="border: 1px solid black;text-align: center;">
+                                                                            {{timings.endTime}}</div>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="row "
+                                                                            style="padding-left: 34px;padding-bottom: 0px;">
+                                                                            <div class=""
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="checkboxContainer">Off
+                                                                                    <input
+                                                                                        (change)='changeStatus($event,i)'
+                                                                                        type="checkbox"
+                                                                                        value="{{timings.isOn}}"
+                                                                                        [checked]="timings.isOn">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- <div class="row" *ngIf="timings.isOn === false"
+                                                                            style="padding-left: 34px;padding-bottom: 0px;">
+                                                                            <div class=""
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="checkboxContainer">Off
+                                                                                    <input type="checkbox">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div> -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div style="display: block;text-align: center;" class="py-3">
+                                                            <div *ngIf="isLoading"
+                                                                style="display: flex; justify-content: center; padding-bottom: 7px;">
+                                                                <mat-progress-spinner class="example-margin"
+                                                                    color="primary" mode="indeterminate"
+                                                                    [diameter]="30">
+                                                                </mat-progress-spinner>
+                                                            </div>
+
+                                                            <button class="btn btn-sm mr-3"
+                                                                style="outline-style: none;font-weight: 500;font-size: 12px;border-radius: 10px;border: 1px solid #474747;background-color: #ffffff;color: #140202;width: 20%;">
+                                                                Cancel
+                                                            </button>
+                                                            <button class="btn btn-sm mr-5"
+                                                                (click)="updateServiceTimeSubmit(officeHours)"
+                                                                style="width: 20%;border-radius: 10px;
+                                                          outline-style: none;font-weight: bold;font-size: 12px;background-color: #53b9c6;color: white;">
+                                                                Save
+                                                            </button>
+                                                        </div>
+                                                    </ng-template>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!-- <td class="text-center"></td> -->
+                                    <td class="" style="text-transform: capitalize;">
+
+                                        <div class="row" style="justify-content: center;"
+                                            *ngIf="selectedDay.sessions[1] && selectedDay.sessions.length">
+                                            <div style="border: 1px solid black;width: 60%;
+                                            text-align: center;padding: 3px;font-size: small;font-weight: 500;"
+                                                *ngIf="selectedDay.sessions[1].isOn === true">
+                                                {{selectedDay.sessions[1].startTime}}-{{selectedDay.sessions[1].endTime}}
+                                            </div>
+
+                                            <div style="border: 1px solid black;width: 60%;
+                                            text-align: center;padding: 3px;font-size: small;font-weight: 500;"
+                                                *ngIf="selectedDay.sessions[1].isOn === false">
+                                                Off
+                                            </div>
+                                            <div style="padding: 0px 0px 0px 15px;">
+                                                <button [matMenuTriggerFor]="beforeMenu"
+                                                    aria-label="Example icon-button with a menu" style="color: #53b9c6;background-color: Transparent;background-repeat: no-repeat;border: none;cursor: pointer;
+                                                overflow: hidden;outline: none;">
+                                                    <img style="width: 0.32rem;" class="crossImg"
+                                                        src="../../../assets/images/ui/Icons/1x/menu.png">
+                                                </button>
+                                                <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu"
+                                                    xPosition="before">
+                                                    <button mat-menu-item class="menuItembtn"
+                                                        style="outline: none !important;"
+                                                        (click)="editOfficeHoursMethod(editOfficeHoursModel,selectedDay)">
+                                                        <span>Edit</span>
+                                                    </button>
+
+                                                    <ng-template #editOfficeHoursModel let-modal>
+                                                        <div class="modal-header"
+                                                            style="background-color: #53b9c6;color: white;font-weight: bold;">
+                                                            <span class="modal-title justify-content-center"
+                                                                id="modal-basic-title">
+                                                                Set up Service Time
+                                                            </span>
+                                                            <img style="width:18px;cursor: pointer;" class="crossImg"
+                                                                (click)="modal.dismiss('Cross click')"
+                                                                src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                                        </div>
+                                                        <div class="modal-body scroll1">
+                                                            <div class="col-md-12">
+                                                                <label>Select Day</label>
+                                                                <select class="form-control bg-white"
+                                                                    class=" form-control"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #707070;border-radius: 2px;padding-top: 3px;">
+                                                                    <option>
+                                                                        <!--*ngFor="let selectedDay of listOfDays"-->
+                                                                        {{selectedDay.dayName}}
+                                                                    </option>
+                                                                </select>
+                                                                <div
+                                                                    style="margin: 15px 0 20px 0;border: 1px dashed gray;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="container">
+                                                                <div class="row"
+                                                                    *ngFor="let timings of selectedDayData.sessions;let i = index"
+                                                                    style="margin-bottom: 5px;">
+                                                                    <div class="col-md-3">{{timings.sessionName}}
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: inherit;">
+                                                                        <div [ngClass]="{'border-change':!timings.isOn}"
+                                                                            style="border: 1px solid black;text-align: center;">
+                                                                            {{timings.startTime}}</div>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: center;">
+                                                                        <div>to</div>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: inherit;">
+                                                                        <div [ngClass]="{'border-change':!timings.isOn}"
+                                                                            style="border: 1px solid black;text-align: center;">
+                                                                            {{timings.endTime}}</div>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="row "
+                                                                            style="padding-left: 34px;padding-bottom: 0px;">
+                                                                            <div class=""
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="checkboxContainer">Off
+                                                                                    <input
+                                                                                        (change)='changeStatus($event,i)'
+                                                                                        type="checkbox"
+                                                                                        value="{{timings.isOn}}"
+                                                                                        [checked]="timings.isOn">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- <div class="row" *ngIf="timings.isOn === false"
+                                                                            style="padding-left: 34px;padding-bottom: 0px;">
+                                                                            <div class=""
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="checkboxContainer">Off
+                                                                                    <input type="checkbox">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div> -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="display: block;text-align: center;" class="py-3">
+                                                            <div *ngIf="isLoading"
+                                                                style="display: flex; justify-content: center; padding-bottom: 7px;">
+                                                                <mat-progress-spinner class="example-margin"
+                                                                    color="primary" mode="indeterminate"
+                                                                    [diameter]="30">
+                                                                </mat-progress-spinner>
+                                                            </div>
+
+                                                            <button class="btn btn-sm mr-3"
+                                                                style="outline-style: none;font-weight: 500;font-size: 12px;border-radius: 10px;border: 1px solid #474747;background-color: #ffffff;color: #140202;width: 20%;">
+                                                                Cancel
+                                                            </button>
+                                                            <button class="btn btn-sm mr-5"
+                                                                (click)="updateServiceTimeSubmit(officeHours)"
+                                                                style="width: 20%;border-radius: 10px;
+                                                          outline-style: none;font-weight: bold;font-size: 12px;background-color: #53b9c6;color: white;">
+                                                                Save
+                                                            </button>
+                                                        </div>
+                                                    </ng-template>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <!-- <td class="text-center"></td> -->
+                                    <td class="" style="text-transform: capitalize;">
+                                        <div class="row" style="justify-content: center;"
+                                            *ngIf="selectedDay.sessions[2] && selectedDay.sessions.length">
+                                            <div style="border: 1px solid black;width: 60%;
+                                            text-align: center;padding: 3px;font-size: small;font-weight: 500;"
+                                                *ngIf="selectedDay.sessions[2].isOn === true">
+                                                {{selectedDay.sessions[2].startTime}}-{{selectedDay.sessions[2].endTime}}
+                                            </div>
+
+                                            <div style="border: 1px solid black;width: 60%;
+                                            text-align: center;padding: 3px;font-size: small;font-weight: 500;"
+                                                *ngIf="selectedDay.sessions[2].isOn === false">
+                                                Off
+                                            </div>
+                                            <div style="padding: 0px 0px 0px 15px;">
+                                                <button [matMenuTriggerFor]="beforeMenu"
+                                                    aria-label="Example icon-button with a menu" style="color: #53b9c6;background-color: Transparent;background-repeat: no-repeat;border: none;cursor: pointer;
+                                                overflow: hidden;outline: none;">
+                                                    <img style="width: 0.32rem;" class="crossImg"
+                                                        src="../../../assets/images/ui/Icons/1x/menu.png">
+                                                </button>
+                                                <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu"
+                                                    xPosition="before">
+                                                    <button mat-menu-item class="menuItembtn"
+                                                        style="outline: none !important;"
+                                                        (click)="editOfficeHoursMethod(editOfficeHoursModel,selectedDay)">
+                                                        <span>Edit</span>
+                                                    </button>
+
+                                                    <ng-template #editOfficeHoursModel let-modal>
+                                                        <div class="modal-header"
+                                                            style="background-color: #53b9c6;color: white;font-weight: bold;">
+                                                            <span class="modal-title justify-content-center"
+                                                                id="modal-basic-title">
+                                                                Set up Service Time
+                                                            </span>
+                                                            <img style="width:18px;cursor: pointer;" class="crossImg"
+                                                                (click)="modal.dismiss('Cross click')"
+                                                                src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                                        </div>
+                                                        <div class="modal-body scroll1">
+                                                            <div class="col-md-12">
+                                                                <label>Select Day</label>
+                                                                <select class="form-control bg-white"
+                                                                    class=" form-control"
+                                                                    style="height: 30px;font-size: 12px;border: 1px solid #707070;border-radius: 2px;padding-top: 3px;">
+                                                                    <option>
+                                                                        <!--*ngFor="let selectedDay of listOfDays"-->
+                                                                        {{selectedDay.dayName}}
+                                                                    </option>
+                                                                </select>
+                                                                <div
+                                                                    style="margin: 15px 0 20px 0;border: 1px dashed gray;">
+                                                                </div>
+                                                            </div>
+                                                            <div class="container">
+                                                                <div class="row"
+                                                                    *ngFor="let timings of selectedDayData.sessions;let i = index"
+                                                                    style="margin-bottom: 5px;">
+                                                                    <div class="col-md-3">{{timings.sessionName}}
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: inherit;">
+                                                                        <div [ngClass]="{'border-change':!timings.isOn}"
+                                                                            style="border: 1px solid black;text-align: center;">
+                                                                            {{timings.startTime}}</div>
+                                                                    </div>
+                                                                    <div class="col-md-1" style="text-align: center;">
+                                                                        <div>to</div>
+                                                                    </div>
+                                                                    <div class="col-md-3" style="padding: inherit;">
+                                                                        <div [ngClass]="{'border-change':!timings.isOn}"
+                                                                            style="border: 1px solid black;text-align: center;">
+                                                                            {{timings.endTime}}</div>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="row "
+                                                                            style="padding-left: 34px;padding-bottom: 0px;">
+                                                                            <div class=""
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="checkboxContainer">Off
+                                                                                    <input
+                                                                                        (change)='changeStatus($event,i)'
+                                                                                        type="checkbox"
+                                                                                        value="{{timings.isOn}}"
+                                                                                        [checked]="timings.isOn">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- <div class="row" *ngIf="timings.isOn === false"
+                                                                            style="padding-left: 34px;padding-bottom: 0px;">
+                                                                            <div class=""
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="checkboxContainer">Off
+                                                                                    <input type="checkbox">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div> -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="display: block;text-align: center;" class="py-3">
+                                                            <div *ngIf="isLoading"
+                                                                style="display: flex; justify-content: center; padding-bottom: 7px;">
+                                                                <mat-progress-spinner class="example-margin"
+                                                                    color="primary" mode="indeterminate"
+                                                                    [diameter]="30">
+                                                                </mat-progress-spinner>
+                                                            </div>
+
+                                                            <button class="btn btn-sm mr-3"
+                                                                style="outline-style: none;font-weight: 500;font-size: 12px;border-radius: 10px;border: 1px solid #474747;background-color: #ffffff;color: #140202;width: 20%;">
+                                                                Cancel
+                                                            </button>
+                                                            <button class="btn btn-sm mr-5"
+                                                                (click)="updateServiceTimeSubmit(officeHours)"
+                                                                style="width: 20%;border-radius: 10px;
+                                                          outline-style: none;font-weight: bold;font-size: 12px;background-color: #53b9c6;color: white;">
+                                                                Save
+                                                            </button>
+                                                        </div>
+                                                    </ng-template>
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="background-color: #f8f8f8;">
+                    <div class="row"
+                        style="padding: 10px 0 10px 40px;margin-top: 10px;font-size: 14px;font-weight: bold;">
+                        Available Appointment Hours
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row" style="padding: 10px 0px 0px 0px;">
+                        <!-- <div class="col-1"></div>
+                         -->
+                        <div class="col-12">
+                            <div style="padding: 10px; height: 20vh;background: white;">
+                                <!-- Swiper -->
+                                <div class="swiper-container s1">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide" *ngFor="let data of appointmentHours; let i = index"
+                                            [ngClass]="{'dateActive' : isActive == 1}"
+                                            style="width: auto;border-radius: 8px; 
+                                        border: 1px solid black;padding:10px;height: 8vh;margin-left: 20px;margin-right: 20px;">
+
+                                            <div (click)="callAppointmentsByDateWise(i,data.date)"
+                                                style="font-size: 10px;">{{data.date}}</div>
+                                        </div>
+                                    </div>
+                                    <!-- Add Pagination -->
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-1"></div>  -->
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="tableFixHead setResponsive">
+                        <table class="table text-center" id="header-fixed" style="margin-top: 10px;">
+                            <thead border="0" class=" "
+                                style="position: sticky;top: 0;background-color:white;color: #FFFFFF;font-size: 15px;">
+                                <tr class="medium" style="font-weight: normal;">
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center" style="padding: 0px 20px 0px 0px;">
+                                        <div class="btn btn-sm" style="background: #3E454C;color: white;font-size: 14px;
+                                        font-weight: normal;width: 60%;text-align-last: justify;
+                                padding: 5px 20px 5px 20px;">
+                                            <img src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-feather-sunrise@2x.png"
+                                                style="width: 1.5rem;">
+                                            Morning
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center" style="padding: 0px 20px 0px 0px;">
+                                        <div class="btn btn-sm" style="background: #3E454C;color: white;font-size: 14px;font-weight: normal;width: 60%;text-align-last: justify;
+                                padding: 5px 20px 5px 20px;">
+                                            <img src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-feather-sun@2x.png"
+                                                style="width: 1.5rem;">
+                                            Afternoon
+                                        </div>
+                                    </th>
+                                    <th scope="col" class="text-center"></th>
+                                    <th scope="col" class="text-center" style="padding: 0px 20px 0px 0px;">
+                                        <div class="btn btn-sm" style="background: #3E454C;color: white;font-size: 14px;font-weight: normal;width: 60%;text-align-last: justify;
+                                padding: 5px 20px 5px 20px;">
+                                            <img src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-feather-moon@2x.png"
+                                                style="width: 1.5rem;">
+                                            Evening
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class=" small " style="background: #FFFFFF 0% 0% no-repeat padding-box;
+                            opacity: 1;">
+
+                                    <td class="text-center">
+                                        <div
+                                            style="font-size: 14px;font-weight: 600;text-align: start;padding: 0 0 0 20px;">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div
+                                            style="font-size: 14px;font-weight: 600;text-align: start;padding: 0 0 0 20px;">
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div
+                                            style="font-size: 14px;font-weight: 600;text-align: start;padding: 0 0 0 20px;">
+                                        </div>
+                                    </td>
+                                    <td *ngIf="selectedDateHours && selectedDateHours.length"
+                                        style="text-transform: capitalize;">
+                                        <div *ngFor="let day of selectedDateHours; let i = index">
+                                            <!-- <p>{{day | json}}</p> -->
+                                            <div class="" *ngIf="day.sessionName === 'Morning'">
+                                                <div class="row" style="justify-content: center;margin-bottom: 20px;">
+                                                    <div style="border: 1px solid black;width: 65%;
+                                                text-align: center;padding: 3px;font-size: small;font-weight: 500;">
+                                                        {{day.startTime}}-{{day.endTime}}
+                                                    </div>
+                                                    <div style="padding: 0px 0px 0px 15px;">
+                                                        <button [matMenuTriggerFor]="beforeMenu"
+                                                            aria-label="Example icon-button with a menu"
+                                                            style="color: #53b9c6; background-color: Transparent;
+                                                    background-repeat: no-repeat;border: none; cursor: pointer;overflow: hidden;outline: none;">
+                                                            <img style="width: 0.32rem;" class="crossImg"
+                                                                src="../../../assets/images/ui/Icons/1x/menu.png">
+                                                        </button>
+                                                        <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu"
+                                                            xPosition="before">
+                                                            <button mat-menu-item class="menuItembtn"
+                                                                style="outline: none !important;"
+                                                                (click)="editAppointmentTimeMethod(editAppointmentTimeModel,day)">
+                                                                <span>Edit</span>
+                                                            </button>
+                                                            <button mat-menu-item class="menuItembtn"
+                                                                style="outline: none !important;">
+                                                                <span>Delete</span>
+                                                            </button>
+                                                            <ng-template #editAppointmentTimeModel let-modal>
+                                                                <div class="modal-header"
+                                                                    style="background-color: #53b9c6;color: white;font-weight: bold;">
+                                                                    <span class="modal-title justify-content-center"
+                                                                        id="modal-basic-title">
+                                                                        Edit Available Appointment Time
+                                                                    </span>
+                                                                    <img style="width:18px;cursor: pointer;"
+                                                                        class="crossImg"
+                                                                        (click)="modal.dismiss('Cross click')"
+                                                                        src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                                                </div>
+                                                                <div class="modal-body scroll1">
+                                                                    <p>{{day | json}}</p>
+
+                                                                    <div class="container">
+                                                                        <div class="row" style="margin-bottom: 5px;">
+                                                                            <div class="col-md-1"></div>
+                                                                            <div class="col-md-4"
+                                                                                style="padding: inherit;">
+                                                                                <select
+                                                                                    class="form-control bg-white profile-input"
+                                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;padding-top: 3px;border: 1px solid gray;">
+                                                                                    <option
+                                                                                        *ngFor="let identity of listOfMorningTimings"
+                                                                                        [value]="identity.value">
+                                                                                        {{identity.value}}
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-md-2"
+                                                                                style="text-align: center;">
+                                                                                <div>to</div>
+                                                                            </div>
+                                                                            <div class="col-md-4"
+                                                                                style="padding: inherit;">
+                                                                                <select
+                                                                                    class="form-control bg-white profile-input"
+                                                                                    style="height: 30px;font-size: 12px;border: 1px solid #CCCCCC;border-radius: 2px;padding-top: 3px;border: 1px solid gray;">
+                                                                                    <option
+                                                                                        *ngFor="let identity of listOfMorningTimings"
+                                                                                        [value]="identity.value">
+                                                                                        {{identity.value}}
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-md-1"></div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="modal-footer justify-content-center">
+                                                                    <div style="display: contents;" class="py-3">
+                                                                        <div *ngIf="isLoading"
+                                                                            style="display: flex; justify-content: center; padding-bottom: 7px;">
+                                                                            <mat-progress-spinner class="example-margin"
+                                                                                color="primary" mode="indeterminate"
+                                                                                [diameter]="30">
+                                                                            </mat-progress-spinner>
+                                                                        </div>
+
+                                                                        <button class="delete-btn btn btn-sm mr-3"
+                                                                            style="outline-style: none;font-weight: 500;font-size: 12px;border-radius: 10px;border: 1px solid #474747;background-color: #ffffff;color: #140202;width: 20%;">
+                                                                            Cancel
+                                                                        </button>
+                                                                        <button class="save-btn btn btn-sm mr-5"
+                                                                            (click)="callUpdateAppointment(day)"
+                                                                            style="width: 20%;border-radius: 10px;outline-style: none;font-weight: bold;font-size: 12px;background-color: #53b9c6;color: white;">
+                                                                            Save
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </ng-template>
+                                                        </mat-menu>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center"></td>
+                                    <td *ngIf="selectedDateHours && selectedDateHours.length"
+                                        style="text-transform: capitalize;">
+                                        <div *ngFor="let day of selectedDateHours">
+                                            <div class="" *ngIf="day.sessionName === 'Afternoon'">
+                                                <div class="row" style="justify-content: center;margin-bottom: 20px;">
+                                                    <div style="border: 1px solid black;width: 65%;
+                                                text-align: center;padding: 3px;font-size: small;font-weight: 500;">
+                                                        {{day.startTime}}-{{day.endTime}}
+                                                    </div>
+                                                    <div style="padding: 0px 0px 0px 15px;">
+                                                        <button [matMenuTriggerFor]="beforeMenu"
+                                                            aria-label="Example icon-button with a menu"
+                                                            style="color: #53b9c6; background-color: Transparent;
+                                                    background-repeat: no-repeat;border: none; cursor: pointer;overflow: hidden;outline: none;">
+                                                            <img style="width: 0.32rem;" class="crossImg"
+                                                                src="../../../assets/images/ui/Icons/1x/menu.png">
+                                                        </button>
+                                                        <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu"
+                                                            xPosition="before">
+                                                            <button mat-menu-item class="menuItembtn"
+                                                                style="outline: none !important;"
+                                                                (click)="editAppointmentTimeMethod(editAppointmentTimeModel,day)">
+                                                                <span>Edit</span>
+                                                            </button>
+                                                            <button mat-menu-item class="menuItembtn"
+                                                                style="outline: none !important;">
+                                                                <span>Delete</span>
+                                                            </button>
+                                                            <ng-template #editAppointmentTimeModel let-modal>
+                                                                <div class="modal-header"
+                                                                    style="background-color: #53b9c6;color: white;font-weight: bold;">
+                                                                    <span class="modal-title justify-content-center"
+                                                                        id="modal-basic-title">
+                                                                        Edit Available Appointment Time
+                                                                    </span>
+                                                                    <img style="width:18px;cursor: pointer;"
+                                                                        class="crossImg"
+                                                                        (click)="modal.dismiss('Cross click')"
+                                                                        src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                                                </div>
+                                                                <div class="modal-body scroll1">
+                                                                    <p>{{day | json}}</p>
+                                                                    <div class="container">
+                                                                        <div class="row" style="margin-bottom: 5px;">
+                                                                            <div class="col-md-1"></div>
+                                                                            <div class="col-md-4"
+                                                                                style="padding: inherit;">
+                                                                                <div
+                                                                                    style="border: 1px solid gray;text-align: center;">
+                                                                                    {{day.startTime}}</div>
+
+                                                                            </div>
+                                                                            <div class="col-md-2"
+                                                                                style="text-align: center;">
+                                                                                <div>to</div>
+                                                                            </div>
+                                                                            <div class="col-md-4"
+                                                                                style="padding: inherit;">
+                                                                                <div
+                                                                                    style="border: 1px solid gray;text-align: center;">
+                                                                                    {{day.endTime}}</div>
+                                                                            </div>
+                                                                            <div class="col-md-1"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer justify-content-center">
+                                                                    <div style="display: contents;" class="py-3">
+                                                                        <div *ngIf="isLoading"
+                                                                            style="display: flex; justify-content: center; padding-bottom: 7px;">
+                                                                            <mat-progress-spinner class="example-margin"
+                                                                                color="primary" mode="indeterminate"
+                                                                                [diameter]="30">
+                                                                            </mat-progress-spinner>
+                                                                        </div>
+
+                                                                        <button class="delete-btn btn btn-sm mr-3"
+                                                                            style="outline-style: none;font-weight: 500;font-size: 12px;border-radius: 10px;border: 1px solid #474747;background-color: #ffffff;color: #140202;width: 20%;">
+                                                                            Cancel
+                                                                        </button>
+                                                                        <button class="save-btn btn btn-sm mr-5"
+                                                                            style="width: 20%;border-radius: 10px;outline-style: none;font-weight: bold;font-size: 12px;background-color: #53b9c6;color: white;">
+                                                                            Save
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </ng-template>
+                                                        </mat-menu>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center"></td>
+                                    <td *ngIf="selectedDateHours && selectedDateHours.length"
+                                        style="text-transform: capitalize;">
+                                        <div *ngFor="let day of selectedDateHours">
+                                            <div class="" *ngIf="day.sessionName === 'Evening'">
+                                                <div class="row" style="justify-content: center;margin-bottom: 20px;">
+                                                    <div style="border: 1px solid black;width: 65%;
+                                                text-align: center;padding: 3px;font-size: small;font-weight: 500;">
+                                                        {{day.startTime}}-{{day.endTime}}
+                                                    </div>
+                                                    <div style="padding: 0px 0px 0px 15px;">
+                                                        <button [matMenuTriggerFor]="beforeMenu"
+                                                            aria-label="Example icon-button with a menu"
+                                                            style="color: #53b9c6; background-color: Transparent;
+                                                    background-repeat: no-repeat;border: none; cursor: pointer;overflow: hidden;outline: none;">
+                                                            <img style="width: 0.32rem;" class="crossImg"
+                                                                src="../../../assets/images/ui/Icons/1x/menu.png">
+                                                        </button>
+                                                        <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu"
+                                                            xPosition="before">
+                                                            <button mat-menu-item class="menuItembtn"
+                                                                style="outline: none !important;"
+                                                                (click)="editAppointmentTimeMethod(editAppointmentTimeModel,day)">
+                                                                <span>Edit</span>
+                                                            </button>
+                                                            <button mat-menu-item class="menuItembtn"
+                                                                style="outline: none !important;">
+                                                                <span>Delete</span>
+                                                            </button>
+                                                            <ng-template #editAppointmentTimeModel let-modal>
+                                                                <div class="modal-header"
+                                                                    style="background-color: #53b9c6;color: white;font-weight: bold;">
+                                                                    <span class="modal-title justify-content-center"
+                                                                        id="modal-basic-title">
+                                                                        Edit Available Appointment Time
+                                                                    </span>
+                                                                    <img style="width:18px;cursor: pointer;"
+                                                                        class="crossImg"
+                                                                        (click)="modal.dismiss('Cross click')"
+                                                                        src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                                                </div>
+                                                                <div class="modal-body scroll1">
+                                                                    <p>{{day | json}}</p>
+                                                                    <div class="container">
+                                                                        <div class="row" style="margin-bottom: 5px;">
+                                                                            <div class="col-md-1"></div>
+                                                                            <div class="col-md-4"
+                                                                                style="padding: inherit;">
+                                                                                <div
+                                                                                    style="border: 1px solid gray;text-align: center;">
+                                                                                    {{day.startTime}}</div>
+
+                                                                            </div>
+                                                                            <div class="col-md-2"
+                                                                                style="text-align: center;">
+                                                                                <div>to</div>
+                                                                            </div>
+                                                                            <div class="col-md-4"
+                                                                                style="padding: inherit;">
+                                                                                <div
+                                                                                    style="border: 1px solid gray;text-align: center;">
+                                                                                    {{day.endTime}}</div>
+                                                                            </div>
+                                                                            <div class="col-md-1"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer justify-content-center">
+                                                                    <div style="display: contents;" class="py-3">
+                                                                        <div *ngIf="isLoading"
+                                                                            style="display: flex; justify-content: center; padding-bottom: 7px;">
+                                                                            <mat-progress-spinner class="example-margin"
+                                                                                color="primary" mode="indeterminate"
+                                                                                [diameter]="30">
+                                                                            </mat-progress-spinner>
+                                                                        </div>
+
+                                                                        <button class="delete-btn btn btn-sm mr-3"
+                                                                            style="outline-style: none;font-weight: 500;font-size: 12px;border-radius: 10px;border: 1px solid #474747;background-color: #ffffff;color: #140202;width: 20%;">
+                                                                            Cancel
+                                                                        </button>
+                                                                        <button class="save-btn btn btn-sm mr-5"
+                                                                            style="width: 20%;border-radius: 10px;outline-style: none;font-weight: bold;font-size: 12px;background-color: #53b9c6;color: white;">
+                                                                            Save
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </ng-template>
+                                                        </mat-menu>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #editMedicalPersonnelContent let-modal>
+    <div class="modal-header" style="background-color: #53b9c6; color: white;">
+        <span class="modal-title justify-content-center" id="modal-basic-title"
+            style="font-size: 14px; font-weight: bold; letter-spacing: 0.3px;">Edit Clinical Services</span>
+        <img style="width:18px;cursor: pointer;" class="crossImg" (click)="modal.dismiss('Cross click')"
+            src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="editFamilyHistoryForm" (ngSubmit)="updateMedicalPerssonelClinicalServiceSubmit()">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-3 modelBodyHead" style="text-align: center;">
+                    <span class=" headText"
+                        style="font-size: 14px; font-weight: 600; color: #140202;white-space: nowrap;">Service
+                        Name</span>
+                </div>
+                <div class="col-7 modelBodyHead" style="padding-left: inherit;text-align: center;">
+                    <span class="pl-5 headText" style="
+                margin-left: -10px;
+                font-size: 14px;
+                font-weight: 600;
+                color: #140202;
+              ">Description</span>
+                </div>
+            </div>
+
+            <div formArrayName="clinicalServices" class="pt-3 scroll">
+                <ng-container *ngFor="let desease of clinicalServiceArray.controls; let i = index">
+                    <div class="form-group row " [formGroupName]="i">
+                        <div class="col-md-1"
+                            style="text-align: center; line-height: 8; font-size: 12px; color: #140202;">
+                            {{ i + 1 }}.
+                        </div>
+                        <div class="col-md-3">
+                            <textarea formControlName="serviceName"
+                                style="width: inherit;height: 20vh;padding: 10px; resize: inherit; border-radius: 5px;font-size: 12px;color: #140202"
+                                rows="3" cols="50"></textarea>
+                        </div>
+                        <div class="col-md-7">
+                            <textarea formControlName="serviceDescription"
+                                style="width: inherit;height: 20vh;padding: 10px; resize: inherit; border-radius: 5px;font-size: 12px;color: #140202"
+                                rows="3" cols="50"></textarea>
+                        </div>
+                        <div class="col-md-1" style="line-height: 6;" (click)="removeService(i)">
+                            <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon metro-cancel.png"
+                                style="margin-top: -9px;" width="20rem" class="handCursor" />
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="row py-2 pl-5">
+                <div style="padding-left: 54px;" (click)="addServiceToArray()">
+                    <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon ionic-ios-add-circle.png"
+                        width="20rem" class="handCursor" />
+                    <span class="px-3 handCursor" style="color: #140202; font-weight: 500;">Add New List</span>
+                </div>
+            </div>
+            <div style="display: block;text-align: center;" class="py-3">
+                <div *ngIf="isLoading" style="display: flex; justify-content: center; padding-bottom: 7px;">
+                    <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" [diameter]="30">
+                    </mat-progress-spinner>
+                </div>
+
+                <button class="btn btn-sm mr-3"
+                    style="outline-style: none;font-weight: 500;font-size: 12px;border-radius: 10px;border: 1px solid #474747;background-color: #ffffff;color: #140202;width: 20%;">
+                    Cancel
+                </button>
+                <button class="btn btn-sm mr-5" style="width: 20%;border-radius: 10px;
+              outline-style: none;font-weight: bold;font-size: 12px;background-color: #53b9c6;color: white;">
+                    Save
+                </button>
+            </div>
+
+        </form>
+    </div>
+</ng-template>
+<!-- Change Password popup -->
+<ng-template #changePasswordModel let-modal>
+    <div class="modal-header" style="background-color: #53B9C6;color: white;">
+        <span class="modal-title" style="font-weight: 600;text-align: left;font-size: 18px;color: white;">
+            Change Password</span>
+        <img style="width:18px" class="crossImg" (click)="modal.dismiss('Cross click')"
+            src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form [formGroup]="changePasswordForm">
+                    <div class="form-group" style="margin-bottom: 2px;">
+                        <div class="row">
+                            <div style="justify-content: start;">
+                                <label style="font-size: 12px;font-weight: 500;color: #140303;">Old Password</label>
+                            </div>
+                            <div class="input-group mb-3"
+                                style="font-size: 12px;font-weight: 500;border: 1px solid #707070;border-radius: 5px;">
+                                <input style="border-right:none ;" class="form-control bg-white"
+                                    formControlName="oldPassword">
+                                <!--type="{{password1}}"-->
+                                <div class="input-group-append form-control1" style="border:none">
+                                    <span class="input-group-text" style="background-color:white;">
+                                        <span>
+                                            <!--*ngIf="!isPasswordOne" (click)="showPassword1()"-->
+                                            <i class="fa fa-fw fa-eye field-icon1"></i>
+                                        </span>
+                                        <span *ngIf="isPasswordOne">
+                                            <!--(click)="showPassword1()"-->
+                                            <i class="fa fa-fw fa-eye-slash field-icon1"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 2px;">
+                        <div class="row ">
+                            <div style="justify-content: start;">
+                                <label style="font-size: 12px;font-weight: 500;color: #140303;">New Password</label>
+                            </div>
+                            <div class="input-group mb-3"
+                                style="font-size: 12px;font-weight: 500;border: 1px solid #707070;border-radius: 5px;">
+                                <input style="border-right:none ;" class="form-control bg-white"
+                                    formControlName="newPassword">
+                                <!--type="{{password2}}"-->
+                                <div class="input-group-append" style="border:none">
+                                    <span class="input-group-text" style="background-color:white;">
+                                        <span>
+                                            <!--*ngIf="!isPasswordTwo" (click)="showPassword2()"-->
+                                            <i class="fa fa-fw fa-eye field-icon1"></i>
+                                        </span>
+                                        <span>
+                                            <!--*ngIf="isPasswordTwo" (click)="showPassword2()"-->
+                                            <i class="fa fa-fw fa-eye-slash field-icon1"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row ">
+                            <div style="justify-content: start;">
+                                <label class="text-nowrap"
+                                    style="font-size: 12px;font-weight: 500;color: #140303;">Confirm Password</label>
+                            </div>
+                            <div class="input-group mb-3"
+                                style="font-size: 12px;font-weight: 500;border: 1px solid #707070;border-radius: 5px;">
+                                <input style="border-right:none ;" class="form-control bg-white"
+                                    formControlName="confirmpassword">
+                                <!--type="{{password3}}"-->
+                                <div class="input-group-append" style="border:none">
+                                    <span class="input-group-text" style="background-color:white;">
+                                        <span>
+                                            <!--*ngIf="!isPasswordThree" (click)="showPassword3()"-->
+                                            <i class="fa fa-fw fa-eye field-icon1"></i>
+                                        </span>
+                                        <span>
+                                            <!--*ngIf="isPasswordThree" (click)="showPassword3()"-->
+                                            <i class="fa fa-fw fa-eye-slash field-icon1"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="changePasswordForm.get('confirmpassword').hasError('checkPasswords') && changePasswordForm.get('confirmpassword').touched">
+                                <p>not same</p>
+                            </div>
+                            <div style='color:#ff7355'
+                                *ngIf="changePasswordForm.get('confirmpassword').touched && changePasswordForm.get('confirmpassword').dirty && changePasswordForm.get('newPassword').value != changePasswordForm.get('confirmpassword').value && changePasswordForm.get('confirmpassword').value != null">
+                                Password does not match</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="" style="border-top: transparent;padding-bottom: 15px;">
+        <div class="row" *ngIf="isLoading1" style="display: flex; justify-content: center;padding-bottom: 7px;">
+            <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" [diameter]="30">
+            </mat-progress-spinner>
+        </div>
+        <div class="row justify-content-center " style="margin-top: 10px;">
+            <button mat-raised-button
+                style="height: 30px;line-height: 1;border-radius: 10px;color: #2A0909;border: 1px solid #707070;margin-right: 10px;"
+                (click)="modal.close('Close click')">Cancel
+            </button>
+            <button type="submit" style="background: #53b9c9;color: white;border-radius: 10px;" class="btn btn-sm"
+                (click)="changePwdSubmit()" [disabled]="!changePasswordForm.valid">Change Password</button>
+        </div>
+    </div>
+</ng-template>

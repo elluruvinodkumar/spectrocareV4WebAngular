@@ -1,0 +1,219 @@
+* {
+  font-family: "Muli reg", sans-serif !important;
+}
+
+table {
+  width: 100% !important;
+  border-collapse: separate;
+  border-spacing: 0 0.5em;
+}
+
+thead {
+  table-layout: fixed;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  height: 100px;
+}
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+  background-color: #3E454C;
+  color: white;
+  z-index: 10;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: rgb(68, 65, 65);
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #e0dede;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+*/ Modal Styles Signout*/ .modal-content {
+  background: transparent !important;
+  border: none !important;
+}
+
+.bg-Custom {
+  background-color: #60348a !important;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn-clr {
+  background-color: #f66 !important;
+  border: none !important;
+  outline: none !important;
+  padding: 8px 25px !important;
+}
+
+.modal-footer {
+  background-color: white !important;
+}
+
+.modal-header {
+  background-color: white;
+}
+
+.card-body p {
+  font-size: small;
+  font-weight: 400;
+}
+
+::ng-deep .mat-tab-label {
+  color: rgb(10, 10, 10);
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background: #53B9C6;
+  height: 3px;
+}
+
+.cancel {
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.demo-tab-group {
+  border: 1px solid #e8e8e8;
+}
+
+.demo-tab-content {
+  padding: 16px;
+}
+
+.modal-footer {
+  background-color: white !important;
+}
+
+.modal-header {
+  background-color: white;
+}
+
+.mat-button-toggle-group {
+  border-radius: 50px;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+::ng-deep .patientProfileForm .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+  width: 15rem !important;
+  border: none !important;
+  background: transparent !important;
+  /* border-bottom: 1px solid #53B9C6 !important; */
+  color: rgb(2, 2, 2) !important;
+  scroll-behavior: unset;
+  scroll-padding-inline: inherit;
+}
+
+::ng-deep .patientProfileForm .intl-tel-input .selected-flag {
+  background: transparent !important;
+}
+
+::ng-deep .patientProfileForm .intl-tel-input.separate-dial-code .selected-dial-code {
+  color: rgb(8, 8, 8) !important;
+}
+
+::ng-deep .patientProfileForm .country-dropdown {
+  width: 15rem !important;
+}
+
+thead th {
+  /* position: sticky; */
+  z-index: 1;
+  top: 0;
+}
+
+.scroll {
+  /* width: 700px !important; */
+  height: 65vh !important;
+  overflow: auto;
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #53B9C6;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  right: -220.375px !important;
+}
+
+::ng-deep .mat-select-value {
+  color: black;
+}
+
+::ng-deep .mat-menu-content {
+  background: rgb(212, 209, 209) !important;
+  padding: 0% !important;
+}
+
+::ng-deep.mat-menu-content button {
+  padding-right: 0px !important;
+}
+
+::ng-deep.mat-menu-content button:hover>.mat-icon {
+  background: rgb(104, 104, 104) !important;
+  /* border-left: 5px solid #53b8c5; */
+  color: white;
+}
+
+::ng-deep.mat-menu-content button:hover {
+  background: rgb(104, 104, 104) !important;
+  border-left: 5px solid #53b8c5;
+  color: white;
+}
+
+::ng-deep .mat-menu-content.menudata {
+  width: 15px !important;
+}
+
+::ng-deep .mat-menu-panel {
+  min-height: 0px !important;
+}
+
+::ng-deep .mat-select {
+  border: none;
+}

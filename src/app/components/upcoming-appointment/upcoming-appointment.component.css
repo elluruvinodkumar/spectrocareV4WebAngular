@@ -1,0 +1,57 @@
+* {
+    font-family: "Muli reg", sans-serif !important;
+}
+
+a, label {
+    font-weight: bold;
+}
+
+label {
+    color: #6e59af;
+}
+
+.close {
+    outline: none !important;
+}
+
+span.cross:hover {
+    color: red;
+}
+
+/**** Scroll Bar*****/
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+    background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: orangered;
+}
+
+.fa-search {
+    float: right;
+    margin-left: -25px;
+    margin-right: 7px;
+    margin-top: 8px;
+    position: relative;
+    z-index: 2;
+}
+
+input, textarea {
+    border-radius: 6px;
+    border: none !important;
+    background-color: white !important;
+    box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.text-red {
+    color: #dc3545;
+}

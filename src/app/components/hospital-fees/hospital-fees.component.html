@@ -1,0 +1,80 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div style="font-size: 14px;font-weight: 600;padding-bottom: 10px;color: #140202;">Hospital Service Fees</div>
+<div class="scroll tableFixHead">
+    <table class="table text-center">
+        <thead class="" style="background-color: #3E454C;font-size: 14px;color: white;">
+            <tr class="medium" style="font-weight: 300;font-size: 12px;">
+                <th scope="col" class="border text-center">No</th>
+                <th scope="col" class="border  ">Service Items</th>
+                <th scope="col" class="border text-center">Cost (&#36;)</th>
+                <th scope="col" class="border text-center">VAT (%)</th>
+                <th scope="col" class="border text-center">Currency</th>
+                <th scope="col" class="border  text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!(servicesData1 && servicesData1.length)"
+                style="text-align: center;background-color: white;padding: 20px;">
+                <td style="text-align: center;font-size: 12px;font-weight: 600;" colspan="7">
+                    Don't have Services
+                </td>
+            </tr>
+            <tr class=" small " style="background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 6px 12px #44444414;
+            border-radius: 6px;
+            opacity: 1;" *ngFor="let selectedservicesData1 of servicesData1 | filter:term; let i = index">
+
+                <td scope="row" style="color:#000000" class="text-center">{{i+1}}</td>
+                <td class="" style="padding-left: 20px;color:#000000">
+                    <input type="text" [value]="selectedservicesData1.serviceName" #serviceName
+                        [ngClass]="{'custom-borders':!selectedservicesData1.isAlter}"
+                        style="border: none;outline-style: none;background: transparent;">
+                </td>
+                <td class="text-center" style="color:#000000">
+                    <input type="text" [value]="selectedservicesData1.serviceCost" #serviceCost
+                        [ngClass]="{'custom-borders':!selectedservicesData1.isAlter}"
+                        style="border: none;outline-style: none;background: transparent;">
+                </td>
+                <td class="text-center" style="color:#000000">
+                    <input type="text" [value]="selectedservicesData1.serviceVATPercent" #serviceVATPercent
+                        [ngClass]="{'custom-borders':!selectedservicesData1.isAlter}"
+                        style="border: none;outline-style: none;background: transparent;">
+                </td>
+                <td class="text-center" style="">
+                    <select style="border-radius: 5px;width: 60%; height: 30px;font-size: 12px;color:#000000" class=""
+                        [value]="selectedservicesData1.currency" #currency>
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                        <option value="NT$">NT$</option>
+                        <option value="CNY">CNY</option>
+                    </select>
+                </td>
+                <td class=" text-center text-info" style="padding: 0px;">
+                    <div *ngIf="selectedservicesData1.isAlter" style="margin-top: 12px;">
+                        <img (click)="editDepartment(i)" src="../../../assets/images/ui/Icons/1x/Icon material-edit.png"
+                            width="18%" style="margin-right: 30px;" class="handCursor">
+                        <img (click)="removeService(i,selectedservicesData1)"
+                            src="../../../assets/images/ui/Icons/1x/Icon material-delete.png" class="handCursor">
+                    </div>
+                    <div *ngIf="!selectedservicesData1.isAlter">
+                        <button class="btn btn-sm" style="border: 1px solid #53b9c6;border-radius: 10px;width: 65%;
+                            height: 30px;line-height: 1;padding-top: 2px;margin-top: 12px;"
+                            (click)="updatedIndexBasedValue(i,serviceName,serviceCost,serviceVATPercent,currency)">save</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row py-2  " style="padding-left: 1px;">
+    <div style="padding-left: 40px;" (click)="addService()">
+        <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon ionic-ios-add-circle.png" width="20rem"
+            class="handCursor">
+        <span class="px-3 handCursor" style="font-size: 14px;font-weight: 500;">Add New List</span>
+    </div>
+</div>
+<p class="font-weight-light" style="font-size: small;padding-top: 20px;padding-left: 27px;">Last updated
+    date
+    :
+    {{presentDate}}
+    by {{userID}}</p>

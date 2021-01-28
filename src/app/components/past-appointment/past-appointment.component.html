@@ -1,0 +1,368 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <div class="card-body p-2">
+            <div>
+                <div class="row p-2">
+                    <div class="col-md-12">
+                        <input type="text" [(ngModel)]="term" class=" p-2 w-100 " placeholder="Search by key"
+                            style="border-radius: 5px; outline-style: none !important;">
+                    </div>
+                </div>
+
+                <!-- <div class="row justify-content-center p-2" >
+        <div class="col-md-auto p-0" style="line-height: 2;">
+          <span class="font-weight-bold mx-2" >Search By : </span>
+        </div>    
+        <div class="col-md-4 p-0">
+        <input type="text" [(ngModel)]="term"  class="bg-transparent p-1  "
+            style="border-radius: 5px; outline: none; width: 100%;" >
+           
+        </div>
+    </div> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="p-3">
+                            <!-- style="height: 70%; overflow-y: scroll;" -->
+                            <div class="row">
+                                <div class="card bg-light m-3"
+                                    *ngFor="let appointmentsData of upcomingAppointments | filter:term"
+                                    style="width: 20rem; border-radius: 10px;box-shadow: 0 5px 6px 0 rgba(0,0,0,0.3);">
+                                    <div class="card-body " style="height: 9rem;">
+                                        <div class="row justify-content-between">
+                                            <p style="font-weight: bold;font-size: large;"><span
+                                                    class="font-weight-bold">
+                                                    <i class="fa fa-user-md mr-1" aria-hidden="true"></i>
+                                                </span>{{appointmentsData.doctorName}}</p>
+                                            <p [ngClass]="{'text-success': appointmentsData.appointmentStatus == 'Accepted',
+                                            'text-warning': appointmentsData.appointmentStatus == 'Waiting for confirmation',                                           
+                                            'text-black-50': appointmentsData.appointmentStatus == 'Denied',
+                                            'text-info': appointmentsData.appointmentStatus == 'Confirmed',
+                                            'text-red':appointmentsData.appointmentStatus == 'Cancelled',
+                                            'text-danger': appointmentsData.appointmentStatus == 'Rejected'
+                                            
+                                          }">{{appointmentsData.appointmentStatus}}</p>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <p><i class="fa fa-clock mr-1"></i>{{appointmentsData.appointmentTimeFrom}}
+                                                to {{appointmentsData.appointmentTimeTo}}</p>
+                                            <p></p>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <p><i class="fas fa-calendar-alt mr-1"
+                                                    aria-hidden="true"></i>{{appointmentsData.appointmentDate}}</p>
+                                            <span (click)="openUpdateModel(content2, appointmentsData)"
+                                                class="text-info">Full Info</span>
+                                            <!-- (click)="open(content)" (click)="openUpdateModel(content2, adminTeam)"-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--View Appointment Pop-up model  #153f69-->
+<ng-template #content2 let-modal>
+    <div class="modal-header  p-1 " style="background-color: #6e59af; color: mintcream;">
+        <h4 class="modal-title ml-auto" id="modal-basic-title">Appointment Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span class="cross text-danger-50"><i class="fa fa-times" aria-hidden="true"></i></span>
+        </button>
+    </div>
+    <div class="modal-body bg-light p-0">
+        <form [formGroup]="patientAppointmentForm" *ngIf="!isRejectedAppointment">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Visit Type</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="change form-control bg-light" placeholder="On-Line"
+                                        formControlName="visitType" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input style="border-radius: 50px 50px 50px 50px ;" type="text"
+                                        class="form-control bg-light" placeholder="8/1/2020 01:00:00 PM"
+                                        formControlName="appointmentDate" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Appointment Time</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="8/1/2020 01:00:00 PM"
+                                        formControlName="appointmentTime" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Doctor Name</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="Dr. Babu"
+                                        formControlName="doctorName" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Patient Name</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="Mr.Rajini"
+                                        formControlName="patientName" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="dental" formControlName="department"
+                                        disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Reason for visit</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="checking the theeth"
+                                        formControlName="reasonForVisit" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="Pending"
+                                        formControlName="appointmentStatus" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Creator</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="Admin" formControlName="creatorName"
+                                        disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Notes</label>
+                                    <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                        class="form-control bg-light" placeholder="" disabled>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </form>
+
+        <form [formGroup]="patientAppointmentRejectForm" *ngIf="isRejectedAppointment">
+
+            <div class="">
+                <!-- <h5>For Reschedule</h5> -->
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Visit Type</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="change form-control bg-light" placeholder="On-Line"
+                                    formControlName="visitType">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Date</label>
+                                <!-- <input style="border-radius: 50px 50px 50px 50px ;" type="text" class="form-control bg-light" placeholder="8/1/2020 01:00:00 PM" formControlName="appointmentDate" > -->
+
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="choose date from calender"
+                                        style="border-radius: 50px 50px 50px 50px ;" ngbDatepicker #d="ngbDatepicker"
+                                        [value]="dateToShow" formControlName="appointmentDate" readonly>
+                                    <div class="input-group-append">
+                                        <button style="border-radius: 50px 50px 50px 50px ;"
+                                            class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                            type="button">
+                                            <i class="fas fa-calendar-alt mr-1" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Appointment From Time</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="form-control bg-light" placeholder="8/1/2020 01:00:00 PM"
+                                    formControlName="appointmentTimeFrom">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Appointment To Time</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="form-control bg-light" placeholder="8/1/2020 01:00:00 PM"
+                                    formControlName="appointmentTimeTo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Creator Name</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="form-control bg-light" placeholder="Admin" formControlName="creatorName"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Creter Medical Personnel ID</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="form-control bg-light" placeholder="creatorMedicalPersonnelID" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Doctor Name</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="form-control bg-light" placeholder="Dr. Babu" formControlName="doctorName"
+                                    disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Doctor ID</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="form-control bg-light" placeholder="8/1/2020 01:00:00 PM"
+                                    formControlName="doctorMedicalPersonnelID" disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Reason For Visit</label>
+                                <input style="border-radius: 50px 50px 50px 50px;" type="text"
+                                    class="form-control bg-light" placeholder="Admin" formControlName="reasonForVisit"
+                                    disabled>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer justify-content-center p-1">
+        <button type="submit" class="cb btn btn-sm btn-danger text-white btn-outline-dark" style="font-weight: bold;"
+            (click)="openCancelModel(content3)" *ngIf="!isRejectedAppointment">Cancel</button>
+        <!-- (click)="cancelAppointment()" -->
+        <button type="submit" class="rb btn btn-sm btn-success text-white btn-outline-dark" style="font-weight: bold;"
+            (click)="rescheduleAppointment(content3)" *ngIf="isRejectedAppointment">Reschedule</button>
+    </div>
+</ng-template>
+
+<ng-template #content3 let-modal>
+    <div class="modal-header  p-1 " style="background-color: #e02d45; color: mintcream;">
+        <h4 class="modal-title ml-auto" id="modal-basic-title">Cancel Appointment</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span class="cross text-danger-50"><i class="fa fa-times" aria-hidden="true"></i></span>
+        </button>
+    </div>
+    <div class="modal-body bg-light p-0">
+        <form [formGroup]="cancelPatientAppointmentForm">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class=" justify-content-center w-100">
+                            <div class="form-group">
+                                <label style="color: #e02d45 ;">Reason For Cancel</label>
+                                <textarea style="border-radius: 10px;" type="text" class="form-control bg-light"
+                                    placeholder="" formControlName="cancelReason"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer justify-content-center p-1">
+        <button type="submit" class="cb btn btn-sm btn-success text-white btn-outline-dark" style="font-weight: bold;"
+            (click)="cancelAppointment()">Submit</button>
+        <!-- <button type="submit" class="rb btn btn-sm btn-success text-white btn-outline-dark" style="font-weight: bold;" (click)="rescheduleAppointment()">Reschedule</button> -->
+    </div>
+</ng-template>

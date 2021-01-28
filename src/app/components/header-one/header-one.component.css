@@ -1,0 +1,32 @@
+* {
+    font-family: "Muli reg", sans-serif !important;
+}
+
+header {
+    position: absolute;
+}
+
+.logo-text {
+    margin-left: 80px;
+    font-size: x-large;
+    font-weight: 500;
+    color: white;
+}
+
+.logo-highlight {
+    color: #53B9C6 !important;
+}
+
+button {
+    color: rgba(250, 250, 250, 0.5) !important;
+}
+
+button:hover {
+    border: 1px solid white !important;
+}
+
+.active {
+    border: 1px solid white !important;
+    color: white !important;
+    box-shadow: 0 0 5px rgb(44, 41, 41);
+}

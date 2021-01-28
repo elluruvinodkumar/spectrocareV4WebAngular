@@ -1,0 +1,105 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap'
+import { NgxLoadingModule, ngxLoadingAnimationTypes } from 'ngx-loading';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AdminsigninComponent } from './components/adminsignin/adminsignin.component';
+import { AdminsignupComponent } from './components/adminsignup/adminsignup.component';
+import { MedicalpersonnelsignupComponent } from './components/medicalpersonnelsignup/medicalpersonnelsignup.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomeComponent } from './components/home/home.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { ManageuserComponent } from './components/manageuser/manageuser.component';
+import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassword.component';
+import { TermsandconditionsComponent } from './components/termsandconditions/termsandconditions.component';
+import { PrivacypolicyComponent } from './components/privacypolicy/privacypolicy.component';
+import { ReportComponent } from './components/report/report.component';
+import { BillandpaymentComponent } from './components/billandpayment/billandpayment.component';
+import { ChangepasswordComponent } from './components/changepassword/changepassword.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdmincenterComponent } from './components/admincenter/admincenter.component';
+import { PatientComponent } from './components/patient/patient.component';
+import { SearchpatientComponent } from './components/searchpatient/searchpatient.component';
+import { AddmedrecordComponent } from './components/addmedrecord/addmedrecord.component';
+import { MainHomeComponent } from './components/main-home/main-home.component';
+import { ViewPatientMedicalRecordComponent } from './components/view-patient-medical-record/view-patient-medical-record.component';
+import { GeneralInformationComponent } from './components/general-information/general-information.component';
+import { BodyIndexComponent } from './components/body-index/body-index.component';
+import { PhysicalExamHisoryComponent } from './components/physical-exam-hisory/physical-exam-hisory.component';
+import { FamilyHisoryComponent } from './components/family-hisory/family-hisory.component';
+import { MedicalHistoryComponent } from './components/medical-history/medical-history.component';
+import { VaccinationComponent } from './components/vaccination/vaccination.component';
+import { PatientAppointmentRecordComponent } from './components/patient-appointment-record/patient-appointment-record.component';
+import { PatientScreeningRecordComponent } from './components/patient-screening-record/patient-screening-record.component';
+import { PatientProfileComponent } from './components/patient-profile/patient-profile.component';
+import { AddmedicalrecordComponent } from './components/addmedicalrecord/addmedicalrecord.component';
+import { ShowPatientProfileComponent } from './components/show-patient-profile/show-patient-profile.component';
+import { ViewPatientAppointmentSummaryComponent } from './components/view-patient-appointment-summary/view-patient-appointment-summary.component';
+import { PatientProfileeComponent } from './components/patient-profilee/patient-profilee.component';
+import { MedicalPersonnelProfileComponent } from './components/medical-personnel-profile/medical-personnel-profile.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    AdminsigninComponent,
+    AdminsignupComponent,
+    MedicalpersonnelsignupComponent,
+    HeaderComponent,
+    SidebarComponent,
+    HomeComponent,
+    ManageuserComponent,
+    ForgotpasswordComponent,
+    TermsandconditionsComponent,
+    PrivacypolicyComponent,
+    ReportComponent,
+    BillandpaymentComponent,
+    ChangepasswordComponent,
+    FooterComponent,
+    AdmincenterComponent,
+    PatientComponent,
+    SearchpatientComponent,
+    AddmedrecordComponent,
+    MainHomeComponent,
+    ViewPatientMedicalRecordComponent,
+    GeneralInformationComponent,
+    BodyIndexComponent,
+    PhysicalExamHisoryComponent,
+    FamilyHisoryComponent,
+    MedicalHistoryComponent,
+    VaccinationComponent,
+    PatientAppointmentRecordComponent,
+    PatientScreeningRecordComponent,
+    PatientProfileComponent,
+    AddmedicalrecordComponent,
+    ShowPatientProfileComponent,
+    ViewPatientAppointmentSummaryComponent,
+    PatientProfileeComponent,
+    MedicalPersonnelProfileComponent
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    NgbModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.circleSwish,
+      backdropBackgroundColour: 'rgba(0,0,0,0.5)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff',
+      fullScreenBackdrop: true
+      })
+    
+  
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

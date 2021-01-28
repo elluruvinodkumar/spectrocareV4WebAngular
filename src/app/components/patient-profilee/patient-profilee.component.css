@@ -1,0 +1,65 @@
+* {
+  font-family: "Muli reg", sans-serif !important;
+}
+
+.edit-img {
+  margin-left: 90px;
+  margin-top: -30px;
+}
+
+.head-bg {
+  background-color: #F1F1F1;
+}
+
+.updata {
+  margin-top: -48px;
+}
+
+.size12 {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.profileTitle {
+  font-size: 16px;
+}
+
+span {
+  font-size: 12px;
+}
+
+.handCursor:hover {
+  cursor: pointer;
+}
+
+.modelBodyHead {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.size11 {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.delete-btn {
+  margin-left: 55%;
+  margin-top: -19%;
+}
+
+.btn-clr {
+  background-color: #f66 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.headText {
+  font-weight: 500;
+}
+
+/*  */

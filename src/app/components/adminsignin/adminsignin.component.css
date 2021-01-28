@@ -1,0 +1,74 @@
+* {
+    font-family: "Muli reg", sans-serif !important;
+}
+
+ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 2rem;
+    height: 2rem;
+}
+
+form {
+    text-align: left
+}
+
+h3 {
+    display: flex;
+    justify-content: center;
+}
+
+h4 {
+    display: flex;
+    justify-content: center;
+}
+
+.menbersigninbg, card {
+    height: 100vh;
+    background: linear-gradient(to right, #fa234f, #27384a);
+    /* background-image: url("D:\Spectrum\Spectrum4\WebApplication\UI for v4\Icons\1x\Background_1.png"); */
+    /* background-color: dodgerblue; */
+    /* background-color:#7e2f4c; */
+}
+
+.field-icon {
+    float: right;
+    margin-left: -25px;
+    margin-top: -25px;
+    position: relative;
+    z-index: 2;
+}
+
+.field-icon1 {
+    float: right;
+    margin-left: -25px;
+    margin-top: 0px;
+    position: relative;
+    z-index: 2;
+}
+
+label {
+    font-weight: bold;
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.example-container>* {
+    width: 100%;
+}
+
+.loginbtn {
+    border-radius: 50px;
+    height: 40px;
+    font-weight: bold;
+    border-style: none;
+    background-color: #53B9C6;
+    color: white;
+}

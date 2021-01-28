@@ -1,0 +1,57 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" ></ngx-loading>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-12 pb-3">
+          <h3 class="text-center shadow p-3">List Of Medical Personnels</h3>
+
+          <div class="d-flex justify-content-center p-2" >
+            <div style="line-height: 2;">
+              <span class="font-weight-bold mx-2" >Search By : </span>
+            </div>
+            
+            <input type="text"  class="bg-light w-25 bg-transparent  p-1 text-center "
+                style="border-radius: 10px; outline: none;" (keyup)='search($event.target.value)' placeholder=" First Name">
+        </div>
+      </div>
+        <!-- <h4 class="font-weight-bold text-center p-3">List Of Medical Personnels</h4> -->
+        <table class="table table-sm table-bordered">
+          <thead>
+            <tr class="table-active">
+              <th scope="col">No</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Qualification</th>
+              <th scope="col">Specification</th>
+              <th scope="col">Department</th>
+              <th scope="col">Email Verification</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let medicalPersonnels of filteredData; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{medicalPersonnels.firstName}}</td>
+              <td>{{medicalPersonnels.lastName}}</td>
+              <td>{{medicalPersonnels.qualification}}</td>
+              <td>{{medicalPersonnels.specialization}}</td>
+              <td>{{medicalPersonnels.department}}</td>
+              <td class="font-weight-bold"
+                [ngClass]="medicalPersonnels.verificationStatus ? 'text-success' : 'text-danger'">
+                {{medicalPersonnels.verificationStatus}}</td>
+
+              <td class="text-center">
+                <span [routerLink]="['/admincenter/medicalpersonnelprofile',medicalPersonnels.medical_personnel_id]">
+                  <i class="fa fa-eye mr-2 text-primary"></i>
+                </span>
+                <!-- <i class="fas fa-edit mr-2 text-warning"></i> -->
+                <span *ngIf="isAdminSystmMngr">
+                <i class="fas fa-trash-alt text-danger"></i>
+              </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,228 @@
+* {
+    font-family: "Muli-Bold", sans-serif !important;
+}
+
+.t-12 {
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+}
+
+/* .mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.mat-menu-item {
+    line-height: 25px;
+    height: 25px;
+    font-size: 11px;
+    padding: 0px 0px 0px 5px !important;
+  } */
+
+/* thead tr th {
+    font-size: 14px;
+} */
+
+.mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    thead tr th {
+        font-size: 10px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 10px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.20rem;
+    }
+    .mat-menu-item {
+        line-height: 20px;
+        height: 20px;
+        font-size: 8px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    thead tr th {
+        font-size: 11px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 11px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        min-height: 35px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.24rem;
+    }
+    .mat-menu-item {
+        line-height: 20px;
+        height: 20px;
+        font-size: 8px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    thead tr th {
+        font-size: 12px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 12px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.28rem;
+    }
+    .mat-menu-item {
+        line-height: 22px;
+        height: 22px;
+        font-size: 9px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    thead tr th {
+        font-size: 14px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 14px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        min-height: 45px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.30rem;
+    }
+    .mat-menu-item {
+        line-height: 25px;
+        height: 25px;
+        font-size: 11px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+    thead tr th {
+        font-size: 14px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 14px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.32rem;
+    }
+    .mat-menu-item {
+        line-height: 25px;
+        height: 25px;
+        font-size: 11px;
+        padding: 0px 0px 0px 5px !important;
+    }
+    .dateVisible {
+        width: 90%;
+        height: auto;
+        padding: 10px;
+        background: #F9F9F9 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+        position: absolute;
+    }
+    .active {
+        /* border: 1px solid white !important; */
+        color: white !important;
+        background-color: #53b9c6 !important;
+        /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+    }
+    ::-webkit-calendar-picker-indicator {
+        display: none;
+    }
+}

@@ -1,0 +1,8 @@
+<app-header *ngIf="Show"></app-header>
+<app-header-one *ngIf="isTrue()"></app-header-one>
+
+<div *ngIf="isValid()">
+        <router-outlet *ngIf="isValid()"></router-outlet>
+</div>
+
+<router-outlet *ngIf="!isValid()"></router-outlet>

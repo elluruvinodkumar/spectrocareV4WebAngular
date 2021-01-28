@@ -1,0 +1,340 @@
+* {
+  font-family: "Muli reg", sans-serif !important;
+}
+
+select option {
+  border: 5px solid #000;
+  background: white;
+  border-radius: 25px;
+}
+
+/* rgb(233, 229, 229) */
+
+label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #140202;
+}
+
+button {
+  outline: none !important;
+}
+
+span.cross:hover {
+  color: red;
+}
+
+/* Modal Styles */
+
+.modal-content {
+  background: transparent !important;
+  border: none !important;
+}
+
+.bg-Custom {
+  background-color: #60348a !important;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn-clr {
+  background-color: #f66 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.modal-footer {
+  background-color: white !important;
+}
+
+.modal-header {
+  background-color: white;
+}
+
+::ng-deep .intl-tel-input.allow-dropdown .flag-container, .intl-tel-input.separate-dial-code .flag-container {
+  /* padding-bottom: 10px; */
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background: #53B9C6;
+  height: 3px;
+}
+
+::ng-deep .example-full-width {
+  width: 100% !important;
+  padding: 5px;
+}
+
+table {
+  width: 100% !important;
+  border-collapse: separate;
+  border-spacing: 0 0.5em;
+}
+
+thead {
+  table-layout: fixed;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  height: 100px;
+}
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+  background-color: #3E454C;
+  color: white;
+  z-index: 10;
+}
+
+/* label style */
+
+::ng-deep .mat-tab-label {
+  color: rgb(10, 10, 10);
+}
+
+::ng-deep .mat-menu-content {
+  background: #F9F9F9 !important;
+  padding: 0% !important;
+}
+
+::ng-deep.mat-menu-content button {
+  padding-right: 0px !important;
+}
+
+::ng-deep.mat-menu-content button:hover>.mat-icon {
+  background: rgb(104, 104, 104) !important;
+  /* border-left: 5px solid #53b8c5; */
+  color: white;
+}
+
+::ng-deep.mat-menu-content button:hover {
+  background: rgb(104, 104, 104) !important;
+  border-left: 5px solid #53b8c5;
+  color: white;
+}
+
+::ng-deep .mat-menu-content.menudata {
+  width: 15px !important;
+}
+
+.mat-form-field {
+  width: 100% !important;
+}
+
+::ng-deep .adminUserProfile .mat-form-field .mat-form-field-underline {
+  background-color: rgba(12, 12, 12, 0.5) !important;
+  width: 100% !important;
+}
+
+::ng-deep .adminUserProfile .mat-form-field .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #53B9C6 !important;
+  ;
+}
+
+::ng-deep .medicalUserProfile .mat-form-field .mat-form-field-underline {
+  background-color: rgba(12, 12, 12, 0.5) !important;
+  width: 100% !important;
+}
+
+::ng-deep .medicalUserProfile .mat-form-field .mat-form-field-ripple {
+  /*change color of underline when focused*/
+  background-color: #53B9C6 !important;
+  ;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container>* {
+  width: 100%;
+}
+
+.inp {
+  color: #090808;
+}
+
+::ng-deep .mat-select-value-text {
+  color: black !important;
+}
+
+.mat-icon {
+  font-size: 20px;
+  padding: 0px !important;
+  margin: 0px !important;
+  /* height: 0px !important; */
+  /* width: 0px !important; */
+}
+
+.modal-title {
+  font-weight: bold !important;
+  font-size: 14px;
+}
+
+::ng-deep .mat-menu-panel {
+  min-height: 0px !important;
+}
+
+::ng-deep .adminUserProfile .mat-form-field .mat-form-field-label {
+  color: #160505 !important;
+}
+
+::ng-deep .medicalUserProfile .mat-form-field .mat-form-field-label {
+  color: #160505 !important;
+}
+
+::ng-deep .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+  width: 16rem !important;
+  border: none !important;
+  background: transparent !important;
+  color: rgb(2, 2, 2) !important;
+  scroll-behavior: unset;
+  scroll-padding-inline: inherit;
+}
+
+::ng-deep .adminUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+  width: 24rem !important;
+  /* width: 384px !important; */
+  border: none !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgb(8, 8, 8) !important;
+  color: rgb(2, 2, 2) !important;
+  scroll-behavior: unset;
+  scroll-padding-inline: inherit;
+}
+
+::ng-deep .medicalUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+  width: 24rem !important;
+  /* width: 384px !important;  */
+  border: none !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgb(8, 8, 8) !important;
+  color: rgb(2, 2, 2) !important;
+  scroll-behavior: unset;
+  scroll-padding-inline: inherit;
+}
+
+::ng-deep .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+  outline: none;
+}
+
+::ng-deep .intl-tel-input .search-container input {
+  color: rgb(25, 28, 29) !important;
+}
+
+::ng-deep .intl-tel-input.separate-dial-code .selected-dial-code {
+  color: rgb(8, 8, 8) !important;
+}
+
+::ng-deep .intl-tel-input .selected-flag {
+  background: transparent !important;
+}
+
+::ng-deep .country-dropdown {
+  width: 18rem !important;
+}
+
+::ng-deep .addAdminGenUserForm .country-dropdown {
+  width: 16rem !important;
+}
+
+::ng-deep .adminUserProfile .country-dropdown {
+  width: 24rem !important;
+}
+
+::ng-deep .medicalUserProfile .country-dropdown {
+  width: 24rem !important;
+}
+
+::ng-deep .adminGeneralUserProfileForm .country-dropdown {
+  width: 20rem !important;
+}
+
+.scroll {
+  /* width: 700px !important; */
+  height: 65vh !important;
+  overflow: auto;
+  /* display: inline-block; */
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 20px;
+  background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #53B9C6;
+}
+
+/* For Radio button */
+
+.radio-item input[type='radio'] {
+  visibility: hidden;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px 0 5px;
+  padding: 0;
+}
+
+.radio-item input[type=radio]:before {
+  position: relative;
+  margin: 4px -25px -4px 0;
+  display: inline-block;
+  visibility: visible;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  /* border: 2px inset rgba(150,150,150,0.75); */
+  /* background: radial-gradient(ellipse at top left, rgb(255,255,255) 0%, rgb(250,250,250) 5%, rgb(230,230,230) 95%, rgb(225,225,225) 100%); */
+  border: 1px solid rgb(100, 100, 100);
+  background: transparent;
+  content: "";
+}
+
+.radio-item input[type=radio]:checked:after {
+  position: relative;
+  top: 0;
+  left: 9px;
+  display: inline-block;
+  visibility: visible;
+  border-radius: 6px;
+  width: 12px;
+  height: 12px;
+  /* background: radial-gradient(ellipse at top left, rgb(245,255,200) 0%, rgb(225,250,100) 5%, rgb(75,175,0) 95%, rgb(25,100,0) 100%); */
+  background: #3E454C;
+  /* rgb(150, 211, 235); */
+  content: "";
+}
+
+.radio-item input[type=radio].true:checked:after {
+  /* background: radial-gradient(ellipse at top left, rgb(245,255,200) 0%, rgb(225,250,100) 5%, rgb(75,175,0) 95%, rgb(25,100,0) 100%); */
+  background: #3E454C;
+  /* rgb(150, 211, 235); */
+}
+
+.radio-item input[type=radio].false:checked:after {
+  background: radial-gradient(ellipse at top left, rgb(255, 225, 200) 0%, rgb(250, 200, 150) 5%, rgb(200, 25, 0) 95%, rgb(100, 25, 0) 100%);
+}
+
+.radio-item label {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+option {
+  background-color: #f66;
+}

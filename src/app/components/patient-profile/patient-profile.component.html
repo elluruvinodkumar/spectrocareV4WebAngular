@@ -1,0 +1,173 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div class="container-fluid">
+  <div class="row ">
+    <div class="col-md-12 p-0">
+      <app-header [titleData]="titleArray"></app-header>
+    </div>
+
+  </div>
+</div>
+<div class="container-fluid" style="background-color: #F5F8FA;" *ngIf="selectedPatient">
+  <div class="row border-bottom p-3 pb-1 pl-4 bg-white">
+    <span class="size12 handCursor" style="color: #53b9c6;font-weight:bold;"
+      [routerLink]="['/admincenter/patient']">Patient List</span>
+    <span class="pl-1 size12" style="color: #3E454C;font-weight: bold;"> &gt; {{selectedPatient.firstName}}
+      {{selectedPatient.lastName}}</span>
+  </div>
+  <div class="row p-1" style="padding-top: 8px !important;background-color: #F5F8FA ;">
+    <div class="col-md-9 pr-0">
+      <div class="bg-white p-2">
+
+        <form [formGroup]="patientProfileForm">
+
+          <div class="row">
+
+            <div class="col-md-2">
+              <div class="justify-content-center " style="text-align: -webkit-center;">
+
+                <div style="border-radius: 50% !important;width: 100px;height: 100px;">
+                  <img class=""
+                    style="border: 1px solid transparent;border-radius: 50%;width: 80px;height: 80px;min-width: 80px;min-height: 80px;"
+                    src="{{previewImg}}" onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                </div>
+                <div class="container">
+                  <div class="row ">
+                    <div class="img-move input-group ">
+                      <input type="file" class="form-control" name="file" id="inputGroupFile01" #fileInput
+                        aria-describedby="inputGroupFileAddon01" accept=".png, .jpg, .jpeg"
+                        (change)="fileProgress($event)" class="d-none">
+                      <img class="edit-img" (click)="fileInput.click()" style="height: 20px;"
+                        src="../../../assets/images/ui/Icons/patient-medical-module/edit_1@2x.png" width="15px"
+                        height="15px">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 justify-content-center mt-2 ml-2">
+              <div class="row  form-group" style="margin: 0px -14px 8px -14px;">
+                <span class="size12 col p-0" style="margin-right: -52px;color: #140202;">Gender</span>
+                <span class="column1 pr-3" style="color: #140202;">:</span>
+                <input class="size11 col p-0 " style=" border: none;" formControlName="gender">
+                <!--  -->
+              </div>
+              <div class="row form-group" style="margin: 0px -14px 8px -14px;">
+                <span class="size12 col p-0" style="margin-right: -52px;color: #140202;">Date of Birth</span>
+                <span class="column1  pr-3" style="color: #140202;">:</span>
+                <!-- <span class="size11 col p-0 ">{{selectedPatient.dob}}</span> -->
+                <input class="size11 col p-0 " style=" border: none;" formControlName="dob">
+              </div>
+              <div class="row">
+                <span class="size12 col p-0" style="margin-right: -52px;color: #140202;">Age</span>
+                <span class="column1 pr-3" style="color: #140202;">:</span>
+                <span class="size11 col p-0 "> {{selectedPatient.age}}</span>
+              </div>
+
+            </div>
+            <div class="col-md-5 justify-content-center mt-2">
+              <div class="row pb-2">
+                <span class="size12 col p-0" style="margin-right: -90px;color: #140202;">Phone Number</span>
+                <span class="column1 pr-3 pl-3" style="color: #140202;">:</span>
+                <span class="size11 col p-0 pl-1"> {{selectedPatient.phoneNumber.phoneNumber}}</span>
+              </div>
+              <div class="row">
+                <span class="col size12 p-0" style="margin-right: -90px;color: #140202;">Address</span>
+                <span class="column1 pr-3 pl-3" style="color: #140202;">:</span>
+                <span class="size11 col p-0 pl-1">{{selectedPatient.address}}</span>
+              </div>
+            </div>
+          </div>
+          <div class=" pl-4" style="margin-top: -20px;">
+            <div style="font-weight: 500;">
+              <span class="size12" style="color: #140202;">{{selectedPatient.firstName}}
+                {{selectedPatient.lastName}}</span>
+            </div>
+            <div style="color: #53b9c6;">
+              <span class="pr-2">{{selectedPatient.emailID}}</span>
+              <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon awesome-check-circle.png"
+                width="20rem">
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+    <div class="col-md-3 ">
+      <div class="bg-white p-0">
+        <div class="text-center head-bg p-1" style="background: #F1F1F1 ;">
+          <span class="size12" style="color: #140202;">Appointments</span>
+        </div>
+
+        <div class="p-2">
+          <div class="row py-1">
+            <div class="col-md-6 " style="border-right: 1px solid black;">
+              <div class=" text-center">
+                <span class="size12" style="color: #140202;">Past</span>
+              </div>
+              <div class=" text-center">
+                <span class="size10">12</span>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class=" text-center">
+                <span class="size12" style="color: #140202;">Upcoming</span>
+              </div>
+              <div class=" text-center">
+                <span class="size10">4</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-center pb-1 pt-1">
+            <!-- ?patientID=id -->
+            <button class="btn btn-sm " style="background-color: #53b9c6; border-radius: 23px;
+              width: 70%;font-weight: bold;color: white;" (click)="callBookAppointment(selectedPatient)"> Book
+              Appointment</button>
+            <!--[routerLink]="['/admincenter/bookappointment']" merge
+              [queryParams]="{patientDetails: id }" queryParamsHandling="merge"-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row p-1" style="background-color: #F5F8FA;">
+    <div class="col-12">
+      <button class="btn btn-sm mr-1" style="width: 18%;height: 40px; background-color: #3E454C ;
+      font-size: 15px;font-weight: 500;color: #8D8D8D;" (click)="callPatientGeneralInfo()"
+        [ngClass]="{ 'active' : isValue == 1 }">General
+        Information</button>
+      <!--[routerLink]="['/admincenter/patientgeneralinfo']"-->
+      <button class="btn btn-sm mr-1 " style="width: 18%;height: 40px; background-color: #3E454C ;
+      font-size: 15px;font-weight: 500;color: #8D8D8D;" (click)="callPatientMedicalReocrds()"
+        [ngClass]="{ 'active' : isValue == 2 }">Medical Records</button>
+      <!--[routerLink]="['/admincenter/patientmedicalrecords']"-->
+      <button class="btn btn-sm mr-1 " style="width: 18%;height: 40px; background-color: #3E454C ;
+      font-size: 15px;font-weight: 500;color: #8D8D8D;" (click)="callPatientAppointmentRecords()"
+        [ngClass]="{ 'active' : isValue == 3 }">Appointment Record</button>
+      <!--[routerLink]="['/admincenter/patientappointmentrecords']"-->
+      <button class="btn btn-sm" style="width: 19%;height: 40px; background-color: #3E454C ;
+      font-size: 15px;font-weight: 500;color: #8D8D8D;" (click)="callPatientScreeningRecord()"
+        [ngClass]="{ 'active' : isValue == 4 }">Screening Record</button>
+      <!--[routerLink]="['/admincenter/patientscreeningrecord']"-->
+    </div>
+
+  </div>
+</div>
+
+<div *ngIf="!isViewPatientGeneralInfo">
+  <app-patient-profilee></app-patient-profilee>
+</div>
+
+<div *ngIf="!isViewPatientMedicalRecords">
+  <app-patient-medical-records></app-patient-medical-records>
+</div>
+
+<div *ngIf="!isViewPatientAppointmentRecord">
+  <app-patient-appointment-record></app-patient-appointment-record>
+</div>
+
+<div *ngIf="!isViewPatientScreeningRecords">
+  <app-patient-screening-record></app-patient-screening-record>
+</div>

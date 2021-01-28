@@ -1,0 +1,415 @@
+* {
+    font-family: "Muli-Bold", sans-serif !important;
+}
+
+.t-12 {
+    font-size: 12px;
+    font-weight: 600;
+    color: black;
+}
+
+.calenderLogo {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+
+input[type=radio] {
+    width: 15px;
+    height: 15px;
+}
+
+/* input[type='radio']:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
+    top: 1;
+    left: 1;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid gray;
+}
+
+input[type='radio']:checked:after {
+    width: 12px;
+    height: 12px;
+    border-radius: 15px;
+    top: 0;
+    left: 0;
+    position: relative;
+    background-color: #3E454C;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid gray;
+} */
+
+input[type='radio']:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: 0px;
+    left: 0px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    top: 0px;
+    left: 0px;
+    position: relative;
+    background-color: #3E454C;
+    content: '';
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+.highlighted {
+    background-color: rgba(176, 234, 241, 0.5) !important;
+}
+
+.select-patient:hover {
+    background: rgba(176, 234, 241, 0.5);
+    /* opacity: 0.5; */
+}
+
+.scroll {
+    /* width: 700px !important; */
+    height: 45vh !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #53B9C6;
+}
+
+/* .mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+.mat-menu-item {
+    line-height: 25px;
+    height: 25px;
+    font-size: 11px;
+    padding: 0px 0px 0px 5px !important;
+  } */
+
+/* thead tr th {
+    font-size: 14px;
+} */
+
+.mat-menu-content {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+::ng-deep .mat-step-text-label {
+    white-space: pre-wrap;
+    text-overflow: initial !important;
+    font-size: 13px !important;
+    font-weight: 500;
+    overflow: visible !important;
+}
+
+::ng-deep .mat-horizontal-content-container {
+    /* height: 65vh !important; */
+}
+
+::ng-deep .mat-stepper-label-position-bottom .mat-horizontal-stepper-header {
+    background: white !important;
+}
+
+.label1 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #140202;
+}
+
+.label2 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.value2 {
+    font-size: 12px;
+    font-size: 500;
+    color: #000000;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+    thead tr th {
+        font-size: 10px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 10px !important;
+        vertical-align: middle;
+        text-align: center;
+        white-space: nowrap;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.20rem;
+    }
+    .mat-menu-item {
+        line-height: 20px;
+        height: 20px;
+        font-size: 8px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    thead tr th {
+        font-size: 11px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 11px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        min-height: 35px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.24rem;
+    }
+    .mat-menu-item {
+        line-height: 20px;
+        height: 20px;
+        font-size: 8px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    thead tr th {
+        font-size: 12px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 12px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.28rem;
+    }
+    .mat-menu-item {
+        line-height: 22px;
+        height: 22px;
+        font-size: 9px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    thead tr th {
+        font-size: 14px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 14px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        min-height: 45px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.30rem;
+    }
+    .mat-menu-item {
+        line-height: 25px;
+        height: 25px;
+        font-size: 11px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+    thead tr th {
+        font-size: 14px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    tbody tr td {
+        font-size: 14px !important;
+        vertical-align: middle;
+        text-align: center;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.32rem;
+    }
+    .mat-menu-item {
+        line-height: 25px;
+        height: 25px;
+        font-size: 11px;
+        padding: 0px 0px 0px 5px !important;
+    }
+}
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+    font-weight: bold;
+    color: #2C3136;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+    background: #53B9C6;
+    height: 3px;
+}
+
+::ng-deep .mat-select-trigger {
+    /* border: 1px solid rgb(200, 200, 200); */
+    /* border-radius: 5px; */
+    border: transparent;
+    padding: 5px;
+}
+
+/* .swiper-container {
+    width: 100%;
+    height: 80%;
+} */
+
+/* .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-right: 1px solid black;
+    margin-right: 0px !important;
+}
+
+.swiper-button-next {
+    right: 20px;
+}
+
+.swiper-button-prev {
+    left: 20px;
+} */
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    width: 30%;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    /* display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; */
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}

@@ -1,0 +1,541 @@
+<div class="container-fluid ">
+    <div class="row ">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" style="background-color: #F5F8FA;">
+
+    <div class="row bg-white" style="justify-content: inherit;justify-content: start;padding: 5px 0px 5px 0px;">
+        <span class="pl-4 pb-3 pt-3"
+            style="font-size: 14px;font-weight: 600;letter-spacing: 0.3;border-bottom: 1px solid gray;width: 100%;">
+            Create New Test
+        </span>
+        <div style="width: 100%;">
+            <!-- class="w-100"-->
+            <mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
+                <mat-tab label="Urine Tests">
+                    <div class="container-fluid">
+                        <div class="row" style="background-color: #F8FCFD;">
+                            <div class="col-md-12 p-3">
+                                <div class="row">
+                                    <div class="col-md-9">
+                                        <input type="text" [(ngModel)]="term" class=" p-2 w-100 form-control t-12"
+                                            placeholder="Search" style="border: none; outline-style: none !important;font-size: 14px; font-weight: 500;padding-right: 100%;
+                                             height: 34px;padding-left: 40px !important;background-color: #ffffff ;"
+                                            (keyup)="findText(term)">
+                                        <div class="searchIcon" style="margin-left: 10px;margin-top: -30px;">
+                                            <img style="width: 1.5rem;"
+                                                src="../../../../assets/images/ui/Icons/patient-medical-module/Icon feather-search@2x.png">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-control t-12" style="height: 33px;border: none;">
+                                            <mat-select (selectionChange)="showData($event.value)"
+                                                style="color: black;">
+                                                <!--[value]="selected"-->
+                                                <mat-option *ngFor="let letSearch of searchByValue"
+                                                    [value]="letSearch.viewValue">
+                                                    {{letSearch.viewValue}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class=" pt-2 pb-5">
+                                    <div class="table-responsive scroll tableFixHead ">
+                                        <table class="table text-center ">
+                                            <thead class="" style="background-color: #3E454C;color: white;">
+                                                <tr class="p-0" style="font-weight: normal;">
+                                                    <th class="p-0" scope="col" class="border text-center">No</th>
+                                                    <th class="p-0" scope="col" class="border  text-center">Test Name
+                                                    </th>
+                                                    <th class="p-0" scope="col" class="border text-center">Device Model
+                                                    </th>
+                                                    <th class="p-0" scope="col" class="border text-center">Test Method
+                                                    </th>
+                                                    <th class="p-0" scope="col" class="border text-center">Brand</th>
+                                                    <th class="p-0" scope="col" class="border text-center">
+                                                        Identification No</th>
+                                                    <th class="p-0" scope="col" class="border  text-center">Action
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngIf="!(listOfTestRecords && listOfTestRecords.length)"
+                                                    style="text-align: center;background-color: white;padding: 20px;">
+                                                    <td style="text-align: center;font-size: 12px;font-weight: 600;"
+                                                        colspan="8">
+                                                        Don't have Test Records
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
+                                                box-shadow: 0px 6px 12px #44444414;
+                                                border-radius: 6px;
+                                                opacity: 1;"
+                                                    *ngFor="let patient of listOfTestRecords | filter:term; let i = index">
+                                                    <td scope="row" class="text-center">{{i+1}}</td>
+                                                    <td>
+                                                        <div class="row" style="justify-content: space-around;">
+                                                            <div>{{patient.testname}}</div>
+                                                            <div>
+                                                                <img placement="bottom"
+                                                                    ngbPopover="pop-over worked, how to show customized data HERE ?."
+                                                                    style="width: 0.7rem;"
+                                                                    src="../../../../assets/images/ui/Icons/1x/downarrow-gray.png">
+                                                                <!--[ngbPopover]="popOver"
+                                                                    -->
+
+                                                            </div>
+                                                            <!-- <ng-template #popOver>
+                                                                <popover [data]="patient"></popover>
+                                                            </ng-template>
+                                                            <div>
+                                                                <div>Data 1: <i>{{ data.data1 }}</i></div>
+                                                                <div>Data 2: <i>{{ data.data2 }}</i></div>
+                                                            </div> -->
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div> {{(patient.devicemodel)}}
+                                                        </div>
+                                                    </td>
+                                                    <td>{{patient.testmethod}}</td>
+                                                    <td>{{patient.brand}}</td>
+
+                                                    <td>{{patient.identificationNo}}</td>
+                                                    <td class="" style="text-align: center; overflow: hidden; ">
+
+                                                        <div (click)="openCreateNewTestMethod(createNewTestModel, patientsList)"
+                                                            class="btn btn-sm"
+                                                            style="background: rgb(216, 216, 216);color: rgb(32, 32, 32);font-size: 12px;font-weight: 500;">
+                                                            start test
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Blood Tests">
+                    <div class="container-fluid">
+                        <div class="row" style="background-color: #F8FCFD;">
+                            <div class="col-md-12 p-3">
+
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+
+</div>
+
+<!-- Open List Of Patient Model -->
+<ng-template #createNewTestModel let-modal>
+    <div class="modal-header" style="background-color: #53B9C6;color: white;">
+        <div class="modal-title justify-content-center" style="font-size: 15px; font-weight: 600;letter-spacing: 0.3px;"
+            id="modal-basic-title">Create New Test
+        </div>
+        <img (click)="modal.close('Close click')" style="cursor: pointer;width: 1.2rem;"
+            src="../../../../assets/images/ui/Icons/patient-medical-module/Icon material-cancel.png">
+    </div>
+    <div class="modal-body bg-light" style="padding: 0px;">
+        <div class="container" style="padding: 0px;">
+            <div class="row">
+                <div class="col-12">
+                    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+                        <mat-step label="Confirm test information">
+                            <div style="border: 1px solid #707070;padding: 10px 20px;">
+                                <div style="">
+                                    <form [formGroup]="viewTestInfoForm">
+                                        <label class="label1">Test Information</label>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="label2">Test Name</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input class="value2 border-0" formControlName="testName">
+                                                <!-- Urine Routine</span> -->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="label2">Test Device</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input class="value2 border-0" formControlName="testDevice">
+                                                <!-- UTSR</span> -->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="label2">Test Method</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input class="value2 border-0" formControlName="testMethod">
+                                                <!-- Test Strip
+                                                        (TS-233489540239@ASK Inc. )</span> -->
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="label2">Test Items</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input class="value2 border-0" formControlName="testItems">
+                                                <!-- pH, Glucose,
+                                                        Protien, Occult blood, Specific
+                                                        gravity,
+                                                        Urobilinogen, Brilirubin,
+                                                        Nitride, Ketone body, Leukocyte</span> -->
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="mb-2" style="border-top: 1px dashed #707070;border-width:2px;"></div>
+                                <div style="">
+                                    <label class="label1">Specimen Information</label>
+                                    <form [formGroup]="addTestDateDetails">
+
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="label2">Sample Type</label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input class="value2 form-control" placeholder="Urine">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="label2">Collected On</label>
+                                            </div>
+                                            <div class="col-md-3">
+
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control value2"
+                                                        style="background: white;height: 34px;" placeholder="yyyy/mm/dd"
+                                                        aria-label="Recipient's username"
+                                                        aria-describedby="basic-addon2" ngbDatepicker #d="ngbDatepicker"
+                                                        readonly formControlName="startDate">
+                                                    <div class="input-group-append">
+                                                        <button
+                                                            style="outline-style: none;background: white;border-left: none;padding-right: 5px;"
+                                                            class="btn  input-group-text" (click)="d.toggle()"
+                                                            type="button">
+                                                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="time" class="value2 form-control"
+                                                    style="padding: 2px 2px 2px 10px;">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-2">
+                                            <div class="col-md-3">
+                                                <label class="label2" class="value2">Tested On</label>
+                                            </div>
+                                            <div class="col-md-3">
+
+                                                <div class="input-group ">
+                                                    <input type="text" class="form-control value2"
+                                                        style="background: white;height: 34px;" placeholder="yyyy/mm/dd"
+                                                        aria-label="Recipient's username"
+                                                        aria-describedby="basic-addon2" ngbDatepicker
+                                                        #d1="ngbDatepicker" readonly formControlName="endDate">
+                                                    <div class="input-group-append">
+                                                        <button
+                                                            style="outline-style: none;background: white;border-left: none;padding-right: 5px;"
+                                                            class="btn  input-group-text" (click)="d1.toggle()"
+                                                            type="button">
+                                                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="time" class="value2 form-control"
+                                                    style="padding: 2px 2px 2px 10px;">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label class="label2">Fasting</label>
+                                            </div>
+                                            <div class="col-md-3" style="padding: 5px 0 0 35px;">
+                                                <div class="container radio-item "
+                                                    style="justify-content: space-around;">
+                                                    <div class="row">
+                                                        <div class="col" style="padding-left: 0;margin: inherit;">
+                                                            <label class="radio-inline"
+                                                                style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                                <input id="Radios1" type="radio" name="viewOne"
+                                                                    value="Online" checked="checked">
+                                                                &nbsp; Yes
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="col" style="padding-left: 0;margin: inherit;">
+                                                            <label class="radio-inline"
+                                                                style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                                <input id="Radios2" type="radio" name="viewOne"
+                                                                    value="Onsite">&nbsp;
+                                                                No
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="" style="text-align: center;padding: 10px 0 10px 0;">
+                                    <button class="btn btn-sm mr-3"
+                                        style="outline-style: none; font-weight: 500;font-size: 14px; background-color:transparent; 
+                                color: #474747;border: 1px solid #707070;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        (click)="modal.close('Close click')">Cancel
+                                    </button>
+                                    <button class="btn btn-sm" style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                 color: white;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperNext>Next
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-step>
+                        <mat-step label="Select a Patient">
+                            <div style="border: 1px solid #707070;padding: 10px 20px;height: 55vh;">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6" style="border-right: 1px solid #707070;">
+                                            <label style="font-size: 14px;font-weight: 600;color: #140202;">Search
+                                                Patient</label>
+
+                                            <div class="input-group" style="width: 75%;">
+                                                <input type="text" [(ngModel)]="term1" class="form-control p-2 "
+                                                    placeholder="Search by FirstName" style=" outline-style: none !important;font-size: 14px; font-weight: 500;
+                                                height: 34px;background-color: white ;border-right: none;"
+                                                    (keyup)="findPatient(term1)">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text"
+                                                        style="outline-style: none;background: white;border-left: none;padding-right: 5px;">
+                                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label style="font-size: 14px;font-weight: 600;color: #000000;">Please
+                                                Select
+                                                Your Patient</label>
+                                            <div class="scroll" style="border: 1px solid #707070">
+                                                <div *ngIf="!(filteredPatients && filteredPatients.length)"
+                                                    style="text-align: center;background-color: white;padding: 20px;">
+
+                                                    <div
+                                                        style="text-align: center;font-size: 12px;font-weight: 600;margin-top: 18vh;">
+                                                        No Results Found.
+                                                    </div>
+
+                                                </div>
+                                                <div *ngFor="let option of filteredPatients | filter:term1;let i=index;"
+                                                    [ngClass]="{'highlighted': option.patientID === selectedRow  }"
+                                                    (click)="selectPatientFromList(option)">
+                                                    <!-- (click)="selectedRow = i" [value]="option" -->
+                                                    <div class="row select-patient"
+                                                        style="border-bottom: 1px solid #707070;height: 60px;align-content: space-around;margin-right: -50px;">
+                                                        <div class="col-2" style="margin: auto;margin-right: -40px;">
+                                                            <div *ngIf="option.patientID === selectedRow">
+                                                                <img style="width: 1rem;"
+                                                                    src="../../../../assets/images/ui/Icons/patient-medical-module/Icon awesome-check-circle.png">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2" style="margin: initial;">
+                                                            <!--style="padding: 0 0 0 30px;"-->
+                                                            <img src="{{imgURL+option.profilePic}}" style="padding: 15px;border-radius: 50%;
+        min-width: 70px;min-height: 70px;max-height: 70px;max-width: 70px;width: 70px;height: 70px;"
+                                                                onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                                        </div>
+                                                        <div class="col-8" style="margin: auto;">
+                                                            <div class="row" style="margin-right: 20px;">
+                                                                <div class="col-7"
+                                                                    style="font-size: 13px;font-weight: 600;color: #140202;white-space: nowrap;">
+                                                                    {{option.firstName}}
+                                                                </div>
+                                                                <div class="col-2 value2">
+                                                                    <div class="row" style="white-space: nowrap;">
+                                                                        {{option.age}} Yrs </div>
+                                                                </div>
+                                                                <div class="col-3" style="line-height: 0;">
+                                                                    <div *ngIf="(option.gender) != 'Male'">
+                                                                        <img style="width: 1rem;"
+                                                                            src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon ionic-ios-female.png">
+                                                                    </div>
+                                                                    <div *ngIf="(option.gender) === 'Male'">
+                                                                        <img style="width: 1rem;"
+                                                                            src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon ionic-ios-male.png">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12"
+                                                                    style="font-size: 12px;font-weight: 600;color: #8B8B8B;">
+                                                                    Patient
+                                                                    ID : {{option.patientID}}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="" style="text-align: center;padding: 10px 0 10px 0;">
+                                    <button class="btn btn-sm mr-3"
+                                        style="outline-style: none; font-weight: 500;font-size: 14px; background-color:transparent; 
+                                color: #474747;border: 1px solid #707070;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperPrevious>Back
+                                    </button>
+                                    <button class="btn btn-sm" style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                 color: white;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperNext>Next
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-step>
+                        <mat-step label="Connect to Device">
+                            <div style="border: 1px solid #707070;padding: 10px 20px;height: 40vh;">
+                                <div>
+                                    <div style="font-size: 12px;font-weight: 600;color: #140202;">Connect to available
+                                        test device</div>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="swiper-container">
+                                                <div class="swiper-wrapper s1" style="justify-content: center;">
+                                                    <div class="swiper-slide"
+                                                        style="margin: 20px 10px 20px 10px;justify-content: center;border: 1px solid black;padding: 10px 0;"
+                                                        *ngFor="let data of fetchedDevicesData;let i=index"
+                                                        [ngClass]="{'highlighted': data.id === selectedDevice  }"
+                                                        (click)="selectDeviceFromList(data)">
+                                                        <div style="text-align: start;
+                                                        margin-left: 18px;margin-bottom: -27px;"
+                                                            *ngIf="data.id === selectedDevice">
+                                                            <img style="width: 1rem;"
+                                                                src="../../../../assets/images/ui/Icons/Icon-awesome-check-circle.png">
+                                                        </div>
+                                                        <div>
+                                                            <img style="width:9rem;" src="{{data.img}}">
+                                                        </div>
+                                                        <div style="font-size: 10px;">{{data.name}}</div>
+                                                        <div class="btn btn-sm"
+                                                            style="font-size: 10px;border: 1px solid blue;">
+                                                            Connected
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <!-- Add Navigation -->
+                                                <div class="swiper-button-prev"></div>
+                                                <div class="swiper-button-next"></div>
+
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <div style="font-size: 13px;font-weight: 600;color: #000000;">Notes :</div>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li style="font-size: 12px;font-weight: 500;color: #000000;">* Please make sure the
+                                        selected device is connected before going to the next step.
+                                    </li>
+                                    <li style="font-size: 13px;font-weight: 500;color: #000000;">* To connect the
+                                        device,
+                                        please tap on ‘Connect’.</li>
+                                    <li style="font-size: 13px;font-weight: 500;color: #000000;">* If there are no
+                                        available device, please go to ‘Manage Device’ to add on new
+                                        device first.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="" style="text-align: center;padding: 10px 0 10px 0;">
+                                    <button class="btn btn-sm mr-3"
+                                        style="outline-style: none; font-weight: 500;font-size: 14px; background-color:transparent; 
+                                color: #474747;border: 1px solid #707070;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperPrevious>Back
+                                    </button>
+                                    <button class="btn btn-sm" style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                 color: white;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperNext>Next
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-step>
+                        <mat-step [stepControl]="secondFormGroup" label="Get Sample Ready for Analysis">
+                            <div style="border: 1px solid #707070;padding: 10px 20px;height: 55vh;">
+                            </div>
+                            <div>
+                                <div class="" style="text-align: center;padding: 10px 0 10px 0;">
+                                    <button class="btn btn-sm mr-3"
+                                        style="outline-style: none; font-weight: 500;font-size: 14px; background-color:transparent; 
+                                color: #474747;border: 1px solid #707070;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperPrevious>Back
+                                    </button>
+                                    <button class="btn btn-sm" style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                 color: white;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperNext>Start Test
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-step>
+                        <mat-step label="Start Test and View Results">
+                            <div style="border: 1px solid #707070;padding: 10px 20px;height: 55vh;">
+                            </div>
+                            <div>
+                                <div class="" style="text-align: center;padding: 10px 0 10px 0;">
+                                    <button class="btn btn-sm mr-3"
+                                        style="outline-style: none; font-weight: 600;font-size: 14px; background-color:#53b9c6; 
+                                color: white;border: 1px solid #53b9c6;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                        matStepperPrevious>Abort Test
+                                    </button>
+                                    <!-- <button class="btn btn-sm" style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                 color: white;height: 30px;line-height: 1;width: 15%;border-radius: 10px;"
+                                         (click)="stepper.reset()">Reset
+                                    </button> -->
+                                </div>
+                            </div>
+                            <!-- <div>
+                                <button mat-button matStepperPrevious>Back</button>
+                                <button mat-button (click)="stepper.reset()">Reset</button>
+                            </div> -->
+                        </mat-step>
+                    </mat-horizontal-stepper>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ng-template>

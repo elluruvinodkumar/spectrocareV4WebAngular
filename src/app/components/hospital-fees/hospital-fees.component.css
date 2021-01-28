@@ -1,0 +1,79 @@
+* {
+    font-family: "Muli reg", sans-serif !important;
+}
+
+table {
+    width: 100% !important;
+    border-collapse: separate;
+    border-spacing: 0 0.5em;
+}
+
+thead {
+    table-layout: fixed;
+}
+
+th {
+    margin: 15px;
+    font-size: 12px;
+    font-weight: 300;
+}
+
+.tableFixHead {
+    overflow-y: auto;
+    height: 100px;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    background-color: #3E454C;
+    color: white;
+    z-index: 10;
+}
+
+.handCursor:hover {
+    cursor: pointer;
+}
+
+.custom-borders {
+    border: 1px solid #707070 !important;
+    /* border-radius: 5px;  */
+    font-size: 12px;
+    width: 100%;
+    padding: 5px;
+}
+
+::ng-deep .mat-select-trigger {
+    height: 30px;
+}
+
+::ng-deep .mat-select {
+    border-radius: 5px;
+    border: 1px solid #d8d6d6 !important;
+}
+
+::ng-deep .mat-select-value {
+    line-height: 2;
+}
+
+.scroll {
+    height: 30vh !important;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #53B9C6;
+}

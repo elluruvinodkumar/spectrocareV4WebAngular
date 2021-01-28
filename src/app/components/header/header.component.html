@@ -1,0 +1,52 @@
+<div class="container-fluid">
+
+    <div class="row justify-content-between  pt-4 pb-3" style="border-bottom: 1px solid #c8c8c8;">
+        <!--pl-4 pr-4-->
+        <div class="d-flex ml-4">
+            <img src="{{img}}" style="width: 30px; height: 30px; margin-right: 10px; ">
+            <span> <span style="font-size: 18px; font-weight: bold; margin: 0px;color: #3E454C;">{{title}} </span> <br>
+                <span style="font-size: 12px;font-weight: 500;color: #3E454C;margin: 0px;">{{subTitle}}</span>
+                <!--line-height: 30px;-->
+            </span>
+        </div>
+        <div class=" mr-3 dropdown">
+            <img src="../../../assets/images/ui/Icons/1x/Icon-ionic-ios-notifications.png" width="20px"
+                style="margin-right: 25px;">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="p-0">
+                <!-- <mat-icon>settings</mat-icon>  -->
+                <img src="../../../assets/images/ui/Icons/1x/Icon-feather-settings.png" width="24px">
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+                <button class="" mat-menu-item [routerLink]="['/admincenter/adminprofile']">
+                    <!-- <mat-icon>person</mat-icon> [routerLink]="['/admincenter/adminprofile']"  /admincenter/home-->
+                    <img src="../../../assets/images/ui/Icons/1x/profile.png" width="20px" style="margin-right: 5px;">
+                    <span>Profile</span>
+                </button>
+                <button class="" mat-menu-item (click)="openSignOut(content1)">
+                    <!-- <mat-icon>logout</mat-icon> -->
+                    <img class="blackLogout" src="../../../assets/images/ui/Icons/1x/Black-icon-account-logout.png"
+                        width="20px" style="margin-right: 5px;">
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+
+            <ng-template #content1 let-modal>
+                <div class="modal-header justify-content-center" style="background-color: #2c3136;">
+                    <p class="modal-title text-white  p-1 font-weight-bold" id="modal-basic-title">
+                        Log out</p>
+                </div>
+                <div class="modal-body bg-white p-2">
+                    <p class=" font-weight-normal " style="text-align: center;">
+                        Are you sure you want to log out?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <span class="mouse text-info mr-4" (click)="modal.close('Close click')">Cancel</span>
+                    <button type="submit" class=" m-1 btn btn-sm p-0 rounded-pill btn-clr text-white"
+                        (click)="SignOut()">Yes</button>
+                </div>
+            </ng-template>
+        </div>
+
+    </div>
+</div>

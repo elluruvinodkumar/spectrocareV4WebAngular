@@ -1,0 +1,23 @@
+<header class="w-100 p-3 ">
+    <nav class="navbar navbar-expand-lg navbar-light d-flex w-100 p-0 ">
+      <!-- <h1 class="navbar-brand text-white  ml-5">SpectroCare</h1> -->
+      <h1 class="logo-text " ><!--style="letter-spacing: 3px;"-->
+        Spectro<span class="logo-highlight">Care</span>
+      </h1>
+      <div class="collapse navbar-collapse justify-content-end mr-5" id="navbarNavDropdown">
+        <ul class="navbar-nav p-0">
+          <li class="nav-item p-0 mx-1">
+            <button  class="btn btn-sm text-white text-uppercase "  [routerLink]="['/administrator']" routerLinkActive="active">
+            Administrator
+            </button>
+          </li>
+          <li class="nav-item p-0 mx-1">
+            <button class="btn btn-sm text-white text-uppercase"  [routerLink]="['/medicalpersonnel']" routerLinkActive="active">Medical Personnel</button>
+          </li>
+          <!-- <li class="nav-item p-0 mx-1">
+            <button class="btn btn-sm text-white text-uppercase"  [routerLink]="['/patientmodule']" routerLinkActive="active">Patient</button>
+          </li>           -->
+        </ul>
+      </div>
+    </nav>
+  </header>

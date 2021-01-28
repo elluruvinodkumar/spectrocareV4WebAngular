@@ -1,0 +1,664 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+
+        <div class="w-100">
+            <mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
+                <mat-tab label="User Profile">
+                    <div class="container-fluid">
+                        <div class="row" style="background-color: #F8FCFD;">
+                            <div class="col-md-12 p-3">
+                                <div class="card ">
+                                    <div class="card-body p-0">
+                                        <div style="padding-bottom: 40px;">
+                                            <div style="background-color: #F3F2F2;">
+                                                <div class="col-md-6 p-2">
+                                                    <!--Upload IMg-->
+                                                    <div class="row" style="padding-left: 20px;">
+                                                        <div class="col-md-4">
+                                                            <div
+                                                                style="border-radius: 50% !important;width: 100px;height: 100px;">
+                                                                <img class=""
+                                                                    style="border: 1px solid #403D3D;padding: 5px;border-radius: 50%;min-width: 100px;min-height: 100px;max-height: 100px;max-width: 100px;width: 100px;height: 100px;"
+                                                                    src="{{previewImg}}"
+                                                                    onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="container">
+                                                                <div class="row ">
+                                                                    <div class="img-move input-group "
+                                                                        style="margin-top: 30px;">
+                                                                        <input type="file" class="form-control"
+                                                                            name="file" id="inputGroupFile01"
+                                                                            #fileInput1
+                                                                            aria-describedby="inputGroupFileAddon01"
+                                                                            accept=".png, .jpg, .jpeg"
+                                                                            (change)="fileProgress($event)"
+                                                                            class="d-none">
+                                                                        <button mat-raised-button
+                                                                            *ngIf="disableUpdateBtn"
+                                                                            style="color: white; outline-style: none;border-radius: 5px; background-color: #53b9c6;height: 30px;line-height: 1;font-weight: bold;"
+                                                                            (click)="fileInput1.click()" type="button">
+                                                                            <!--background-color: rgb(197, 213, 219);  class="btn m-auto btn-sm font-weight-normal  "-->
+                                                                            Choose Photo
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Upload IMG Ends-->
+
+                                                </div>
+                                            </div>
+                                            <div class="adminProfile1 row pt-4">
+                                                <div class="col-md-2">
+                                                    <p
+                                                        style="font-size: 14px;font-weight: bold;color: #2C3136; text-align: center;margin-top: 5px;">
+                                                        User
+                                                        Profile</p>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-6">
+                                                    <form [formGroup]="adminProfileForm"
+                                                        (ngSubmit)="updateAdminGeneralUser()">
+                                                        <table align="center">
+                                                            <tr>
+                                                                <td>
+                                                                    <mat-form-field class="example-full-width">
+                                                                        <input type="text" matInput
+                                                                            placeholder="User ID"
+                                                                            formControlName="userID" class="inp"
+                                                                            readonly>
+                                                                    </mat-form-field>
+                                                                </td>
+                                                                <td>
+                                                                    <mat-form-field class="example-full-width">
+                                                                        <input matInput placeholder="Identity"
+                                                                            formControlName="identity" class="inp"
+                                                                            readonly>
+                                                                        <!--style="font-size: xx-small;"-->
+                                                                    </mat-form-field>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <table align="center">
+                                                            <tr>
+                                                                <td>
+                                                                    <mat-form-field class="example-full-width">
+                                                                        <input matInput placeholder="First Name"
+                                                                            #autoFocusTest formControlName="firstName"
+                                                                            class="inp">
+                                                                    </mat-form-field>
+                                                                </td>
+                                                                <td>
+                                                                    <mat-form-field class="example-full-width">
+                                                                        <input matInput placeholder="Last Name"
+                                                                            formControlName="lastName" class="inp">
+                                                                    </mat-form-field>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <table align="center">
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="pb-3 example-full-width">
+                                                                        <label class="numberLabel" style="font-size: 12px;font-weight: bolder;
+                                                                            opacity: 1;
+                                                                            letter-spacing: 0.4px">Phone
+                                                                            Number</label>
+                                                                        <div class="phno">
+                                                                            <ngx-intl-tel-input class="adminProfilePh"
+                                                                                [cssClass]="'custom'"
+                                                                                [preferredCountries]="preferredCountries"
+                                                                                [enableAutoCountrySelect]="false"
+                                                                                [enablePlaceholder]="false"
+                                                                                [searchCountryFlag]="true"
+                                                                                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                                                                [selectFirstCountry]="false"
+                                                                                [selectedCountryISO]="CountryISO.India"
+                                                                                [maxLength]="15"
+                                                                                [tooltipField]="TooltipLabel.Name"
+                                                                                [phoneValidation]="true"
+                                                                                [separateDialCode]="separateDialCode"
+                                                                                name="phone"
+                                                                                formControlName="checkPhone">
+                                                                            </ngx-intl-tel-input>
+                                                                        </div>
+                                                                        <!--[selectedCountryISO]="CountryISO.India"-->
+                                                                        <div *ngIf="adminProfileForm.get('checkPhone').touched && adminProfileForm.get('checkPhone').dirty && adminProfileForm.get('checkPhone').hasError('required')"
+                                                                            style="color: red;font-size: small;">
+                                                                            Phone Number is required.
+                                                                        </div>
+                                                                    </div>
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="example-full-width"
+                                                                        style="margin-right: 195px;padding: 5px 5px 15px;">
+                                                                        <div class=" " style="">
+                                                                            <label class="numberLabel" style="font-size: 12px;margin: 0px; margin-bottom: 2px;font-weight: bolder;
+                                                                                opacity: 1;
+                                                                                letter-spacing: 0.4px">Gender</label>
+                                                                        </div>
+
+                                                                        <div class="row radio-item pb-2 "
+                                                                            style="margin-left: 5px;">
+                                                                            <div class="col-6"
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="radio-inline"
+                                                                                    style="font-size: 14px;font-weight: 500 ;color: #030000;letter-spacing: 0.5px;">
+                                                                                    <input type="radio" name="gender"
+                                                                                        value="Male"
+                                                                                        formControlName="gender"> &nbsp;
+                                                                                    Male
+                                                                                </label>
+                                                                                <!--checked="checked"-->
+                                                                            </div>
+
+                                                                            <div class="col-6"
+                                                                                style="padding-left: 0;margin: inherit;">
+                                                                                <label class="radio-inline"
+                                                                                    style="font-size: 14px;font-weight: 500 ;color: #030000;letter-spacing: 0.5px;">
+                                                                                    <input type="radio" name="gender"
+                                                                                        value="Female"
+                                                                                        formControlName="gender">&nbsp;
+                                                                                    Female
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+
+                                                        <mat-form-field>
+                                                            <mat-label>Department</mat-label>
+                                                            <mat-select name="department" formControlName="department">
+                                                                <mat-option *ngFor="let department of departments"
+                                                                    [value]="department.value">
+                                                                    {{department.viewValue}}
+                                                                </mat-option>
+                                                            </mat-select>
+                                                        </mat-form-field>
+                                                        <!-- <mat-form-field>
+                                                            <input matInput type="{{password}}" placeholder="Password"
+                                                                formControlName="password" class="inp" readonly>
+                                                            <span *ngIf="isPassword" >
+                                                                <i class="fa fa-fw fa-eye-slash field-icon3"
+                                                                    style="cursor: pointer;"></i>
+                                                            </span>
+                                                            <span *ngIf="!isPassword" (click)="showPassword()">
+                                                                <i class="fa fa-fw fa-eye field-icon3"
+                                                                    style="cursor: pointer;"></i>
+                                                            </span>
+                                                        </mat-form-field> -->
+                                                        <br>
+
+                                                        <div class="col-md-12 p-3">
+                                                            <div class="row justify-content-center">
+                                                                <div class="mr-2">
+                                                                    <div *ngIf="isLoading"
+                                                                        style="display: flex; justify-content: center;">
+                                                                        <mat-progress-spinner class="example-margin"
+                                                                            color="primary" mode="indeterminate"
+                                                                            [diameter]="30">
+                                                                        </mat-progress-spinner>
+                                                                    </div>
+                                                                    <button mat-raised-button style="outline-style: none;border-radius: 10px; background-color: #53b9c6;
+                                                                         color: white;font-size: 14px;font-weight: 600;height: 30px;line-height: 1;padding-left: 30px;
+                                                                        padding-right: 30px;" routerLinkActive="active"
+                                                                        *ngIf="disableUpdateBtn && !isLoading">Save
+                                                                        Changes</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-2">
+                                                    <div class="row justify-content-center">
+                                                        <div>
+                                                            <img class="edit"
+                                                                src="../../../assets/images/ui/Icons/1x/edit1.png"
+                                                                style="width: 70px;cursor: pointer;"
+                                                                (click)="openUpdate()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="dasshedLine mb-2 mt-2"></div>
+
+                                            <div class="row" style="padding: 30px;">
+                                                <div class="col-md-2" style="padding-top: 20px;">
+                                                    <p
+                                                        style="font-size: 14px;font-weight: bold;text-align: center;margin-top: 5px;color: #2C3136;">
+                                                        Change Password</p>
+                                                </div>
+                                                <div class="col-md-1"></div>
+                                                <div class="col-md-6">
+
+                                                    <form [formGroup]="changePasswordForm"
+                                                        (ngSubmit)="changePwdSubmit()">
+
+                                                        <div class="row">
+                                                            <mat-form-field class="full-width">
+                                                                <input matInput placeholder="Old Password *"
+                                                                    type="{{password4}}" formControlName="oldPassword">
+                                                                <span *ngIf="isPasswordFour" (click)="showPassword4()">
+                                                                    <i class="fa fa-fw fa-eye field-icon3"></i>
+                                                                </span>
+                                                                <span *ngIf="!isPasswordFour" (click)="showPassword4()">
+                                                                    <i class="fa fa-fw fa-eye-slash field-icon3"></i>
+                                                                </span>
+                                                                <!-- <mat-error
+                                                                    *ngIf="changePasswordForm.get('oldPassword').hasError('required')">
+                                                                    Old Password is required.
+                                                                </mat-error> -->
+                                                                <mat-error *ngIf="changePasswordForm.get('oldPassword').hasError('minlength') && 
+                                                                    changePasswordForm.get('oldPassword').touched">
+                                                                    Password should have minimum 8 letters.
+                                                                </mat-error>
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div class="row">
+                                                            <mat-form-field class="full-width">
+                                                                <input matInput placeholder="New Password *"
+                                                                    type="{{password5}}" formControlName="newPassword">
+                                                                <span *ngIf="isPasswordFive" (click)="showPassword5()">
+                                                                    <i class="fa fa-fw fa-eye field-icon3"></i>
+                                                                </span>
+                                                                <span *ngIf="!isPasswordFive" (click)="showPassword5()">
+                                                                    <i class="fa fa-fw fa-eye-slash field-icon3"></i>
+                                                                </span>
+                                                                <!-- <mat-error
+                                                                    *ngIf="changePasswordForm.get('newPassword').hasError('required')">
+                                                                    New Password is required.
+                                                                </mat-error> -->
+                                                                <mat-error *ngIf="changePasswordForm.get('newPassword').hasError('minlength')  && 
+                                                                    changePasswordForm.get('newPassword').touched">
+                                                                    Password should have minimum 8 letters.
+                                                                </mat-error>
+                                                            </mat-form-field>
+                                                        </div>
+                                                        <div class="row">
+                                                            <mat-form-field class="full-width">
+                                                                <input matInput placeholder="Confirm Password *"
+                                                                    type="{{password1}}"
+                                                                    formControlName="confirmPassword">
+                                                                <span *ngIf="isPasswordOne" (click)="showPassword6()">
+                                                                    <i class="fa fa-fw fa-eye field-icon3"></i>
+                                                                </span>
+                                                                <span *ngIf="!isPasswordOne" (click)="showPassword6()">
+                                                                    <i class="fa fa-fw fa-eye-slash field-icon3"></i>
+                                                                </span>
+                                                                <!-- <mat-error
+                                                                    *ngIf="changePasswordForm.get('confirmPassword').hasError('required')">
+                                                                    Confirm Password is required.
+                                                                </mat-error> -->
+                                                                <mat-error
+                                                                    *ngIf="changePasswordForm.get('confirmPassword').hasError('NoPassswordMatch')
+                                                                     && changePasswordForm.get('confirmPassword').touched && changePasswordForm.get('confirmPassword').value != null">
+                                                                    Password does not same.
+                                                                </mat-error>
+                                                            </mat-form-field>
+                                                        </div>
+
+                                                        <div class="col-md-12 p-3">
+                                                            <div class="row justify-content-center">
+                                                                <div class="mr-2">
+                                                                    <div *ngIf="isLoading1"
+                                                                        style="display: flex; justify-content: center;">
+                                                                        <mat-progress-spinner class="example-margin"
+                                                                            color="primary" mode="indeterminate"
+                                                                            [diameter]="30">
+                                                                        </mat-progress-spinner>
+                                                                    </div>
+                                                                    <button mat-raised-button style="outline-style: none;border-radius: 10px; background-color: #53b9c6;
+                                                                         color: white;font-size: 14px;font-weight: 600;height: 30px;line-height: 1;padding-left: 30px;
+                                                                        padding-right: 30px;"
+                                                                        [disabled]="!changePasswordForm.valid">Change
+                                                                        Password</button>
+                                                                    <!--routerLinkActive="active"-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+
+                <mat-tab label="Hospital Information">
+                    <div class="container-fluid">
+                        <div class="row" style="background-color: #F8FCFD;">
+                            <div class="col-md-12 p-3">
+                                <div class="card ">
+                                    <div class="card-body p-0">
+                                        <div style="padding-bottom: 40px;">
+                                            <div style="background-color: #f3f2f2;">
+                                                <div class="col-md-6 p-2">
+                                                    <!--Upload IMg-->
+                                                    <div class="row" style="padding-left: 20px;">
+                                                        <div class="col-md-4">
+                                                            <div
+                                                                style="border-radius: 50% !important;width: 100px;height: 100px;">
+                                                                <img class=""
+                                                                    style="border: 2px solid rgb(150, 211, 235);border-radius: 50%;
+                                                                    min-width: 100px;min-height: 100px;max-height: 100px;max-width: 100px;width: 100px;height: 100px;"
+                                                                    src="{{previewImg1}}"
+                                                                    onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="container">
+                                                                <div class="row ">
+                                                                    <div class="img-move input-group "
+                                                                        style="margin-top: 30px;">
+                                                                        <input type="file" class="form-control"
+                                                                            name="file" id="inputGroupFile01" #fileInput
+                                                                            aria-describedby="inputGroupFileAddon01"
+                                                                            accept=".png, .jpg, .jpeg"
+                                                                            (change)="fileProgress1($event)"
+                                                                            class="d-none">
+                                                                        <button mat-raised-button
+                                                                            *ngIf="disableUpdateBtn2"
+                                                                            style="color: white; outline-style: none;border-radius: 5px; background-color: #53b9c6;height: 30px;line-height: 1;font-weight: bold;"
+                                                                            (click)="fileInput.click()" type="button">
+                                                                            <!--background-color: rgb(197, 213, 219);  class="btn m-auto btn-sm font-weight-normal  "-->
+                                                                            Choose Photo
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Upload IMG Ends-->
+
+                                                </div>
+                                            </div>
+                                            <div class="home row pt-4">
+                                                <div class="col-md-3">
+                                                    <p
+                                                        style="font-size: 14px;font-weight: bold;text-align: center;color: #2C3136;">
+                                                        General Information</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <form [formGroup]="homeForm" (ngSubmit)="updateAdminInfo()">
+
+                                                        <mat-form-field>
+                                                            <input matInput placeholder="Hospital Name"
+                                                                formControlName="hospitalName" class="inp"
+                                                                #autoFocusTest1>
+                                                        </mat-form-field><br>
+                                                        <mat-form-field>
+                                                            <input matInput placeholder="Hospital Reg Number"
+                                                                formControlName="hospital_reg_num" class="inp" readonly>
+                                                        </mat-form-field><br>
+                                                        <div class="pb-3">
+                                                            <label class="numberLabel" style="font-size: 12px;font-weight: bolder;
+                                                            opacity: 1;
+                                                            letter-spacing: 0.4px">Phone
+                                                                Number</label>
+                                                            <div class="phno">
+                                                                <ngx-intl-tel-input class="homePh" [cssClass]="'custom'"
+                                                                    [preferredCountries]="preferredCountries"
+                                                                    [enableAutoCountrySelect]="false"
+                                                                    [enablePlaceholder]="false"
+                                                                    [searchCountryFlag]="true"
+                                                                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                                                    [selectFirstCountry]="false"
+                                                                    [selectedCountryISO]="CountryISO.India"
+                                                                    [maxLength]="15" [tooltipField]="TooltipLabel.Name"
+                                                                    [phoneValidation]="true"
+                                                                    [separateDialCode]="separateDialCode" name="phone"
+                                                                    formControlName="checkPhone">
+                                                                </ngx-intl-tel-input>
+                                                            </div>
+                                                            <div *ngIf="homeForm.get('checkPhone').touched && homeForm.get('checkPhone').dirty && homeForm.get('checkPhone').hasError('required')"
+                                                                style="color: red;font-size: small;">
+                                                                Phone Number is required.
+                                                            </div>
+                                                        </div>
+                                                        <mat-form-field>
+                                                            <input matInput placeholder="Email"
+                                                                formControlName="emailID" class="inp">
+                                                        </mat-form-field><br>
+                                                        <mat-form-field>
+                                                            <input matInput placeholder="Address"
+                                                                formControlName="address" class="inp">
+                                                        </mat-form-field><br>
+                                                        <table align="center">
+                                                            <tr>
+                                                                <td>
+                                                                    <mat-form-field class="example-full-width">
+                                                                        <input matInput placeholder="City"
+                                                                            formControlName="city" class="inp">
+                                                                    </mat-form-field>
+                                                                </td>
+                                                                <td>
+                                                                    <mat-form-field class="example-full-width">
+                                                                        <input matInput
+                                                                            placeholder="State / Province / Region"
+                                                                            formControlName="state" class="inp">
+                                                                    </mat-form-field>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <mat-form-field>
+                                                            <input matInput placeholder="Postcode"
+                                                                formControlName="postCode" class="inp">
+                                                        </mat-form-field><br>
+                                                        <p class="font-weight-light" style="font-size: small;">Last
+                                                            updated
+                                                            date :
+                                                            {{presentDate}}
+                                                            by {{userID}}</p>
+                                                        <div class="col-md-12 p-3">
+                                                            <div class="row justify-content-center">
+                                                                <div class="mr-2">
+                                                                    <div *ngIf="isLoading"
+                                                                        style="display: flex; justify-content: center;">
+                                                                        <mat-progress-spinner class="example-margin"
+                                                                            color="primary" mode="indeterminate"
+                                                                            [diameter]="30">
+                                                                        </mat-progress-spinner>
+                                                                    </div>
+                                                                    <button mat-raised-button style="outline-style: none;border-radius: 10px; background-color: #53b9c6;
+                                                                        color: white;font-size: 14px;font-weight: 600;height: 30px;line-height: 1;padding-left: 30px;
+                                                                       padding-right: 30px;" routerLinkActive="active"
+                                                                        *ngIf="disableUpdateBtn2 && !isLoading">Save
+                                                                        Changes</button>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="row justify-content-center">
+                                                        <div>
+                                                            <img class="edit"
+                                                                src="../../../assets/images/ui/Icons/1x/edit1.png"
+                                                                style="width: 70px;cursor: pointer;"
+                                                                (click)="openUpdateGeneralInfo()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="dasshedLine mb-2 mt-2"></div>
+
+                                            <div class="row" style="background-color: #f9f9f9;margin: auto;">
+                                                <div class="col-md-3"
+                                                    style="text-align: center;padding: 5px 0px 5px 0;">
+                                                    <span class=" headText"
+                                                        style="font-size: 14px;font-weight: 600;color: black;">WebSites</span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div style="display: flex;">
+                                                        <!-- <div class="col-md-1"></div> -->
+                                                        <div class="col-md-6 modelBodyHead" style="
+                                                        border-radius: 10px;padding-top: 5px;padding-bottom: 5px;
+                                                        text-align: center;">
+                                                            <!--background-color: #2c3136;-->
+                                                            <span class=" headText"
+                                                                style="font-size: 14px;font-weight: 600;color: black;">Web
+                                                                Type</span>
+                                                        </div>
+                                                        <div class="col-md-6 modelBodyHead " style="
+                                                        border-radius: 10px;padding-top: 5px;padding-bottom: 5px;
+                                                        text-align: center;">
+                                                            <!--background-color: #2c3136;-->
+                                                            <span class=" headText"
+                                                                style="font-size: 14px;font-weight: 600;color: black;">Web
+                                                                Link</span>
+                                                        </div>
+                                                        <!-- <div class="col-md-1"></div> -->
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3"></div>
+                                            </div>
+
+                                            <div class="row" style="padding: 10px 30px 10px 30px;">
+
+                                                <div class="col-md-3" style="padding-top: 20px;">
+                                                    <!-- <p style="font-size: 14px;font-weight: 600;text-align: center;">
+                                                        Websites</p> -->
+                                                </div>
+                                                <div class="col-md-6" style="padding: 5px;">
+                                                    <form [formGroup]="webSiteDataForm"
+                                                        (ngSubmit)="addWebSiteDataSubmit()">
+
+                                                        <div formArrayName="webSiteDataArray" class="pt-2 scroll1"
+                                                            style="height: 180px !important;">
+                                                            <ng-container
+                                                                *ngFor="let desease of addWebsiteObj.controls; let i =index">
+                                                                <div class="form-group row" style="padding-left: 7px;"
+                                                                    [formGroupName]="i">
+                                                                    <div class="col-1"
+                                                                        style="line-height: 2;font-size: 12px;text-align: end;">
+                                                                        {{i+1}}.
+                                                                    </div>
+                                                                    <div class="col-5 webselect">
+                                                                        <!-- <input type="text" formControlName="webType"
+                                                                    style="border-radius: 5px;  height: 30px;font-size: 12px;" class=" form-control  "> -->
+                                                                        <mat-select name="webType"
+                                                                            formControlName="webType">
+                                                                            <mat-option *ngFor="let webType of webTypes"
+                                                                                [value]="webType.value">
+                                                                                {{webType.viewValue}}
+                                                                            </mat-option>
+                                                                        </mat-select>
+                                                                    </div>
+                                                                    <div class="col-5">
+                                                                        <input type="text" formControlName="webLink"
+                                                                            style="border-radius: 5px;  height: 30px;font-size: 12px;"
+                                                                            class=" form-control  ">
+                                                                    </div>
+                                                                    <div class="col-1 p-0"
+                                                                        style="margin-top: 6px;text-align: center;"
+                                                                        (click)="removeWebData(i)">
+                                                                        <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon metro-cancel.png"
+                                                                            style="margin-top: -9px;margin-right: 15px;"
+                                                                            width="20rem" class="handCursor">
+                                                                    </div>
+
+                                                                </div>
+                                                            </ng-container>
+                                                        </div>
+
+                                                        <div class="row py-2  " *ngIf="disableUpdateBtn3"
+                                                            style="padding-left: 20px;">
+                                                            <div style="padding-left: 54px;"
+                                                                (click)="addWebDataToList()">
+                                                                <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon ionic-ios-add-circle.png"
+                                                                    width="20rem" class="handCursor">
+                                                                <span class="px-3 handCursor"
+                                                                    style="font-size: 14px;font-weight: 500;">Add New
+                                                                    List</span>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="row justify-content-center">
+                                                        <div>
+                                                            <img class="edit"
+                                                                src="../../../assets/images/ui/Icons/1x/edit1.png"
+                                                                style="width: 70px;cursor: pointer;"
+                                                                (click)="openUpdateWebData()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12 p-0">
+                                                <div class="row justify-content-center">
+                                                    <div class="mr-2">
+                                                        <div *ngIf="isLoading2"
+                                                            style="display: flex; justify-content: center;">
+                                                            <mat-progress-spinner class="example-margin" color="primary"
+                                                                mode="indeterminate" [diameter]="30">
+                                                            </mat-progress-spinner>
+                                                        </div>
+                                                        <button mat-raised-button style="outline-style: none;border-radius: 10px; background-color: #53b9c6;
+                                                        color: white;font-size: 14px;font-weight: 600;height: 30px;line-height: 1;padding-left: 30px;
+                                                       padding-right: 30px;" routerLinkActive="active"
+                                                            *ngIf="disableUpdateBtn3 && !isLoading2"
+                                                            (click)="addWebSiteDataSubmit()">Save
+                                                            Changes</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
+
+
+
+    </div>
+</div>
+
+<ng-template #viewSuccessContent let-modal>
+    <div class="modal-body">
+        <div class=" " style="text-align: center;padding: 17px 0px 17px 0;">
+            <img src="../../../assets/images/ui/Icons/1x/success.png" style="width: 25%;padding-bottom: 17px;"><br>
+            <span style="font-size: 12px;font-weight: 500;">{{successResponse}}</span><br>
+        </div>
+    </div>
+</ng-template>
+<ng-template #viewFailureContent let-modal>
+    <div class="modal-body">
+        <div class="" style="text-align: center;padding: 17px 0px 17px 0;">
+            <img src="../../../assets/images/ui/Icons/1x/fail.png" style="width: 25%;padding-bottom: 17px;"><br>
+            <span style="font-size: 12px;font-weight: 500;">{{failureResponse}}</span><br>
+        </div>
+    </div>
+</ng-template>

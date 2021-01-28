@@ -1,0 +1,289 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+        <div class="container p-3" style="background-color: #F5F8FA;">
+            <div class="row">
+                <div class="col-md-9 px-4 pb-4">
+                    <div class="card-bg card px-4">
+                        <div class="card-body">
+                            <div class=""
+                                style="background-color: #53B9C6;text-align: center;font-weight: normal;font-size: 16px;  padding: 10px;">
+                                <span style=" width: 100%; font-weight: bold;letter-spacing: 0px;;color: #FEFEFE;">
+                                    Admin Profile</span>
+                            </div>
+                            <div class="adminProfile row pt-4">
+                                <div class="col-md-7">
+                                    <form [formGroup]="adminProfileForm" (ngSubmit)="updateAdminGeneralUser()">
+                                        <table align="center">
+                                            <tr>
+                                                <td>
+                                                    <mat-form-field class="example-full-width">
+                                                        <input type="text" matInput placeholder="User ID"
+                                                            formControlName="userID" readonly>
+                                                    </mat-form-field>
+                                                </td>
+                                                <td>
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="Identity"
+                                                            formControlName="identity" readonly>
+                                                    </mat-form-field>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <table align="center">
+                                            <tr>
+                                                <td>
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="First Name" #autoFocusTest
+                                                            formControlName="firstName">
+                                                    </mat-form-field>
+                                                </td>
+                                                <td>
+                                                    <mat-form-field class="example-full-width">
+                                                        <input matInput placeholder="Last Name"
+                                                            formControlName="lastName">
+                                                    </mat-form-field>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <div class="pb-3 " style="padding-left: 5px;padding-right: 5px;">
+                                            <label class="numberLabel" style="font-size: small;">Phone Number</label>
+                                            <div class="phno">
+                                                <ngx-intl-tel-input
+                                                    [ngStyle]="{ 'color': changeColor === false ? '#A5A2A9' : '#612529' }"
+                                                    class="adminProfilePh phno" [cssClass]="'custom'"
+                                                    [preferredCountries]="preferredCountries"
+                                                    [enableAutoCountrySelect]="false" [enablePlaceholder]="false"
+                                                    [searchCountryFlag]="true"
+                                                    [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                                    [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India"
+                                                    [maxLength]="15" [tooltipField]="TooltipLabel.Name"
+                                                    [phoneValidation]="true" [separateDialCode]="separateDialCode"
+                                                    name="phone" formControlName="checkPhone">
+                                                </ngx-intl-tel-input>
+                                            </div>
+                                            <!--[selectedCountryISO]="CountryISO.India"-->
+                                            <div *ngIf="adminProfileForm.get('checkPhone').touched && adminProfileForm.get('checkPhone').dirty && 
+                                            adminProfileForm.get('checkPhone').hasError('required')"
+                                                style="color: red;font-size: small;">
+                                                Phone Number is required.
+                                            </div>
+                                        </div>
+                                        <mat-form-field style="padding-left: 5px;
+                                        padding-right: 5px;">
+                                            <mat-label>Department</mat-label>
+                                            <mat-select
+                                                [ngStyle]="{ 'color': changeColor === true ? '#A5A2A2' : '#000000' }"
+                                                class="phno" name="department" formControlName="department">
+                                                <mat-option *ngFor="let department of departments"
+                                                    [value]="department.value">
+                                                    {{department.viewValue}}
+                                                </mat-option>
+                                                <!--[ngClass]="{ 'active' : isValue == 1 }"-->
+                                                <!--color: #A5A2A2 !important;-->
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <mat-form-field style="padding-left: 5px;
+                                        padding-right: 5px;">
+                                            <input matInput type="{{password}}" placeholder="Password"
+                                                formControlName="password" class="inp">
+                                            <span *ngIf="isPassword" (click)="showPassword()">
+                                                <i class="fa fa-fw fa-eye-slash field-icon3"
+                                                    style="cursor: pointer;"></i>
+                                            </span>
+                                            <span *ngIf="!isPassword" (click)="showPassword()">
+                                                <i class="fa fa-fw fa-eye field-icon3" style="cursor: pointer;"></i>
+                                            </span>
+                                        </mat-form-field>
+                                        <p style="font-size: 12px;font-weight: 500;padding-left: 5px;color: #160505;">
+                                            Last updated date :
+                                            {{presentDate}}
+                                            by {{userID}}</p>
+                                        <div class="col-md-12 p-3">
+                                            <div class="row justify-content-center">
+                                                <div class="mr-2">
+                                                    <div *ngIf="isLoading"
+                                                        style="display: flex; justify-content: center;">
+                                                        <mat-progress-spinner class="example-margin" color="primary"
+                                                            mode="indeterminate" [diameter]="30">
+                                                        </mat-progress-spinner>
+                                                    </div>
+                                                    <button mat-raised-button style="border-radius: 10px;
+                                                        background-color: #17a2b8;
+                                                        color: white;
+                                                        width: 130%;
+                                                        height: 30px;
+                                                        line-height: 1;" routerLinkActive="active"
+                                                        *ngIf="disableUpdateBtn && !isLoading">Update</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="row " style="justify-content: center;">
+                                        <!--Upload IMg-->
+                                        <div class="justify-content-center"
+                                            style="text-align: -webkit-center;padding-left: 20px;">
+                                            <div style="border-radius: 50% !important;width: 100px;height: 100px;">
+                                                <img class=""
+                                                    style="border: 1px solid #DCDCDC;border-radius: 50%;min-width: 80px;
+                                                    min-height: 80px;max-height: 80px;max-width: 80px;width: 100px;height: 100px;padding: 5px;"
+                                                    src="{{previewImg}}">
+                                            </div>
+                                            <div class="container">
+                                                <div class="row ">
+                                                    <div class="img-move input-group mb-3 mt-1"
+                                                        style="padding-left: 10px;">
+                                                        <input type="file" class="form-control" name="file"
+                                                            id="inputGroupFile01" #fileInput
+                                                            aria-describedby="inputGroupFileAddon01"
+                                                            accept=".png, .jpg, .jpeg" (change)="fileProgress($event)"
+                                                            class="d-none">
+                                                        <button class="btn btn-sm"
+                                                            style="border: 1px solid #53B9C6; color: #53B9C6 !important;
+                                                            height: 30px;line-height: 1;font-size: 12px;font-weight: 500;"
+                                                            (click)="fileInput.click()" type="button">
+                                                            Choose Photo
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Upload IMG Ends-->
+                                        <div>
+                                            <img class="edit" src="../../../assets/images/ui/Icons/1x/edit.png"
+                                                style="width: 70px;margin-left: 35px;cursor: pointer;"
+                                                (click)="openUpdate()">
+                                        </div>
+                                    </div>
+                                    <div class="changepwd">
+                                        <button mat-raised-button style="outline-style: none;border-radius: 10px;
+                                        height: 30px;line-height: 1; font-size: 12px;font-weight: 600;"
+                                            (click)="open(content)" routerLinkActive="active">Change Password</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Change Password popup -->
+<ng-template #content let-modal>
+    <div class="modal-header" style="background-color: #f9f9f9;color: black;">
+        <span class="modal-title" style="font-weight: 600;text-align: left;font-size: 18px;color: #000000;">
+            Change Password</span>
+        <img style="width:18px" class="crossImg" (click)="modal.dismiss('Cross click')"
+            src="../../../assets/images/ui/Icons/1x/cancel.png">
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <form [formGroup]="changePasswordForm">
+                    <div class="form-group" style="margin-bottom: 2px;">
+                        <div class="row">
+                            <div style="justify-content: start;">
+                                <label style="font-size: 12px;font-weight: 500;color: #140303;">Old Password</label>
+                            </div>
+                            <div class="input-group mb-3"
+                                style="font-size: 12px;font-weight: 500;border: 1px solid #707070;border-radius: 5px;">
+                                <input style="border-right:none ;" type="{{password1}}" class="form-control bg-white"
+                                    formControlName="oldPassword">
+                                <div class="input-group-append form-control1" style="border:none">
+                                    <span class="input-group-text" style="background-color:white;">
+                                        <span *ngIf="!isPasswordOne" (click)="showPassword1()">
+                                            <i class="fa fa-fw fa-eye field-icon1"></i>
+                                        </span>
+                                        <span *ngIf="isPasswordOne" (click)="showPassword1()">
+                                            <i class="fa fa-fw fa-eye-slash field-icon1"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 2px;">
+                        <div class="row ">
+                            <div style="justify-content: start;">
+                                <label style="font-size: 12px;font-weight: 500;color: #140303;">New Password</label>
+                            </div>
+                            <div class="input-group mb-3"
+                                style="font-size: 12px;font-weight: 500;border: 1px solid #707070;border-radius: 5px;">
+                                <input style="border-right:none ;" type="{{password2}}" class="form-control bg-white"
+                                    formControlName="newPassword">
+                                <div class="input-group-append" style="border:none">
+                                    <span class="input-group-text" style="background-color:white;">
+                                        <span *ngIf="!isPasswordTwo" (click)="showPassword2()">
+                                            <i class="fa fa-fw fa-eye field-icon1"></i>
+                                        </span>
+                                        <span *ngIf="isPasswordTwo" (click)="showPassword2()">
+                                            <i class="fa fa-fw fa-eye-slash field-icon1"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row ">
+                            <div style="justify-content: start;">
+                                <label class="text-nowrap"
+                                    style="font-size: 12px;font-weight: 500;color: #140303;">Confirm Password</label>
+                            </div>
+                            <div class="input-group mb-3"
+                                style="font-size: 12px;font-weight: 500;border: 1px solid #707070;border-radius: 5px;">
+                                <input style="border-right:none ;" type="{{password3}}" class="form-control bg-white"
+                                    formControlName="confirmpassword">
+                                <div class="input-group-append" style="border:none">
+                                    <span class="input-group-text" style="background-color:white;">
+                                        <span *ngIf="!isPasswordThree" (click)="showPassword3()">
+                                            <i class="fa fa-fw fa-eye field-icon1"></i>
+                                        </span>
+                                        <span *ngIf="isPasswordThree" (click)="showPassword3()">
+                                            <i class="fa fa-fw fa-eye-slash field-icon1"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div
+                                *ngIf="changePasswordForm.get('confirmpassword').hasError('checkPasswords') && changePasswordForm.get('confirmpassword').touched">
+                                <p>not same</p>
+                            </div>
+                            <div style='color:#ff7355'
+                                *ngIf="changePasswordForm.get('confirmpassword').touched && changePasswordForm.get('confirmpassword').dirty && changePasswordForm.get('newPassword').value != changePasswordForm.get('confirmpassword').value && changePasswordForm.get('confirmpassword').value != null">
+                                Password does not match</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <div class="" style="border-top: transparent;padding-bottom: 15px;margin-left: 110px;">
+        <div class="row" *ngIf="isLoading1" style="display: flex; justify-content: center;padding-bottom: 7px;">
+            <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" [diameter]="30">
+            </mat-progress-spinner>
+        </div>
+        <div class="row justify-content-center " style="margin-top: 10px;">
+            <button mat-raised-button
+                style="height: 30px;line-height: 1;border-radius: 10px;color: #2A0909;border: 1px solid #707070;margin-right: 10px;"
+                (click)="modal.close('Close click')">Cancel
+            </button>
+            <button type="submit" class="loginbtn btn btn-sm" (click)="changePwdSubmit()"
+                [disabled]="!changePasswordForm.valid">Change Password</button>
+        </div>
+    </div>
+</ng-template>

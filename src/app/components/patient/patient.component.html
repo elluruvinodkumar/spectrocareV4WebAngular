@@ -1,0 +1,166 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div class="container-fluid">
+    <div class="row ">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-fluid bg-light  ">
+    <!--pt-3-->
+    <div class="row bg-white" style="">
+        <span class="pl-4 pb-3 pt-3" style="font-size: 14px;font-weight: 600;letter-spacing: 0.3;color: #2C3136;">
+            Patient List <span>&nbsp; ( {{listSize}} ) &nbsp;</span>
+        </span>
+    </div>
+    <div class="card mt-2">
+        <!--*ngIf="isViewPatient"-->
+        <div class="card-body p-2">
+            <div>
+                <div class="row px-4" style="justify-content: space-around;">
+                    <div class="col-md-2"
+                        style="border-radius: 5px; background-color: #53b9c6; justify-content: center; text-align: center;height: 34px;">
+                        <button class="btn btn-sm" [routerLink]="['/admincenter/allmedicalrecord']"
+                            style="color: white;font-size: 14px; font-weight: bold; padding-top: 10px;line-height: 1;">
+                            + Add New
+                            Patient</button>
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" [(ngModel)]="term" class=" p-2 w-100 " placeholder="Search by EmailID" style="border: none; border-radius: 22px; outline-style: none !important;font-size: 14px; font-weight: 500;padding-right: 100%;
+                        height: 34px;padding-left: 40px !important;background-color: #F5F5F5 ;"
+                            (keyup)="findText(term)">
+
+                        <div class="searchIcon" style="margin-left: 10px;margin-top: -28px;">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive p-2">
+                    <div class="scroll tableFixHead">
+                        <table class="table text-center ">
+                            <thead class="" style="background-color: #3E454C;color: #FFFFFF;">
+                                <tr class="small p-0" style="font-weight: normal;">
+                                    <th class="p-0" scope="col" class="border text-center">No</th>
+                                    <th class="p-0" scope="col" class="border  text-center">Patient Name</th>
+                                    <th class="p-0" scope="col" class="border text-center">Patient ID</th>
+                                    <th class="p-0" scope="col" class="border text-center">Phone</th>
+                                    <th class="p-0" scope="col" class="border text-center">Medical Record ID</th>
+                                    <th class="p-0" scope="col" class="border  text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="!(patients && patients.length)"
+                                    style="text-align: center;background-color: white;padding: 20px;">
+                                    <td style="text-align: center;font-size: 12px;font-weight: 600;" colspan="7">
+                                        Don't have Patients
+                                    </td>
+                                </tr>
+                                <tr class=" small " style="background: #FFFFFF 0% 0% no-repeat padding-box;
+                                box-shadow: 0px 6px 12px #44444414;
+                                border-radius: 6px;
+                                opacity: 1;" *ngFor="let patient of patients | filter:term; let i = index">
+                                    <td scope="row" class="text-center" style="padding-top: 25px;color: #000000;">
+                                        {{i+1}}</td>
+                                    <td class="p-2" style="">
+                                        <div class="row" style="justify-content: space-around;">
+                                            <div class="col-2"
+                                                style="border-radius: 50% !important;width: 50px;height: 50px;">
+                                                <img class=""
+                                                    style=" border: 1px solid transparent;border-radius: 50%;width: 50px;height: 50px;min-width: 50px;min-height: 50px;"
+                                                    src="{{baseURL+patient.profilePic}}"
+                                                    onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                            </div>
+                                            <div class="col-10" style="padding-top: 17px;padding-left: 22px;">
+                                                {{patient.emailID}}
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="" style="padding-top: 25px;padding-left: 70px;">{{patient.patientID}}
+                                    </td>
+                                    <td class="" style="padding-top: 25px;padding-left: 80px;">
+                                        {{patient.phoneNumber.countryCode}}-{{patient.phoneNumber.phoneNumber}}</td>
+                                    <td class="pl-5" style="padding-top: 25px;">{{patient.medical_record_id}}</td>
+                                    <td class="menu text-center text-info p-2" style="padding-top: 20px !important;">
+                                        <button [matMenuTriggerFor]="beforeMenu"
+                                            aria-label="Example icon-button with a menu" style="color: #53b8c5;background-color: Transparent;
+                                            background-repeat:no-repeat;
+                                            border: none;
+                                            cursor:pointer;
+                                            overflow: hidden;
+                                            outline:none;">
+                                            <img style="width: 0.32rem;" class="crossImg"
+                                                src="../../../assets/images/ui/Icons/1x/menu.png">
+                                        </button>
+                                        <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu"
+                                            xPosition="before">
+                                            <button mat-menu-item class="menuItembtn"
+                                                [routerLink]="['/admincenter/patientprofile',patient.patientID]"
+                                                style="outline: none !important;">
+                                                <!--(click)="openViewModal(viewContent)"-->
+                                                <span>View Details</span>
+                                            </button>
+                                            <button mat-menu-item class="menuItembtn"
+                                                (click)="openDeletePatientModal(viewDeletePatientContent)"
+                                                style="outline: none !important;">
+                                                <span>Delete Patient</span>
+                                            </button>
+                                            <ng-template #viewDeletePatientContent let-modal>
+                                                <div class="modal-body">
+                                                    <div class="d-flex p-1">
+                                                        <div class="col-md-4 text-center p-3 m-0">
+                                                            <img src="../../../assets/images/ui/Icons/1x/delete_1.png"
+                                                                style="width: 80%; margin-top: 10px;">
+                                                        </div>
+                                                        <div class="col-md-8"
+                                                            style="text-align: center;padding: 30px 30px 15px 30px;">
+                                                            <span class=" font-weight-small"
+                                                                style="font-size: 14px;font-weight: 600;color: #474747;">
+                                                                Delete Patient
+                                                            </span><br><br>
+                                                            <span class=""
+                                                                style="font-size: 12px;font-weight: 500;color: #000000;">
+                                                                Are you sure you want to delete this patient
+                                                                record ? </span>
+                                                        </div>
+                                                    </div>
+                                                    <div style="text-align: center;" class="py-2">
+                                                        <div *ngIf="isLoading"
+                                                            style="display: flex; justify-content: center; padding-bottom: 5px;">
+                                                            <mat-progress-spinner class="example-margin" color="primary"
+                                                                mode="indeterminate" [diameter]="30">
+                                                            </mat-progress-spinner>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-4"></div>
+                                                            <div class="col-md-8">
+                                                                <button class="btn btn-sm mr-3"
+                                                                    style="outline-style: none; font-weight: 500;font-size: 14px; background-color:transparent; 
+                                                            color: #474747;border: 1px solid #707070;height: 30px;line-height: 1;width: 25%;border-radius: 10px;"
+                                                                    (click)="modal.close('Close click')">Cancel
+                                                                </button>
+                                                                <button class="btn btn-sm"
+                                                                    style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                                             color: white;height: 30px;line-height: 1;width: 25%;border-radius: 10px;"
+                                                                    (click)="deletePatientData(patient)">Delete
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-template>
+
+                                        </mat-menu>
+
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

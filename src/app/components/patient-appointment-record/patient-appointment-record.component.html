@@ -1,0 +1,452 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div class="container-fluid pb-5" style="background-color: #f8fcfd;">
+  <div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+      <div class="calender-show pl-3" style="background-color: #f8fcfd; justify-content: flex-end;">
+        <input placeholder="2020-03-13" [value]="dateToShow" class="pl-3" ngbDatepicker #d="ngbDatepicker" readonly />
+        <div class="calenderLogo" style="margin-top: -30px; margin-left: 190px;">
+          <button style="outline-style: none;" class="p-0 btn calendar" (click)="d.toggle()" type="button">
+            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row p-4 w-25" style="background-color: #f8fcfd;">
+    <div class="form-control" style="background-color: #53b8c5; color: white !important;">
+      <mat-select (selectionChange)="showData($event.value)" [value]="selected" style="color: white;">
+        <mat-option *ngFor="let letSearch of searchByValue" [value]="letSearch.viewValue">
+          {{ letSearch.viewValue }}
+        </mat-option>
+      </mat-select>
+    </div>
+  </div>
+
+  <div class="row" style="padding-left: 35px;">
+    <div class="row bg-white px-2 py-2 pr-4 w-100 justify-content-between">
+      <span class="tableHead justify-content-center" id="modal-basic-title"
+        style="font-weight: 600; color: #140202;">Appointment Record</span>
+      <img style="width: 1.35rem;cursor: pointer;" class="crossImg" (click)="callBookAppointment(selectedPatient)"
+        src="../../../assets/images/ui/Icons/patient-medical-module/Icon ionic-ios-add-circle.png">
+
+
+    </div>
+    <div class="row scroll w-100 tableFixHead">
+      <table class="table text-center">
+        <!--table-sm-->
+        <thead style="background-color: #3e454c; color: white;">
+          <tr class="medium" style="
+              font-weight: normal !important;
+              height: 40px;
+              line-height: 1;
+              font-size: 14px;
+            ">
+            <th scope="col" class="border text-center" style="">
+              No
+            </th>
+            <th scope="col" class="border text-center" style="">
+              Date/Time
+            </th>
+            <th scope="col" class="border text-center" style="">
+              Type
+            </th>
+            <th scope="col" class="border text-center" style="">
+              Reason For Visit
+            </th>
+            <th scope="col" class="border text-center" style="">
+              Doctor
+            </th>
+            <th scope="col" class="border text-center" style="">
+              Status
+            </th>
+            <th scope="col" class="border text-center" style="">
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody class="text-center" style="color: #000000;">
+          <tr *ngIf="!(patientAppointmentsData && patientAppointmentsData.length)"
+            style="text-align: center;background-color: white;">
+            <td style="text-align: center; font-size: 12px; font-weight: 600;" colspan="7">
+              Don't have Appointments
+            </td>
+          </tr>
+          <tr class=" small bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
+          box-shadow: 0px 6px 12px #44444414;
+          border-radius: 6px;
+          opacity: 1;" *ngFor="
+              let selectedInvoicesData of patientAppointmentsData;
+              let i = index
+            ">
+            <td scope="row" class="text-center" style="padding: 10px;">
+              {{ i + 1 }}
+            </td>
+            <td class="tdData text-center" style="padding-left: 34px; padding: 10px;">
+              {{ selectedInvoicesData.appointmentDetails.appointmentDate }}
+            </td>
+            <td class="tdData text-center" style="padding-left: 18px; padding: 10px;">
+              {{ selectedInvoicesData.appointmentDetails.visitType }}
+            </td>
+            <td class="tdData text-center" style="padding-left: 38px; padding: 10px;">
+              {{ selectedInvoicesData.appointmentDetails.reasonForVisit }}
+            </td>
+            <td class="tdData text-center" style="padding-left: 55px; padding: 10px;">
+              {{ selectedInvoicesData.doctorDetails.doctorName }}
+            </td>
+            <td class="tdData text-center" style="padding-left: 55px; padding: 10px;">
+              {{ selectedInvoicesData.appointmentDetails.appointmentStatus }}
+            </td>
+            <td class="menu text-center text-info" style="padding: 10px; overflow: hidden; padding-top: 5px;">
+              <button [matMenuTriggerFor]="beforeMenu" aria-label="Example icon-button with a menu" style="
+                  color: #53b9c6;
+                  background-color: Transparent;
+                  background-repeat: no-repeat;
+                  border: none;
+                  cursor: pointer;
+                  overflow: hidden;
+                  outline: none;
+                ">
+                <img style="width: 0.32rem;" class="crossImg" src="../../../assets/images/ui/Icons/1x/menu.png">
+              </button>
+              <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu" xPosition="before">
+                <button mat-menu-item class="menuItembtn" style="outline: none !important;"
+                  (click)="openViewMethod(viewModel)">
+                  <span>View Details</span>
+                </button>
+
+                <ng-template #viewModel let-modal>
+                  <div class="modal-header" style="
+                      background-color: #53b9c6;
+                      color: white;
+                      font-weight: bold;
+                    ">
+                    <span class="modal-title justify-content-center" id="modal-basic-title">
+                      Appointment Summary
+                    </span>
+                    <img style="width:18px;cursor: pointer;" class="crossImg" (click)="modal.dismiss('Cross click')"
+                      src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                  </div>
+                  <div class="modal-body scroll1">
+                    <div class="row px-3">
+                      <div class="col-8">
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Appointment Date :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{
+                                  selectedInvoicesData.appointmentDetails.appointmentDate
+                                }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Appointment Time :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{
+                                  selectedInvoicesData.appointmentDetails.appointmentTime
+                                }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Patient ID :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{ selectedInvoicesData.patientDetails.patientID }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Patient Name :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{ selectedInvoicesData.patientDetails.patientName }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Doctor Name :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{ selectedInvoicesData.doctorDetails.doctorName }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Department :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{ selectedInvoicesData.doctorDetails.department }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Visit Type :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{ selectedInvoicesData.appointmentDetails.visitType }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Reason For Visit :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">{{ selectedInvoicesData.appointmentDetails.reasonForVisit }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="row">
+                              <label style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #706f6f;
+                                ">Notes :
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="row">
+                              <span style="
+                                  font-weight: 600;
+                                  font-size: 12px;
+                                  color: #000000;
+                                ">------------</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4"></div>
+                    </div>
+                    <div class="pt-2">
+                      <fieldset class="" style="
+                          width: inherit;
+                          padding: 0 10px 10px 10px;
+                          border: 1px solid #707070;
+                        ">
+                        <legend style="
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: #000000;
+                          " class="w-auto p-2">
+                          Major Complaints/Injury/Illness
+                        </legend>
+                        <textarea class="form-control border-0" rows="2"
+                          style="font-size: 12px; outline-style: none;"></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="pt-2">
+                      <fieldset class="" style="
+                          width: inherit;
+                          padding: 0 10px 10px 10px;
+                          border: 1px solid #707070;
+                        ">
+                        <legend style="
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: #000000;
+                          " class="w-auto p-2">
+                          Diagnosis/Comments
+                        </legend>
+                        <textarea class="form-control border-0" rows="2"
+                          style="font-size: 12px; outline-style: none;"></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="pt-2">
+                      <fieldset class="" style="
+                          width: inherit;
+                          padding: 0 10px 10px 10px;
+                          border: 1px solid #707070;
+                        ">
+                        <legend style="
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: #000000;
+                          " class="w-auto p-2">
+                          Treatment
+                        </legend>
+                        <textarea class="form-control border-0" rows="2"
+                          style="font-size: 12px; outline-style: none;"></textarea>
+                      </fieldset>
+                    </div>
+                    <div class="pt-2">
+                      <fieldset class="" style="
+                          width: inherit;
+                          padding: 0 10px 10px 10px;
+                          border: 1px solid #707070;
+                        ">
+                        <legend style="
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: #000000;
+                          " class="w-auto p-2">
+                          Medication
+                        </legend>
+                        <textarea class="form-control border-0" rows="2"
+                          style="font-size: 12px; outline-style: none;"></textarea>
+                      </fieldset>
+                    </div>
+
+                    <fieldset class="" style="
+                        width: inherit;
+                        padding: 0 10px 10px 10px;
+                        border: 1px solid #707070;
+                      ">
+                      <legend style="
+                          font-size: 12px;
+                          font-weight: 600;
+                          color: #000000;
+                        " class="w-auto p-2">
+                        File / Document
+                      </legend>
+                      <div class="border-0 p-3">
+                        <div *ngIf="!selectedInvoicesData.attachment"></div>
+                        <div class="row justify-content-around" *ngIf="selectedInvoicesData.attachment">
+                          <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon awesome-file-alt.png"
+                            class="mr-1" />
+                          <span style="font-size: 12px; font-weight: 400;">
+                            {{ selectedInvoicesData.attachment.split("/")[3] }}
+                          </span>
+                          <a href="http://34.231.177.197:3000{{
+                              selectedInvoicesData.attachment
+                            }}">
+                            <img class="handCursor" width="13px"
+                              src="../../../assets/images/ui/Icons/patient-medical-module/Icon feather-download.png" />
+                          </a>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                  <div class="modal-footer justify-content-center">
+                    <button class="btn btn-sm" style="
+                        outline-style: none;
+                        font-weight: bold;
+                        font-size: medium;
+                        background-color: #53b9c6;
+                        color: white;
+                        height: 30px;
+                        line-height: 1;
+                        width: 20%;
+                        border-radius: 10px;
+                      " (click)="modal.close('Close click')">
+                      Close
+                    </button>
+                  </div>
+                </ng-template>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

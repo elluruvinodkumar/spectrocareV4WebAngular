@@ -1,0 +1,35 @@
+* {
+  font-family: "Muli reg", sans-serif !important;
+}
+
+.active {
+  /* border: 1px solid white !important; */
+  color: white !important;
+  /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background: #53B9C6;
+  height: 3px;
+}
+
+::ng-deep .mat-select-value {
+  padding-left: 10px;
+  color: black !important;
+}
+
+::ng-deep .mat-select-trigger {
+  padding: 0px !important;
+}
+
+::ng-deep .mat-select {
+  border: 1px solid #CCCCCC !important;
+}
+
+::ng-deep .mat-select-panel:not([class*=mat-elevation-z]) {
+  margin-top: 5px !important;
+}
+
+/* ::ng-deep .mat-select-panel:not([class*=mat-elevation-z]) {
+  margin-top: 43px !important;
+} */

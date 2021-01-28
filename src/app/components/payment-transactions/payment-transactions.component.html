@@ -1,0 +1,232 @@
+<div class="container-fluid">
+    <div class="row" style="background-color: #F8FCFD;">
+        <div class="col-md-12 p-3">
+            <div class="card ">
+                <div class="card-body p-2">
+                    <div>
+                        <div class="row py-1" style="padding-left: 20px;">
+                            <div class="col-md-9 row mr-2 ">
+                                <input type="text" [(ngModel)]="term" class="bg-transparent px-1 w-100 "
+                                    placeholder="Search by Key"
+                                    style="border-radius: 5px; outline-style: none !important; font-size: 14px;height: 30px;padding-left: 30px !important;">
+                                <div class="searchIcon" style="margin-left: 10px;margin-top: -28px;">
+                                    <i class="fas fa-search" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="calender-show pl-3 "
+                                    style="background-color: white; justify-content: flex-end; ">
+                                    <input placeholder="2020-03-13" [value]="presentDate" class=" pl-3" ngbDatepicker
+                                        #d="ngbDatepicker" readonly>
+                                    <div class="calenderLogo" style="margin-top: -30px;
+                                      margin-left: 190px;">
+                                        <button style="outline-style: none;" class="p-0 btn  calendar"
+                                            (click)="d.toggle()" type="button">
+                                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="scroll tableFixHead">
+                            <table class="table text-center">
+                                <thead class="thead-dark ">
+                                    <tr class="medium" style="font-weight: 300;font-size: 12px;">
+                                        <th scope="col" class="border text-center">No</th>
+                                        <th scope="col" class="border  text-center">Invoice</th>
+                                        <th scope="col" class="border text-center">Client</th>
+                                        <th scope="col" class="border text-center">Invoice Date</th>
+                                        <th scope="col" class="border  text-center">Payment Date</th>
+                                        <th scope="col" class="border text-center">Amount</th>
+                                        <th scope="col" class="border text-center">Balance</th>
+                                        <th scope="col" class="border  text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class=" small " style="background: #FFFFFF 0% 0% no-repeat padding-box;
+                                    box-shadow: 0px 6px 12px #44444414;
+                                    border-radius: 6px;
+                                    opacity: 1;"
+                                        *ngFor="let selectedInvoicesData of paymentsData | filter:term; let i = index">
+
+                                        <td scope="row" class="text-center">{{i+1}}</td>
+                                        <td class="" style="padding-left: 50px;">
+                                            {{selectedInvoicesData.Invoice}}</td>
+                                        <td class="" style="padding-left: 80px;">
+                                            {{selectedInvoicesData.Client}}</td>
+                                        <td class="" style="padding-left: 50px;">
+                                            {{selectedInvoicesData.InvoiceDate}}</td>
+                                        <td class="" style="padding-left: 50px;">
+                                            {{selectedInvoicesData.PaymentDate}}</td>
+                                        <td class="" style="padding-left: 50px;">
+                                            {{selectedInvoicesData.Amount}}</td>
+                                        <td class="" style="padding-left: 50px;">
+                                            {{selectedInvoicesData.Balance}}</td>
+                                        <td class="menu text-center text-info" style="padding: 0px;">
+                                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                                aria-label="Example icon-button with a menu">
+                                                <img style="width: 0.32rem;" class="crossImg"
+                                                    src="../../../assets/images/ui/Icons/1x/menu.png">
+                                            </button>
+                                            <mat-menu #menu="matMenu" class="menudata">
+
+                                                <button mat-menu-item class="menuItembtn"
+                                                    (click)="openViewModal(viewContent,selectedInvoicesData)">
+                                                    <span>View Details</span>
+                                                </button>
+                                                <ng-template #viewContent let-modal>
+                                                    <div class="modal-header p-2 px-4  justify-content-between"
+                                                        style="background-color: rgb(82, 192, 211);color: white;">
+                                                        <h5 class="modal-title justify-content-center"
+                                                            style="font-size: 14px;font-weight: 600;"
+                                                            id="modal-basic-title">
+                                                            Transaction Details</h5>
+                                                        <div style="text-align: end;">
+                                                            <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon material-cancel@2x.png"
+                                                                width="40%" (click)="modal.close('Close click')"
+                                                                class="handCursor pt-0 px-1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-body bg-white p-2 ">
+                                                        <div class="row"
+                                                            style="padding-bottom: 20px;padding-left: 30px;">
+                                                            <div class="col-2"
+                                                                style="text-align: center; border-radius: 50% !important;width: 50px;height: 50px;">
+                                                                <img style=" border: 2px solid rgb(150, 211, 235);border-radius: 50%;width: 60px;height: 60px;min-width: 60px;min-height: 60px;"
+                                                                    src="../../../assets/images/ui/Icons/1x/profile-1.png"
+                                                                    onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                                                <!--{{'http://3.92.226.247:3000'+patient.profilePic}}-->
+                                                            </div>
+                                                            <div class="col-10"
+                                                                style="padding-top: 10px;padding-left: inherit;">
+                                                                <div class="row" style="">
+                                                                    <div class="col-2">
+                                                                        <span
+                                                                            style="font-size: 12px;font-weight: 600;">Paid</span>
+                                                                    </div>
+                                                                    <div class="col-1">
+                                                                        <span
+                                                                            style="font-size: 12px;font-weight: 600;">:</span>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <span
+                                                                            style="font-size: 12px;font-weight: 600;">$
+                                                                            {{paid}}</span>
+                                                                    </div>
+                                                                    <div class="col-7"></div>
+                                                                </div>
+                                                                <div class="row" style="">
+                                                                    <div class="col-2">
+                                                                        <span
+                                                                            style="font-size: 12px;font-weight: 600;">Balance</span>
+                                                                    </div>
+                                                                    <div class="col-1">
+                                                                        <span
+                                                                            style="font-size: 12px;font-weight: 600;">:</span>
+                                                                    </div>
+                                                                    <div class="col-2">
+                                                                        <span
+                                                                            style="font-size: 12px;font-weight: 600;">$
+                                                                            {{selectedInvoicesData.Balance}}</span>
+                                                                    </div>
+                                                                    <div class="col-7"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-6"
+                                                                style="padding: 20px; border-right: 1px solid rgb(199, 196, 199);">
+                                                                <div
+                                                                    style="font-size: 14px;font-weight: 600;margin-top: -20px;margin-left: 30px;">
+                                                                    {{selectedInvoicesData.Client}}</div>
+                                                                <div class="row p-2" style="">
+                                                                    <div class="col-7"
+                                                                        style="font-size: 12px;font-weight: 600;margin-right: -10px;">
+                                                                        Invoice</div>
+
+                                                                    <div class="col-5"
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 0px;">
+                                                                        : {{selectedInvoicesData.Invoice}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row p-2" style="">
+                                                                    <div class="col-7"
+                                                                        style="font-size: 12px;font-weight: 600;margin-right: -10px;">
+                                                                        Transaction Date</div>
+                                                                    <div class="col-5"
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 0px;">
+                                                                        : {{selectedInvoicesData.InvoiceDate}}</div>
+                                                                </div>
+                                                                <div class="row p-2" style="">
+                                                                    <div class="col-7"
+                                                                        style="font-size: 12px;font-weight: 600;margin-right: -10px;">
+                                                                        Transaction ID</div>
+
+                                                                    <div class="col-5"
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 0px;">
+                                                                        : {{selectedInvoicesData.TxID}}</div>
+                                                                </div>
+                                                                <div class="row p-2" style="">
+                                                                    <div class="col-7"
+                                                                        style="font-size: 12px;font-weight: 600;margin-right: -10px;">
+                                                                        Payment Method</div>
+
+                                                                    <div class="col-5"
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 0px;">
+                                                                        : {{selectedInvoicesData.PaymentMethod}}</div>
+                                                                </div>
+                                                                <div class="row p-2" style="">
+                                                                    <div class=""
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 16px !important;">
+                                                                        {{selectedInvoicesData.CardNo}}</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="row p-2" style="">
+                                                                    <div class="col-7"
+                                                                        style="font-size: 12px;font-weight: 600;margin-right: -10px;">
+                                                                        Amount</div>
+
+                                                                    <div class="col-5"
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 0px;">
+                                                                        : ${{amount}}</div>
+                                                                </div>
+                                                                <div class="row p-2" style="">
+                                                                    <div class="col-7"
+                                                                        style="font-size: 12px;font-weight: 600;margin-right: -10px;">
+                                                                        Transaction Fee</div>
+
+                                                                    <div class="col-5"
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 0px;">
+                                                                        : ${{selectedInvoicesData.TxFee}}</div>
+                                                                </div>
+                                                                <div
+                                                                    style="border-bottom: 1px solid rgb(186, 189, 189);width: 80%;">
+                                                                </div>
+                                                                <div class="row p-2" style="">
+                                                                    <div class="col-7"
+                                                                        style="font-size: 12px;font-weight: 600;margin-right: -10px;">
+                                                                        Total</div>
+
+                                                                    <div class="col-5"
+                                                                        style="font-size: 12px;font-weight: 600;padding-left: 0px;">
+                                                                        : ${{paid}}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </ng-template>
+                                            </mat-menu>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

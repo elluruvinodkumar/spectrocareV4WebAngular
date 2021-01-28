@@ -1,0 +1,165 @@
+li.country:hover {
+	background-color: rgba(0, 0, 0, 0.05);
+}
+.selected-flag.dropdown-toggle:after {
+	content: none;
+}
+.flag-container.disabled {
+	cursor: default !important;
+}
+.intl-tel-input.allow-dropdown .flag-container.disabled:hover .selected-flag {
+	background: none;
+}
+.country-dropdown {
+	border: 1px solid #CCC;
+	width: fit-content;
+	padding: 1px;
+	border-collapse: collapse;
+}
+.search-container {
+	position: relative; 
+}
+.search-container input {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	padding-left: 10px;
+}
+.search-icon{
+	position: absolute;
+	z-index: 2;
+	width: 25px;
+	margin: 1px 10px;
+}
+.country-list {
+	position: relative;
+	border: none;
+}
+
+.intl-tel-input input#country-search-box {
+	padding-left: 6px;
+}
+
+.intl-tel-input.separate-dial-code .selected-flag,
+.intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-2 .selected-flag,
+.intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-3 .selected-flag,
+.intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-4 .selected-flag {
+	width: 93px;
+}
+
+.intl-tel-input.separate-dial-code input,
+.intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-2 input,
+.intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-3 input,
+.intl-tel-input.separate-dial-code.allow-dropdown.iti-sdc-4 input {
+	padding-left: 98px;
+}
+
+/* @media only screen and (min-width: 1440px) {
+	.signupForm .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel]:not(.adminProfile) {
+		width: 436px !important;
+	}
+  }
+
+  @media only screen and (max-width: 1366px) {
+	.signupForm .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel]:not(.adminProfile) {
+		width: 412px !important;
+	}
+	
+  }
+  
+  @media only screen and (max-width: 1024px) {
+	.signupForm .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel]:not(.adminProfile) {
+		width: 300px !important;
+	}
+  }
+
+  @media only screen and (max-width: 1440px) {
+	.adminProfile .adminProfilePh .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 452px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1366px) {
+	.adminProfile .adminProfilePh .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 444px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1024px) {
+	.adminProfile .adminProfilePh .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 304px !important;
+	}
+  } */
+ 
+
+  /* @media only screen and (max-width: 1440px) {
+	::ng-deep .adminProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 454px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1366px) {
+	::ng-deep .adminProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 446px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1024px) {
+	::ng-deep .adminProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 304px !important;
+	}
+  }
+
+  @media only screen and (max-width: 1440px) {
+	.home  .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 528px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1366px) {
+	.home  .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 518px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1024px) {
+	.home .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 304px !important;
+	}
+  }
+
+  @media only screen and (max-width: 1440px) {
+	.adminUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 414px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1366px) {
+	.adminUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 384px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1024px) {
+	.adminUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 304px !important;
+	}
+  }
+
+  @media only screen and (max-width: 1440px) {
+	.medicalUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 414px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1366px) {
+	.medicalUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 384px !important;
+	}
+  }
+  
+  @media only screen and (max-width: 1024px) {
+	.medicalUserProfile .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+		width: 304px !important;
+	}
+  } */

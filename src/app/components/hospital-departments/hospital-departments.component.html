@@ -1,0 +1,76 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div style="font-size: 14px;font-weight: 600;padding-bottom: 10px;color: #140202;">Hospital Department List</div>
+<div class="scroll tableFixHead">
+    <table class="table text-center " id="header-fixed">
+        <thead class=""
+            style="background-color: #3E454C ;color: white;border-radius: 6px;font-size: 15px;font-weight: 500;">
+            <tr class="" style="">
+                <!--medium font-weight: 300;font-size: 12px;-->
+                <th scope="col" class="border text-center">No</th>
+                <th scope="col" class="border  ">Department</th>
+                <th scope="col" class="border ">Location</th>
+                <th scope="col" class="border  text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="!(selectedData && selectedData.length)"
+                style="text-align: center;background-color: white;padding: 20px;">
+                <td style="text-align: center;font-size: 12px;font-weight: 600;" colspan="7">
+                    Don't have Departments
+                </td>
+            </tr>
+            <tr class=" small " style="background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 6px 12px #44444414;
+            border-radius: 6px;
+            opacity: 1;" *ngFor="let selectedDeptData of selectedData; let i = index">
+                <td scope="row" class="text-center" style="color:#000000">{{i+1}}</td>
+                <td class="" style="padding-left: 20px;color: #000000;">
+                    <input type="text" [value]="selectedDeptData.department" #department
+                        [ngClass]="{'custom-borders':!selectedDeptData.isAlter}"
+                        style="border: none;outline-style: none;background: transparent;">
+                </td>
+                <td class="" style="padding-left: 20px; color: #000000;">
+                    <input type="text" [value]="selectedDeptData.location" #location
+                        [ngClass]="{'custom-borders':!selectedDeptData.isAlter}"
+                        style="border: none;outline-style: none;background: transparent;">
+                </td>
+                <td class=" text-center" style="padding: 0px;color: #53B9C6;">
+                    <div *ngIf="selectedDeptData.isAlter" style="margin-top: 12px;">
+                        <img (click)="editDepartment(i)" src="../../../assets/images/ui/Icons/1x/Icon material-edit.png"
+                            width="13%" style="margin-right: 30px;" class="handCursor">
+                        <img (click)="removeService(i)"
+                            src="../../../assets/images/ui/Icons/1x/Icon material-delete.png" class="handCursor">
+                    </div>
+                    <div *ngIf="!selectedDeptData.isAlter">
+                        <button class="btn btn-sm" style="border: 1px solid #53b9c6;border-radius: 10px;color: #53B9C6;
+                            height: 30px;line-height: 1;padding-top: 2px;margin-top: 12px;width: 45%;"
+                            (click)="updatedIndexBasedValue(i,department,location)">save</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row py-2  " style="padding-left: 20px;">
+    <div style="padding-left: 54px;" (click)="addDepartmentToList()">
+        <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon ionic-ios-add-circle.png" width="20rem"
+            class="handCursor">
+        <span class="px-3 handCursor" style="font-size: 14px;font-weight: 500;color: #140202;">Add New List</span>
+    </div>
+</div>
+
+<p class="" style="font-size: 12px;padding: 20px 0px 20px 60px;color: #160505;">Last updated date :
+    {{presentDate}}
+    by {{userID}}</p>
+
+<div class="text-center justify-content-center p-0">
+    <div *ngIf="isLoading" style="display: flex; justify-content: center;">
+        <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" [diameter]="30">
+        </mat-progress-spinner>
+    </div>
+    <button type="submit" class="btn btn-sm  w-25"
+        style="font-weight:bold;font-size: 14px; background-color: #53B9C6; color: white;border-radius: 10px;"
+        (click)="addAdminPersonalSettingsSubmit()" *ngIf="!isLoading">Save</button>
+    <!--[disabled]="addAdminGenUserForm.invalid"-->
+</div>

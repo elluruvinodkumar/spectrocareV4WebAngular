@@ -1,0 +1,264 @@
+* {
+    font-family: "Muli reg", sans-serif !important;
+}
+
+.active {
+    /* border: 1px solid white !important; */
+    color: white !important;
+    /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+}
+
+.dateActive {
+    border: 1px solid red !important;
+    color: red !important;
+    /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+}
+
+.card {
+    border: none;
+}
+
+.profile-lable {
+    font-size: 13px;
+    font-weight: 600;
+    color: #140202;
+    padding: 10px 0 0 0;
+}
+
+.profile-input {
+    color: #140202;
+}
+
+.profile-textarea {
+    border: 1px solid #707070;
+}
+
+::ng-deep .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+    width: 16rem !important;
+    border: none !important;
+    background: transparent !important;
+    color: rgb(2, 2, 2) !important;
+    scroll-behavior: unset;
+    scroll-padding-inline: inherit;
+}
+
+::ng-deep .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+    outline: none;
+}
+
+::ng-deep .intl-tel-input .search-container input {
+    color: rgb(25, 28, 29) !important;
+}
+
+::ng-deep .intl-tel-input.separate-dial-code .selected-dial-code {
+    color: rgb(8, 8, 8) !important;
+}
+
+::ng-deep .intl-tel-input .selected-flag {
+    background: transparent !important;
+}
+
+::ng-deep .country-dropdown {
+    width: 18rem !important;
+}
+
+table, th, td {
+    border: 0 !important;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+::ng-deep .mat-menu-panel {
+    min-height: 48px !important;
+}
+
+button.mat-menu-item {
+    background-color: #f9f9f9;
+    color: #434343;
+}
+
+::ng-deep.mat-menu-content button:hover {
+    background: rgb(104, 104, 104) !important;
+    border-left: 5px solid #53b9c6;
+    color: white;
+}
+
+.radio-item input[type='radio'] {
+    visibility: hidden;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 5px;
+    padding: 0;
+}
+
+.radio-item input[type=radio]:before {
+    position: relative;
+    margin: 4px -25px -4px 0;
+    display: inline-block;
+    visibility: visible;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    /* border: 2px inset rgba(150,150,150,0.75); */
+    /* background: radial-gradient(ellipse at top left, rgb(255,255,255) 0%, rgb(250,250,250) 5%, rgb(230,230,230) 95%, rgb(225,225,225) 100%); */
+    border: 1px solid rgb(100, 100, 100);
+    background: transparent;
+    content: "";
+}
+
+.radio-item input[type=radio]:checked:after {
+    position: relative;
+    top: 0;
+    left: 9px;
+    display: inline-block;
+    visibility: visible;
+    border-radius: 6px;
+    width: 12px;
+    height: 12px;
+    /* background: radial-gradient(ellipse at top left, rgb(245,255,200) 0%, rgb(225,250,100) 5%, rgb(75,175,0) 95%, rgb(25,100,0) 100%); */
+    background: #53b9c6;
+    /* rgb(150, 211, 235); */
+    content: "";
+}
+
+.radio-item input[type=radio].true:checked:after {
+    /* background: radial-gradient(ellipse at top left, rgb(245,255,200) 0%, rgb(225,250,100) 5%, rgb(75,175,0) 95%, rgb(25,100,0) 100%); */
+    background: #3E454C;
+    /* rgb(150, 211, 235); */
+}
+
+.radio-item input[type=radio].false:checked:after {
+    background: radial-gradient(ellipse at top left, rgb(255, 225, 200) 0%, rgb(250, 200, 150) 5%, rgb(200, 25, 0) 95%, rgb(100, 25, 0) 100%);
+}
+
+.radio-item label {
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+/* setResponsive */
+
+@media only screen and (max-width: 767px) {
+    .setResponsive {
+        overflow-x: auto;
+    }
+}
+
+::ng-deep .modal.show .modal-dialog {
+    justify-content: center !important;
+}
+
+::ng-deep .modal-content {
+    width: 80% !important;
+}
+
+/* Checkbox styles starts here */
+
+.checkboxContainer {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.checkboxContainer input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid gray !important;
+}
+
+/* On mouse-over, add a grey background color */
+
+.checkboxContainer:hover input~.checkmark {
+    background-color: white;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.checkboxContainer input:checked~.checkmark {
+    background-color: #53b9c6;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+
+.checkboxContainer input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.checkboxContainer .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    /* -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg); */
+    transform: rotate(45deg);
+}
+
+/* Checkbox styles ends here */
+
+.border-change {
+    border: 1px solid #e2dfdf !important;
+}
+
+.scroll {
+    height: 35vh !important;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #53B9C6;
+}

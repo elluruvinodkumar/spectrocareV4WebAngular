@@ -1,0 +1,258 @@
+* {
+    font-family: "Muli reg", sans-serif !important;
+}
+
+.scroll {
+    height: 80vh !important;
+    overflow: auto;
+}
+
+.scroll::-webkit-scrollbar-track {
+    border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 50px;
+    background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #53B9C6;
+}
+
+@media (min-width:320px) {
+    /* smartphones, iPhone, portrait 480x320 phones */
+    .modal-title {
+        font-size: 22px !important;
+        font-weight: 500 !important;
+        color: #53B9C6 !important;
+    }
+    .title {
+        color: #110A0A !important;
+        font-size: 16px !important;
+        font-weight: 500;
+    }
+    .para2 {
+        font-size: 12px !important;
+        color: #53B9C6 !important;
+        font-weight: 500;
+    }
+    .para1 {
+        font-size: 12px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para3 {
+        font-size: 10px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para {
+        font-size: 10px !important;
+        color: #110A0A !important;
+    }
+    .dot-clr {
+        font-size: 16px !important;
+        color: #53B9C6 !important;
+        font-weight: bolder;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width:481px) {
+    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
+    .modal-title {
+        font-size: 23px !important;
+        font-weight: 500 !important;
+        color: #53B9C6 !important;
+    }
+    .title {
+        color: #110A0A !important;
+        font-size: 17px !important;
+        font-weight: 500;
+    }
+    .para2 {
+        font-size: 13px !important;
+        color: #53B9C6 !important;
+        font-weight: 500;
+    }
+    .para1 {
+        font-size: 13px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para3 {
+        font-size: 11px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para {
+        font-size: 11px !important;
+        color: #110A0A !important;
+    }
+    .dot-clr {
+        font-size: 18px !important;
+        color: #53B9C6 !important;
+        font-weight: bolder;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width:641px) {
+    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    .modal-title {
+        font-size: 24px !important;
+        font-weight: 500 !important;
+        color: #53B9C6 !important;
+    }
+    .title {
+        color: #110A0A !important;
+        font-size: 18px !important;
+        font-weight: 500;
+    }
+    .para2 {
+        font-size: 14px !important;
+        color: #53B9C6 !important;
+        font-weight: 500;
+    }
+    .para1 {
+        font-size: 14px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para3 {
+        font-size: 12px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para {
+        font-size: 12px !important;
+        color: #110A0A !important;
+    }
+    .dot-clr {
+        font-size: 20px !important;
+        color: #53B9C6 !important;
+        font-weight: bolder;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width:961px) {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .modal-title {
+        font-size: 25px !important;
+        font-weight: 500 !important;
+        color: #53B9C6 !important;
+    }
+    .title {
+        color: #110A0A !important;
+        font-size: 19px !important;
+        font-weight: 500;
+    }
+    .para2 {
+        font-size: 15px !important;
+        color: #53B9C6 !important;
+        font-weight: 500;
+    }
+    .para1 {
+        font-size: 15px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para3 {
+        font-size: 13px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para {
+        font-size: 13px !important;
+        color: #110A0A !important;
+    }
+    .dot-clr {
+        font-size: 22px !important;
+        color: #53B9C6 !important;
+        font-weight: bolder;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width:1025px) {
+    /* big landscape tablets, laptops, and desktops */
+    .modal-title {
+        font-size: 25px !important;
+        font-weight: 500 !important;
+        color: #53B9C6 !important;
+    }
+    .title {
+        color: #110A0A !important;
+        font-size: 19px !important;
+        font-weight: 500;
+    }
+    .para2 {
+        font-size: 15px !important;
+        color: #53B9C6 !important;
+        font-weight: 500;
+    }
+    .para1 {
+        font-size: 15px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para3 {
+        font-size: 13px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para {
+        font-size: 13px !important;
+        color: #110A0A !important;
+    }
+    .dot-clr {
+        font-size: 24px !important;
+        color: #53B9C6 !important;
+        font-weight: bolder;
+        margin-right: 5px;
+    }
+}
+
+@media (min-width:1281px) {
+    /* hi-res laptops and desktops */
+    .modal-title {
+        font-size: 26px !important;
+        font-weight: 500 !important;
+        color: #53B9C6 !important;
+    }
+    .title {
+        color: #110A0A !important;
+        font-size: 20px !important;
+        font-weight: 500;
+    }
+    .para2 {
+        font-size: 16px !important;
+        color: #53B9C6 !important;
+        font-weight: 500;
+    }
+    .para1 {
+        font-size: 16px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para3 {
+        font-size: 14px !important;
+        color: #110A0A !important;
+        font-weight: 500;
+    }
+    .para {
+        font-size: 14px !important;
+        color: #110A0A !important;
+    }
+    .dot-clr {
+        font-size: 26px !important;
+        color: #53B9C6 !important;
+        font-weight: bolder;
+        margin-right: 5px;
+    }
+}

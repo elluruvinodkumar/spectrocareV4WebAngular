@@ -1,0 +1,153 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 pb-3">
+            <h3 class="text-center shadow p-3">Admin General User Information</h3>
+        </div>
+        <form [formGroup]="adminGeneralUserProfileForm" (ngSubmit)="updateAdminGeneralUser()">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="identity">Identity</label>
+                                    <input type="text" class="form-control bg-light border-danger"
+                                        formControlName="identity" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="hospital_reg_num">Registration No</label>
+                                    <input type="text" class="form-control font-weight-bold bg-light border-danger"
+                                        formControlName="hospital_reg_num" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4">
+                                <div formGroupName="phoneNumber">
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend w-25">
+                                                <select class="form-control bg-light" id="sel"
+                                                    formControlName="countryCode">
+                                                    <option>+91</option>
+                                                    <option>+86</option>
+                                                    <option>+886</option>
+                                                    <option>+81</option>
+                                                </select>
+                                            </div>
+                                            <input type="text" class="form-control bg-light"
+                                                formControlName="phoneNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="userID">User ID</label>
+                                    <input type="text" class="form-control font-weight-bold bg-light border-danger"
+                                        formControlName="userID" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" class="form-control bg-light" formControlName="firstName">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" class="form-control bg-light" formControlName="lastName">
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="preferLanguage">Prefer Language</label>
+
+                                    <select class="form-control bg-light" id="sel1" formControlName="preferLanguage">
+                                        <option>English</option>
+                                        <option>Chinese</option>
+                                        <option>French</option>
+                                        <option>Spanish</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="emailID">Email ID</label>
+                                    <input type="text" class="form-control bg-light border-danger"
+                                        formControlName="emailID" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-2">
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="department">Department</label>
+                                    <!-- <input type="text" class="form-control bg-light"
+                                        formControlName="department"> -->
+                                    <select class="form-control bg-light" formControlName="department">
+                                        <option>Administrative</option>
+                                        <option>Receptionist</option>
+                                        <option>Pharmacy</option>
+                                        <option>Radiology</option>
+                                        <option>Paramedical</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="row justify-content-center">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success" *ngIf="isAdminSystmMngr">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

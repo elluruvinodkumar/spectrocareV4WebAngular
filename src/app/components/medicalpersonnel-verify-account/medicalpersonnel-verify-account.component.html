@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div>
+        <div class="row">
+            <img src="../../../assets/images/ui/Icons/2x/header@2x.png" width="100%" style="height: 20vh;">
+        </div>
+        <div class="row" style="padding: 25px 0px 25px 0px;justify-content: center;">
+            <div class="bodyWidth" style="padding: 0px;">
+                <form [formGroup]="medicalPersonnelAccountVerificationForm" (ngSubmit)="submit()">
+                    <div class="row">
+                        <div style="font-size: 28px;font-weight: 600;">MedicalPersonnel Account Verification</div>
+                    </div>
+                    <div *ngIf="!isLoading" class="row" style="padding: 0 0 10px 0;justify-content: center;">
+                        <div style="font-size: 15px;font-weight: 500;">Verification is going on...</div>
+                    </div>
+                    <div *ngIf="isLoading">
+                        <div *ngIf="!failure" style="text-align: center;padding: 17px 0px 17px 0;">
+                            <img src="../../../assets/images/ui/Icons/1x/adminsuccess.png"
+                                style="width: 30%;padding-bottom: 17px;"><br>
+                            <span style="font-size: 14px;font-weight: 600;">{{viewSuccessContent1}}</span><br>
+                            <span style="font-size: 12px;font-weight: 600;">{{successResponse}}</span><br>
+                        </div>
+                        <div *ngIf="failure" style="text-align: center;padding: 17px 0px 17px 0;">
+                            <img src="../../../assets/images/ui/Icons/1x/adminfail.png"
+                                style="width: 30%;padding-bottom: 17px;"><br>
+                            <span style="font-size: 14px;font-weight: 600;">{{viewFailureContent1}}</span><br>
+                            <span style="font-size: 12px;font-weight: 600;">{{failureResponse}}</span><br>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

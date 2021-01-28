@@ -1,0 +1,233 @@
+* {
+  font-family: "Muli reg", sans-serif !important;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: rgb(68, 65, 65);
+  /* padding: 12px 16px; */
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(62, 69, 76);
+  color: white;
+  border-left: 5px solid #53b8c5;
+  /* background-color: #e0dede; */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+*/ Modal Styles */ .modal-content {
+  background: transparent !important;
+  border: none !important;
+}
+
+.bg-Custom {
+  background-color: #60348a !important;
+  padding: 20px;
+  text-align: center;
+}
+
+.btn-clr {
+  /* background-color: #f66 !important;  */
+  background-color: #53b9c6 !important;
+  border: none !important;
+  outline: none !important;
+  padding: 8px 25px !important;
+}
+
+.modal-footer {
+  background-color: white !important;
+}
+
+.modal-header {
+  background-color: white;
+}
+
+.badge {
+  color: red;
+  position: relative;
+  margin-left: 60%;
+  margin-top: -60%;
+}
+
+.change-icon-color li .white {
+  display: none;
+}
+
+.change-icon-color li:hover .white {
+  display: inline;
+}
+
+.change-icon-color li:hover .black {
+  display: none;
+}
+
+/* Radio button */
+
+/* For Radio button */
+
+.radio-item input[type='radio'] {
+  visibility: hidden;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px 0 5px;
+  padding: 0;
+}
+
+.radio-item input[type=radio]:before {
+  position: relative;
+  margin: 4px -25px -4px 0;
+  display: inline-block;
+  visibility: visible;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  /* border: 2px inset rgba(150,150,150,0.75); */
+  /* background: radial-gradient(ellipse at top left, rgb(255,255,255) 0%, rgb(250,250,250) 5%, rgb(230,230,230) 95%, rgb(225,225,225) 100%); */
+  border: 1px solid #707070;
+  background: transparent;
+  content: "";
+}
+
+.radio-item input[type=radio]:checked:after {
+  position: relative;
+  top: 0;
+  left: 9px;
+  display: inline-block;
+  visibility: visible;
+  border-radius: 6px;
+  width: 12px;
+  height: 12px;
+  /* background: radial-gradient(ellipse at top left, rgb(245,255,200) 0%, rgb(225,250,100) 5%, rgb(75,175,0) 95%, rgb(25,100,0) 100%); */
+  background: rgb(150, 211, 235);
+  content: "";
+}
+
+.radio-item input[type=radio].true:checked:after {
+  /* background: radial-gradient(ellipse at top left, rgb(245,255,200) 0%, rgb(225,250,100) 5%, rgb(75,175,0) 95%, rgb(25,100,0) 100%); */
+  background: rgb(150, 211, 235);
+}
+
+.radio-item input[type=radio].false:checked:after {
+  background: radial-gradient(ellipse at top left, rgb(255, 225, 200) 0%, rgb(250, 200, 150) 5%, rgb(200, 25, 0) 95%, rgb(100, 25, 0) 100%);
+}
+
+.radio-item label {
+  display: inline-block;
+  height: 25px;
+  line-height: 25px;
+  margin: 0;
+  padding: 0;
+}
+
+/* For mat toggle buttton */
+
+::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 30px !important;
+}
+
+::ng-deep .mat-button-toggle-group-appearance-standard {
+  border: 1px solid #707070;
+}
+
+::ng-deep .mat-button-toggle {
+  border-right: 1px solid #707070;
+}
+
+::ng-deep .mat-button-toggle-checked {
+  background-color: #53b9c6 !important;
+  color: white !important;
+  border-style: none;
+  font-weight: bold;
+}
+
+.scrollService {
+  height: 20vh !important;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.scrollService::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.scrollService::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #F7F7F7;
+}
+
+.scrollService::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #53B9C6;
+}
+
+/* Buttons */
+
+.scrollService::-webkit-scrollbar-button:single-button {
+  background-color: #bbbbbb;
+  display: block;
+  border-style: none;
+  height: 12px;
+  width: 18px;
+  padding: 3px;
+}
+
+.scrollService::-webkit-scrollbar-button:vertical:decrement {
+  background-image: url(../../../assets/images/ui/Icons/2x/up-gray@2x.png);
+  background-repeat: no-repeat;
+  background-size: 0.7rem;
+}
+
+.scrollService::-webkit-scrollbar-button:vertical:increment {
+  background-image: url(../../../assets/images/ui/Icons/1x/downarrow-gray.png);
+  background-repeat: no-repeat;
+  background-size: 0.6rem;
+}
+
+/* Up */
+
+/* .scrollService::-webkit-scrollbar-button:single-button:vertical:decrement {
+  border-width: 0 8px 8px 8px;
+  border-color: transparent transparent #555555 transparent;
+}
+
+.scrollService::-webkit-scrollbar-button:single-button:vertical:decrement:hover {
+  border-color: transparent transparent transparent transparent !important;
+} */
+
+/* Down */
+
+/* .scrollService::-webkit-scrollbar-button:single-button:vertical:increment {
+  border-width: 8px 8px 0 8px;
+  border-color: #555555 transparent transparent transparent;
+} */
+
+.active {
+  /* border: 1px solid white !important; */
+  color: white !important;
+  background-color: #53b9c6 !important;
+  /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+}
+
+.active1 {
+  /* border: 1px solid white !important; */
+  color: white !important;
+  background-color: #53b9c6 !important;
+  /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+}

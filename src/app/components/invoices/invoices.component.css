@@ -1,0 +1,263 @@
+* {
+  font-family: "Muli reg", sans-serif !important;
+}
+
+table {
+  width: 100% !important;
+  border-collapse: separate;
+  border-spacing: 0 0.5em;
+}
+
+thead {
+  table-layout: fixed;
+}
+
+th {
+  margin: 15px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.tableFixHead {
+  overflow-y: auto;
+  height: 100px;
+}
+
+.tableFixHead thead th {
+  position: sticky;
+  top: 0;
+  background-color: #3E454C;
+  color: white;
+  z-index: 10;
+}
+
+::ng-deep .mat-tab-label .mat-tab-label-content {
+  font-weight: bold;
+  /* color: #2C3136; */
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background: rgb(82, 192, 211);
+  height: 3px;
+}
+
+::ng-deep .mat-select-panel {
+  background-color: #f9f9f9;
+}
+
+::ng-deep .mat-menu-panel {
+  background-color: #f9f9f9;
+  transform-origin: right bottom;
+}
+
+::ng-deep .mat-menu-content.menudata {
+  width: 15px !important;
+}
+
+::ng-deep.mat-menu-content button:hover {
+  background: rgb(104, 104, 104) !important;
+  border-left: 5px solid #53b8c5;
+  color: white;
+}
+
+::ng-deep .mat-select-panel {
+  width: 50% !important;
+  min-width: 50% !important;
+}
+
+/* ::ng-deep .cdk-overlay-pane {
+  transform: translateX(95px) translateY(-10px) !important;
+  top: 125px !important;
+} */
+
+::ng-deep .invoiceTypeSelect .mat-select-panel:not([class*=mat-elevation-z]) {
+  transform: translateX(120px) !important;
+}
+
+::ng-deep .mat-select-panel:not([class*=mat-elevation-z]) {
+  margin-left: auto;
+  margin-top: 32px;
+}
+
+::ng-deep .mat-select-panel .mat-option {
+  height: 30px !important;
+  padding: 2px 0px 2px 15px !important;
+}
+
+::ng-deep .mat-select-trigger {
+  border: transparent;
+  padding: 0px;
+}
+
+::ng-deep .mat-select-arrow {
+  color: black;
+}
+
+.btn-clr {
+  background-color: #f66 !important;
+  border: none !important;
+  outline: none !important;
+  padding: 8px 25px !important;
+}
+
+.card {
+  border: 1px solid #707070;
+}
+
+.card-header {
+  background-color: #f9f9f9;
+  color: #140202;
+}
+
+.headerTitle {
+  color: rgb(53, 50, 50);
+  background-color: rgb(167, 171, 172);
+  padding: 7px;
+}
+
+.headerPart {
+  background-color: #F8F8F8;
+}
+
+.cross {
+  color: black;
+}
+
+.calenderLogo {
+  margin-left: 280px;
+  margin-top: -28px;
+}
+
+.handCursor {
+  cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.scroll {
+  /* width: 700px !important; */
+  height: 65vh !important;
+  overflow: auto;
+}
+
+.scroll::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #F7F7F7;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #53B9C6;
+}
+
+.scrollService {
+  height: 30vh !important;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.scrollService::-webkit-scrollbar-track {
+  border-radius: 2px;
+}
+
+.scrollService::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #F7F7F7;
+}
+
+.scrollService::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #53B9C6;
+}
+
+/* .read:focus{
+    border: 1px solid #fff;
+  } */
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+  .tableData {
+    font-size: 8px;
+    padding: inherit;
+  }
+  .searchIcon {
+    margin-left: 70px;
+  }
+  .partOne {
+    padding-left: 40px;
+    padding-bottom: 5px;
+  }
+  .firstPart {
+    padding-bottom: 8px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+  .tableData {
+    font-size: 10px;
+    padding: inherit;
+  }
+  .searchIcon {
+    margin-left: 80px;
+  }
+  .partOne {
+    padding-left: 40px;
+    padding-bottom: 5px;
+  }
+  .firstPart {
+    padding-bottom: 8px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+  .tableData {
+    font-size: 12px;
+  }
+  .searchIcon {
+    margin-left: 85px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+  .tableData {
+    font-size: 12px;
+  }
+  .searchIcon {
+    margin-left: 145px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+  .tableData {
+    font-size: 12px;
+  }
+  .searchIcon {
+    margin-left: 150px;
+  }
+  .partOne {
+    padding-left: initial;
+    padding-bottom: 2px;
+  }
+}

@@ -1,0 +1,173 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+        <div class="w-100">
+            <mat-tab-group animationDuration="0ms" (selectedTabChange)="onTabChange($event)">
+                <mat-tab label="Personal Settings">
+                    <div class="container-fluid">
+                        <div class="row" style="background-color: #F8FCFD;">
+                            <div class="col-md-12 p-3">
+                                <div class="card ">
+                                    <div class="card-body p-2">
+                                        <div style="padding-top: 20px;padding-bottom: 40px;">
+                                            <div class="col-6" style="padding-left: 20px;">
+                                                <form [formGroup]="addAdminPersonalSettingsForm">
+                                                    <div class="" style="padding-bottom: 15px;">
+                                                        <label
+                                                            style="font-size: 13px; font-weight: 500;color: #140202;">Languages</label>
+                                                        <mat-select style="font-size: 14px;color: #090808;
+                                                        height: 35px;padding: 7px !important;"
+                                                            formControlName="language">
+                                                            <mat-option *ngFor="let letSearch of searchByValue"
+                                                                [value]="letSearch.viewValue">
+                                                                {{letSearch.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="" style="padding-bottom: 15px;">
+                                                        <label
+                                                            style="font-size: 13px; font-weight: 500;color: #140202;">Country</label>
+                                                        <mat-select style="font-size: 14px;border: 1px solid #CCCCCC;color: #090808;
+                                                        height: 35px;padding: 7px !important;"
+                                                            formControlName="country">
+                                                            <!--(selectionChange)="showData($event.value)" [value]="selected"-->
+                                                            <mat-option *ngFor="let country of countries"
+                                                                [value]="country.viewValue">
+                                                                {{country.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="" style="padding-bottom: 15px;">
+                                                        <label
+                                                            style="font-size: 13px; font-weight: 500;color: #140202;">Date
+                                                            Format</label>
+                                                        <mat-select style="font-size: 14px;border: 1px solid #CCCCCC;color: #090808;
+                                                        height: 35px;padding: 7px !important;"
+                                                            formControlName="dateFormat">
+                                                            <!--(selectionChange)="showData($event.value)" [value]="selected"-->
+                                                            <mat-option *ngFor="let dateFormat of dateFormat"
+                                                                [value]="dateFormat.viewValue">
+                                                                {{dateFormat.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="" style="padding-bottom: 15px;">
+                                                        <label
+                                                            style="font-size: 13px; font-weight: 500;color: #140202;">Time
+                                                            Format
+                                                            Type</label>
+                                                        <mat-select style="font-size: 14px;border: 1px solid #CCCCCC;color: #090808;
+                                                        height: 35px;padding: 7px !important;"
+                                                            formControlName="timeFormatType">
+                                                            <!--(selectionChange)="showData($event.value)" [value]="selected"-->
+                                                            <mat-option *ngFor="let timeFormat of timeFormatType"
+                                                                [value]="timeFormat.viewValue">
+                                                                {{timeFormat.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="" style="padding-bottom: 15px;">
+                                                        <label
+                                                            style="font-size: 13px; font-weight: 500;color: #140202;">Time
+                                                            Format</label>
+                                                        <mat-select style="font-size: 14px;border: 1px solid #CCCCCC;color: #090808;
+                                                        height: 35px;padding: 7px !important;"
+                                                            formControlName="timeFormat">
+                                                            <!--(selectionChange)="showData($event.value)" [value]="selected"-->
+                                                            <mat-option *ngFor="let time of timeFormat"
+                                                                [value]="time.viewValue">
+                                                                {{time.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                    <div class="" style="padding-bottom: 15px;">
+                                                        <label
+                                                            style="font-size: 13px; font-weight: 500;color: #140202;">Unit</label>
+                                                        <mat-select style="font-size: 14px;border: 1px solid #CCCCCC;color: #090808;
+                                                        height: 35px;padding: 7px !important;" formControlName="unit">
+                                                            <!--(selectionChange)="showData($event.value)" [value]="selected"-->
+                                                            <mat-option *ngFor="let unit of unit"
+                                                                [value]="unit.viewValue">
+                                                                {{unit.viewValue}}
+                                                            </mat-option>
+                                                        </mat-select>
+                                                    </div>
+                                                </form>
+                                                <div class="text-center justify-content-center  "
+                                                    style="padding-top: 10px;">
+                                                    <div *ngIf="isLoading"
+                                                        style="display: flex; justify-content: center;">
+                                                        <mat-progress-spinner class="example-margin" color="primary"
+                                                            mode="indeterminate" [diameter]="30">
+                                                        </mat-progress-spinner>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-sm  w-25" style="font-weight: bold;font-size: 14px; background-color: #53B9C6; 
+                                                            color: white;border-radius: 10px;height: 30px;"
+                                                        (click)="addAdminPersonalSettingsSubmit()"
+                                                        *ngIf="!isLoading">Save</button>
+                                                    <!--[disabled]="addAdminGenUserForm.invalid"-->
+                                                </div>
+
+                                            </div>
+                                            <div class="col-6"></div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Hospital Settings">
+                    <div class="container-fluid">
+                        <div class="row" style="background-color: #F8FCFD;">
+                            <div class="col-md-12 p-3">
+                                <div class="card ">
+                                    <div class="card-body p-2">
+                                        <div style="padding-top: 20px;padding-bottom: 40px;">
+                                            <div class="row" style="padding-bottom: 20px;">
+                                                <div class="col-6" style="padding-left: 20px;">
+                                                    <button class="btn btn-sm mr-1 " style="width: 30%; height: 35px; background-color: #3E454C ;
+                                                        font-size: 15px;font-weight: 500;color: #8D8D8D;"
+                                                        [ngClass]="{ 'active' : isValue == 1 }"
+                                                        (click)="callHospitalDepartments()">Department</button>
+                                                    <button class="btn btn-sm  mr-1 " style="width: 30%; height: 35px; background-color: #3E454C ;
+                                                        font-size: 15px;font-weight: 500;color: #8D8D8D;"
+                                                        [ngClass]="{ 'active' : isValue == 2 }"
+                                                        (click)="callHospitalRoles()">Hospital
+                                                        Roles</button>
+                                                    <button class="btn btn-sm mr-1 " style="width: 30%; height: 35px; background-color: #3E454C ;
+                                                        font-size: 15px;font-weight: 500;color: #8D8D8D;"
+                                                        [ngClass]="{ 'active' : isValue == 3 }"
+                                                        (click)="callServiceFees()">Service
+                                                        Fees</button>
+                                                </div>
+                                                <div class="col-6"></div>
+                                            </div>
+                                            <div class="row" style="padding-left: 20px;">
+                                                <div class="col-12">
+                                                    <div *ngIf="isViewHospitalDepartment">
+                                                        <app-hospital-departments></app-hospital-departments>
+                                                    </div>
+                                                    <div *ngIf="isViewHospitalRoles">
+                                                        <app-hospital-roles></app-hospital-roles>
+                                                    </div>
+                                                    <div *ngIf="isViewHospitalServiceFees">
+                                                        <app-hospital-fees></app-hospital-fees>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

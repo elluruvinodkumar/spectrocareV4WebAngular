@@ -1,0 +1,359 @@
+<div class="container-fluid">
+    <div>
+        <div class="row">
+            <img src="../../../assets/images/ui/Icons/2x/header@2x.png" width="100%" style="height: 20vh;">
+        </div>
+        <div class="row" style="padding: 25px 0px 25px 0px;justify-content: center;">
+            <div class="col-3"></div>
+            <div class="col-6 bodyWidth" style="">
+
+                <div class="px-3">
+                    <div class="row pb-2">
+                        <div class="col-md-5"
+                            style="font-size: 13px; font-weight: 600;color: #302e2e;padding-left: 2px;">
+                            Appointment Date & Time
+                        </div>
+                        <div class="col-md-3" style="font-size: 12px;padding-left: inherit;">
+                            <div class="row">
+                                <img src="../../../assets/images/ui/Icons/1x/calender.png"
+                                    style="max-width: 15%;margin-right: 5px;">
+                                <div style="padding-top: 3px;color: #302e2e;font-weight: 600;">
+                                    {{(patient.appointmentDetails.appointmentDate * 1000 | date: 'dd/MM/yyyy') || (patient.appointmentDetails.appointmentDate)}}
+                                </div><!-- | date: 'dd-MM-yyyy'-->
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="font-size: 12px;padding-left: inherit;">
+                            <div class="row">
+                                <img src="../../../assets/images/ui/Icons/1x/Icon-feather-clock.png"
+                                    style="max-width: 20%;margin-right: 5px;">
+                                <div style="padding-top: 3px;color: #302e2e;font-weight: 600;">
+                                    {{patient.appointmentDetails.appointmentTime}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="border: 1px solid #707070;padding: 20px 10px 20px 10px;">
+                        <div class="col-md-4" style="align-self: center;">
+                            <div class=""
+                                style="border-radius: 50% !important;width: 60px;height: 60px;padding-bottom: 5px;margin-left: 33px;">
+                                <img class=""
+                                    style=" border: 2px solid rgb(150, 211, 235);border-radius: 50%;width: 60px;height: 60px;min-width: 60px;min-height: 60px;"
+                                    src="{{serverURL+patient.patientDetails.profilePic}}"
+                                    onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                            </div>
+                            <button class="btn btn-sm"
+                                style="margin-top: 5px; background-color: #53B9C6;font-size: 12px;font-weight: 600;color: white;border-radius: 10px;">View
+                                Medical Record</button>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="row" style="padding: 5px;">
+                                <div class="col-md-5">
+                                    <div style="font-size: 12px;font-weight: 600;color: #302e2e;">
+                                        Patient
+                                        Name</div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div style="font-size: 12px;color: #464444;">
+                                        {{patient.patientDetails.firstName}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row " style="padding: 5px;">
+                                <div class="col-md-5">
+                                    <div style="font-size: 12px;font-weight: 600;color: #302e2e;">
+                                        Email
+                                        Address</div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div style="font-size: 12px;color: #464444;">
+                                        {{patient.patientDetails.emailID}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row " style="padding: 5px;">
+                                <div class="col-md-5">
+                                    <div style="font-size: 12px;font-weight: 600;color: #302e2e;">
+                                        Phone
+                                        Number</div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div style="font-size: 12px;color: #464444;">
+                                        {{patient.patientDetails.phoneNumber.phoneNumber}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row " style="padding: 5px;">
+                                <div class="col-md-5">
+                                    <div style="font-size: 12px;font-weight: 600;color: #302e2e;">
+                                        Reason
+                                        for Visit</div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div style="font-size: 12px;color: #464444;">
+                                        {{patient.appointmentDetails.reasonForVisit}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row " style="padding: 5px;">
+                                <div class="col-md-5">
+                                    <div style="font-size: 12px;font-weight: 600;color: #302e2e;">
+                                        Notes
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div style="font-size: 12px;color: #464444;">--------
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="" style="padding: 10px;">
+                        <div class="row p-1">
+                            <div class="col-md-4">
+                                <div style="font-size: 12px; font-weight: 600;color: #302e2e;">
+                                    Appointment
+                                    Type</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="font-size: 12px;color: #464444;">
+                                    {{patient.appointmentDetails.visitType}} consultation
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-md-4">
+                                <div style="font-size: 12px; font-weight: 600;color: #302e2e;">
+                                    Doctor Name
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="font-size: 12px;color: #464444;">
+                                    {{patient.doctorDetails.profile.userProfile.firstName}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-md-4">
+                                <div style="font-size: 12px; font-weight: 600;color: #302e2e;">
+                                    Departmet
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="font-size: 12px;color: #464444;">
+                                    {{patient.doctorDetails.profile.userProfile.department}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row p-1">
+                            <div class="col-md-4">
+                                <div style="font-size: 12px; font-weight: 600;color: #302e2e;">
+                                    Status</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="font-size: 12px;font-weight: 600;"
+                                    [ngClass]="{'text-danger': patient.appointmentDetails.appointmentStatus === 'Cancelled',
+                                        'text-success': patient.appointmentDetails.appointmentStatus === 'Accepted',
+                                        'text-warning': patient.appointmentDetails.appointmentStatus === 'Waiting for confirmation'}">
+                                    {{patient.appointmentDetails.appointmentStatus}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+</div>
+
+<ng-template #viewSuccessContent let-modal>
+
+    <div class="modal-header" style="background-color: #53B9C6;color: white;font-weight: bold;">
+        <span class="modal-title justify-content-center" id="modal-basic-title">Cancel
+            Appointment</span>
+        <img style="width:18px;cursor: pointer;" class="crossImg" (click)="modal.dismiss('Cross click')"
+            src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+    </div>
+    <div class="modal-body" style="height: 40vh ;">
+        <form [formGroup]="cancelPatientAppointmentForm">
+            <div class="py-2">
+                <span style="font-size: 14px;font-weight: 600;color: #302e2e;">Reason
+                    for
+                    Cancellation</span>
+            </div>
+            <select
+                style="border-radius: 5px; margin-right: -40px; height: 30px;font-size: 12px;outline: none;border: 1px solid #707070;"
+                class=" form-control" formControlName="cancelReason">
+                <!--formControlName="reasonForCancel"-->
+                <option *ngFor="let reasonForCancel of reasonForCancel" [value]="reasonForCancel.value">
+                    {{reasonForCancel.viewValue}}
+                </option>
+            </select>
+            <div class="row" style="padding: 20px 0px 0px 20px !important; ">
+                <img src="../../../assets/images/ui/Icons/patient-medical-module/Icon awesome-check-circle.png"
+                    width="30rem" class="pr-2">
+                <span class="pr-2" style="font-size: 14px;font-weight: 600;color: #302e2e;">Delete
+                    the appointment permanently</span>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <div style="text-align: center;" class="py-2">
+            <!-- <div *ngIf="isLoading" style="display: flex; justify-content: center; padding-bottom: 5px;">
+                <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" [diameter]="30">
+                </mat-progress-spinner>
+            </div> -->
+            <button class="btn btn-sm mr-3" style="border: 1px solid #707070; font-weight: 500;font-size: medium; background-color: white; 
+                    color: black;height: 30px;border-radius: 10px;line-height: 1;padding: 0px 20px;"
+                (click)="modal.close('Close click')">Close
+            </button>
+            <button class="btn btn-sm"
+                style="outline-style: none; font-weight: 500;font-size: medium; background-color: #53B9C6; color: white;height: 30px;line-height: 1;border-radius: 10px;padding: 0px 20px;"
+                (click)="cancelAppointment()">Cancel Appointment
+            </button>
+        </div>
+    </div>
+
+</ng-template>
+<ng-template #viewFailureContent let-modal>
+
+    <div class="modal-header p-2  justify-content-end"
+        style="background-color:white; color: mintcream;border-bottom: transparent;">
+        <div class="matIcon pr-3">
+            <mat-icon (click)="modal.dismiss('Cross click')" style="cursor: pointer;"><img
+                    src="../../../assets/images/ui/Icons/1x/cancel.png"></mat-icon>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="" style="text-align: center;padding: 17px 0px 17px 0;">
+            <img src="../../../assets/images/ui/Icons/1x/fail.png" style="width: 30%;padding-bottom: 17px;"><br>
+            <span style="font-size: 14px;font-weight: 600;">{{viewFailureContent1}}</span><br>
+            <span style="font-size: 12px;font-weight: 600;">{{failureResponse}}</span><br>
+            <!-- <span style="font-size: 12px;font-weight: 500;">{{viewFailureContent2}}</span> -->
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #viewAcceptSuccessContent let-modal>
+
+    <div class="modal-header p-2  justify-content-end"
+        style="background-color:white; color: mintcream;border-bottom: transparent;">
+        <div class="matIcon pr-3">
+            <mat-icon (click)="modal.dismiss('Cross click')" style="cursor: pointer;"><img
+                    src="../../../assets/images/ui/Icons/1x/cancel.png"></mat-icon>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class=" " style="text-align: center;padding: 17px 0px 17px 0;">
+            <img src="../../../assets/images/ui/Icons/1x/success.png" style="width: 30%;padding-bottom: 17px;"><br>
+            <span style="font-size: 14px;font-weight: 600;">{{viewSuccessContent2}}</span><br>
+            <span style="font-size: 12px;font-weight: 600;">{{successResponse}}</span><br>
+            <!-- <span style="font-size: 12px;font-weight: 500;">{{viewSuccessContent2}}</span> -->
+        </div>
+    </div>
+    <div class="modal-footer justify-content-center p-2" style="border-top: transparent;">
+    </div>
+
+</ng-template>
+<ng-template #viewAcceptFailureContent let-modal>
+
+    <div class="modal-header p-2  justify-content-end"
+        style="background-color:white; color: mintcream;border-bottom: transparent;">
+        <div class="matIcon pr-3">
+            <mat-icon (click)="modal.dismiss('Cross click')" style="cursor: pointer;"><img
+                    src="../../../assets/images/ui/Icons/1x/cancel.png"></mat-icon>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="" style="text-align: center;padding: 17px 0px 17px 0;">
+            <img src="../../../assets/images/ui/Icons/1x/fail.png" style="width: 30%;padding-bottom: 17px;"><br>
+            <span style="font-size: 14px;font-weight: 600;">{{viewFailureContent2}}</span><br>
+            <span style="font-size: 12px;font-weight: 600;">{{failureResponse}}</span><br>
+            <!-- <span style="font-size: 12px;font-weight: 500;">{{viewFailureContent2}}</span> -->
+        </div>
+    </div>
+
+</ng-template>
+
+<ng-template #viewRescheduleSuccessContent let-modal>
+
+    <div class="modal-header p-2  justify-content-end"
+        style="background-color:white; color: mintcream;border-bottom: transparent;">
+        <div class="matIcon pr-3">
+            <mat-icon (click)="modal.dismiss('Cross click')" style="cursor: pointer;"><img
+                    src="../../../assets/images/ui/Icons/1x/cancel.png"></mat-icon>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class=" " style="text-align: center;padding: 17px 0px 17px 0;">
+        </div>
+
+        <form [formGroup]="patientProfileForm">
+            <div class="row pb-0">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="label" style="color: #140202;">Time</label>
+                        <input type="time" style="
+                    font-size: 12px;
+                    border-radius: 5px;
+                    height: 30px;
+                    color: #140202;
+                    border: 1px solid #cccccc;
+                  " class="form-control bg-white" formControlName="time" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="label" style="color: #140202;">Date</label>
+                        <input type="date" style="
+                    font-size: 12px;
+                    border-radius: 5px;
+                    height: 30px;
+                    color: #140202;
+                    border: 1px solid #cccccc;
+                  " class="form-control bg-white" formControlName="date" />
+                        <!--(input)="onSearchChange1($event.target.value)"-->
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="modal-footer justify-content-center">
+        <div style="text-align: center;" class="py-2">
+            <!-- <div *ngIf="isLoading" style="display: flex; justify-content: center; padding-bottom: 5px;">
+                <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" [diameter]="30">
+                </mat-progress-spinner>
+            </div> -->
+            <button class="btn btn-sm mr-3" style="border: 1px solid #707070; font-weight: 500;font-size: medium; background-color: white; 
+                    color: black;height: 30px;border-radius: 10px;line-height: 1;padding: 0px 20px;"
+                (click)="modal.close('Close click')">Close
+            </button>
+            <button class="btn btn-sm"
+                style="outline-style: none; font-weight: 500;font-size: medium; background-color: #53B9C6; color: white;height: 30px;line-height: 1;border-radius: 10px;padding: 0px 20px;"
+                (click)="cancelAppointment()">Reschedule Update
+            </button>
+        </div>
+    </div>
+</ng-template>
+<ng-template #viewRescheduleFailureContent let-modal>
+
+    <div class="modal-header p-2  justify-content-end"
+        style="background-color:white; color: mintcream;border-bottom: transparent;">
+        <div class="matIcon pr-3">
+            <mat-icon (click)="modal.dismiss('Cross click')" style="cursor: pointer;"><img
+                    src="../../../assets/images/ui/Icons/1x/cancel.png"></mat-icon>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div class="" style="text-align: center;padding: 17px 0px 17px 0;">
+            <img src="../../../assets/images/ui/Icons/1x/adminfail.png" style="width: 30%;padding-bottom: 17px;"><br>
+            <span style="font-size: 14px;font-weight: 600;">{{viewFailureContent3}}</span><br>
+            <span style="font-size: 12px;font-weight: 600;">{{failureResponse}}</span><br>
+            <!-- <span style="font-size: 12px;font-weight: 500;">{{viewFailureContent2}}</span> -->
+        </div>
+    </div>
+
+</ng-template>

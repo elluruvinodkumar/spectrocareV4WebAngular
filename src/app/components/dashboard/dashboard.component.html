@@ -1,0 +1,283 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"></ngx-loading>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-12 p-0">
+
+            <app-header [titleData]="titleArray"></app-header>
+
+            <div class="container p-3" style="background-color: #F5F8FA;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card " style="height: 17vh;box-shadow: 0px 3px 6px #00000029">
+                            <div class="card-body">
+                                <div style="display: block;">
+                                    <div style="padding-bottom: 5px;">
+                                        <span
+                                            style="font-size: 18px;font-weight: bold;color: #3e454c;">{{listSize}}</span>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 14px;font-weight: 500;color: #1c1919;">Total
+                                            Patients</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card " style="height: 17vh;box-shadow: 0px 3px 6px #00000029">
+                            <div class="card-body">
+                                <div style="display: block;">
+                                    <div style="padding-bottom: 5px;">
+                                        <span
+                                            style="font-size: 18px;font-weight: bold;color: #3e454c;">{{medicalPersonnellistSize}}</span>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 14px;font-weight: 500;color: #1c1919;">Total Medical
+                                            Staffs</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card " style="height: 17vh;box-shadow: 0px 3px 6px #00000029">
+                            <div class="card-body">
+                                <div style="display: block;">
+                                    <div style="padding-bottom: 5px;">
+                                        <span
+                                            style="font-size: 18px;font-weight: bold;color: #3e454c;">{{appointmentsListSize}}</span>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 14px;font-weight: 500;color: #1c1919;">Total Appointment
+                                            Today</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card " style="height: 17vh;box-shadow: 0px 3px 6px #00000029">
+                            <div class="card-body">
+                                <div style="display: block;">
+                                    <div style="padding-bottom: 5px;">
+                                        <span style="font-size: 18px;font-weight: bold;color: #3e454c;">10</span>
+                                    </div>
+                                    <div>
+                                        <span style="font-size: 14px;font-weight: 500;color: #1c1919;">Avg. Patient per
+                                            Doctor</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="padding: 10px 0px 10px 0px;">
+                    <div class="col-md-9">
+                        <div class="card " style="height: 60vh;box-shadow: 0px 3px 6px #00000029">
+                            <div class="card-body">
+                                <div style="display: block;">
+                                    <div class="row">
+                                        <div class="col-md-4" style="justify-content: start;">
+                                            <div style="padding-bottom: 5px;">
+                                                <span style="font-size: 18px;font-weight: bold;color: #3e454c;">Total
+                                                    Progress</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: 12px;font-weight: 500;color: #1c1919;">Showing
+                                                    status from the last Year</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: end;">
+                                            <!--FormGroup-->
+                                            <div class="container radio-item row"
+                                                style="justify-content: space-around;">
+                                                <div class="col-6" style="padding-left: 0;margin: inherit;">
+                                                    <label class="radio-inline"
+                                                        style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                        <input id="Radios1" type="radio" name="viewOne" value="Online"
+                                                            checked="checked">
+                                                        &nbsp; Online
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-6" style="padding-left: 0;margin: inherit;">
+                                                    <label class="radio-inline"
+                                                        style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                        <input id="Radios2" type="radio" name="viewOne"
+                                                            value="Onsite">&nbsp;
+                                                        Onsite
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="justify-content: end;">
+                                            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                                <mat-button-toggle
+                                                    style="color: #1c1919;font-size: 12px;font-weight: bold;"
+                                                    [ngClass]="{ active: isValue == 1 }" (click)="callLastWeek()">Last
+                                                    week</mat-button-toggle>
+                                                <mat-button-toggle
+                                                    style="color: #1c1919;font-size: 12px;font-weight: bold;"
+                                                    [ngClass]="{ active: isValue == 2 }" (click)="callLastMonth()">Last
+                                                    month</mat-button-toggle>
+                                                <mat-button-toggle
+                                                    style="color: #1c1919;font-size: 12px;font-weight: bold;"
+                                                    [ngClass]="{ active: isValue == 3 }" (click)="callYear()">Year
+                                                </mat-button-toggle>
+                                            </mat-button-toggle-group>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-top: 10px;">
+                                        <div class="col-md-12">
+                                            <canvas baseChart width="100%" height="35px" [datasets]="barChartData"
+                                                [colors]="barChartColors" [labels]="barChartLabels"
+                                                [options]="barChartOptions" [plugins]="barChartPlugins"
+                                                [legend]="barChartLegend" [chartType]="barChartType">
+                                            </canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card " style="height: 60vh;">
+                            <div class="card-body" style="padding: 0px;">
+                                <div style="display: block;">
+                                    <div class="row" style="background-color: #f1f1f1;
+                                    padding: 10px;
+                                    margin: auto;">
+                                        <div style="font-size: 14px;font-weight: bold;color: #140202;">Patient By Gender
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-top: 30px;">
+                                        <canvas baseChart width="100%" height="35px" [datasets]="pieChartData"
+                                            [colors]="pieChartColors" [labels]="pieChartLabels"
+                                            [options]="pieChartOptions" [plugins]="pieChartPlugins"
+                                            [legend]="pieChartLegend" [chartType]="pieChartType">
+                                        </canvas>
+                                    </div>
+
+                                    <div class="row radio-item"
+                                        style="margin: auto;text-align: center;padding: 50px 30px 30px 30px;">
+                                        <div class="" style="margin-right: 5px;">
+                                            <label class="radio-inline"
+                                                style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                <input type="radio" name="gender" checked="checked"> &nbsp; Male
+                                            </label>
+                                        </div>
+
+                                        <div class="" style="padding-left: 0;margin: inherit;">
+                                            <label class="radio-inline"
+                                                style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                <input type="radio" name="gender">&nbsp; Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="padding: 10px 0px 10px 0px;">
+                    <div class="col-md-9">
+                        <div class="card " style="height: 60vh;box-shadow: 0px 3px 6px #00000029">
+                            <div class="card-body">
+                                <div style="display: block;">
+                                    <div class="row">
+                                        <div class="col-md-4" style="justify-content: start;">
+                                            <div style="padding-bottom: 5px;">
+                                                <span style="font-size: 18px;font-weight: bold;color: #3e454c;">Total
+                                                    Progress</span>
+                                            </div>
+                                            <div>
+                                                <span style="font-size: 12px;font-weight: 500;color: #1c1919;">Showing
+                                                    status from the last Year</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="text-align: end;">
+                                            <div class="row radio-item">
+                                                <div class="col-6" style="padding-left: 0;margin: inherit;">
+                                                    <label class="radio-inline"
+                                                        style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                        <input type="radio" name="button2" checked="checked"> &nbsp;
+                                                        Urinalysis
+                                                    </label>
+                                                </div>
+
+                                                <div class="col-6" style="padding-left: 0;margin: inherit;">
+                                                    <label class="radio-inline"
+                                                        style="font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                        <input type="radio" name="button2">&nbsp; Blood Test
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4" style="justify-content: end;">
+                                            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                                                <mat-button-toggle
+                                                    style="color: #1c1919;font-size: 12px;font-weight: bold;"
+                                                    [ngClass]="{ active1: isValue1 == 4 }" (click)="callLastWeek1()">
+                                                    Last
+                                                    week</mat-button-toggle>
+                                                <mat-button-toggle
+                                                    style="color: #1c1919;font-size: 12px;font-weight: bold;"
+                                                    [ngClass]="{ active1: isValue1 == 5 }" (click)="callLastMonth1()">
+                                                    Last
+                                                    month</mat-button-toggle>
+                                                <mat-button-toggle
+                                                    style="color: #1c1919;font-size: 12px;font-weight: bold;"
+                                                    [ngClass]="{ active1: isValue1 == 6 }" (click)="callYear1()">Year
+                                                </mat-button-toggle>
+                                            </mat-button-toggle-group>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding-top: 10px;">
+                                        <div class="col-md-12">
+                                            <canvas baseChart width="100%" height="35px" [datasets]="lineChartData"
+                                                [colors]="lineChartColors" [labels]="lineChartLabels"
+                                                [options]="lineChartOptions" [plugins]="barChartPlugins"
+                                                [legend]="lineChartLegend" [chartType]="lineChartType">
+                                            </canvas>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card " style="height: 60vh;">
+                            <div class="card-body" style="padding: 0px;">
+                                <div style="display: block;">
+                                    <div class="row" style="background-color: #f1f1f1;
+                                    padding: 10px;
+                                    margin: auto;">
+                                        <div style="font-size: 14px;font-weight: bold;color: #140202;">Patient By
+                                            Department</div>
+                                    </div>
+                                    <div style="padding: 20px 10px 20px 20px;" class="scrollService">
+                                        <div *ngFor="let selectedDepartment of patientByDepartment ; let i = index">
+                                            <div class="row">
+                                                <div class="col-md-8">{{selectedDepartment.name}}</div>
+                                                <div class="col-md-4">{{selectedDepartment.patients}}</div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div>

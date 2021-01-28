@@ -1,0 +1,189 @@
+* {
+  font-family: "Muli-Bold", sans-serif !important;
+}
+
+button {
+  outline: none !important;
+}
+
+.loginbtn {
+  background-color: #53B9C6;
+  border-radius: 10px;
+  height: 30px;
+  font-weight: bold;
+  border-style: none;
+  color: white;
+}
+
+.close {
+  outline: none !important;
+}
+
+.active {
+  /* border: 1px solid white !important; */
+  color: black !important;
+  /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+}
+
+.modal-footer {
+  background-color: white !important;
+}
+
+.modal-header {
+  background-color: white;
+}
+
+.field-icon3 {
+  float: right;
+  margin-left: -25px;
+  margin-top: 0px;
+  position: relative;
+  z-index: 2;
+}
+
+.edit {
+  float: right;
+  margin-top: 20px;
+  margin-right: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.changepwd {
+  float: left;
+  margin-top: 140px;
+  position: relative;
+  z-index: 1;
+}
+
+::ng-deep .example-full-width {
+  width: 100% !important;
+  padding: 5px;
+}
+
+table {
+  width: 100% !important;
+}
+
+::ng-deep .adminProfile .mat-form-field {
+  width: 100% !important;
+}
+
+::ng-deep .mat-select {
+  border: transparent !important;
+}
+
+::ng-deep .mat-select-value {
+  font-size: 16px !important;
+  font-family: "Muli-Regular" !important;
+}
+
+::ng-deep .adminProfile .mat-form-field .mat-input-element {
+  font-size: 16px !important;
+  font-family: "Muli-Regular" !important;
+}
+
+::ng-deep .adminProfile .mat-form-field .mat-form-field-label {
+  color: #160505 !important;
+  font-size: 16px;
+}
+
+::ng-deep .adminProfile .mat-form-field .mat-form-field-underline {
+  background-color: rgba(12, 12, 12, 0.5) !important;
+  width: 100% !important;
+}
+
+::ng-deep .adminProfile .mat-form-field .mat-form-field-ripple {
+  background-color: #53B9C6 !important;
+}
+
+::ng-deep .adminProfile .mat-form-field .mat-form-field-required-marker {
+  color: #53B9C6 !important;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-focused .mat-form-field-label {
+  color: #160505 !important;
+  font-size: 16px;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #53B9C6 !important;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-focused .mat-form-field-required-marker {
+  color: #53b9c6 !important;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-focused .mat-input-element {
+  font-size: 16px !important;
+  font-family: "Muli-Regular" !important;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-form-field-invalid .mat-input-element {
+  font-size: 16px !important;
+  font-family: "Muli-Regular" !important;
+  color: red !important;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+  color: #A5A2A2 !important;
+  font-size: 16px !important;
+  color: red !important;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
+  color: red !important;
+}
+
+::ng-deep .adminProfile .mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+  background-color: red !important;
+}
+
+/* From example ends here */
+
+::ng-deep .adminProfile .intl-tel-input.separate-dial-code .selected-dial-code {
+  /* color: #A5A2A2; */
+  font-size: 16px !important;
+  font-family: "Muli-Regular" !important;
+}
+
+::ng-deep .adminProfile .phno .adminProfilePh .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
+  border: none !important;
+  background: transparent !important;
+  border-bottom: 1px solid rgba(12, 12, 12, 0.5) !important;
+  /* color: #A5A2A2; */
+  scroll-behavior: unset;
+  scroll-padding-inline: inherit;
+  font-size: 16px !important;
+  font-family: "Muli-Regular" !important;
+}
+
+/* ::ng-deep .adminProfile .intl-tel-input .search-container input {
+  color: #030000 !important;
+} */
+
+::ng-deep .adminProfile .country-dropdown {
+  width: 25rem !important;
+}
+
+::ng-deep .adminProfile .intl-tel-input.separate-dial-code .selected-flag {
+  background-color: transparent;
+}
+
+.crossImg {
+  cursor: pointer;
+}
+
+.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid #707070 !important;
+  border-right: none !important;
+}
+
+.form-control1:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid #707070 !important;
+  border-left: none !important;
+}
