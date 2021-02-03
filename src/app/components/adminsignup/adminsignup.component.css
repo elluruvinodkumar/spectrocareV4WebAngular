@@ -371,3 +371,21 @@ button:hover {
   margin: 0;
   padding: 0;
 }
+
+@media only screen and (max-width: 767px) {
+  .logo-text {
+    margin: auto;
+  }
+  .release {
+    display: block !important;
+    padding-bottom: 25px;
+    /* margin: auto !important; */
+  }
+  .list {
+    text-align: center !important;
+  }
+}
+
+.release {
+  display: none;
+}

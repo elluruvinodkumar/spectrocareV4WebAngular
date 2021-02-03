@@ -34,6 +34,12 @@ export class MedicalPersonnelService {
       fetchAppointmentsRecordsObj, { headers: { 'x-access-token': accessToken } });
   }
 
+  //http://34.231.177.197:3000/api/patient/testresult/fetchtestresults
+  fetchDoctorTestRecordsAPICall(data, accessToken): any {
+    return this._http.post(this.baseURL + "/api/patient/testresult/fetchtestresults", data
+      , { headers: { 'x-access-token': accessToken } });
+  }
+
   //Update MedicalPersonnel Data
   updateMedicalPersonnelApiCall(updateData, accessToken): any {
     console.log("update MedicalPerson data for checking from service : ", updateData);

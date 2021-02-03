@@ -81,6 +81,11 @@ textarea::placeholder {
     height: 100%; */
 }
 
+.spinner-grow {
+    width: 5px !important;
+    height: 5px !important;
+}
+
 .scroll::-webkit-scrollbar-track {
     border-radius: 2px;
 }

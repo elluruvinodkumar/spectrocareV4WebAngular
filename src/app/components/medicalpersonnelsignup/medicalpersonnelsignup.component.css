@@ -253,3 +253,21 @@ button:hover {
 ::ng-deep .medicalPersonSignupForm .intl-tel-input.separate-dial-code .selected-flag {
   background-color: transparent;
 }
+
+@media only screen and (max-width: 767px) {
+  .logo-text {
+    margin: auto;
+  }
+  .release {
+    display: block !important;
+    padding-bottom: 20px;
+    /* margin: auto !important; */
+  }
+  .list {
+    text-align: center !important;
+  }
+}
+
+.release {
+  display: none;
+}

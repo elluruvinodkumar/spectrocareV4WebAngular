@@ -16,16 +16,30 @@
 
     <div class="row pt-3">
         <div class="col-md-6">
-            <input type="text" [(ngModel)]="term" class=" p-2 w-100 form-control t-12" placeholder="Search" style="border: none; outline-style: none !important;font-size: 14px; font-weight: 500;padding-right: 100%;
+            <!-- <input type="text" [(ngModel)]="term" class=" p-2 w-100 form-control t-12" placeholder="Search" style="border: none; outline-style: none !important;font-size: 14px; font-weight: 500;padding-right: 100%;
                  height: 34px;padding-left: 40px !important;background-color: #ffffff ;" (keyup)="findText(term)">
             <div class="searchIcon" style="margin-left: 10px;margin-top: -30px;">
-                <img style="width: 1.5rem;"
+                <img style="width: 1.1rem;"
                     src="../../../../assets/images/ui/Icons/patient-medical-module/Icon feather-search@2x.png">
+            </div> -->
+
+
+            <div class="input-group input-placeholder mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="background: #ffffff;border: none;">
+                        <img style="width: 1.1rem;"
+                            src="../../../../assets/images/ui/Icons/patient-medical-module/Icon feather-search.png">
+                    </span>
+                </div>
+                <input type="text" [(ngModel)]="term" class=" p-2 w-100 form-control t-12" placeholder="Search" style="border: none; outline-style: none !important;font-size: 14px; font-weight: 500;padding-right: 100%;
+                height: 34px;background-color: #ffffff ;" (keyup)="findText(term)">
             </div>
+
+
         </div>
         <div class="col-md-3">
-            <div class="form-control t-12" style="height: 33px;border: none;">
-                <mat-select (selectionChange)="showData($event.value)" style="color: black;">
+            <div class="form-control t-12 mt-placeHolder" style="height: 33px;border: none;">
+                <mat-select (selectionChange)="showData($event.value)" style="color: black;" placeholder="Sort by item">
                     <!--[value]="selected" -->
                     <mat-option *ngFor="let letSearch of searchByValue" [value]="letSearch.viewValue">
                         {{letSearch.viewValue}}
@@ -35,7 +49,7 @@
         </div>
         <div class="col-md-3">
             <div class="form-control" style="height: 33px;border: none;padding: 0px;">
-                <div class="input-group">
+                <div class="input-group date-placeholder">
                     <input type="text" class="form-control t-12" placeholder="Any Date"
                         aria-label="Recipient's username" style="height: 33px;border: none;"
                         aria-describedby="basic-addon2">
@@ -48,7 +62,7 @@
                 </div>
             </div>
             <div id="dateFunctionOpen" class="dateVisible" *ngIf="isDateVisible">
-                <ul>
+                <ul style="background: #F9F9F9;">
                     <li id="hideDates">
                         <label style="font-size: 14px;font-weight: 600;color: #434343;">From</label>
                         <div class="row" style="padding: 0 0 20px 15px;">
@@ -80,6 +94,11 @@
                                     class="btn btn-sm" style="width: 100%;
                                 background: white;border: 1px solid #dcd8d8;">This Month</div>
                             </li>
+                            <li style="margin: 5px 0;">
+                                <div (click)="showAllTests()" [ngClass]="{ 'active' : isValue == 5 }" class="btn btn-sm"
+                                    style="width: 100%;
+                                background: white;border: 1px solid #dcd8d8;">Show All</div>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -92,7 +111,7 @@
             <table class="table text-center ">
                 <thead class="" style="background-color: #3E454C;color: white;">
                     <tr class="p-0" style="font-weight: normal;">
-                        <th class="p-0" scope="col" class="border text-center">No</th>
+                        <!-- <th class="p-0" scope="col" class="border text-center">No</th> -->
                         <th class="p-0" scope="col" class="border  text-center">Patient Name</th>
                         <th class="p-0" scope="col" class="border text-center">Date & Time</th>
                         <th class="p-0" scope="col" class="border text-center">Test Name</th>
@@ -113,32 +132,39 @@
                     box-shadow: 0px 6px 12px #44444414;
                     border-radius: 6px;
                     opacity: 1;" *ngFor="let patient of listOfTestRecords | filter:term; let i = index">
-                        <td scope="row" class="text-center">{{i+1}}</td>
+                        <!-- <td scope="row" class="text-center">{{i+1}}</td> -->
                         <td class="p-2" style="">
-                            <div class="row" style="justify-content: space-around;">
-                                <div class="col-2">
+                            <div class="row" style="">
+                                <div class="col-3" style="padding: 0 20px;">
                                     <!--style="border-radius: 50% !important;width: 50px;height: 50px;"-->
                                     <img class="pat-img"
                                         style=" border: 2px solid rgb(150, 211, 235);border-radius: 50%;"
-                                        src="../../../assets/images/ui/Icons/1x/profile-1.png"
+                                        src="{{baseURL+patient.patientProfilePic}}"
                                         onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
                                 </div>
-                                <div class="col-10">
-                                    <div>{{patient.name}}</div>
-                                    <div>{{patient.id}}</div>
+                                <div class="col-9" style="text-align: left;margin: auto;padding: 0px 0px 0px 10px;">
+                                    <div class="pt-name">{{patient.patientName}}</div>
+                                    <div class="pt-id">{{patient.patientID}}</div>
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <div> {{(patient.date)}}
+                            <div class="pt-name"> {{(patient.testedTime * 1000 | date: 'dd/MM/yyyy')}}
                             </div> <!-- | date:"MM/dd/yy" -->
-                            <div>{{patient.time}}</div>
+                            <div class="pt-id">{{patient.testedTime *1000 | date: 'hh:mm a'}}</div>
                         </td>
-                        <td>{{patient.testname}}</td>
-                        <td>{{patient.total}}</td>
-
-                        <td>{{patient.normal}}</td>
-                        <td>{{patient.abnormal}}</td>
+                        <td>
+                            <div class="pt-name">{{patient.testName}}</div>
+                        </td>
+                        <td>
+                            <div class="t-values">{{patient.testFactors.length}}</div>
+                        </td>
+                        <td>
+                            <div class="t-values">{{patient.normal}}</div>
+                        </td>
+                        <td>
+                            <div class="t-values">{{patient.abnormal}}</div>
+                        </td>
                         <td class="menu" style="text-align: center; overflow: hidden; ">
                             {{patient.testedby}}
                             <button [matMenuTriggerFor]="beforeMenu" aria-label="Example icon-button with a menu" style="color: #53b8c5;background-color: Transparent;
@@ -165,8 +191,102 @@
                                             (click)="modal.dismiss('Cross click')"
                                             src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
                                     </div>
-                                    <div class="modal-body scroll1">
+                                    <div class="modal-body">
+                                        <div>
+                                            <div class="row" style="justify-content: space-between;
+                                            margin: auto;">
+                                                <!-- <div style="display: flex;"> -->
+                                                <div>
+                                                    Date/Time:
+                                                    {{patient.testedTime * 1000 | date: 'dd/MM/yyyy hh:mm a'}}
+                                                </div>
+                                                <div>
+                                                    Patient Name : {{patient.patientName}}
+                                                </div>
+                                                <div>
+                                                    <img style="width: 1.5rem;"
+                                                        src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-print.png">
+                                                </div>
+                                                <div>
+                                                    <img style="width: 1.5rem;"
+                                                        src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-share.png">
+                                                </div>
+                                                <!-- </div> -->
+                                            </div>
 
+                                            <div class="table-responsive  tableFixHead ">
+                                                <!--scroll-->
+                                                <table class="table text-center table-bordered">
+                                                    <thead class="" style="background-color: #53B9C6;color: white;">
+                                                        <tr class="p-0" style="font-weight: normal;">
+                                                            <!-- <th class="p-0" scope="col" class="border text-center">No</th> -->
+                                                            <th class="p-0" scope="col" class="border  text-center">Test
+                                                                Name
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">
+                                                                Result
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">Flag
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">Unit
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">
+                                                                Reference Range</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
+                                                        box-shadow: 0px 6px 12px #44444414;
+                                                        border-radius: 6px;
+                                                        opacity: 1;"
+                                                            *ngFor="let itemData of patient.testFactors ; let i = index">
+                                                            <td>
+                                                                <!-- <div class="row" style="justify-content: space-around;"> -->
+                                                                <div>
+                                                                    {{itemData.testName}}</div>
+                                                                <!-- </div> -->
+                                                            </td>
+                                                            <td>
+                                                                <div> {{itemData.value}}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div *ngIf="(itemData.flag === false)">Normal</div>
+                                                                <div *ngIf="(itemData.flag === true)">Abnormal</div>
+                                                            </td>
+                                                            <td>{{itemData.unit}}</td>
+                                                            <td>{{itemData.healthReferenceRanges}}</td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div>
+                                                <label>Opinions/Interpretations</label>
+                                            </div>
+                                            <div>
+                                                <textarea style="width: -webkit-fill-available;">
+
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div style="font-size: 14px;font-weight: 500;color: #8A8989;">
+                                                Last updated by Dr. Andrea Hu at
+                                                {{patient.testedTime * 1000 | date: 'hh:mm a'}} on
+                                                {{patient.testedTime * 1000 | date: 'dd/MM/yyyy'}}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="" style="text-align: center;padding: 25px 0 10px 0;">
+                                                <button class="btn btn-sm"
+                                                    style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                             color: white;height: 30px;line-height: 1;width: max-content;border-radius: 10px;padding: 0 25px;"
+                                                    (click)="modal.dismiss('Cross click')">Close
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </ng-template>
                                 <button mat-menu-item class="menuItembtn" style="outline: none !important;"
@@ -177,12 +297,46 @@
                                     <div class="modal-header"
                                         style="background-color: #53B9C6;color: white;font-weight: bold;">
                                         <span class="modal-title justify-content-center" id="modal-basic-title">
-                                            Add Comment on Test Report</span>
+                                            Add Comment</span>
                                         <img style="width:18px;cursor: pointer;" class="crossImg"
                                             (click)="modal.dismiss('Cross click')"
                                             src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
                                     </div>
-                                    <div class="modal-body scroll1">
+                                    <div class="modal-body">
+                                        <div>
+
+                                            <div>
+                                                <label>Comment</label>
+                                            </div>
+                                            <div>
+                                                <textarea style="width: -webkit-fill-available;">
+
+                                                </textarea>
+                                            </div>
+                                        </div>
+
+                                        <div style="text-align: center;margin-top: 15px;
+                                        margin-bottom: 15px;" class="">
+                                            <!-- <div *ngIf="isLoading"
+                                                style="display: flex; justify-content: center; padding-bottom: 5px;">
+                                                <mat-progress-spinner class="example-margin" color="primary"
+                                                    mode="indeterminate" [diameter]="30">
+                                                </mat-progress-spinner> 
+                                        </div>-->
+                                            <div class="row" style="justify-content: center;">
+                                                <div>
+                                                    <button class="btn btn-sm mr-3"
+                                                        style="outline-style: none; font-weight: 500;font-size: 14px; background-color:transparent; 
+                                                  color: #474747;border: 1px solid #707070;height: 30px;line-height: 1;width: auto;border-radius: 10px;padding: 0 20px;"
+                                                        (click)="modal.close('Close click')">Cancel
+                                                    </button>
+                                                    <button class="btn btn-sm"
+                                                        style="outline-style: none; font-weight: bold;font-size: 14px; background-color: #53B9C6;
+                                                   color: white;height: 30px;line-height: 1;width:auto;border-radius: 10px;padding: 0 25px;">Save
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                     </div>
                                 </ng-template>

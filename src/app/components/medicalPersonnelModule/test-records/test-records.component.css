@@ -1,5 +1,5 @@
 * {
-    font-family: "Muli-Bold", sans-serif !important;
+    font-family: "Muli-Regular", sans-serif !important;
 }
 
 .t-12 {
@@ -8,26 +8,21 @@
     color: black;
 }
 
-/* .mat-menu-content {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-}
-
-.mat-menu-item {
-    line-height: 25px;
-    height: 25px;
-    font-size: 11px;
-    padding: 0px 0px 0px 5px !important;
-  } */
-
-/* thead tr th {
-    font-size: 14px;
-} */
-
 .mat-menu-content {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
+
+/* .mat-menu-item {
+    line-height: 35px;
+    height: 35px;
+    font-size: 11px;
+    padding: 0px 0px 0px 5px !important;
+} */
+
+/* thead tr th {
+    font-size: 14px;
+} */
 
 /* Extra small devices (phones, 600px and down) */
 
@@ -201,28 +196,74 @@
     tbody tr td button .crossImg {
         width: 0.32rem;
     }
-    .mat-menu-item {
-        line-height: 25px;
-        height: 25px;
-        font-size: 11px;
-        padding: 0px 0px 0px 5px !important;
-    }
-    .dateVisible {
-        width: 90%;
-        height: auto;
-        padding: 10px;
-        background: #F9F9F9 0% 0% no-repeat padding-box;
-        box-shadow: 0px 3px 6px #00000029;
-        opacity: 1;
-        position: absolute;
-    }
-    .active {
-        /* border: 1px solid white !important; */
-        color: white !important;
-        background-color: #53b9c6 !important;
-        /* box-shadow: 0 0 5px rgb(44, 41, 41); */
-    }
-    ::-webkit-calendar-picker-indicator {
-        display: none;
-    }
+    /* .modal-md {
+        width: 30%;
+    } */
+}
+
+.pt-name {
+    font-weight: 600;
+}
+
+.pt-id {
+    font-weight: normal;
+    color: #828282
+}
+
+.t-values {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.mat-menu-item {
+    line-height: 35px;
+    height: 35px;
+    font-size: 11px;
+    padding: 0px 0px 0px 5px !important;
+}
+
+.dateVisible {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    background: #F9F9F9 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    position: absolute;
+}
+
+.active {
+    /* border: 1px solid white !important; */
+    color: white !important;
+    background-color: #53b9c6 !important;
+    /* box-shadow: 0 0 5px rgb(44, 41, 41); */
+}
+
+::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.input-placeholder ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #8D8D8D;
+    opacity: 1;
+    /* Firefox */
+}
+
+.date-placeholder ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #3E454C;
+    letter-spacing: 0.11px;
+    font-weight: 600;
+    opacity: 1;
+    /* Firefox */
+}
+
+::ng-deep .mt-placeHolder .mat-select-placeholder {
+    color: #3E454C !important;
+}
+
+.mt-placeHolder .mat-select-content {
+    background-color: red !important;
 }
