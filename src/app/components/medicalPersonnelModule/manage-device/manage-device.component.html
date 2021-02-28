@@ -1,1 +1,381 @@
-<p>manage-device works!</p>
+<div class="container-fluid ">
+    <div class="row ">
+        <div class="col-md-12 p-0">
+            <app-header [titleData]="titleArray"></app-header>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="background-color: #F5F8FA;">
+
+    <div class="row bg-white" style="justify-content: inherit;justify-content: start;padding: 5px 20px 5px 10px;">
+        <span class="pl-4 pb-3 pt-3 component-heading">
+            Manage Device
+        </span>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-md-9">
+            <div class="input-group input-placeholder mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" style="background: #ffffff;border: none;">
+                        <img style="width: 1.1rem;"
+                            src="../../../../assets/images/ui/Icons/patient-medical-module/Icon feather-search.png">
+                    </span>
+                </div>
+                <input type="text" [(ngModel)]="term" class=" p-2 w-100 form-control t-12" placeholder="Search" style="border: none; outline-style: none !important;font-size: 14px;
+                font-weight: 500;padding-right: 100%;letter-spacing: 0px;
+            color: #8D8D8D;opacity: 1;font-family: 'Muli' !important;
+            height: 34px;padding-left: 10px !important;background-color: #ffffff ;"
+                    (keyup)='search($event.target.value)'>
+                <!-- font-size: 14px; font-weight: 500;padding-right: 100%; (keyup)="findText(term)"-->
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-control t-12 mt-placeHolder  mb-3" style="height: 33px;border: none;">
+                <mat-select (selectionChange)="showData($event.value)" panelClass="my-panel" style="color: black;"
+                    placeholder="Filter by">
+                    <!--[value]="selected" -->
+                    <mat-option *ngFor="let letSearch of searchByValue" [value]="letSearch.viewValue">
+                        {{letSearch.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive p-2">
+        <div class="scroll tableFixHead">
+            <table class="table text-center ">
+                <thead class="" style="background-color: #3E454C;color: white;">
+                    <tr class="p-0" style="font-weight: normal;">
+                        <th class="p-0" scope="col" class="border  text-center">Device Name</th>
+                        <th class="p-0" scope="col" class="border text-center">Model No</th>
+                        <th class="p-0" scope="col" class="border text-center">Serial No</th>
+                        <th class="p-0" scope="col" class="border text-center">Manufacturer</th>
+                        <th class="p-0" scope="col" class="border text-center">Location</th>
+                        <th class="p-0" scope="col" class="border text-center">Status</th>
+                        <th class="p-0" scope="col" class="border  text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!(listOfDevices && listOfDevices.length)"
+                        style="text-align: center;background-color: white;padding: 20px;">
+                        <td style="text-align: center;font-size: 12px;font-weight: 600;" colspan="7">
+                            Don't have Devices
+                        </td>
+                    </tr>
+
+                    <tr class="bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
+                    box-shadow: 0px 6px 12px #44444414;
+                    border-radius: 6px;
+                    opacity: 1;" *ngFor="let selectedDevice of listOfDevices | filter:term; let i = index">
+
+                        <td>
+                            <div class="pt-name">{{selectedDevice.deviceName}}</div>
+                        </td>
+                        <td>
+                            <div class="pt-name">{{selectedDevice.deviceModelNumber}}</div>
+                        </td>
+                        <td>
+                            <div class="pt-name">{{selectedDevice.deviceSerialNumber}}</div>
+                        </td>
+                        <td>
+                            <div class="pt-name">{{selectedDevice.manufacturer}}</div>
+                        </td>
+
+                        <td>
+                            <div class="pt-name">{{selectedDevice.location}}</div>
+                        </td>
+                        <td>
+                            <div>
+                                <div class="btn btn-sm butn-styl" *ngIf="selectedDevice.status == 'Connected'"
+                                    style="background: #EBEBEB;">
+                                    <!--padding: 4px 17px;-->
+                                    Connected
+                                </div>
+                                <div class="btn btn-sm butn-styl1" *ngIf="selectedDevice.status =='Connecting'"
+                                    style="font-size: 11px;background: #EBEBEB ;">
+                                    <!--padding: 4px 17px;-->
+                                    <span class="spinner-border text-muted" style="height: 10px;
+                                                        width: 10px;
+                                                        margin-right: 5px;"></span>Connecting
+                                </div>
+                                <div class="btn btn-sm butn-styl2" *ngIf="selectedDevice.status =='Connect'" style="font-size: 11px;font-weight: 500;background: #EBEBEB ;
+                                    color: #000000;" (click)="connectDeviceMethod(selectedDevice)">
+                                    <!--padding: 4px 17px;-->
+                                    Connect
+                                </div>
+                            </div>
+                        </td>
+                        <td class="menu" style="text-align: center; overflow: hidden; ">
+                            <div style="display: flex; justify-content: space-around;">
+
+                                <div>
+                                    <button [matMenuTriggerFor]="beforeMenu"
+                                        aria-label="Example icon-button with a menu" style="color: #53b8c5;background-color: Transparent;
+                                background-repeat:no-repeat;
+                                border: none;
+                                cursor:pointer;
+                                overflow: hidden;
+                                outline:none;">
+                                        <img style="" class="crossImg"
+                                            src="../../../assets/images/ui/Icons/1x/menu.png">
+                                    </button>
+                                </div>
+                            </div>
+                            <mat-menu #menu="matMenu" class="menudata" #beforeMenu="matMenu" xPosition="before">
+                                <button mat-menu-item class="menuItembtn"
+                                    (click)="openViewTestReportMethod(viewTestReportModelContent,selectedDevice)"
+                                    style="outline: none !important;"
+                                    *ngIf=" 'Cancelled' !== selectedDevice.appointmentStatus">
+                                    <span>Device Information</span>
+                                </button>
+                                <ng-template #viewTestReportModelContent let-modal>
+                                    <div class="modal-header" style="color: #ffffff;
+                                        background: #53B9C6 0% 0% no-repeat padding-box;border: 1px solid #CECECE;opacity: 1;
+                                        ">
+                                        <span class="modal-title justify-content-center" id="modal-basic-title">
+                                            Test Report</span>
+                                        <img style="width:18px;cursor: pointer;" class="crossImg"
+                                            (click)="modal.dismiss('Cross click')"
+                                            src="../../../assets/images/ui/Icons/1x/ic_cancel.png">
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <div class="row" style="display: flex; justify-content: space-between;
+                                            margin: 8px;">
+                                                <!-- <div style="display: flex;"> -->
+                                                <div class="t-16">
+                                                    Date/Time:
+                                                    {{selectedDevice.testedTime * 1000 | date: 'dd/MM/yyyy hh:mm a'}}
+                                                </div>
+                                                <div class="t-16">
+                                                    Patient Name : {{selectedDevice.patientName}}
+                                                </div>
+                                                <div class="imgs-margin" style="">
+                                                    <img style="width: 1.2rem;margin: 0 25px;"
+                                                        src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-print.png">
+                                                    <!-- </div>
+                                                <div> -->
+                                                    <img style="width: 1.2rem;"
+                                                        src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-share.png">
+                                                </div>
+                                                <!-- </div> -->
+                                            </div>
+
+                                            <div class="table-responsive  tableFixHead ">
+                                                <!--scroll-->
+                                                <table class="table text-center table-bordered">
+                                                    <!--style="border: 1px solid #707070;"-->
+                                                    <thead class="" style="background: #53B9C6 0% 0% no-repeat padding-box;
+                                                    opacity: 1;">
+                                                        <tr class="p-0" style="font-weight: normal;">
+                                                            <!-- <th class="p-0" scope="col" class="border text-center">No</th> -->
+                                                            <th class="p-0" scope="col" class="border  text-center">Test
+                                                                Name
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">
+                                                                Result
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">Flag
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">Unit
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">
+                                                                Reference Range</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
+                                                        box-shadow: 0px 6px 12px #44444414;
+                                                        border-radius: 6px;
+                                                        opacity: 1;"
+                                                            *ngFor="let itemData of selectedDevice.testFactors ; let i = index">
+                                                            <td style="text-align: start;">
+                                                                <div style="padding-left: 10px;">
+                                                                    {{itemData.testName}}</div>
+                                                            </td>
+                                                            <td>
+                                                                <div> {{itemData.value}}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div *ngIf="(itemData.flag === false)">Normal</div>
+                                                                <div *ngIf="(itemData.flag === true)">Abnormal</div>
+                                                            </td>
+                                                            <td>{{itemData.unit}}</td>
+                                                            <td>{{itemData.healthReferenceRanges}}</td>
+
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="t-16" style="padding: 15px 0px 5px 0px;">
+                                                <label>Opinions/Interpretations</label>
+                                            </div>
+                                            <div>
+                                                <textarea disabled tabindex="-1" style="background: white; width: -webkit-fill-available;padding: 10px;border: 1px solid #c3bfbf;
+                                                    opacity: 1;"
+                                                    *ngIf="selectedDevice.doctorComments && selectedDevice.doctorComments.length"
+                                                    [value]="selectedDevice.doctorComments[0].comment">
+
+                                                </textarea>
+
+                                                <textarea tabindex="-1" style="width: -webkit-fill-available;padding: 10px;border: 1px solid #c3bfbf;
+                                                    opacity: 1;"
+                                                    *ngIf="selectedDevice.doctorComments && !selectedDevice.doctorComments.length"> <!--#707070-->
+
+                                                </textarea>
+
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div style="font-family: 'Muli'; font-size: 14px;font-weight: 500;color: #8A8989;margin: 15px;
+                                            letter-spacing: 0px;
+opacity: 1;">
+                                                Last updated by Dr. {{selectedDevice.testedPersonName}} at
+                                                {{selectedDevice.testedTime | date: 'hh:mm a'}} on
+                                                {{selectedDevice.testedTime | date: 'dd/MM/yyyy'}}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="" style="text-align: center;padding: 25px 0 10px 0;">
+                                                <button tabindex="-1" class="btn btn-sm"
+                                                    style="outline-style: none;font-size: 15px; height: 34px;padding: 0 30px;
+                                                    background: #53B9C6 0% 0% no-repeat padding-box;border-radius: 10px;opacity: 1;
+                                                    font-family: 'Muli';font-weight: 600;letter-spacing: 0px;color: #FFFFFF;"
+                                                    (click)="modal.dismiss('Cross click')">Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <button mat-menu-item class="menuItembtn" style="outline: none !important;"
+                                    (click)="openDisconnectMethod(openDisconnectModelContent,selectedDevice)">
+                                    <span>Disconnect</span>
+                                </button>
+                                <ng-template #openDisconnectModelContent let-modal>
+
+                                    <div class="modal-body">
+                                        <div class="modal-body bg-white" style="padding: 0px;">
+                                            <div class="container" style="padding: 16px;">
+                                                <div class="model-bold">Disconnect Device</div>
+                                                <div style="text-align: center;">
+                                                    <ul>
+                                                        <li class="modal-body-data" style="">Are you sure you want to
+                                                            disconnect this device?
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div style="text-align: center;margin-top: 20px; margin-bottom: 25px;">
+                                                    <!-- <div *ngIf="isLoading"
+                                                                                    style="display: flex; justify-content: center; padding-bottom: 5px;">
+                                                                                    <mat-progress-spinner class="example-margin" color="primary"
+                                                                                        mode="indeterminate" [diameter]="30">
+                                                                                    </mat-progress-spinner> 
+                                                                            </div>-->
+                                                    <div class="row" style="justify-content: center;">
+                                                        <button class="btn btn-sm mr-3 btn-text-style-1"
+                                                            (click)="modal.close('Close click')">Cancel
+                                                        </button>
+                                                        <button class="btn btn-sm btn-text-style-2">Delete
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <button mat-menu-item class="menuItembtn"
+                                    (click)="openRemoveMethod(openRemoveModelContent,selectedDevice)"
+                                    style="outline: none !important;"
+                                    *ngIf=" 'Cancelled' !== selectedDevice.appointmentStatus">
+                                    <span>Remove Device</span>
+                                </button>
+                                <ng-template #openRemoveModelContent let-modal>
+                                    <div class="modal-body">
+                                        <div class="modal-body bg-white" style="padding: 0px;">
+                                            <div class="container" style="padding: 16px;">
+                                                <div class="model-bold">Remove Device</div>
+                                                <div style="text-align: center;">
+                                                    <ul>
+                                                        <li class="modal-body-data" style="">Are you sure you want to
+                                                            remove this device? This action cannot be undone.
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div style="text-align: center;margin-top: 20px; margin-bottom: 25px;">
+                                                    <!-- <div *ngIf="isLoading"
+                                                                                    style="display: flex; justify-content: center; padding-bottom: 5px;">
+                                                                                    <mat-progress-spinner class="example-margin" color="primary"
+                                                                                        mode="indeterminate" [diameter]="30">
+                                                                                    </mat-progress-spinner> 
+                                                                            </div>-->
+                                                    <div class="row" style="justify-content: center;">
+                                                        <button class="btn btn-sm mr-3 btn-text-style-1"
+                                                            (click)="modal.close('Close click')">Cancel
+                                                        </button>
+                                                        <button class="btn btn-sm btn-text-style-2">Remove
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </mat-menu>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #openUnableToConnectModelContent let-modal>
+
+    <div class="modal-body">
+        <div class="modal-body bg-white" style="padding: 0px;">
+            <div class="container" style="padding: 16px;">
+                <div class="row">
+                    <div class="col-4">
+                        <img src="../../../../assets/images/ui/Medical-Personnel-Module/icons/urn_aaid.png">
+                    </div>
+                    <div class="col-8">
+                        <div class="model-bold">Unable to Connect</div>
+                        <div style="text-align: center;">
+                            <ul>
+                                <li class="modal-body-data" style="">Network error:</li>
+                                <li class="modal-body-data" style="">Please check your network connection
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="text-align: center;margin-top: 20px; margin-bottom: 25px;">
+                            <!-- <div *ngIf="isLoading"
+                                                            style="display: flex; justify-content: center; padding-bottom: 5px;">
+                                                            <mat-progress-spinner class="example-margin" color="primary"
+                                                                mode="indeterminate" [diameter]="30">
+                                                            </mat-progress-spinner> 
+                                                    </div>-->
+                            <div class="row" style="justify-content: center;">
+                                <button class="btn btn-sm mr-3 btn-text-style-1"
+                                    (click)="modal.close('Close click')">Cancel
+                                </button>
+                                <button class="btn btn-sm btn-text-style-2">Try Again
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

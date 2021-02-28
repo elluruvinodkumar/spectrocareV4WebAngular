@@ -1,6 +1,9 @@
 import { DOCUMENT } from '@angular/common';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AfterContentInit, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Inject, OnInit, QueryList, ViewChild } from '@angular/core';
+import {
+  AfterContentInit, AfterViewChecked, AfterViewInit,
+  ChangeDetectorRef, Component, ElementRef, Inject, OnInit, QueryList, ViewChild
+} from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { ChatService } from 'src/app/services/chat.service';
@@ -468,6 +471,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   }
   onLoad() {
+    let updateChatMessageIsReadObj1 = {
+      roomID: this.appointmentID,
+      userID: this.patient.patient.patientID,
+      isDoctor: true
+    }
+    this.chatService.updateChatMessageIsReadEvent(updateChatMessageIsReadObj1);
 
     this.socket.on("sendMessage", (data: any) => {
       let receviedMSGData = data;

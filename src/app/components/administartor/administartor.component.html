@@ -1,5 +1,41 @@
 <div class="container-fluid">
-    <div class="row h-100" style="padding: 100px;">
+    <header class="w-100 p-3 ">
+        <nav class="navbar navbar-expand-md navbar-light d-flex w-100 p-0 ">
+            <h1 class="logo-text ">
+                Spectro<span class="logo-highlight">Care</span>
+            </h1>
+
+            <div class="collapse navbar-collapse justify-content-end mr-5" id="navbarNavDropdown">
+                <ul class="navbar-nav p-0">
+                    <li class="nav-item p-0 mx-1">
+                        <button class="btn btn-sm text-white text-uppercase active" [routerLink]="['/administrator']">
+                            Administrator
+                        </button>
+                    </li>
+                    <li class="nav-item p-0 mx-1">
+                        <button class="btn btn-sm text-white text-uppercase"
+                            [routerLink]="['/medicalpersonnel']">Medical Personnel</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="release">
+        <ul class="p-0">
+            <li class="p-0 mx-1 list">
+                <button class="btn btn-sm text-white text-uppercase active" [routerLink]="['/administrator']">
+                    Administrator
+                </button>
+            </li>
+            <li class="p-0 mx-1 list">
+                <button class="btn btn-sm text-white text-uppercase" [routerLink]="['/medicalpersonnel']">Medical
+                    Personnel</button>
+            </li>
+        </ul>
+    </div>
+    <div class="row admin-singin" style="">
+        <!--padding: 100px;-->
         <div class="col-md-4 align-self-center"></div>
         <div class="col-md-4 align-self-center">
             <div class="example-container">

@@ -1,6 +1,7 @@
 <div class="container-fluid m-0 p-0 ">
     <div class="row">
-        <div class="col-md-2 sidehigh" [ngStyle]="{'width': isSidenavOpen ? '100%' : '0'}">
+        <div class="col-md-2 sidehigh" [ngStyle]="{'width': isSidenavOpen ? '50%' : '0'}">
+            <!--100%-->
             <!-- <mat-sidenav #sidenav mode="over" opened (opened)="events.push('open!')" (closed)="events.push('close!')"> -->
             <div class="">
                 <div class="name p-4 text-center" style="background-color: #3E454C ;">
@@ -35,13 +36,14 @@
                                     <li class="nav-item">
                                         <a class="nav-link  pl-3 " [routerLink]="['/medicalpersonnelmodule/dashboard']"
                                             routerLinkActive="active" (click)="closeSubList()"
-                                            style="cursor: pointer;color: #B8B8B8;">Dashboard</a>
+                                            style="cursor: pointer;color: #B8B8B8;"
+                                            (click)="closeSideBar()">Dashboard</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link pl-3"
                                             [routerLink]="['/medicalpersonnelmodule/accountcenter']"
                                             (click)="openSubList()" routerLinkActive="active"
-                                            style="cursor: pointer;color: #B8B8B8;">Account
+                                            style="cursor: pointer;color: #B8B8B8;" (click)="closeSideBar()">Account
                                             Center</a>
                                     </li>
                                     <li class="nav-item">
@@ -54,14 +56,16 @@
                                                     <a class="nav-link  pl-4  "
                                                         [routerLink]="['/medicalpersonnelmodule/patient']"
                                                         routerLinkActive="active"
-                                                        style="cursor: pointer;color: #949494;">Search
+                                                        style="cursor: pointer;color: #949494;"
+                                                        (click)="closeSideBar()">Search
                                                         Patient</a>
                                                 </li>
                                                 <li class="nav-item pl-4">
                                                     <a class="nav-link  pl-4  "
                                                         [routerLink]="['/medicalpersonnelmodule/allmedicalrecord']"
                                                         routerLinkActive="active"
-                                                        style="cursor: pointer;color: #949494;">Create Medical
+                                                        style="cursor: pointer;color: #949494;"
+                                                        (click)="closeSideBar()">Create Medical
                                                         Record</a>
                                                 </li>
 
@@ -80,14 +84,16 @@
                                                     <a class="nav-link  pl-4  "
                                                         [routerLink]="['/medicalpersonnelmodule/medicalpersonappointments']"
                                                         routerLinkActive="active"
-                                                        style="cursor: pointer;color: #949494;">Appointment
+                                                        style="cursor: pointer;color: #949494;"
+                                                        (click)="closeSideBar()">Appointment
                                                         List</a>
                                                 </li>
                                                 <li class="nav-item pl-4">
                                                     <a class="nav-link  pl-4  "
                                                         [routerLink]="['/medicalpersonnelmodule/bookappointment']"
                                                         routerLinkActive="active"
-                                                        style="cursor: pointer;color: #949494;">Book
+                                                        style="cursor: pointer;color: #949494;"
+                                                        (click)="closeSideBar()">Book
                                                         Appointment</a>
                                                 </li>
 
@@ -107,21 +113,24 @@
                                                     <a class="nav-link  pl-4  "
                                                         [routerLink]="['/medicalpersonnelmodule/testrecords']"
                                                         routerLinkActive="active"
-                                                        style="cursor: pointer;color: #949494;">Test
+                                                        style="cursor: pointer;color: #949494;"
+                                                        (click)="closeSideBar()">Test
                                                         Records</a>
                                                 </li>
                                                 <li class="nav-item pl-4">
                                                     <a class="nav-link  pl-4  "
                                                         [routerLink]="['/medicalpersonnelmodule/createnewtest']"
                                                         routerLinkActive="active"
-                                                        style="cursor: pointer;color: #949494;">Create New
+                                                        style="cursor: pointer;color: #949494;"
+                                                        (click)="closeSideBar()">Create New
                                                         Test</a>
                                                 </li>
                                                 <li class="nav-item pl-4">
                                                     <a class="nav-link  pl-4  "
                                                         [routerLink]="['/medicalpersonnelmodule/managedevice']"
                                                         routerLinkActive="active"
-                                                        style="cursor: pointer;color: #949494;">Manage
+                                                        style="cursor: pointer;color: #949494;"
+                                                        (click)="closeSideBar()">Manage
                                                         Device</a>
                                                 </li>
 

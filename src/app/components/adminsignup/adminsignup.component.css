@@ -68,13 +68,6 @@ a {
   border-radius: 50% !important;
 }
 
-.span {
-  border-bottom: 1px dashed rgb(139, 125, 125);
-  border-width: 2px;
-  width: 56%;
-  margin: auto;
-}
-
 ::ng-deep .mat-select-arrow {
   color: rgb(139, 125, 125);
 }
@@ -388,4 +381,59 @@ button:hover {
 
 .release {
   display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+  .span {
+    border-bottom: 1px dashed rgb(139, 125, 125);
+    border-width: 2px;
+    width: 100%;
+    margin: auto;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+  .span {
+    border-bottom: 1px dashed rgb(139, 125, 125);
+    border-width: 2px;
+    width: 80%;
+    margin: auto;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+  .span {
+    border-bottom: 1px dashed rgb(139, 125, 125);
+    border-width: 2px;
+    width: 70%;
+    margin: auto;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+  .span {
+    border-bottom: 1px dashed rgb(139, 125, 125);
+    border-width: 2px;
+    width: 56%;
+    margin: auto;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+  .span {
+    border-bottom: 1px dashed rgb(139, 125, 125);
+    border-width: 2px;
+    width: 56%;
+    margin: auto;
+  }
 }

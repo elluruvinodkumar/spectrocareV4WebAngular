@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -32,12 +32,6 @@ export class MedicalPersonnelService {
     console.log("the req data for fetch medical-personnel appointments records from service : ", fetchAppointmentsRecordsObj);
     return this._http.post(this.baseURL + "/api/appointments/allappointmentsforcreator",
       fetchAppointmentsRecordsObj, { headers: { 'x-access-token': accessToken } });
-  }
-
-  //http://34.231.177.197:3000/api/patient/testresult/fetchtestresults
-  fetchDoctorTestRecordsAPICall(data, accessToken): any {
-    return this._http.post(this.baseURL + "/api/patient/testresult/fetchtestresults", data
-      , { headers: { 'x-access-token': accessToken } });
   }
 
   //Update MedicalPersonnel Data
@@ -86,4 +80,46 @@ export class MedicalPersonnelService {
     return this._http.post(this.baseURL + "/api/patient/medicalrecord/illness/surgicalrecord",
       surgicalData, { headers: { 'x-access-token': accessToken } });
   }
+
+  //Fetch test records
+  fetchDoctorTestRecordsAPICall(data, accessToken): any {
+    return this._http.post(this.baseURL + "/api/patient/testresult/fetchtestresults", data
+      , { headers: { 'x-access-token': accessToken } });
+  }
+  //Comment given by Doctor on test record
+  commentDoctorTestRecordsAPICall(data, accessToken): any {
+    return this._http.post(this.baseURL + "/api/patient/testresult/addcomment", data
+      , { headers: { 'x-access-token': accessToken } });
+  }
+  //Delete test record
+  deleteDoctorTestRecordsAPICall(data, accessToken): any {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'x-access-token': accessToken
+      }),
+      body: {
+        "hospital_reg_num": data.hospital_reg_num,
+        "byWhom": data.byWhom,
+        "byWhomID": data.byWhomID,
+        "patientID": data.patientID,
+        "testReportNumber": data.testReportNumber,
+        "medical_record_id": data.medical_record_id
+      }
+    }
+    return this._http.delete(this.baseURL + "/api/patient/testresult/one", options);
+  }
+
+
+  //Fetch test items
+  fetchTestItemsAPICall(data, accessToken): any {
+    return this._http.post(this.baseURL + "/api/testitems/fetch", data
+      , { headers: { 'x-access-token': accessToken } });
+  }
+
+  //Fetch Medical Personnel Devices
+  fetchMedicalPersonDevicesApiCall(data, accessToken): any {
+    return this._http.post(this.baseURL + "/api/medical_personnel_devices/fetchall", data, { headers: { 'x-access-token': accessToken } })
+  }
+
 }

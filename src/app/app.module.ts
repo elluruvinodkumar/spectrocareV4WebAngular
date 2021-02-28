@@ -80,6 +80,7 @@ import { ChatService } from './services/chat.service';
 import { LightboxModule } from 'ngx-lightbox';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { MatStepperModule } from '@angular/material/stepper';
+import { OutSideClickDirective } from './directive/click-outside.directive';
 //http://127.0.0.1:3000?userID=MPIDXCOO&userType=Doctor
 //const config: SocketIoConfig = { url: 'http://34.231.177.197:3000?userID=MPIDnIJN&userType=Doctor', options: {} };
 const config: SocketIoConfig = { url: 'http://34.231.177.197:3000', options: { autoConnect: false } };
@@ -142,6 +143,7 @@ const config: SocketIoConfig = { url: 'http://34.231.177.197:3000', options: { a
     ManageDeviceComponent,
     MedicalPersonnelAppointmentsComponent,
     ChatComponent,
+    OutSideClickDirective
   ],
   entryComponents: [ChatComponent],
   imports: [
@@ -188,7 +190,8 @@ const config: SocketIoConfig = { url: 'http://34.231.177.197:3000', options: { a
     }),
     BrowserAnimationsModule,
     LightboxModule,
-    MatStepperModule
+    MatStepperModule,
+
 
   ],
   providers: [ChatService, NgxImageCompressService],

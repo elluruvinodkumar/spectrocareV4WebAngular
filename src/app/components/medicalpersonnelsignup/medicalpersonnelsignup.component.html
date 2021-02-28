@@ -36,188 +36,199 @@
     </div>
 
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 align-self-center text-center">
+        <div class="col-md-12">
+            <!-- <div class="col-md-4"></div>
+            <div class="col-md-4 align-self-center text-center"> -->
             <div class="medicalPersonSignupForm example-container">
                 <form [formGroup]="medicalSignUpForm" (ngSubmit)="medicalPersonnelSignUp()" autocomplete="off">
-                    <!--Upload IMg-->
-                    <div class="justify-content-center" style="text-align: -webkit-center;">
-                        <div style="border-radius: 50% !important;width: 70px;height: 70px;">
-                            <img (click)="fileInput.click()" style="cursor: pointer; border: 2px solid #53B9C6;border-radius: 50%;min-width: 70px;
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4 align-self-center text-center">
+                            <!--Upload IMg-->
+                            <div class="justify-content-center" style="text-align: -webkit-center;">
+                                <div style="border-radius: 50% !important;width: 70px;height: 70px;">
+                                    <img (click)="fileInput.click()" style="cursor: pointer; border: 2px solid #53B9C6;border-radius: 50%;min-width: 70px;
                                 min-height: 70px;max-width: 70px;max-height: 70px;width: 70px;height: 70px;"
-                                src="{{previewImg}}">
-                        </div>
-                        <div class="container">
-                            <div class="row ">
-                                <div class="img-move input-group mb-3">
-                                    <input type="file" class="form-control" name="file" id="inputGroupFile01" #fileInput
-                                        aria-describedby="inputGroupFileAddon01" accept=".png, .jpg, .jpeg"
-                                        (change)="fileProgress($event)" class="d-none">
-                                    <span class="m-auto" (click)="fileInput.click()" style="cursor: pointer; color: rgb(196, 190, 190) !important;
+                                        src="{{previewImg}}">
+                                </div>
+                                <div class="container">
+                                    <div class="row ">
+                                        <div class="img-move input-group mb-3">
+                                            <input type="file" class="form-control" name="file" id="inputGroupFile01"
+                                                #fileInput aria-describedby="inputGroupFileAddon01"
+                                                accept=".png, .jpg, .jpeg" (change)="fileProgress($event)"
+                                                class="d-none">
+                                            <span class="m-auto" (click)="fileInput.click()" style="cursor: pointer; color: rgb(196, 190, 190) !important;
                                         font-weight: 200;font-size: small;">
-                                        Upload Photo
-                                    </span>
+                                                Upload Photo
+                                            </span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Upload IMG Ends-->
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="User ID *" formControlName="userID">
-                        <mat-error *ngIf="medicalSignUpForm.get('userID').hasError('required')">
-                            User ID is Required!
-                        </mat-error>
-                    </mat-form-field>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width ">
-                                <mat-label>Identity *</mat-label>
-                                <mat-select name="code" formControlName="identity">
-                                    <mat-option *ngFor="let code of identitys" [value]="code.value">
-                                        {{code.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="medicalSignUpForm.get('identity').hasError('required')">
-                                    Identity is Required!
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                        <div class="col-md-6">
+                            <!-- Upload IMG Ends-->
                             <mat-form-field class="full-width">
-                                <mat-label>Gender *</mat-label>
-                                <mat-select name="code" formControlName="gender">
-                                    <mat-option *ngFor="let code of genders" [value]="code.value">
-                                        {{code.viewValue}}
-                                    </mat-option>
-                                </mat-select>
-                                <mat-error *ngIf="medicalSignUpForm.get('gender').hasError('required')">
-                                    Gender is Required!
+                                <input matInput placeholder="User ID *" formControlName="userID">
+                                <mat-error *ngIf="medicalSignUpForm.get('userID').hasError('required')">
+                                    User ID is Required!
                                 </mat-error>
                             </mat-form-field>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width ">
+                                        <mat-label>Identity *</mat-label>
+                                        <mat-select name="code" formControlName="identity">
+                                            <mat-option *ngFor="let code of identitys" [value]="code.value">
+                                                {{code.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="medicalSignUpForm.get('identity').hasError('required')">
+                                            Identity is Required!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width">
+                                        <mat-label>Gender *</mat-label>
+                                        <mat-select name="code" formControlName="gender">
+                                            <mat-option *ngFor="let code of genders" [value]="code.value">
+                                                {{code.viewValue}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="medicalSignUpForm.get('gender').hasError('required')">
+                                            Gender is Required!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width">
+                                        <input matInput placeholder="First Name *" formControlName="firstName">
+                                        <mat-error *ngIf="medicalSignUpForm.get('firstName').hasError('required')">
+                                            First Name is Required!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="full-width">
+                                        <input matInput placeholder="Last Name *" formControlName="lastName">
+                                        <mat-error *ngIf="medicalSignUpForm.get('lastName').hasError('required')">
+                                            Last Name is Required!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
                             <mat-form-field class="full-width">
-                                <input matInput placeholder="First Name *" formControlName="firstName">
-                                <mat-error *ngIf="medicalSignUpForm.get('firstName').hasError('required')">
-                                    First Name is Required!
+                                <input matInput placeholder="Email *" formControlName="emailID">
+                                <mat-error *ngIf="medicalSignUpForm.get('emailID').hasError('required')">
+                                    Email is Required!
+                                </mat-error>
+                                <mat-error *ngIf="medicalSignUpForm.get('emailID').hasError('emailID')">
+                                    Email is in this way abc@gmail.com
                                 </mat-error>
                             </mat-form-field>
-                        </div>
-                        <div class="col-md-6">
-                            <mat-form-field class="full-width">
-                                <input matInput placeholder="Last Name *" formControlName="lastName">
-                                <mat-error *ngIf="medicalSignUpForm.get('lastName').hasError('required')">
-                                    Last Name is Required!
-                                </mat-error>
-                            </mat-form-field>
-                        </div>
-                    </div>
 
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Email *" formControlName="emailID">
-                        <mat-error *ngIf="medicalSignUpForm.get('emailID').hasError('required')">
-                            Email is Required!
-                        </mat-error>
-                        <mat-error *ngIf="medicalSignUpForm.get('emailID').hasError('emailID')">
-                            Email is in this way abc@gmail.com
-                        </mat-error>
-                    </mat-form-field>
-
-                    <div class="pb-2">
-                        <label class="numberLabel">Phone Number</label>
-                        <div class="phno">
-                            <ngx-intl-tel-input class="medicalPersonnelProfilePh" [cssClass]="'custom'"
-                                [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="false"
-                                [enablePlaceholder]="false" [searchCountryFlag]="true"
-                                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
-                                [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India" [maxLength]="15"
-                                [tooltipField]="TooltipLabel.Name" [phoneValidation]="true"
-                                [separateDialCode]="separateDialCode" name="phone" formControlName="checkPhone">
-                            </ngx-intl-tel-input>
-                        </div>
-                        <div *ngIf="medicalSignUpForm.get('checkPhone').touched &&
+                            <div class="pb-2">
+                                <label class="numberLabel">Phone Number</label>
+                                <div class="phno">
+                                    <ngx-intl-tel-input class="medicalPersonnelProfilePh" [cssClass]="'custom'"
+                                        [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="false"
+                                        [enablePlaceholder]="false" [searchCountryFlag]="true"
+                                        [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+                                        [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India"
+                                        [maxLength]="15" [tooltipField]="TooltipLabel.Name" [phoneValidation]="true"
+                                        [separateDialCode]="separateDialCode" name="phone" formControlName="checkPhone">
+                                    </ngx-intl-tel-input>
+                                </div>
+                                <div *ngIf="medicalSignUpForm.get('checkPhone').touched &&
                         medicalSignUpForm.get('checkPhone').dirty &&
                         medicalSignUpForm.get('checkPhone').hasError('required')"
-                            style="color: #f44336;;font-size: 75%;text-align: start;">
-                            Phone Number is required.
-                        </div>
-                    </div>
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Password *" formControlName="password">
-                        <mat-error *ngIf="medicalSignUpForm.get('password').hasError('required')">
-                            Password is Required!
-                        </mat-error>
-                        <mat-error *ngIf="medicalSignUpForm.get('password').hasError('minlength')">
-                            Password should have minimum 8 letters!
-                        </mat-error>
-                    </mat-form-field>
+                                    style="color: #f44336;;font-size: 75%;text-align: start;">
+                                    Phone Number is required.
+                                </div>
+                            </div>
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Password *" formControlName="password">
+                                <mat-error *ngIf="medicalSignUpForm.get('password').hasError('required')">
+                                    Password is Required!
+                                </mat-error>
+                                <mat-error *ngIf="medicalSignUpForm.get('password').hasError('minlength')">
+                                    Password should have minimum 8 letters!
+                                </mat-error>
+                            </mat-form-field>
 
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Confirm Password *" formControlName="confirmPassword">
-                        <mat-error *ngIf="medicalSignUpForm.get('confirmPassword').hasError('required')">
-                            ConfirmPassword is Required!
-                        </mat-error>
-                        <mat-error
-                            *ngIf="medicalSignUpForm.get('confirmPassword').hasError('NoPassswordMatch') && medicalSignUpForm.get('confirmPassword').touched && medicalSignUpForm.get('confirmPassword').value != null">
-                            Password does not same
-                        </mat-error>
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Confirm Password *" formControlName="confirmPassword">
+                                <mat-error *ngIf="medicalSignUpForm.get('confirmPassword').hasError('required')">
+                                    ConfirmPassword is Required!
+                                </mat-error>
+                                <mat-error
+                                    *ngIf="medicalSignUpForm.get('confirmPassword').hasError('NoPassswordMatch') && medicalSignUpForm.get('confirmPassword').touched && medicalSignUpForm.get('confirmPassword').value != null">
+                                    Password does not same
+                                </mat-error>
 
-                    </mat-form-field>
+                            </mat-form-field>
 
-                    <mat-form-field class="full-width">
-                        <input matInput placeholder="Hospital Registration Number *" formControlName="hospital_reg_num">
-                        <mat-error *ngIf="medicalSignUpForm.get('hospital_reg_num').hasError('required')">
-                            Hospital Registration Number is Required!
-                        </mat-error>
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Hospital Registration Number *"
+                                    formControlName="hospital_reg_num">
+                                <mat-error *ngIf="medicalSignUpForm.get('hospital_reg_num').hasError('required')">
+                                    Hospital Registration Number is Required!
+                                </mat-error>
 
-                    </mat-form-field>
-                    <mat-form-field>
-                        <mat-label>Department</mat-label>
-                        <mat-select name="department" formControlName="department">
-                            <mat-option *ngFor="let department of departments" [value]="department.value">
-                                {{department.viewValue}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="medicalSignUpForm.get('department').hasError('required')">
-                            Department is Required!
-                        </mat-error>
-                    </mat-form-field>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Department</mat-label>
+                                <mat-select name="department" formControlName="department">
+                                    <mat-option *ngFor="let department of departments" [value]="department.value">
+                                        {{department.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="medicalSignUpForm.get('department').hasError('required')">
+                                    Department is Required!
+                                </mat-error>
+                            </mat-form-field>
 
-                    <mat-checkbox class="" style="">
-                    </mat-checkbox>
-                    <span style="font-weight: 500;color: #AFAEAE;font-size: 14px;">
-                        I accept the
-                    </span>
-                    <a class="nextPage" style="font-size: 14px; font-weight: bold;color: #12b2f9;cursor: pointer;"
-                        (click)="openTerms(content)">Terms of
-                        conditions
-                    </a>
-                    <span style="font-size: 14px;font-weight: 500;">&nbsp;& &nbsp;</span>
-                    <a class="nextPage" style="font-size: 14px; font-weight: bold;color: #12b2f9;cursor: pointer;"
-                        (click)="openPrivacyPolicy(content1)">Privacy
-                        policy
-                    </a>
-                    <button class="loginbtn btn mb-3 mt-3" style="letter-spacing: 1px; outline-style: none;
+                            <mat-checkbox class="" style="">
+                            </mat-checkbox>
+                            <span style="font-weight: 500;color: #AFAEAE;font-size: 14px;">
+                                I accept the
+                            </span>
+                            <a class="nextPage"
+                                style="font-size: 14px; font-weight: bold;color: #12b2f9;cursor: pointer;"
+                                (click)="openTerms(content)">Terms of
+                                conditions
+                            </a>
+                            <span style="font-size: 14px;font-weight: 500;">&nbsp;& &nbsp;</span>
+                            <a class="nextPage"
+                                style="font-size: 14px; font-weight: bold;color: #12b2f9;cursor: pointer;"
+                                (click)="openPrivacyPolicy(content1)">Privacy
+                                policy
+                            </a>
+                            <button class="loginbtn btn mb-3 mt-3" style="letter-spacing: 1px; outline-style: none;
                                 background-color: #53B9C6 !important;">SIGN
-                        UP</button>
-                    <!-- <button mat-raised-button class="loginbtn mb-3 mt-3"   (click)="hideButton()"
+                                UP</button>
+                            <!-- <button mat-raised-button class="loginbtn mb-3 mt-3"   (click)="hideButton()"
                         style="letter-spacing: 1px; outline-style: none;">SIGN UP</button> -->
-                    <div class="row justify-content-center" style="padding: 20px 0 50px 0;">
-                        <span (click)="signUp()">
-                            <i class="dot fa fa-circle mr-2" aria-hidden="true"></i>
-                            Already have an account?
-                            <a style="font-weight: bold;"> LOGIN</a>
-                        </span>
+                            <div class="row justify-content-center" style="padding: 20px 0 50px 0;">
+                                <span (click)="signUp()">
+                                    <i class="dot fa fa-circle mr-2" aria-hidden="true"></i>
+                                    Already have an account?
+                                    <a style="font-weight: bold;"> LOGIN</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
                     </div>
-
                 </form>
             </div>
+            <!-- </div>
+            <div class="col-md-4"></div> -->
         </div>
-        <div class="col-md-4"></div>
     </div>
 </div>
 

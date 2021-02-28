@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/services/login.service';
+import { MedicalPersonnelService } from 'src/app/services/medical-personnel.service';
 import Swiper from 'swiper';
 interface SearchByValue {
   viewValue: string;
@@ -26,17 +28,9 @@ export class CreateNewTestComponent implements OnInit {
     { viewValue: 'Reagent' }
   ];
   term: any;
-  listOfTestRecords = [
-    {
-      "id": "123",
-      "testname": "Urine Routine",
-      "devicemodel": "UTSR",
-      "testmethod": "Test Strip",
-      "brand": "ASK Inc.",
-      "identificationNo": "TS-123456789",
-      "Action": "8",
-    }
-  ]
+  term1: any;
+  filteredlistOfTestRecords: any = [];
+  listOfTestRecords: any = [];
   closeResult: string;
   addTestDateDetails: FormGroup;
   firstFormGroup: FormGroup;
@@ -54,10 +48,13 @@ export class CreateNewTestComponent implements OnInit {
   hospitalRegNum: string;
   selectedRow: any;
   selectedDevice: any;
+  token: any;
   imgURL: any = "http://34.231.177.197:3000"
   baseURL: string = "http://34.231.177.197:3000";
+  getDoctorTestRecordsDataObj: any;
   generatedJsonData = [];
-  fetchedDevicesData: any = []
+  fetchedDevicesData: any = [];
+  filteredFetchedDevicesData: any = [];
   //[{
   //   "id": 1,
   //   "img": "../../../../assets/images/ui/Icons/Capture.png",
@@ -120,8 +117,13 @@ export class CreateNewTestComponent implements OnInit {
   ebrilirubinFlag: boolean;
   brilirubinReferenceRange: any;
   brilirubinFlag: boolean;
+  localTime: any;
+  patientName: any;
+  selectedTestInfo: any;
   constructor(private modalService: NgbModal, private _formBuilder: FormBuilder,
-    private loginService: LoginService, private cd: ChangeDetectorRef) { }
+    private loginService: LoginService, private cd: ChangeDetectorRef,
+    private medicalPersonService: MedicalPersonnelService,
+    private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.signInRes = localStorage.getItem("SignInRes");
@@ -129,6 +131,7 @@ export class CreateNewTestComponent implements OnInit {
     this.byWhom = "medical personnel";
     this.byWhomID = this.signObj.medicalPersonnel.profile.userProfile.medical_personnel_id;
     this.hospitalRegNum = this.signObj.medicalPersonnel.profile.userProfile.hospital_reg_num;
+    this.token = this.signObj.access_token;
 
     let objForFetchPatients = {
       "byWhom": this.byWhom,
@@ -138,6 +141,21 @@ export class CreateNewTestComponent implements OnInit {
       "token": this.signObj.access_token
     }
     this.getPatientData(objForFetchPatients);
+
+    this.getDoctorTestRecordsDataObj = {
+      //"medical_personnel_id": this.signObj.medicalPersonnel.profile.userProfile.medical_personnel_id,
+      "hospital_reg_num": this.signObj.medicalPersonnel.profile.userProfile.hospital_reg_num,
+      "byWhom": "medical personnel",
+      "byWhomID": this.signObj.medicalPersonnel.profile.userProfile.medical_personnel_id
+    }
+    this.getTestRecordsData(this.getDoctorTestRecordsDataObj, this.token);
+
+    var objToFetchDevices = {
+      "hospital_reg_num": this.signObj.medicalPersonnel.profile.userProfile.hospital_reg_num,
+      "medical_personnel_id": this.signObj.medicalPersonnel.profile.userProfile.medical_personnel_id
+    }
+    this.getMedicalPersonDevicesData(objToFetchDevices, this.token)
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -146,8 +164,12 @@ export class CreateNewTestComponent implements OnInit {
     });
 
     this.addTestDateDetails = this._formBuilder.group({
+      sampleType: [""],
       startDate: [""],
-      endDate: [""]
+      colletedTime: [""],
+      endDate: [""],
+      testedTime: [""],
+      isFasting: ["true"]
     })
     this.viewTestInfoForm = this._formBuilder.group({
       testName: [""],
@@ -178,10 +200,92 @@ export class CreateNewTestComponent implements OnInit {
     this.onLoad();
   }
 
+  getTestRecordsData(obj, token) {
+    this.medicalPersonService.fetchTestItemsAPICall(obj, token).subscribe(
+      (res) => {
+        console.log("fetched test items...", res)
+        if (res.response === 3) {
+          // this.loading = false;
+          this.listOfTestRecords = res.records[0].testItems;
+          this.filteredlistOfTestRecords = res.records[0].testItems;
+          console.log("Test", this.listOfTestRecords[0]);
+
+          this.listOfTestRecords.forEach((val, i) => {
+            this.listOfTestRecords[i].parameters2 = val.parameters.map(items => {
+              return items.name;
+            })
+          })
+          console.log("Test Items", this.listOfTestRecords);
+
+
+        } else if (res.response === 0) {
+          //this.loading = false;
+        }
+      }, (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          //this.loading = false;
+          console.log("Client Side Error")
+        } else {
+          //this.loading = false;
+          console.log(err)
+        }
+      })
+  }
+
+  getMedicalPersonDevicesData(obj, token) {
+    this.medicalPersonService.fetchMedicalPersonDevicesApiCall(obj, token).subscribe(
+      (res) => {
+        console.log("fetched devices data is ...", res)
+        if (res.response === 3) {
+          // this.loading = false;
+          this.fetchedDevicesData = res.otherDevices;
+          this.filteredFetchedDevicesData = res.otherDevices;
+          console.log("ListOffetchedDevicesData...", this.fetchedDevicesData);
+
+          this.fetchedDevicesData.forEach((val, i) => {
+            val.status = "Connect";
+          }
+          )
+          console.log("After add status param to fetchedDevicesData...", this.fetchedDevicesData);
+
+
+        } else if (res.response === 0) {
+          //this.loading = false;
+        }
+      }, (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          //this.loading = false;
+          console.log("Client Side Error")
+        } else {
+          //this.loading = false;
+          console.log(err)
+        }
+      })
+  }
+  search(term: string) {
+    console.log("search...", term)
+    if (!term) {
+      this.filteredlistOfTestRecords = this.listOfTestRecords;
+    } else {
+      this.filteredlistOfTestRecords = this.listOfTestRecords.filter(x =>
+        x.categoryName.trim().toLowerCase().includes(term.trim().toLowerCase())
+      );
+    }
+  }
+  findText(term: string) { }
   startTest() {
     setTimeout(() => {
       this.generatedTest = true;
     }, 10000);
+
+    this.localTime = new Date().getDate() + "/"
+      + (new Date().getMonth() + 1) + "/"
+      + new Date().getFullYear() + " @ "
+      + new Date().getHours() + ":"
+      + new Date().getMinutes() + ":"
+      + new Date().getSeconds() +
+      ((new Date().getHours() > 12) ? ('PM') : 'AM');;
+    this.patientName = this.patientProfileForm.value.firstName + " " + this.patientProfileForm.value.lastName;
 
     let pHReferenceRange = "5.0~7.5";
     this.generatepH()
@@ -402,54 +506,55 @@ export class CreateNewTestComponent implements OnInit {
 
 
   onLoad() {
-    this.fetchedDevicesData = [{
-      "id": 11,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR1",
-      "status": "Connected"
-    }, {
-      "id": 2,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR2",
-      "status": "Connected"
-    }, {
-      "id": 3,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR3",
-      "status": "Connected"
-    },
-    {
-      "id": 4,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR4",
-      "status": "Connected"
-    }, {
-      "id": 5,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR5",
-      "status": "Connecting"
-    }, {
-      "id": 6,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR6",
-      "status": "Connect"
-    },
-    {
-      "id": 7,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR7",
-      "status": "Connected"
-    }, {
-      "id": 8,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR8",
-      "status": "Connected"
-    }, {
-      "id": 9,
-      "img": "../../../../assets/images/ui/Icons/Capture.png",
-      "name": "UTSR9",
-      "status": "Connected"
-    }];
+    // this.fetchedDevicesData = [{
+    //   "id": 11,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR1",
+    //   "status": "Connected"
+    // }, {
+    //   "id": 2,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR2",
+    //   "status": "Connected"
+    // }, {
+    //   "id": 3,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR3",
+    //   "status": "Connected"
+    // },
+    // {
+    //   "id": 4,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR4",
+    //   "status": "Connected"
+    // }, {
+    //   "id": 5,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR5",
+    //   "status": "Connecting"
+    // }, {
+    //   "id": 6,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR6",
+    //   "status": "Connect"
+    // },
+    // {
+    //   "id": 7,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR7",
+    //   "status": "Connected"
+    // }, {
+    //   "id": 8,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR8",
+    //   "status": "Connected"
+    // }, {
+    //   "id": 9,
+    //   "img": "../../../../assets/images/ui/Icons/Capture.png",
+    //   "name": "UTSR9",
+    //   "status": "Connected"
+    // }];
+    this.fetchedDevicesData;
     this.cd.detectChanges();
     this.initiateSwiper();
 
@@ -466,16 +571,16 @@ export class CreateNewTestComponent implements OnInit {
       this.term = letSearch
     }
   }
-  search(term: string) {
-    console.log("term", term)
-    // if (!term) {
-    //   this.filteredPatients = this.patientsList;
-    // } else {
-    //   this.filteredPatients = this.patientsList.filter(x =>
-    //     x.firstName.trim().toLowerCase().includes(term.trim().toLowerCase())
-    //   );
-    // }
-  }
+  // search(term: string) {
+  //   console.log("term", term)
+  //   // if (!term) {
+  //   //   this.filteredPatients = this.patientsList;
+  //   // } else {
+  //   //   this.filteredPatients = this.patientsList.filter(x =>
+  //   //     x.firstName.trim().toLowerCase().includes(term.trim().toLowerCase())
+  //   //   );
+  //   // }
+  // }
 
   getPatientData(obj) {
     console.info("fetching patients data : ", obj);
@@ -532,6 +637,10 @@ export class CreateNewTestComponent implements OnInit {
       this.selectedRow = this.filteredPatients[index].patientID;
       console.log("obj", obj);
       this.patientProfileForm.patchValue({
+        firstName: obj.firstName,
+        lastName: obj.lastName,
+        patientID: obj.patientID,
+        medical_record_id: obj.medical_record_id,
         doctorName:
           obj.firstName +
           " " +
@@ -539,6 +648,7 @@ export class CreateNewTestComponent implements OnInit {
         medical_personnel_id: obj.medical_personnel_id,
         department: obj.department,
       });
+      console.log("addTestDateDetails...", this.addTestDateDetails.value)
       //this.modalService.dismissAll()
     }
   }
@@ -547,14 +657,22 @@ export class CreateNewTestComponent implements OnInit {
     let index = -1;
     index = this.fetchedDevicesData.findIndex((val) => {
       return (
-        val.id ===
-        value.id
+        val.deviceID ===
+        value.deviceID
       );
     });
     if (index != -1) {
       let obj = this.fetchedDevicesData[index];
       console.log("index val...", obj)
-      this.selectedDevice = this.fetchedDevicesData[index].id;
+      this.selectedDevice = this.fetchedDevicesData[index].deviceID;
+      obj.status = "Connecting"
+      setTimeout(() => {
+        obj.status = "Connected"
+      }, 5000);
+
+
+
+
       console.log("obj", obj);
       // this.patientProfileForm.patchValue({
       //   doctorName:
@@ -589,7 +707,19 @@ export class CreateNewTestComponent implements OnInit {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
-  openCreateNewTestMethod(createNewTestModel, patientsList) {
+  openCreateNewTestMethod(createNewTestModel, selectedTestInfo) {
+    console.log("selectedTestInfo...", selectedTestInfo)
+    this.selectedTestInfo = selectedTestInfo;
+    let testMethodData: any = selectedTestInfo.testMethod + " ( " + selectedTestInfo.testId + " @ " + selectedTestInfo.brand + ")"
+    this.viewTestInfoForm.patchValue({
+      testName: selectedTestInfo.testName,
+      testDevice: selectedTestInfo.deviceModel,
+      testMethod: testMethodData,
+      testItems: selectedTestInfo.parameters2
+    })
+    this.addTestDateDetails.patchValue({
+      sampleType: selectedTestInfo.testName
+    })
     this.modalService.open(createNewTestModel, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'lg', backdrop: "static" }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

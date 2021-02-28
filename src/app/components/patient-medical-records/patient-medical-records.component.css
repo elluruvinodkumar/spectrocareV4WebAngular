@@ -67,7 +67,7 @@ input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer
   margin: 0;
 }
 
-::ng-deep .mat-select-value-text {
+.mat-select-value-text {
   color: white !important;
 }
 

@@ -1,5 +1,5 @@
 * {
-    font-family: "Muli-Regular", sans-serif !important;
+    font-family: "Muli", sans-serif !important;
 }
 
 .t-12 {
@@ -8,33 +8,62 @@
     color: black;
 }
 
+/* .t-14 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #140202;
+} */
+
 .mat-menu-content {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
 
-/* .mat-menu-item {
-    line-height: 35px;
-    height: 35px;
-    font-size: 11px;
-    padding: 0px 0px 0px 5px !important;
-} */
-
-/* thead tr th {
-    font-size: 14px;
-} */
+td {
+    white-space: nowrap;
+}
 
 /* Extra small devices (phones, 600px and down) */
 
 @media only screen and (max-width: 600px) {
-    thead tr th {
-        font-size: 10px !important;
+    .imgs-margin {
+        margin: -12px 10px 0 0;
+    }
+    .component-heading {
+        font-family: 'Muli' !important;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #3E454C;
+        border-bottom: 1px solid gray;
+        width: 100%;
+        opacity: 1;
+    }
+    table thead tr th {
+        font-family: 'Muli' !important;
+        font-weight: 300 !important;
+        font-size: 11px !important;
         vertical-align: middle;
         white-space: nowrap;
+        color: #ffffff;
+        letter-spacing: 0px;
+        opacity: 1;
     }
-    tbody tr td {
+    /* tbody tr td {
         font-size: 10px !important;
         vertical-align: middle;
+        text-align: center;
+    } */
+    tbody tr td {
+        vertical-align: middle;
+        text-align: center;
+        font-family: 'Muli' !important;
+        font-weight: 600 !important;
+        font-size: 10px !important;
+        letter-spacing: 0px;
+        color: #140202;
+        opacity: 1;
+        white-space: nowrap;
         text-align: center;
     }
     tbody tr td .row {
@@ -52,11 +81,92 @@
     tbody tr td button .crossImg {
         width: 0.20rem;
     }
-    .mat-menu-item {
-        line-height: 20px;
-        height: 20px;
-        font-size: 8px;
+    .t-14 {
+        font-size: 10px;
+        font-weight: 600;
+        color: #140202;
+    }
+    .t-16 {
+        font-family: "Muli" !important;
+        font-size: 11px;
+        font-weight: 600;
+        color: #140202;
+        opacity: 1;
+        letter-spacing: 0px;
+    }
+    .delete-model-img {
+        width: 40%;
+        margin: 25px 0 25px 25px !important;
+    }
+    .pt-name-pad {
+        padding: 0px 0px 0px 15px;
+    }
+    .pt-name-bold {
+        font-family: 'Muli' !important;
+        font-weight: 600 !important;
+        font-size: 11px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #000000;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .pt-name {
+        font-family: 'Muli' !important;
+        font-weight: 600 !important;
+        font-size: 11px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #000000;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .pt-id {
+        font-family: 'Muli' !important;
+        font-weight: 600 !important;
+        font-size: 9px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #828282;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    ::ng-deep .mat-menu-panel {
+        min-width: 118px !important;
+        background: #F9F9F9 !important;
+    }
+    ::ng-deep .mat-menu-item {
+        font-family: "Muli" !important;
+        font-weight: 600 !important;
+        color: #434343 !important;
+        opacity: 1;
+        letter-spacing: 0;
+        line-height: 35px !important;
+        height: 35px !important;
+        font-size: 10px !important;
         padding: 0px 0px 0px 5px !important;
+    }
+    .dateFromTo {
+        font-family: "Muli" !important;
+        font-weight: 600 !important;
+        color: #434343 !important;
+        opacity: 1;
+        letter-spacing: 0;
+        font-size: 11px !important;
+    }
+    ::ng-deep .mat-select-value {
+        font-family: "Muli" !important;
+        font-weight: bold !important;
+        font-size: 11px !important;
+        letter-spacing: 0.11px;
+        color: #3E454C;
+        opacity: 1;
+    }
+    .modal-title {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0px;
     }
 }
 
@@ -80,10 +190,10 @@
         white-space: nowrap !important;
     }
     tbody tr td .pat-img {
-        width: 35px;
-        height: 35px;
-        min-width: 35px;
-        min-height: 35px;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
     }
     tbody tr td button .crossImg {
         width: 0.24rem;
@@ -93,6 +203,18 @@
         height: 20px;
         font-size: 8px;
         padding: 0px 0px 0px 5px !important;
+    }
+    .t-16 {
+        font-size: 12px;
+        font-weight: 600;
+        color: #140202;
+    }
+    .delete-model-img {
+        width: 40%;
+        margin: 25px 0 25px 25px !important;
+    }
+    .pt-name-pad {
+        padding: 0px 0px 0px 15px;
     }
 }
 
@@ -116,10 +238,10 @@
         white-space: nowrap !important;
     }
     tbody tr td .pat-img {
-        width: 40px;
-        height: 40px;
-        min-width: 40px;
-        min-height: 40px;
+        width: 35px;
+        height: 35px;
+        min-width: 35px;
+        min-height: 35px;
     }
     tbody tr td button .crossImg {
         width: 0.28rem;
@@ -129,6 +251,14 @@
         height: 22px;
         font-size: 9px;
         padding: 0px 0px 0px 5px !important;
+    }
+    .t-16 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #140202;
+    }
+    .pt-name-pad {
+        padding: 0px 0px 0px 13px;
     }
 }
 
@@ -152,10 +282,10 @@
         white-space: nowrap !important;
     }
     tbody tr td .pat-img {
-        width: 45px;
-        height: 45px;
-        min-width: 45px;
-        min-height: 45px;
+        width: 37px;
+        height: 37px;
+        min-width: 37px;
+        min-height: 37px;
     }
     tbody tr td button .crossImg {
         width: 0.30rem;
@@ -166,19 +296,60 @@
         font-size: 11px;
         padding: 0px 0px 0px 5px !important;
     }
+    .delete-model-img {
+        width: 70%;
+        margin: 15px !important;
+    }
+    .pt-name-pad {
+        padding: 0px 0px 0px 5px;
+    }
+    .t-16 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #140202;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
 @media only screen and (min-width: 1200px) {
-    thead tr th {
+    .imgs-margin {
+        margin: -5px 10px;
+    }
+    .component-heading {
+        font-family: 'Muli' !important;
+        font-size: 16px;
+        font-weight: 600;
+        color: #3E454C;
+        letter-spacing: 0px;
+        width: 100%;
+        opacity: 1;
+    }
+    /* thead tr th {
         font-size: 14px !important;
         vertical-align: middle;
         white-space: nowrap;
-    }
-    tbody tr td {
+    } */
+    table thead tr th {
+        font-family: 'Muli' !important;
+        font-weight: 300 !important;
         font-size: 14px !important;
         vertical-align: middle;
+        white-space: nowrap;
+        color: #ffffff;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    tbody tr td {
+        vertical-align: middle;
+        text-align: center;
+        font-family: 'Muli' !important;
+        font-weight: 600 !important;
+        font-size: 13px !important;
+        letter-spacing: 0px;
+        color: #140202;
+        opacity: 1;
+        white-space: nowrap;
         text-align: center;
     }
     tbody tr td .row {
@@ -188,39 +359,123 @@
         white-space: nowrap !important;
     }
     tbody tr td .pat-img {
-        width: 50px;
-        height: 50px;
-        min-width: 50px;
-        min-height: 50px;
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
     }
     tbody tr td button .crossImg {
         width: 0.32rem;
     }
-    /* .modal-md {
-        width: 30%;
+    /* .t-14 {
+        font-size: 14px;
+        font-weight: 600;
+        color: #140202;
     } */
-}
-
-.pt-name {
-    font-weight: 600;
-}
-
-.pt-id {
-    font-weight: normal;
-    color: #828282
+    .t-16 {
+        font-family: "Muli" !important;
+        font-size: 14px;
+        font-weight: bold;
+        color: #140202;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .delete-model-img {
+        width: 70%;
+        margin: 10px 0 10px 30px !important;
+    }
+    .pt-name-pad {
+        padding: 0px 0px 0px 0px;
+    }
+    .pt-name-bold {
+        font-family: 'Muli' !important;
+        font-weight: bold !important;
+        font-size: 13px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #000000;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .pt-name {
+        font-family: 'Muli' !important;
+        font-weight: normal !important;
+        font-size: 13px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #000000;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .pt-id {
+        font-family: 'Muli' !important;
+        font-weight: normal !important;
+        font-size: 11px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #828282;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    ::ng-deep .mat-menu-panel {
+        min-width: 170px !important;
+        background: #F9F9F9 !important;
+    }
+    ::ng-deep .mat-menu-item {
+        font-family: "Muli" !important;
+        font-weight: 600 !important;
+        color: #434343 !important;
+        opacity: 1;
+        letter-spacing: 0;
+        line-height: 35px !important;
+        height: 35px !important;
+        font-size: 12px !important;
+        padding: 0px 0px 0px 5px !important;
+    }
+    .dateFromTo {
+        font-family: "Muli" !important;
+        font-weight: 600 !important;
+        color: #434343 !important;
+        opacity: 1;
+        letter-spacing: 0px;
+        font-size: 14px !important;
+    }
+    ::ng-deep .mat-select-value {
+        font-family: "Muli" !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        letter-spacing: 0.11px;
+        color: #3E454C;
+        opacity: 1;
+    }
+    .input-group .form-control {
+        font-family: "Muli" !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        letter-spacing: 0.11px;
+        color: #3E454C;
+        opacity: 1;
+    }
+    .calenderData {
+        font-family: "Muli" !important;
+        font-weight: 600 !important;
+        font-size: 13px !important;
+        letter-spacing: 0px;
+        color: #434343;
+        opacity: 1;
+    }
+    .modal-title {
+        font-family: "Muli";
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0px;
+    }
 }
 
 .t-values {
     font-size: 14px;
     font-weight: 500;
     color: #000000;
-}
-
-.mat-menu-item {
-    line-height: 35px;
-    height: 35px;
-    font-size: 11px;
-    padding: 0px 0px 0px 5px !important;
 }
 
 .dateVisible {
@@ -234,9 +489,12 @@
 }
 
 .active {
-    /* border: 1px solid white !important; */
-    color: white !important;
-    background-color: #53b9c6 !important;
+    background-color: #53B9C6 !important;
+    font-size: 13px !important;
+    font-family: "Muli" !important;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
     /* box-shadow: 0 0 5px rgb(44, 41, 41); */
 }
 
@@ -266,4 +524,26 @@
 
 .mt-placeHolder .mat-select-content {
     background-color: red !important;
+}
+
+::ng-deep .my-panel {
+    background: #F9F9F9;
+    box-shadow: 0px 3px 6px #00000029;
+    /* height: 300px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 160px !important;
+    width: 160px !important;
+    margin-top: 30px !important;
+    margin-left: 60px !important;
+}
+
+::ng-deep .mat-tab-body-content {
+    background-color: #F8FCFD;
+}
+
+::ng-deep .modal-content {
+    border: 1px solid #707070 !important;
+    opacity: 1 !important;
 }

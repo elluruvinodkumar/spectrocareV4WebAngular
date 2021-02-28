@@ -1,13 +1,23 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "./swiper.css";
+@import "../src/assets/fonts/Muli/stylesheet.css";
 /* You can add global styles to this file, and also import other style files */
 
-@font-face {
-	font-family: "Muli reg";
-	src: url("assets/fonts/Muli/Muli-Medium.ttf") format("opentype");
+/* @font-face {
+	font-family: "Muli-Regular";
+	src: url("assets/fonts/Muli/Muli-Regular.ttf") format("opentype");
 	font-style: normal;
-}
+} */
+
+/* @font-face {
+	font-family: 'Muli';
+	src: url('assets/fonts/Muli/Muli-Regular.woff2') format('woff2'),
+	 url('assets/fonts/Muli/Muli-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+} */
 
 html, body {
 	height: 100%;
@@ -55,7 +65,7 @@ body {
 
 @media only screen and (max-width: 1024px) {
 	.signupForm .phno .adminSignupPh .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
-		width: 300px !important;
+		width: 366px !important;
 	}
 }
 
@@ -98,7 +108,7 @@ body {
 
 @media only screen and (max-width: 1366px) {
 	.medicalPersonSignupForm .phno .medicalPersonnelProfilePh .intl-tel-input input, .intl-tel-input input[type=text], .intl-tel-input input[type=tel] {
-		width: 420px !important;
+		width: 394px !important;
 		outline-style: none;
 	}
 }

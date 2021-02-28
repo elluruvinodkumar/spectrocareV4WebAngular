@@ -30,3 +30,22 @@ button:hover {
     color: white !important;
     box-shadow: 0 0 5px rgb(44, 41, 41);
 }
+
+.release {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+    /* .logo-text {
+        margin: auto;
+    } */
+    .release {
+        display: block !important;
+        padding-bottom: 25px;
+        position: absolute;
+        /* margin: auto !important; */
+    }
+    .list {
+        text-align: center !important;
+    }
+}

@@ -54,13 +54,13 @@ export class AppComponent {
       (this.router.url != "/patient") &&
       (this.router.url != "/admincenter/patientprofile/:id") &&
       (this.router.url != "/adminappointment") &&
-      (this.router.url != "/forgot") &&
+      // (this.router.url != "/forgot") &&
       (this.router.url != "/termsandconditions") &&
       (this.router.url != "/privacypolicy") &&
       (this.router.url != "/changepassword") &&
       (this.router.url != "/headerone") &&
-      (this.router.url != "/administrator") &&
-      (this.router.url != "/medicalpersonnel") &&
+      // (this.router.url != "/administrator") &&
+      // (this.router.url != "/medicalpersonnel") &&
       (this.router.url != "/patientmodule")
 
     ) {
@@ -74,6 +74,9 @@ export class AppComponent {
     if ((this.router.url != "/") &&
       (this.router.url != "/adminsignin") &&
       (this.router.url != "/adminsignup") &&
+      (this.router.url != "/administrator") &&
+      (this.router.url != "/medicalpersonnel") &&
+      (this.router.url != "/forgot") &&
       (this.router.url != "/medicalpersonnelsignup") &&
       (this.router.url != "/header") &&
       (this.router.url != "/admincenter/dashboard") &&
