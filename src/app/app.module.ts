@@ -35,7 +35,7 @@ import { PastAppointmentComponent } from './components/past-appointment/past-app
 import { BookAppointmentComponent } from './components/book-appointment/book-appointment.component';
 import { AppointmentCalendarComponent } from './components/appointment-calendar/appointment-calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBarModule, MatCheckboxModule, MatSelectModule, MatSidenav, MatIconModule, MatMenuModule, MatButtonToggleModule, MatRadioModule, MatFormFieldModule, MatAutocompleteModule, MatDialogModule } from '@angular/material';
+import { MatSnackBarModule, MatCheckboxModule, MatSelectModule, MatSidenav, MatIconModule, MatMenuModule, MatButtonToggleModule, MatRadioModule, MatFormFieldModule, MatAutocompleteModule, MatDialogModule, MatSlideToggleModule } from '@angular/material';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -170,6 +170,7 @@ const config: SocketIoConfig = { url: 'http://34.231.177.197:3000', options: { a
     MatDialogModule,
     NgxIntlTelInputModule,
     BrowserAnimationsModule,
+    MatSlideToggleModule,
     // SocketIoModule.forRoot(config),
     SocketIoModule.forRoot(config),
     CalendarModule.forRoot({

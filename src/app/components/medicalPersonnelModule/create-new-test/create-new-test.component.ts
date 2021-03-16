@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalDismissReasons, NgbCalendar, NgbDate, NgbDatepickerConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/services/login.service';
 import { MedicalPersonnelService } from 'src/app/services/medical-personnel.service';
 import Swiper from 'swiper';
@@ -55,45 +55,6 @@ export class CreateNewTestComponent implements OnInit {
   generatedJsonData = [];
   fetchedDevicesData: any = [];
   filteredFetchedDevicesData: any = [];
-  //[{
-  //   "id": 1,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc"
-  // }, {
-  //   "id": 2,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc2"
-  // }, {
-  //   "id": 3,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc3"
-  // },
-  // {
-  //   "id": 4,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc4"
-  // }, {
-  //   "id": 5,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc5"
-  // }, {
-  //   "id": 6,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc6"
-  // },
-  // {
-  //   "id": 7,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc7"
-  // }, {
-  //   "id": 8,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc8"
-  // }, {
-  //   "id": 9,
-  //   "img": "../../../../assets/images/ui/Icons/Capture.png",
-  //   "name": "abc9"
-  // }]
   generatedTest: boolean = false;
   pHReferenceRange: any;
   pHFlag: boolean;
@@ -120,10 +81,20 @@ export class CreateNewTestComponent implements OnInit {
   localTime: any;
   patientName: any;
   selectedTestInfo: any;
+  content: any;
   constructor(private modalService: NgbModal, private _formBuilder: FormBuilder,
     private loginService: LoginService, private cd: ChangeDetectorRef,
     private medicalPersonService: MedicalPersonnelService,
-    private _snackBar: MatSnackBar) { }
+    private _snackBar: MatSnackBar, config: NgbDatepickerConfig, calendar: NgbCalendar) {
+    let date = new Date();
+    config.minDate = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate() };
+    console.log("Date", config.minDate)
+    //config.maxDate = { year: 2021, month: 12, day: 31 };
+    config.maxDate = { year: date.getFullYear(), month: date.getMonth() + 1, day: date.getDate() + 14 };
+    // weekends are disabled
+    config.markDisabled = (date: NgbDate) => calendar.getWeekday(date) >= 7;
+
+  }
 
   ngOnInit() {
     this.signInRes = localStorage.getItem("SignInRes");
@@ -196,6 +167,7 @@ export class CreateNewTestComponent implements OnInit {
       postalCode: [""],
       profilePic: [""],
     });
+
 
     this.onLoad();
   }
@@ -685,6 +657,19 @@ export class CreateNewTestComponent implements OnInit {
       //this.modalService.dismissAll()
     }
   }
+  printPage(id: any) {
+    console.log(id)
+    // if (this.disableIcons === true) {
+    //   this.disableIcons = false;
+    // }
+
+    let prntPage = document.getElementById('content').innerHTML;
+    let originalContent = document.body.innerHTML;
+    document.body.innerHTML = prntPage;
+    window.print();
+    location.reload()
+
+  }
   openDeleteTestMethod(viewDeleteTestModelContent, patient) {
     // this.isButton = false;
     this.modalService.open(viewDeleteTestModelContent, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'md', backdrop: "static" }).result.then((result) => {
@@ -742,6 +727,14 @@ export class CreateNewTestComponent implements OnInit {
   }
   openDiscardMethod(openDiscardModel) {
     this.modalService.open(openDiscardModel, { ariaLabelledBy: 'modal-basic-title', centered: true, size: 'md', backdrop: "static" }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  openShareReportMethod(viewShareReportModel) {
+    // console.log(selectedPatient)
+    this.modalService.open(viewShareReportModel, { ariaLabelledBy: 'modal-basic-title', centered: true, size: "md", backdrop: "static" }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;

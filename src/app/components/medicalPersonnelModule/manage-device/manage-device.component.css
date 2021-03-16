@@ -1,6 +1,102 @@
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #53b9c6 !important;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #ffffff;
+}
+
+::ng-deep .mat-slide-toggle-bar {
+    background: #DFDDDD;
+}
+
+.available-wifi-devices {
+    border: 1px solid black;
+    /* height: 20vh; */
+    border: 1px solid #707070;
+    opacity: 1;
+}
+
+.highlighted {
+    background-color: rgba(176, 234, 241, 0.5) !important;
+}
+
+.field-icon1 {
+    color: black;
+    /* float: right; */
+    margin-left: -25px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+.field-icon1:hover {
+    cursor: pointer;
+}
+
+.progress {
+    height: 0.65rem;
+}
+
+.progress-bar {
+    background-color: #53b9c6;
+}
+
+.add-button-styles {
+    background: #53B9C6;
+    outline-style: none;
+    width: 100%;
+    font-family: "Muli";
+    font-size: 12px;
+    font-weight: 600;
+    color: #FFFFFF;
+    height: 33px;
+    padding: 5px;
+}
+
 /* Extra small devices (phones, 600px and down) */
 
 @media only screen and (max-width: 600px) {
+    .refresh-img {
+        width: 0.7rem;
+    }
+    .success-img {
+        width: 3rem;
+    }
+    .selected-device-alignment {
+        margin-left: -10px;
+        padding-right: 10px;
+    }
+    .menu-icon {
+        width: 0.3rem;
+    }
+    .warn-icon {
+        width: 3.5rem;
+    }
+    .modal-body-data {
+        font-family: "Muli";
+        font-size: 12px;
+        font-weight: 500;
+        color: #000000;
+        margin: 10px;
+    }
+    .model-bold {
+        font-family: "Muli";
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 0px;
+        opacity: 1;
+        color: #474747;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .update-row-data {
+        padding: 5px 0px;
+    }
+    .spinner-border {
+        width: 0.7rem;
+        height: 0.7rem;
+    }
     .imgs-margin {
         margin: -12px 10px 0 0;
     }
@@ -143,10 +239,34 @@
         font-weight: 600;
         letter-spacing: 0px;
     }
+    .modal-data-bold {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 0px;
+    }
+    .modal-data-semiBold2 {
+        font-family: "Muli";
+        font-size: 10px;
+        font-weight: bold;
+        letter-spacing: 0px;
+    }
+    .modal-data-semiBold {
+        font-family: "Muli";
+        font-size: 9px;
+        font-weight: bold;
+        letter-spacing: 0px;
+    }
+    .modal-data-normal {
+        font-family: "Muli";
+        font-size: 9px;
+        font-weight: normal;
+        letter-spacing: 0px;
+    }
     .butn-styl {
         font-family: "Muli";
         font-size: 7px !important;
-        font-weight: 600 !important;
+        font-weight: bold !important;
         letter-spacing: 0px;
         color: #000000;
         opacity: 1;
@@ -154,7 +274,7 @@
     .butn-styl1 {
         font-family: "Muli";
         font-size: 7px !important;
-        font-weight: 600 !important;
+        font-weight: bold !important;
         letter-spacing: 0px;
         color: #000000;
         opacity: 1;
@@ -162,10 +282,18 @@
     .butn-styl2 {
         font-family: "Muli";
         font-size: 7px !important;
-        font-weight: 600 !important;
+        font-weight: bold !important;
         letter-spacing: 0px;
         color: #000000;
         opacity: 1;
+    }
+    .wifi-img {
+        width: 2rem;
+    }
+    .deviceInfoValue-input {
+        outline-style: none;
+        height: 25px;
+        padding: 10px;
     }
     .btn-text-style-1 {
         font-family: "Muli";
@@ -175,12 +303,12 @@
         opacity: 1;
         outline-style: none;
         background-color: transparent;
-        padding: 0 25px;
+        padding: 0 20px;
         color: #474747;
         border: 1px solid #707070;
-        height: 25px;
+        height: 20px;
         line-height: 1;
-        border-radius: 10px;
+        border-radius: 8px;
     }
     .btn-text-style-2 {
         font-family: "Muli";
@@ -190,11 +318,84 @@
         opacity: 1;
         outline-style: none;
         background-color: #53B9C6;
-        padding: 0 30px;
+        padding: 0 20px;
         color: white;
-        height: 25px;
+        height: 20px;
         line-height: 1;
-        border-radius: 10px;
+        border-radius: 8px;
+    }
+    ::ng-deep .mat-slide-toggle-bar {
+        height: 12px !important;
+    }
+    ::ng-deep .mat-slide-toggle-thumb-container {
+        top: -5px !important;
+    }
+    .closeImg {
+        cursor: pointer;
+        width: 1rem;
+    }
+    .deviceInfoKey {
+        font-family: 'Muli' !important;
+        font-size: 7px;
+        font-weight: bold;
+        color: #302E2E;
+        letter-spacing: 0px;
+        opacity: 1;
+        white-space: nowrap;
+    }
+    .deviceInfoValue {
+        font-family: 'Muli' !important;
+        font-size: 7px;
+        font-weight: normal;
+        color: #464444;
+        letter-spacing: 0px;
+        opacity: 1;
+        white-space: nowrap;
+    }
+    .deviceImg {
+        /* width: 7rem;
+        border: 1px solid #707070; */
+    }
+    .btn-style {
+        font-family: 'Muli' !important;
+        font-size: 7px;
+        font-weight: 600;
+        color: #000000;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .deviceImgPadding {
+        padding: 10px 0 10px 20px;
+    }
+    .device-info-row {
+        padding: 3px 0px;
+    }
+    .left-arrow {
+        width: 0.4rem;
+        margin-right: 5px;
+    }
+    .device-info-align {
+        padding-top: 1px;
+    }
+    .wifi-theme-color {
+        width: 1rem;
+        min-width: 1rem;
+    }
+    .selected-wifi {
+        width: 0.8rem !important;
+        height: 0.8rem !important;
+    }
+    .tick-mark {
+        width: 0.8rem !important;
+        height: 0.8rem !important;
+        position: absolute !important;
+        left: 3px !important;
+    }
+    .tick-mark-alignment {
+        padding: 4px;
+    }
+    .small-screen-padding {
+        padding: 5px 0 0 20px;
     }
 }
 
@@ -341,6 +542,106 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
 @media only screen and (min-width: 1200px) {
+    .refresh-img {
+        width: 1rem;
+    }
+    .success-img {
+        width: 5rem;
+    }
+    ::ng-deep .modal-xl .modal-lg {
+        width: 60% !important;
+        margin-left: 30% !important;
+    }
+    ::ng-deep .modal-xl1 {
+        width: 100% !important;
+        /* margin-left: 30% !important; */
+    }
+    ::ng-deep .modal-lg {
+        width: 140% !important;
+        /* margin-left: 30% !important; */
+    }
+    .selected-device-alignment {
+        margin-left: -30px;
+    }
+    .menu-icon {
+        width: 0.32rem;
+    }
+    .warn-icon {
+        width: 4.5rem;
+    }
+    .modal-body-data {
+        font-family: "Muli";
+        font-size: 14px;
+        font-weight: 500;
+        color: #000000;
+        margin: 10px;
+    }
+    .update-row-data {
+        padding: 15px 0px;
+    }
+    .spinner-border {
+        width: 1rem;
+        height: 1rem;
+    }
+    .tick-mark {
+        width: 1rem !important;
+        position: absolute !important;
+        left: 12px !important;
+    }
+    .tick-mark-alignment {
+        padding: 3px;
+    }
+    .device-info-align {
+        padding-top: 10px;
+    }
+    .left-arrow {
+        width: 0.4rem;
+        margin-right: 5px;
+    }
+    .device-info-row {
+        padding: 6px 0px;
+    }
+    .btn-style {
+        font-family: 'Muli' !important;
+        font-size: 14px;
+        font-weight: 600;
+        color: #000000;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .deviceImg {
+        /* width: 10rem;
+        border: 1px solid #707070; */
+    }
+    .deviceImgPadding {
+        padding: 20px;
+    }
+    .deviceInfoKey {
+        font-family: 'Muli' !important;
+        font-size: 14px;
+        font-weight: bold;
+        color: #302E2E;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .deviceInfoValue {
+        font-family: 'Muli' !important;
+        font-size: 14px;
+        font-weight: normal;
+        color: #464444;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .closeImg {
+        cursor: pointer;
+        width: 1.5rem;
+    }
+    .wifi-theme-color {
+        width: 1.5rem;
+    }
+    .selected-wifi {
+        width: 1rem;
+    }
     .imgs-margin {
         margin: -5px 10px;
     }
@@ -498,10 +799,34 @@
         font-weight: 600;
         letter-spacing: 0px;
     }
+    .modal-data-bold {
+        font-family: "Muli";
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 0px;
+    }
+    .modal-data-semiBold2 {
+        font-family: "Muli";
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0px;
+    }
+    .modal-data-semiBold {
+        font-family: "Muli";
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 0px;
+    }
+    .modal-data-normal {
+        font-family: "Muli";
+        font-size: 12px;
+        font-weight: normal;
+        letter-spacing: 0px;
+    }
     .butn-styl {
         font-family: "Muli";
         font-size: 11px !important;
-        font-weight: 600 !important;
+        font-weight: bold !important;
         letter-spacing: 0px;
         color: #000000;
         opacity: 1;
@@ -509,7 +834,7 @@
     .butn-styl1 {
         font-family: "Muli";
         font-size: 11px !important;
-        font-weight: 600 !important;
+        font-weight: bold !important;
         letter-spacing: 0px;
         color: #000000;
         opacity: 1;
@@ -517,10 +842,18 @@
     .butn-styl2 {
         font-family: "Muli";
         font-size: 11px !important;
-        font-weight: 600 !important;
+        font-weight: bold !important;
         letter-spacing: 0px;
         color: #000000;
         opacity: 1;
+    }
+    .wifi-img {
+        width: 3rem;
+    }
+    .deviceInfoValue-input {
+        outline-style: none;
+        height: 30px;
+        padding: 10px;
     }
     .btn-text-style-1 {
         font-family: "Muli";
@@ -559,10 +892,177 @@
         opacity: 1;
         color: #474747;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 20px;
     }
 }
 
-/* ::ng-deep .modal-content {
+::ng-deep .modal-content {
     margin-top: 25vh !important;
+}
+
+/* .sk-chase {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    animation: sk-chase 2.5s infinite linear both;
+}
+
+.sk-chase-dot {
+ color:#000000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: sk-chase-dot 2.0s infinite ease-in-out both;
+}
+
+.sk-chase-dot:before {
+    color:#000000;
+    content: '';
+    display: block;
+    width: 25%;
+    height: 25%;
+    background-color: #fff;
+    border-radius: 100%;
+    animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
+}
+
+.sk-chase-dot:nth-child(1) {
+    animation-delay: -1.1s;
+}
+
+.sk-chase-dot:nth-child(2) {
+    animation-delay: -1.0s;
+}
+
+.sk-chase-dot:nth-child(3) {
+    animation-delay: -0.9s;
+}
+
+.sk-chase-dot:nth-child(4) {
+    animation-delay: -0.8s;
+}
+
+.sk-chase-dot:nth-child(5) {
+    animation-delay: -0.7s;
+}
+
+.sk-chase-dot:nth-child(6) {
+    animation-delay: -0.6s;
+}
+
+.sk-chase-dot:nth-child(1):before {
+    animation-delay: -1.1s;
+}
+
+.sk-chase-dot:nth-child(2):before {
+    animation-delay: -1.0s;
+}
+
+.sk-chase-dot:nth-child(3):before {
+    animation-delay: -0.9s;
+}
+
+.sk-chase-dot:nth-child(4):before {
+    animation-delay: -0.8s;
+}
+
+.sk-chase-dot:nth-child(5):before {
+    animation-delay: -0.7s;
+}
+
+.sk-chase-dot:nth-child(6):before {
+    animation-delay: -0.6s;
+}
+
+@keyframes sk-chase {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sk-chase-dot {
+    80%, 100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes sk-chase-dot-before {
+    50% {
+        transform: scale(0.4);
+    }
+    100%, 0% {
+        transform: scale(1.0);
+    }
 } */
+
+.loader {
+    color: #000000;
+    font-size: 14px;
+    margin: 120px auto 90px auto;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-animation: load4 1.3s infinite linear;
+    animation: load4 1.3s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+@-webkit-keyframes load4 {
+    0%, 100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}
+
+@keyframes load4 {
+    0%, 100% {
+        box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+        box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+        box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+        box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+        box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+        box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+}

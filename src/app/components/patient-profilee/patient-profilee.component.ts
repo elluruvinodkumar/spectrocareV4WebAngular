@@ -14,6 +14,9 @@ import { HttpErrorResponse, HttpClient } from "@angular/common/http";
 import { MatSnackBar } from "@angular/material";
 
 import { PatientProfileComponent } from "../patient-profile/patient-profile.component";
+interface SearchByValue {
+  viewValue: string;
+}
 @Component({
   selector: "app-patient-profilee",
   templateUrl: "./patient-profilee.component.html",
@@ -61,7 +64,17 @@ export class PatientProfileeComponent implements OnInit {
   fileValue: any;
   theImg: any;
   previewImg1: any;
+  previewImg11: any;
+  previewImg2: any;
+  searchByValue: SearchByValue[] = [
+    { viewValue: 'National ID' },
+    { viewValue: 'Health Insurance ID' }
+  ];
+  selectedFrontImg: boolean = true;
+  selectedBackImg: boolean = true;
   @ViewChild("fileInput", { static: true }) el: ElementRef;
+  @ViewChild("fileInput11", { static: true }) el1: ElementRef;
+  @ViewChild("fileInput2", { static: true }) el2: ElementRef;
   @ViewChild("autoFocusTest", { static: false }) nativeEl: ElementRef;
   constructor(
     private modalService: NgbModal,
@@ -156,6 +169,40 @@ export class PatientProfileeComponent implements OnInit {
     }
     this.patProComponent.ngOnInit();
   }
+  //Image Upload
+  fileProgress11(event: any) {
+    this.selectedFrontImg = false;
+    let reader = new FileReader(); // HTML5 FileReader API
+    let file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      reader.readAsDataURL(file);
+      // When file uploads set it to file formcontrol
+      reader.onload = () => {
+        //this.patientProfileForm.get('profilePic').setValue(file);
+        this.previewImg11 = reader.result
+      }
+      // ChangeDetectorRef since file is loading outside the zone
+      this.cd.markForCheck();
+    }
+  }
+  fileProgress2(event: any) {
+    this.selectedBackImg = false;
+    let reader = new FileReader(); // HTML5 FileReader API
+    let file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      reader.readAsDataURL(file);
+      // When file uploads set it to file formcontrol
+      reader.onload = () => {
+        //this.patientProfileForm.get('profilePic').setValue(file);
+        this.previewImg2 = reader.result
+      }
+      // ChangeDetectorRef since file is loading outside the zone
+      this.cd.markForCheck();
+    }
+  }
+
+  //Img Upload complete here
+
 
   onSearchChange1(searchValue: string): void {
     console.log("changed dob value : ", searchValue.substr(0, 4));
@@ -1202,5 +1249,19 @@ export class PatientProfileeComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+  }
+
+  openScanIdCardMethod(openScanIdCardModelContent) {
+
+    this.modalService.open(openScanIdCardModelContent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', backdrop: "static", windowClass: 'modal-xl' }).result.then((result) => {
+      //centered: true,
+      this.selectedFrontImg = true;
+      this.selectedBackImg = true;
+      //this.previewImg11 = ""
+      //this.previewImg2 = ""
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 }

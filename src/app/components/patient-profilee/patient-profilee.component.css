@@ -1,5 +1,5 @@
 * {
-  font-family: "Muli reg", sans-serif !important;
+  font-family: "Muli", sans-serif !important;
 }
 
 .edit-img {
@@ -62,4 +62,232 @@ span {
   font-weight: 500;
 }
 
-/*  */
+/* Extra small devices (phones, 600px and down) */
+
+@media only screen and (max-width: 600px) {
+  .img-camera {
+    width: 2.5rem;
+  }
+  .img-below-text {
+    font-family: "Muli";
+    font-size: 11px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    opacity: 1;
+    color: #140202;
+  }
+  .scan-id-btn-stl {
+    background: #53b9c6;
+    border: none;
+    border-radius: 15px;
+    color: #ffffff;
+    font-family: "Muli";
+    font-size: 10px;
+    font-weight: bold;
+    opacity: 1;
+    width: 40%;
+  }
+  .btn-text-style-1 {
+    font-family: "Muli";
+    font-size: 11px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    opacity: 1;
+    outline-style: none;
+    background-color: transparent;
+    padding: 0 20px;
+    color: #474747;
+    border: 1px solid #707070;
+    height: 20px;
+    line-height: 1;
+    border-radius: 8px;
+  }
+  .btn-text-style-2 {
+    font-family: "Muli";
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    opacity: 1;
+    outline-style: none;
+    background-color: #53B9C6;
+    padding: 0 20px;
+    color: white;
+    height: 20px;
+    line-height: 1;
+    border-radius: 8px;
+  }
+  .button-styles {
+    font-family: "Muli";
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    opacity: 1;
+    color: #140202;
+    align-self: center;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+  .img-camera {
+    width: 3.5rem;
+  }
+  .img-below-text {
+    font-family: "Muli";
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    opacity: 1;
+    color: #140202;
+  }
+  .scan-id-btn-stl {
+    background: #53b9c6;
+    border: none;
+    border-radius: 15px;
+    color: #ffffff;
+    font-family: "Muli";
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 1;
+    width: 30%;
+  }
+  ::ng-deep .modal-xl .modal-lg {
+    width: 60% !important;
+    margin-left: 30% !important;
+  }
+  .btn-text-style-1 {
+    font-family: "Muli";
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    opacity: 1;
+    outline-style: none;
+    background-color: transparent;
+    padding: 0 25px;
+    color: #474747;
+    border: 1px solid #707070;
+    height: 30px;
+    line-height: 1;
+    border-radius: 10px;
+  }
+  .btn-text-style-2 {
+    font-family: "Muli";
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    opacity: 1;
+    outline-style: none;
+    background-color: #53B9C6;
+    padding: 0 30px;
+    color: white;
+    height: 30px;
+    line-height: 1;
+    border-radius: 10px;
+  }
+  .button-styles {
+    font-family: "Muli";
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    opacity: 1;
+    color: #140202;
+    align-self: center;
+  }
+}
+
+.id-card-input {
+  width: 100%;
+  border: 1px solid #CCCCCC;
+  opacity: 1;
+  letter-spacing: 0px;
+  color: #140202;
+  font-family: "Muli";
+  font-size: 14px;
+  font-weight: normal;
+  height: 30px;
+  padding: 0 5px;
+  outline-style: none;
+}
+
+.id-card-label {
+  font-family: "Muli";
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0px;
+  color: #140202;
+  opacity: 1;
+}
+
+select.form-control {
+  text-indent: 5px;
+  font-size: 13px;
+}
+
+/*the container must be positioned relative:*/
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
+.custom-select select {
+  display: none;
+  /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: green;
+}
+
+/*style the arrow inside the select element:*/
+
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+
+.select-items div, .select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+/*style items (options):*/
+
+.select-items {
+  position: absolute;
+  background-color: red;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: yellow;
+}

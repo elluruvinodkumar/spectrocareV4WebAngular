@@ -235,464 +235,474 @@
 
 <!-- Open List Of Patient Model -->
 <ng-template #createNewTestModel let-modal>
-    <div class="modal-header" style="color: #ffffff;
+    <div>
+        <div class="modal-header" style="color: #ffffff;
     background: #53B9C6 0% 0% no-repeat padding-box;border: 1px solid #CECECE;opacity: 1;">
-        <div class="modal-title justify-content-center" style="" id="modal-basic-title">Create New Test
+            <div class="modal-title justify-content-center" style="" id="modal-basic-title">Create New Test
+            </div>
+            <img (click)="modal.close('Close click')" style="cursor: pointer;width: 1.2rem;"
+                src="../../../../assets/images/ui/Icons/patient-medical-module/Icon material-cancel.png">
         </div>
-        <img (click)="modal.close('Close click')" style="cursor: pointer;width: 1.2rem;"
-            src="../../../../assets/images/ui/Icons/patient-medical-module/Icon material-cancel.png">
-    </div>
-    <div class="modal-body bg-light" style="padding: 0px;">
+        <div class="modal-body bg-light" style="padding: 0px;">
 
-        <div class="container" style="padding: 0px;">
-            <div class="row">
-                <div class="col-12">
-                    <mat-horizontal-stepper labelPosition="bottom" #stepper>
-                        <mat-step label="Confirm test information">
-                            <div style="border: 1px solid #707070;padding: 0px 20px;">
-                                <div style="">
+            <div class="container" style="padding: 0px;">
+                <div class="row">
+                    <div class="col-12">
+                        <mat-horizontal-stepper labelPosition="bottom" #stepper>
+                            <mat-step label="Confirm test information">
+                                <div style="border: 1px solid #707070;padding: 0px 20px;">
+                                    <div style="">
 
-                                    <!-- <form [formGroup]="viewTestInfoForm"> -->
+                                        <!-- <form [formGroup]="viewTestInfoForm"> -->
 
-                                    <div class="row">
-                                        <div class="get-sample-head">Test Information</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label class="label2" style="white-space: nowrap;">Test Name</label>
+                                        <div class="row">
+                                            <div class="get-sample-head">Test Information</div>
                                         </div>
-                                        <div class="col-10 small-screen value2">
-
-                                            <!-- <input class="value2 border-0" style="background: transparent;"
-                                                    formControlName="testName" disabled> -->
-                                            <!-- <div class="value2 border-0" style="background: transparent;"> -->
-                                            {{selectedTestInfo.testName}}
-                                            <!-- </div> -->
-                                            <!-- Urine Routine</span> -->
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label class="label2" style="white-space: nowrap;">Test Device</label>
-                                        </div>
-                                        <div class="col-10 small-screen value2">
-                                            {{selectedTestInfo.deviceModel}}
-                                            <!-- <input class="value2 border-0" style="background: transparent;"
-                                                formControlName="testDevice" disabled> -->
-                                            <!-- UTSR</span> -->
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label class="label2" style="white-space: nowrap;">Test Method</label>
-                                        </div>
-                                        <div class="col-10 small-screen value2">
-                                            {{selectedTestInfo.testMethod}}
-                                            <!-- <input class="value2 border-0" style="background: transparent;"
-                                                formControlName="testMethod" disabled> -->
-                                            <!-- Test Strip
-                                                        (TS-233489540239@ASK Inc. )</span> -->
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label class="label2" style="white-space: nowrap;">Test Items</label>
-                                        </div>
-                                        <div class="col-10 small-screen value2">
-                                            {{selectedTestInfo.parameters2}}
-                                            <!-- <textarea class="value2 border-0" rows="2" style="background: transparent;"
-                                                formControlName="testItems" disabled></textarea> -->
-                                        </div>
-                                    </div>
-                                    <!-- </form> -->
-                                </div>
-                                <div class=" mt-1" style="border-top: 1px dashed #707070;border-width:2px;"></div>
-                                <div>
-                                    <div class="row">
-                                        <div class="get-sample-head">Specimen Information</div>
-                                    </div>
-                                    <form [formGroup]="addTestDateDetails">
-
-                                        <div class="row mb-2">
+                                        <div class="row">
                                             <div class="col-2">
-                                                <label class="label2" style="white-space: nowrap;">Sample Type</label>
+                                                <label class="label2" style="white-space: nowrap;">Test Name</label>
                                             </div>
-                                            <div class="col-10 value2">
-                                                <input class="value2-width " formControlName="sampleType" disabled>
-                                            </div>
-                                            <!-- <div class="col"></div> -->
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-2 mb-1">
-                                                <label class="label2" style="white-space: nowrap;">Collected
-                                                    On</label>
-                                            </div>
-                                            <div class="col-md-3 mb-1">
+                                            <div class="col-10 small-screen value2">
 
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control value2dt"
-                                                        style="background: white;text-align: center;border-right: none;"
-                                                        placeholder="yyyy/mm/dd" ngbDatepicker #d="ngbDatepicker"
-                                                        readonly formControlName="startDate">
-                                                    <div class="input-group-append">
-                                                        <button
-                                                            style="outline-style: none;background: white;border: none;padding-right: 5px;"
-                                                            class="btn  input-group-text" (click)="d.toggle()"
-                                                            type="button">
-                                                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-3 mb-1 input-height">
-                                                <input type="time" class="value2dt form-control"
-                                                    style="padding: 2px 2px 2px 10px;text-align: center;"
-                                                    formControlName="colletedTime">
-                                            </div>
-                                        </div>
-                                        <div class="row mb-2">
-                                            <div class="col-md-2">
-                                                <label class="label2" style="white-space: nowrap;">Tested
-                                                    On</label>
-                                            </div>
-                                            <div class="col-md-3 mb-1">
-
-                                                <div class="input-group ">
-                                                    <input type="text" class="form-control value2dt"
-                                                        style="background: white;text-align: center;border-right: none;"
-                                                        placeholder="yyyy/mm/dd" aria-label="Recipient's username"
-                                                        aria-describedby="basic-addon2" ngbDatepicker
-                                                        #d1="ngbDatepicker" readonly formControlName="endDate">
-                                                    <div class="input-group-append">
-                                                        <button
-                                                            style="outline-style: none;background: white;border: none;padding-right: 5px;"
-                                                            class="btn  input-group-text" (click)="d1.toggle()"
-                                                            type="button">
-                                                            <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-3 mb-1">
-                                                <input type="time" class="value2dt form-control"
-                                                    style="padding: 2px 2px 2px 10px;text-align: center;"
-                                                    formControlName="testedTime">
+                                                <!-- <input class="value2 border-0" style="background: transparent;"
+                                                    formControlName="testName" disabled> -->
+                                                <!-- <div class="value2 border-0" style="background: transparent;"> -->
+                                                {{selectedTestInfo.testName}}
+                                                <!-- </div> -->
+                                                <!-- Urine Routine</span> -->
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-2">
-                                                <label class="label2" style="white-space: nowrap;">Fasting</label>
+                                                <label class="label2" style="white-space: nowrap;">Test Device</label>
                                             </div>
-                                            <div class="col-5" style=" padding: 5px 0 0 15px;">
-                                                <div class="container radio-item "
-                                                    style="justify-content: space-around;">
-                                                    <div class="row">
-                                                        <div class="col-4 radio-btn-right" style="padding-left: 0;">
-                                                            <label class="radio-inline"
-                                                                style="display: flex; font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
-                                                                <input id="Radios1" type="radio" name="isFasting"
-                                                                    value="true" checked="checked"
-                                                                    formControlName="isFasting">
-                                                                &nbsp; <div style="line-height: 1.4;">Yes</div>
-                                                            </label>
-                                                        </div>
-
-                                                        <div class="col-4" style="padding-left: 0;">
-                                                            <label class="radio-inline"
-                                                                style="display: flex; font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
-                                                                <input id="Radios2" type="radio" name="isFasting"
-                                                                    value="false" formControlName="isFasting">&nbsp;
-                                                                <div style="line-height: 1.4;">No</div>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <div class="col-10 small-screen value2">
+                                                {{selectedTestInfo.deviceModel}}
+                                                <!-- <input class="value2 border-0" style="background: transparent;"
+                                                formControlName="testDevice" disabled> -->
+                                                <!-- UTSR</span> -->
                                             </div>
-                                            <!-- <div class="col"></div> -->
                                         </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="" style="text-align: center;padding: 10px 0 10px 0;">
-                                    <button class="btn btn-sm mr-3 btn-text-style-1"
-                                        (click)="modal.close('Close click')">Cancel
-                                    </button>
-                                    <button class="btn btn-sm btn-text-style-2" matStepperNext>Next
-                                    </button>
-                                </div>
-                            </div>
-                        </mat-step>
-                        <mat-step label="Select a Patient">
-                            <div style="border: 1px solid #707070;padding: 10px 20px;">
-                                <!--height: 55vh;-->
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-6 border-rt" style="">
-                                            <div class="row">
-                                                <div class="get-sample-head">Search
-                                                    Patient</div>
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <label class="label2" style="white-space: nowrap;">Test Method</label>
                                             </div>
-
-                                            <div class="input-group search-box-width" style="">
-                                                <input type="text" [(ngModel)]="term1" class="form-control search-text"
-                                                    placeholder="Search by FirstName" style=" outline-style: none !important;
-                                                height: 34px;background-color: white ;border-right: none;"
-                                                    (keyup)="findPatient(term1)">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text"
-                                                        style="outline-style: none;background: white;border: none; border-left: none;padding-right: 5px;">
-                                                        <i class="fas fa-search" aria-hidden="true"></i>
-                                                    </div>
-                                                </div>
+                                            <div class="col-10 small-screen value2">
+                                                {{selectedTestInfo.testMethod}}
+                                                <!-- <input class="value2 border-0" style="background: transparent;"
+                                                formControlName="testMethod" disabled> -->
+                                                <!-- Test Strip
+                                                        (TS-233489540239@ASK Inc. )</span> -->
                                             </div>
-
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <div class="get-sample-head">Please
-                                                    Select
-                                                    Your Patient</div>
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <label class="label2" style="white-space: nowrap;">Test Items</label>
                                             </div>
-                                            <div class="scroll" style="border: 1px solid #707070">
-                                                <div *ngIf="!(filteredPatients && filteredPatients.length)"
-                                                    style="text-align: center;background-color: white;padding: 20px;">
+                                            <div class="col-10 small-screen value2">
+                                                {{selectedTestInfo.parameters2}}
+                                                <!-- <textarea class="value2 border-0" rows="2" style="background: transparent;"
+                                                formControlName="testItems" disabled></textarea> -->
+                                            </div>
+                                        </div>
+                                        <!-- </form> -->
+                                    </div>
+                                    <div class=" mt-1" style="border-top: 1px dashed #707070;border-width:2px;"></div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="get-sample-head">Specimen Information</div>
+                                        </div>
+                                        <form [formGroup]="addTestDateDetails">
 
-                                                    <div
-                                                        style="text-align: center;font-size: 12px;font-weight: 600;margin-top: 18vh;">
-                                                        No Results Found.
+                                            <div class="row mb-2">
+                                                <div class="col-2">
+                                                    <label class="label2" style="white-space: nowrap;">Sample
+                                                        Type</label>
+                                                </div>
+                                                <div class="col-10 value2">
+                                                    <input class="value2-width " formControlName="sampleType" disabled>
+                                                </div>
+                                                <!-- <div class="col"></div> -->
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-2 mb-1">
+                                                    <label class="label2" style="white-space: nowrap;">Collected
+                                                        On</label>
+                                                </div>
+                                                <div class="col-md-3 mb-1">
+
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control value2dt"
+                                                            style="background: white;text-align: center;border-right: none;"
+                                                            placeholder="yyyy/mm/dd" ngbDatepicker #d="ngbDatepicker"
+                                                            readonly formControlName="startDate">
+                                                        <div class="input-group-append">
+                                                            <button
+                                                                style="outline-style: none;background: white;border: none;padding-right: 5px;"
+                                                                class="btn  input-group-text" (click)="d.toggle()"
+                                                                type="button">
+                                                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
                                                     </div>
 
                                                 </div>
-                                                <div *ngFor="let option of filteredPatients | filter:term1;let i=index;"
-                                                    [ngClass]="{'highlighted': option.patientID === selectedRow  }"
-                                                    (click)="selectPatientFromList(option)">
-                                                    <!-- (click)="selectedRow = i" [value]="option" -->
-                                                    <div class="container">
-                                                        <div class="row select-patient"
-                                                            style="border-bottom: 1px solid #707070;height: 60px;align-content: space-around;margin-right: -50px;">
-                                                            <div class="col-3" style="margin: auto;margin-left: 0px;">
-                                                                <!-- <div class="container">
-                                                                    <div class="row"> -->
+                                                <div class="col-md-3 mb-1 input-height">
+                                                    <input type="time" class="value2dt form-control"
+                                                        style="padding: 2px 2px 2px 10px;text-align: center;"
+                                                        formControlName="colletedTime">
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-md-2">
+                                                    <label class="label2" style="white-space: nowrap;">Tested
+                                                        On</label>
+                                                </div>
+                                                <div class="col-md-3 mb-1">
 
-                                                                <div *ngIf="option.patientID === selectedRow">
-                                                                    <img class="tick-mark" style="position: absolute;
-                                                                            top: 25px;
-                                                                            left: 5px;"
-                                                                        src="../../../../assets/images/ui/Icons/Icon-awesome-check-circle.png">
-                                                                </div>
-                                                                <!-- </div>
-                                                            <div class="col-3" style=""> -->
-                                                                <!--style="padding: 0 0 0 30px;"-->
-                                                                <div>
-                                                                    <img class="pt-img"
-                                                                        src="{{imgURL+option.profilePic}}"
-                                                                        onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
-                                                                </div>
-                                                                <!-- </div>
-                                                                </div> -->
+                                                    <div class="input-group ">
+                                                        <input type="text" class="form-control value2dt"
+                                                            style="background: white;text-align: center;border-right: none;"
+                                                            placeholder="yyyy/mm/dd" aria-label="Recipient's username"
+                                                            aria-describedby="basic-addon2" ngbDatepicker
+                                                            #d1="ngbDatepicker" readonly formControlName="endDate">
+                                                        <div class="input-group-append">
+                                                            <button
+                                                                style="outline-style: none;background: white;border: none;padding-right: 5px;"
+                                                                class="btn  input-group-text" (click)="d1.toggle()"
+                                                                type="button">
+                                                                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-md-3 mb-1">
+                                                    <input type="time" class="value2dt form-control"
+                                                        style="padding: 2px 2px 2px 10px;text-align: center;"
+                                                        formControlName="testedTime">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <label class="label2" style="white-space: nowrap;">Fasting</label>
+                                                </div>
+                                                <div class="col-5" style=" padding: 5px 0 0 15px;">
+                                                    <div class="container radio-item "
+                                                        style="justify-content: space-around;">
+                                                        <div class="row">
+                                                            <div class="col-4 radio-btn-right" style="padding-left: 0;">
+                                                                <label class="radio-inline"
+                                                                    style="display: flex; font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                                    <input id="Radios1" type="radio" name="isFasting"
+                                                                        value="true" checked="checked"
+                                                                        formControlName="isFasting">
+                                                                    &nbsp; <div style="line-height: 1.4;">Yes</div>
+                                                                </label>
                                                             </div>
-                                                            <div class="col-9 " style="margin: auto;">
-                                                                <!-- <div class="container"> -->
-                                                                <div class=""
-                                                                    style="display: flex; margin-right: 20px;">
-                                                                    <div class="col-7 pt-name" style="padding: 0px;">
-                                                                        {{option.firstName}}
-                                                                    </div>
-                                                                    <div class="col-2 value2">
-                                                                        <div class="row pt-age" style="">
-                                                                            {{option.age}} Yrs </div>
-                                                                    </div>
-                                                                    <div class="col-3" style="line-height: 0;">
-                                                                        <div *ngIf="(option.gender) != 'Male'">
-                                                                            <img class="gd-icon" style=""
-                                                                                src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon ionic-ios-female.png">
-                                                                        </div>
-                                                                        <div *ngIf="(option.gender) === 'Male'">
-                                                                            <img class="gd-icon" style=""
-                                                                                src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon ionic-ios-male.png">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <!-- </div> -->
-                                                                <!-- <div class="container"> -->
-                                                                <div class="row">
-                                                                    <div class="col-12 pt-id" style="">
-                                                                        Patient
-                                                                        ID : {{option.patientID}}</div>
-                                                                </div>
-                                                                <!-- </div> -->
+
+                                                            <div class="col-4" style="padding-left: 0;">
+                                                                <label class="radio-inline"
+                                                                    style="display: flex; font-size: 12px;font-weight: 500 ;color: #1c1919;letter-spacing: 0.5px;">
+                                                                    <input id="Radios2" type="radio" name="isFasting"
+                                                                        value="false" formControlName="isFasting">&nbsp;
+                                                                    <div style="line-height: 1.4;">No</div>
+                                                                </label>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- <div class="col"></div> -->
                                             </div>
-                                        </div>
+
+                                        </form>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div class="" style="text-align: center;padding: 10px 0 10px 0;">
-                                    <button class="btn btn-sm mr-3 btn-text-style-1" matStepperPrevious>Back
-                                    </button>
-                                    <button class="btn btn-sm btn-text-style-2" matStepperNext>Next
-                                    </button>
-                                </div>
-                            </div>
-                        </mat-step>
-                        <mat-step label="Connect to Device">
-                            <div style="border: 1px solid #707070;padding: 10px 20px;">
-                                <!--height: 40vh;-->
                                 <div>
-                                    <div class="get-sample-head" style="padding: 0px;">Connect to available
-                                        test device</div>
+                                    <div class="" style="text-align: center;padding: 10px 0 10px 0;">
+                                        <button class="btn btn-sm mr-3 btn-text-style-1"
+                                            (click)="modal.close('Close click')">Cancel
+                                        </button>
+                                        <button class="btn btn-sm btn-text-style-2" matStepperNext>Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Select a Patient">
+                                <div style="border: 1px solid #707070;padding: 10px 20px;">
+                                    <!--height: 55vh;-->
                                     <div class="container">
                                         <div class="row">
-                                            <div class="swiper-container">
-                                                <div class="swiper-wrapper s1" style="justify-content: start;
-                                                ">
-                                                    <!--padding: 0 35px;-->
-                                                    <div *ngIf="!(fetchedDevicesData && fetchedDevicesData.length)"
-                                                        style="text-align: center;background-color: white;padding: 70px 50px 70px 50px;">
+                                            <div class="col-md-6 border-rt" style="">
+                                                <div class="row">
+                                                    <div class="get-sample-head">Search
+                                                        Patient</div>
+                                                </div>
 
-                                                        <div class="get-sample-head">
-                                                            No available device.
+                                                <div class="input-group search-box-width" style="">
+                                                    <input type="text" [(ngModel)]="term1"
+                                                        class="form-control search-text"
+                                                        placeholder="Search by FirstName" style=" outline-style: none !important;
+                                                height: 34px;background-color: white ;border-right: none;"
+                                                        (keyup)="findPatient(term1)">
+                                                    <div class="input-group-append">
+                                                        <div class="input-group-text"
+                                                            style="outline-style: none;background: white;border: none; border-left: none;padding-right: 5px;">
+                                                            <i class="fas fa-search" aria-hidden="true"></i>
                                                         </div>
-                                                        <div class="btn btn-sm btn-text-style-2"
-                                                            [routerLink]="['/medicalpersonnelmodule/managedevice']">
-                                                            <!--(click)="openUnableToConnectMethod(openUnableToConnectModel)"-->
-                                                            Manage Device
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="row">
+                                                    <div class="get-sample-head">Please
+                                                        Select
+                                                        Your Patient</div>
+                                                </div>
+                                                <div class="scroll" style="border: 1px solid #707070">
+                                                    <div *ngIf="!(filteredPatients && filteredPatients.length)"
+                                                        style="text-align: center;background-color: white;padding: 20px;">
+
+                                                        <div
+                                                            style="text-align: center;font-size: 12px;font-weight: 600;margin-top: 18vh;">
+                                                            No Results Found.
                                                         </div>
 
                                                     </div>
-                                                    <div class="swiper-slide" style="margin: 20px 5px 20px 12px;justify-content: center;border: 1px solid #707070;
+                                                    <div *ngFor="let option of filteredPatients | filter:term1;let i=index;"
+                                                        [ngClass]="{'highlighted': option.patientID === selectedRow  }"
+                                                        (click)="selectPatientFromList(option)">
+                                                        <!-- (click)="selectedRow = i" [value]="option" -->
+                                                        <div class="container">
+                                                            <div class="row select-patient"
+                                                                style="border-bottom: 1px solid #707070;height: 60px;align-content: space-around;margin-right: -50px;">
+                                                                <div class="col-3"
+                                                                    style="margin: auto;margin-left: 0px;">
+                                                                    <!-- <div class="container">
+                                                                    <div class="row"> -->
+
+                                                                    <div *ngIf="option.patientID === selectedRow">
+                                                                        <img class="tick-mark" style="position: absolute;
+                                                                            top: 25px;
+                                                                            left: 5px;"
+                                                                            src="../../../../assets/images/ui/Icons/Icon-awesome-check-circle.png">
+                                                                    </div>
+                                                                    <!-- </div>
+                                                            <div class="col-3" style=""> -->
+                                                                    <!--style="padding: 0 0 0 30px;"-->
+                                                                    <div>
+                                                                        <img class="pt-img"
+                                                                            src="{{imgURL+option.profilePic}}"
+                                                                            onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+                                                                    </div>
+                                                                    <!-- </div>
+                                                                </div> -->
+                                                                </div>
+                                                                <div class="col-9 " style="margin: auto;">
+                                                                    <!-- <div class="container"> -->
+                                                                    <div class=""
+                                                                        style="display: flex; margin-right: 20px;">
+                                                                        <div class="col-7 pt-name"
+                                                                            style="padding: 0px;">
+                                                                            {{option.firstName}}
+                                                                        </div>
+                                                                        <div class="col-2 value2">
+                                                                            <div class="row pt-age" style="">
+                                                                                {{option.age}} Yrs </div>
+                                                                        </div>
+                                                                        <div class="col-3" style="line-height: 0;">
+                                                                            <div *ngIf="(option.gender) != 'Male'">
+                                                                                <img class="gd-icon" style=""
+                                                                                    src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon ionic-ios-female.png">
+                                                                            </div>
+                                                                            <div *ngIf="(option.gender) === 'Male'">
+                                                                                <img class="gd-icon" style=""
+                                                                                    src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon ionic-ios-male.png">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- </div> -->
+                                                                    <!-- <div class="container"> -->
+                                                                    <div class="row">
+                                                                        <div class="col-12 pt-id" style="">
+                                                                            Patient
+                                                                            ID : {{option.patientID}}</div>
+                                                                    </div>
+                                                                    <!-- </div> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="" style="text-align: center;padding: 10px 0 10px 0;">
+                                        <button class="btn btn-sm mr-3 btn-text-style-1" matStepperPrevious>Back
+                                        </button>
+                                        <button class="btn btn-sm btn-text-style-2" matStepperNext>Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Connect to Device">
+                                <div style="border: 1px solid #707070;padding: 10px 20px;">
+                                    <!--height: 40vh;-->
+                                    <div>
+                                        <div class="get-sample-head" style="padding: 0px;">Connect to available
+                                            test device</div>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="swiper-container">
+                                                    <div class="swiper-wrapper s1" style="justify-content: start;
+                                                ">
+                                                        <!--padding: 0 35px;-->
+                                                        <div *ngIf="!(fetchedDevicesData && fetchedDevicesData.length)"
+                                                            style="text-align: center;background-color: white;padding: 70px 50px 70px 50px;">
+
+                                                            <div class="get-sample-head">
+                                                                No available device.
+                                                            </div>
+                                                            <div class="btn btn-sm btn-text-style-2"
+                                                                [routerLink]="['/medicalpersonnelmodule/managedevice']">
+                                                                <!--(click)="openUnableToConnectMethod(openUnableToConnectModel)"-->
+                                                                Manage Device
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="swiper-slide" style="margin: 20px 5px 20px 12px;justify-content: center;border: 1px solid #707070;
                                                         opacity: 1;padding: 10px 0;"
-                                                        *ngFor="let deviceData of fetchedDevicesData;let i=index"
-                                                        [ngClass]="{'highlighted': deviceData.deviceID === selectedDevice  }"
-                                                        (click)="selectDeviceFromList(deviceData)">
-                                                        <div class="tick-icon-alignment" style=""
-                                                            *ngIf="deviceData.deviceID === selectedDevice">
-                                                            <img class="tick-icon" style=""
-                                                                src="../../../../assets/images/ui/Icons/Icon-awesome-check-circle.png">
-                                                        </div>
-                                                        <div>
-                                                            <img class="device-img" style=""
-                                                                src="{{baseURL+deviceData.deviceImagePath}}">
-                                                        </div>
-                                                        <div class="t-14 " style="margin-bottom: 8px;">
-                                                            {{deviceData.deviceName}}</div>
-                                                        <div class="btn btn-sm butn-styl"
-                                                            *ngIf="deviceData.status == 'Connected'"
-                                                            style="padding: 4px 17px;">
-                                                            Connected
-                                                        </div>
-                                                        <div class="btn btn-sm butn-styl1"
-                                                            *ngIf="deviceData.status =='Connecting'"
-                                                            style="font-size: 11px;background: #E2E1E1 ;padding: 4px 17px;">
-                                                            <span class="spinner-border text-muted" style="height: 5px;
+                                                            *ngFor="let deviceData of fetchedDevicesData;let i=index"
+                                                            [ngClass]="{'highlighted': deviceData.deviceID === selectedDevice  }"
+                                                            (click)="selectDeviceFromList(deviceData)">
+                                                            <div class="tick-icon-alignment" style=""
+                                                                *ngIf="deviceData.deviceID === selectedDevice">
+                                                                <img class="tick-icon" style=""
+                                                                    src="../../../../assets/images/ui/Icons/Icon-awesome-check-circle.png">
+                                                            </div>
+                                                            <div>
+                                                                <img class="device-img" style=""
+                                                                    src="{{baseURL+deviceData.deviceImagePath}}">
+                                                            </div>
+                                                            <div class="t-14 " style="margin-bottom: 8px;">
+                                                                {{deviceData.deviceName}}</div>
+                                                            <div class="btn btn-sm butn-styl"
+                                                                *ngIf="deviceData.status == 'Connected'"
+                                                                style="padding: 4px 17px;">
+                                                                Connected
+                                                            </div>
+                                                            <div class="btn btn-sm butn-styl1"
+                                                                *ngIf="deviceData.status =='Connecting'"
+                                                                style="font-size: 11px;background: #E2E1E1 ;padding: 4px 17px;">
+                                                                <span class="spinner-border text-muted" style="height: 5px;
                                                             width: 5px;
                                                             margin-right: 5px;"></span>Connecting
+                                                            </div>
+                                                            <div class="btn btn-sm butn-styl2"
+                                                                *ngIf="deviceData.status =='Connect'"
+                                                                style="font-size: 11px;font-weight: 500;background: #474343 ;color: white;padding: 4px 17px;">
+                                                                Connect
+                                                            </div>
                                                         </div>
-                                                        <div class="btn btn-sm butn-styl2"
-                                                            *ngIf="deviceData.status =='Connect'"
-                                                            style="font-size: 11px;font-weight: 500;background: #474343 ;color: white;padding: 4px 17px;">
-                                                            Connect
-                                                        </div>
+
                                                     </div>
 
+                                                    <!-- Add Navigation -->
+                                                    <div class="swiper-button-prev"></div>
+                                                    <div class="swiper-button-next"></div>
                                                 </div>
-
-                                                <!-- Add Navigation -->
-                                                <div class="swiper-button-prev"></div>
-                                                <div class="swiper-button-next"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div style="margin-top: 5px;padding: 20px 20px 0px 20px">
-                                <div class="t-13bold" style="font-size: 13px;font-weight: 600;color: #000000;">Notes :
-                                </div>
-                            </div>
-                            <div style="padding: 0 0 0 20px;">
-                                <ul>
-                                    <li class="t-13normal" style="font-size: 12px;font-weight: 500;color: #000000;">*
-                                        Please make sure the
-                                        selected device is connected before going to the next step.
-                                    </li>
-                                    <li class="t-13normal" style="font-size: 13px;font-weight: 500;color: #000000;">* To
-                                        connect the
-                                        device,
-                                        please tap on ‘Connect’.</li>
-                                    <li class="t-13normal" style="font-size: 13px;font-weight: 500;color: #000000;">* If
-                                        there are no
-                                        available device, please go to ‘Manage Device’ to add on new
-                                        device first.</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <div class="" style="text-align: center;padding: 30px 0 10px 0;">
-                                    <button class="btn btn-sm mr-3 btn-text-style-1" matStepperPrevious>Back
-                                    </button>
-                                    <button class="btn btn-sm btn-text-style-2" matStepperNext>Next
-                                    </button>
-                                </div>
-                            </div>
-                        </mat-step>
-                        <mat-step label="Get Sample Ready for Analysis">
-                            <div class="container" style="border: 1px solid #707070;padding: 10px 20px;">
-                                <div class="row">
-                                    <div class="get-sample-head" style="">
-                                        Get Sample Ready for Analysis
+                                <div style="margin-top: 5px;padding: 20px 20px 0px 20px">
+                                    <div class="t-13bold" style="font-size: 13px;font-weight: 600;color: #000000;">Notes
+                                        :
                                     </div>
                                 </div>
-                                <div class="container">
+                                <div style="padding: 0 0 0 20px;">
+                                    <ul>
+                                        <li class="t-13normal" style="font-size: 12px;font-weight: 500;color: #000000;">
+                                            *
+                                            Please make sure the
+                                            selected device is connected before going to the next step.
+                                        </li>
+                                        <li class="t-13normal" style="font-size: 13px;font-weight: 500;color: #000000;">
+                                            * To
+                                            connect the
+                                            device,
+                                            please tap on ‘Connect’.</li>
+                                        <li class="t-13normal" style="font-size: 13px;font-weight: 500;color: #000000;">
+                                            * If
+                                            there are no
+                                            available device, please go to ‘Manage Device’ to add on new
+                                            device first.</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <div class="" style="text-align: center;padding: 30px 0 10px 0;">
+                                        <button class="btn btn-sm mr-3 btn-text-style-1" matStepperPrevious>Back
+                                        </button>
+                                        <button class="btn btn-sm btn-text-style-2" matStepperNext>Next
+                                        </button>
+                                    </div>
+                                </div>
+                            </mat-step>
+                            <mat-step label="Get Sample Ready for Analysis">
+                                <div class="container" style="border: 1px solid #707070;padding: 10px 20px;">
                                     <div class="row">
-                                        <div class="d-flex justify-content-around">
-
-                                            <div class="test-img-1-padding card m-2" style="width: 30%; border: 1px solid #707070;border-radius: 0px;
-                                            opacity: 1;">
-                                                <img class="test-1-img" style=""
-                                                    src="../../../../assets/images/ui/Icons/dip-strip.png">
-                                                <div class="test-img-text" style="">
-                                                    Collect the test sample with the test strip
-                                                </div>
-                                            </div>
-                                            <div style="width: 5%;align-self: center;text-align: center;">
-                                                <img
-                                                    src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon feather-chevron-right.png">
-                                            </div>
-
-                                            <div class="test-img-1-padding card m-2" style="width: 30%;border: 1px solid #707070;border-radius: 0px;
-                                        opacity: 1;">
-                                                <img class="test-2-img" style=""
-                                                    src="../../../../assets/images/ui/Icons/chip-with-strip.png">
-                                                <div class="test-img-text" style="">
-                                                    Insert the test strip holder into the device
-                                                </div>
-                                            </div>
-
-                                            <div style="width: 5%; align-self: center;text-align: center;">
-                                                <img
-                                                    src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon feather-chevron-right.png">
-                                            </div>
-                                            <div class="test-img-3-padding card m-2" style="width: 30%;border: 1px solid #707070;border-radius: 0px;
-                                        opacity: 1;">
-                                                <img class="test-3-img"
-                                                    src="../../../../assets/images/ui/Icons/spectrodevice.png">
-                                                <div class="test-img-3-text" style="">
-                                                    Slightly push the test strip holder into the device and press Start
-                                                    Test
-                                                </div>
-                                            </div>
-
+                                        <div class="get-sample-head" style="">
+                                            Get Sample Ready for Analysis
                                         </div>
                                     </div>
-                                </div>
-                                <!-- <div class="row" style="justify-content: space-between;">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="d-flex justify-content-around">
+
+                                                <div class="test-img-1-padding card m-2" style="width: 30%; border: 1px solid #707070;border-radius: 0px;
+                                            opacity: 1;">
+                                                    <img class="test-1-img" style=""
+                                                        src="../../../../assets/images/ui/Icons/dip-strip.png">
+                                                    <div class="test-img-text" style="">
+                                                        Collect the test sample with the test strip
+                                                    </div>
+                                                </div>
+                                                <div style="width: 5%;align-self: center;text-align: center;">
+                                                    <img
+                                                        src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon feather-chevron-right.png">
+                                                </div>
+
+                                                <div class="test-img-1-padding card m-2" style="width: 30%;border: 1px solid #707070;border-radius: 0px;
+                                        opacity: 1;">
+                                                    <img class="test-2-img" style=""
+                                                        src="../../../../assets/images/ui/Icons/chip-with-strip.png">
+                                                    <div class="test-img-text" style="">
+                                                        Insert the test strip holder into the device
+                                                    </div>
+                                                </div>
+
+                                                <div style="width: 5%; align-self: center;text-align: center;">
+                                                    <img
+                                                        src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon feather-chevron-right.png">
+                                                </div>
+                                                <div class="test-img-3-padding card m-2" style="width: 30%;border: 1px solid #707070;border-radius: 0px;
+                                        opacity: 1;">
+                                                    <img class="test-3-img"
+                                                        src="../../../../assets/images/ui/Icons/spectrodevice.png">
+                                                    <div class="test-img-3-text" style="">
+                                                        Slightly push the test strip holder into the device and press
+                                                        Start
+                                                        Test
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="row" style="justify-content: space-between;">
                                     <div class="col-3 p-0">
                                         <div class="test-img-1-padding" style="border: 1px solid #707070;
                                         opacity: 1;">
@@ -732,140 +742,153 @@
                                         </div>
                                     </div>
                                 </div> -->
-                            </div>
-                            <div>
-                                <div class="" style="text-align: center;padding: 25px 0 10px 0;">
-                                    <button class="btn btn-sm mr-3 btn-text-style-1" style="" matStepperPrevious>Back
-                                    </button>
-                                    <button class="btn btn-sm btn-text-style-2" style="" matStepperNext
-                                        (click)="startTest()">Start Test
-                                    </button>
                                 </div>
-                            </div>
-                        </mat-step>
-                        <mat-step label="Start Test and View Results">
-                            <div class="container" style="border: 1px solid #707070;padding: 10px 20px 20px 20px;">
-                                <div class="row">
-                                    <div class="get-sample-head" style="padding: 15px 0 0 15px;">
-                                        Test Results
+                                <div>
+                                    <div class="" style="text-align: center;padding: 25px 0 10px 0;">
+                                        <button class="btn btn-sm mr-3 btn-text-style-1" style=""
+                                            matStepperPrevious>Back
+                                        </button>
+                                        <button class="btn btn-sm btn-text-style-2" style="" matStepperNext
+                                            (click)="startTest()">Start Test
+                                        </button>
                                     </div>
                                 </div>
-                                <div *ngIf="!generatedTest" class="" style="text-align: center;padding: 40px;">
-                                    <div class="spinner-grow spinner-grow-lg row" role="status"></div>
-                                    <div class="get-sample-head">Analyzing
-                                        the results, please wait…</div>
-                                </div>
-                                <div *ngIf="generatedTest">
-                                    <div class="row test-ready-head" style="justify-content: space-between;">
-                                        <!-- <div style="display: flex;"> -->
-                                        <div class="test-head-data">
-                                            <div class="get-sample-head">
-                                                Date/Time: {{localTime}}
-                                            </div>
-                                            <div class="get-sample-head">
-                                                Patient Name : {{patientName}}
+                            </mat-step>
+                            <mat-step label="Start Test and View Results">
+                                <div id="content">
+                                    <div class="container"
+                                        style="border: 1px solid #707070;padding: 10px 20px 20px 20px;">
+                                        <div class="row">
+                                            <div class="get-sample-head" style="padding: 15px 0 0 15px;">
+                                                Test Results
                                             </div>
                                         </div>
-                                        <div class="test-head-icons">
-                                            <div>
-                                                <img class="file-img"
-                                                    src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-print.png">
-                                                <!--style="margin-right: 20px;"-->
-                                            </div>
-                                            <div>
-                                                <img class="share-img"
-                                                    src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-share.png">
-                                            </div>
+                                        <div *ngIf="!generatedTest" class="" style="text-align: center;padding: 40px;">
+                                            <div class="spinner-grow spinner-grow-lg row" role="status"></div>
+                                            <div class="get-sample-head">Analyzing
+                                                the results, please wait…</div>
                                         </div>
-                                        <!-- </div> -->
-                                    </div>
+                                        <div *ngIf="generatedTest" class="generated-test-data">
+                                            <div class="row test-ready-head" style="justify-content: space-between;">
+                                                <!-- <div style="display: flex;"> -->
+                                                <div class="test-head-data">
+                                                    <div class="get-sample-head">
+                                                        Date/Time: {{localTime}}
+                                                    </div>
+                                                    <div class="get-sample-head">
+                                                        Patient Name : {{patientName}}
+                                                    </div>
+                                                </div>
+                                                <div class="test-head-icons">
+                                                    <div>
+                                                        <img class="file-img"
+                                                            src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-print.png"
+                                                            (click)="printPage(content)">
+                                                        <!--style="margin-right: 20px;"-->
+                                                    </div>
+                                                    <div>
+                                                        <img class="share-img"
+                                                            (click)="openShareReportMethod(viewShareReportModel)"
+                                                            src="../../../../assets/images/ui/Medical-Personnel-Module/icons/Icon-awesome-share.png">
+                                                    </div>
+                                                </div>
+                                                <!-- </div> -->
+                                            </div>
 
-                                    <div class="table-responsive  tableFixHead ">
-                                        <!--scroll-->
-                                        <table class="table text-center table-bordered test-result-table">
-                                            <thead class="" style="background-color: #53B9C6;color: white;">
-                                                <tr class="p-0" style="font-weight: normal;">
-                                                    <!-- <th class="p-0" scope="col" class="border text-center">No</th> -->
-                                                    <th class="p-0" scope="col" class="border  text-center">Test Name
-                                                    </th>
-                                                    <th class="p-0" scope="col" class="border text-center">Result
-                                                    </th>
-                                                    <th class="p-0" scope="col" class="border text-center">Flag
-                                                    </th>
-                                                    <th class="p-0" scope="col" class="border text-center">Unit</th>
-                                                    <th class="p-0" scope="col" class="border text-center">
-                                                        Reference Range</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
+                                            <div class="table-responsive  tableFixHead ">
+                                                <!--scroll-->
+                                                <table class="table text-center table-bordered test-result-table">
+                                                    <thead class=""
+                                                        style="background-color: #53B9C6 !important;color: white;">
+                                                        <tr class="p-0" style="font-weight: normal;">
+                                                            <!-- <th class="p-0" scope="col" class="border text-center">No</th> -->
+                                                            <th class="p-0" scope="col" class="border  text-center">Test
+                                                                Name
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">
+                                                                Result
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">Flag
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">Unit
+                                                            </th>
+                                                            <th class="p-0" scope="col" class="border text-center">
+                                                                Reference Range</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="bg-white" style="background: #FFFFFF 0% 0% no-repeat padding-box !important;
                                                 box-shadow: 0px 6px 12px #44444414;
                                                 border-radius: 6px;
                                                 opacity: 1;"
-                                                    *ngFor="let itemData of generatedJsonData ; let i = index">
-                                                    <td>
-                                                        <!-- <div class="row" style="justify-content: space-around;"> -->
-                                                        <div class="table-data">
-                                                            {{itemData.name}}</div>
-                                                        <!-- </div> -->
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data" style="text-align: center;">
-                                                            {{itemData.value}}
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="table-data" style="text-align: center;"
-                                                            *ngIf="(itemData.flag === false)">Normal
-                                                        </div>
-                                                        <div class="table-data" style="text-align: center;"
-                                                            *ngIf="(itemData.flag === true)">
-                                                            Abnormal</div>
-                                                    </td>
-                                                    <td class="table-data" style="text-align: center;">{{itemData.unit}}
-                                                    </td>
-                                                    <td class="table-data" style="text-align: center;">
-                                                        {{itemData.referenceRange}}</td>
+                                                            *ngFor="let itemData of generatedJsonData ; let i = index">
+                                                            <td>
+                                                                <!-- <div class="row" style="justify-content: space-around;"> -->
+                                                                <div class="table-data">
+                                                                    {{itemData.name}}</div>
+                                                                <!-- </div> -->
+                                                            </td>
+                                                            <td>
+                                                                <div class="table-data" style="text-align: center;">
+                                                                    {{itemData.value}}
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="table-data" style="text-align: center;"
+                                                                    *ngIf="(itemData.flag === false)">Normal
+                                                                </div>
+                                                                <div class="table-data" style="text-align: center;"
+                                                                    *ngIf="(itemData.flag === true)">
+                                                                    Abnormal</div>
+                                                            </td>
+                                                            <td class="table-data" style="text-align: center;">
+                                                                {{itemData.unit}}
+                                                            </td>
+                                                            <td class="table-data" style="text-align: center;">
+                                                                {{itemData.referenceRange}}</td>
 
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
-                                    <div>
-                                        <label class="get-sample-head"
-                                            style="padding: 0px;">Opinions/Interpretations</label>
-                                    </div>
-                                    <div>
-                                        <textarea style="width: 100%;" class="table-data">
+                                            <div>
+                                                <label class="get-sample-head"
+                                                    style="padding: 0px;">Opinions/Interpretations</label>
+                                            </div>
+                                            <div>
+                                                <textarea style="width: 100%;" class="table-data">
 
                                         </textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div *ngIf="!generatedTest" class="" style="text-align: center;padding: 30px 0 20px 0;">
-                                    <button class="btn btn-sm mr-3 btn-text-style-2"
-                                        (click)="openAbortTestMethod(openAbortTestModel)">Abort Test
-                                    </button>
-                                </div>
-                                <div *ngIf="generatedTest">
-                                    <div class="" style="text-align: center;padding: 25px 0 10px 0;">
-                                        <button class="btn btn-sm mr-3 btn-text-style-1"
-                                            (click)="openDiscardMethod(openDiscardModel)">Discard
-                                        </button>
-                                        <button class="btn btn-sm btn-text-style-2" matStepperNext>Save & Close
+                                <div>
+                                    <div *ngIf="!generatedTest" class=""
+                                        style="text-align: center;padding: 30px 0 20px 0;">
+                                        <button class="btn btn-sm mr-3 btn-text-style-2"
+                                            (click)="openAbortTestMethod(openAbortTestModel)">Abort Test
                                         </button>
                                     </div>
-                                </div>
+                                    <div *ngIf="generatedTest">
+                                        <div class="" style="text-align: center;padding: 25px 0 10px 0;">
+                                            <button class="btn btn-sm mr-3 btn-text-style-1"
+                                                (click)="openDiscardMethod(openDiscardModel)">Discard
+                                            </button>
+                                            <button class="btn btn-sm btn-text-style-2" matStepperNext>Save & Close
+                                            </button>
+                                        </div>
+                                    </div>
 
-                            </div>
-                        </mat-step>
-                    </mat-horizontal-stepper>
+                                </div>
+                            </mat-step>
+                        </mat-horizontal-stepper>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
 </ng-template>
 
@@ -940,6 +963,54 @@
                     <button class="btn btn-sm mr-3 btn-text-style-1" (click)="modal.close('Close click')">Cancel
                     </button>
                     <button class="btn btn-sm btn-text-style-2">Discard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #viewShareReportModel let-modal>
+    <div class="modal-body">
+        <div class="d-flex p-1">
+            <div class="col-md-4 text-center p-3 m-0">
+                <img src="../../../assets/images/ui/Icons/1x/share-1.png" style="width: 80%; margin-top: 10px;" />
+            </div>
+            <div class="col-md-8 p-2">
+                <h5 class="font-weight-small text-center" style="font-size: 14px; font-weight: 600;">
+                    Share Test Record
+                </h5>
+                <br />
+                <div class="" style="
+              font-size: 12px;
+              font-weight: 500;
+              color: #000000;
+              padding: 8px;
+              text-align: center;
+            ">
+                    Want to share the test report to ?
+                </div>
+
+                <!--{{ selectedPatient.firstName }}-{{
+              selectedPatient.lastName
+            }}
+            via {{ selectedPatient.emailID }}-->
+
+                <!-- <div *ngIf="isLoading" style="
+              display: flex;
+              justify-content: center;
+              padding-bottom: 7px;
+            ">
+                    <mat-progress-spinner class="example-margin" color="primary" mode="indeterminate" [diameter]="30">
+                    </mat-progress-spinner>
+                </div> -->
+                <div class="row justify-content-center" style="margin-top: 10px;">
+                    <button class="btn btn-sm mr-3 btn-text-style-1" (click)="modal.close('Close click')">
+                        Cancel
+                    </button>
+                    <button class="btn btn-sm btn-text-style-2">
+                        <!--(click)="sendReminderToClient(selectedInvoicesData)"-->
+                        Share
                     </button>
                 </div>
             </div>

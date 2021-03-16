@@ -1,7 +1,3 @@
-/* * {
-    font-family: "Muli-Regular", sans-serif !important;
-} */
-
 .t-12 {
     font-size: 12px;
     font-weight: 600;
@@ -18,34 +14,6 @@ input[type=radio] {
     width: 15px;
     height: 15px;
 }
-
-/* input[type='radio']:after {
-    width: 12px;
-    height: 12px;
-    border-radius: 15px;
-    top: 1;
-    left: 1;
-    position: relative;
-    background-color: #d1d3d1;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 1px solid gray;
-}
-
-input[type='radio']:checked:after {
-    width: 12px;
-    height: 12px;
-    border-radius: 15px;
-    top: 0;
-    left: 0;
-    position: relative;
-    background-color: #3E454C;
-    content: '';
-    display: inline-block;
-    visibility: visible;
-    border: 1px solid gray;
-} */
 
 input[type='radio']:after {
     width: 15px;
@@ -107,28 +75,6 @@ input[type='radio']:checked:after {
     background-color: #53B9C6;
 }
 
-/* .mat-menu-content {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-}
-
-.mat-menu-item {
-    line-height: 25px;
-    height: 25px;
-    font-size: 11px;
-    padding: 0px 0px 0px 5px !important;
-  } */
-
-/* thead tr th {
-    font-size: 14px;
-} */
-
-/* .th-style {
-    font-family: 'Muli' !important;
-    font-weight: 300 !important;
-    font-style: normal !important;
-} */
-
 ::ng-deep .bs-popover-bottom {
     /* transform: translate(3px, 134px) !important; */
     width: 30% !important;
@@ -170,6 +116,11 @@ input[type='radio']:checked:after {
 .s1 {
     margin: 0 30px !important;
 }
+
+/* input[type="time"]::-webkit-calendar-picker {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg) !important;
+    background-color: red !important;
+} */
 
 /* Extra small devices (phones, 600px and down) */
 
@@ -741,6 +692,425 @@ input[type='radio']:checked:after {
     .device-name {
         font-size: 8px;
     }
+    .test-result-table thead tr th {
+        font-family: 'Muli' !important;
+        font-weight: 600 !important;
+        font-size: 11px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #ffffff;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    table tbody tr td .t-name {
+        font-family: 'Muli' !important;
+        font-weight: 600 !important;
+        font-size: 11px !important;
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+        white-space: nowrap;
+        text-align: center;
+    }
+    table tbody tr td .bt-name {
+        font-family: 'Muli' !important;
+        font-weight: bold !important;
+        font-size: 11px !important;
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+        white-space: nowrap;
+        text-align: center;
+    }
+    table tbody tr td {
+        vertical-align: middle;
+    }
+    /* ::ng-deep .bs-popover-bottom {
+        transform: translate(3px, 134px) !important;
+        width: 60% !important;
+        max-width: 60% !important;
+    } */
+    ::ng-deep .bs-popover-bottom {
+        /* transform: translate(3px, 134px) !important; */
+        will-change: transform;
+        transform: translate(10px, 175px) !important;
+        width: 95% !important;
+        max-width: 95% !important;
+    }
+    .pop-data {
+        font-size: 10px;
+        font-family: 'Muli' !important;
+        font-weight: bold !important;
+        white-space: nowrap;
+    }
+    .pop-data1 {
+        font-size: 10px;
+        font-family: 'Muli' !important;
+        font-weight: 500 !important;
+    }
+    .swiper-slide {
+        width: 38%;
+        text-align: center;
+        font-size: 12px;
+        background: #fff;
+        /* Center slide text vertically */
+        /* display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex; */
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    .swiper-button-prev:after {
+        color: #AAA6A6 !important;
+        opacity: 1;
+        font-size: 25px !important;
+    }
+    .swiper-button-next:after {
+        color: #AAA6A6 !important;
+        opacity: 1;
+        font-size: 25px !important;
+    }
+    .s1 {
+        margin: 0 0 0 10px !important;
+    }
+    tbody tr td .row {
+        flex-wrap: nowrap;
+    }
+    tbody tr .menu {
+        white-space: nowrap !important;
+    }
+    tbody tr td .pat-img {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+    }
+    tbody tr td button .crossImg {
+        width: 0.20rem;
+    }
+    .mat-menu-item {
+        line-height: 20px;
+        height: 20px;
+        font-size: 8px;
+        padding: 0px 0px 0px 5px !important;
+    }
+    .border-rt {
+        border-right: none;
+    }
+    .search-box-width {
+        width: 100% !important;
+    }
+    .tick-mark {
+        width: 0.8rem !important;
+    }
+    .pt-img {
+        padding: 15px !important;
+        border-radius: 50% !important;
+        min-width: 65px !important;
+        min-height: 65px !important;
+        max-height: 65px !important;
+        max-width: 65px !important;
+        width: 65px !important;
+        height: 65px !important;
+    }
+    .pt-name {
+        font-family: "Muli";
+        font-size: 11px !important;
+        font-weight: bold !important;
+        color: #140202 !important;
+        white-space: nowrap !important;
+    }
+    .pt-age {
+        font-family: "Muli";
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        color: #140202 !important;
+        white-space: nowrap !important;
+    }
+    .gd-icon {
+        width: 1rem !important;
+        min-width: 1rem !important;
+    }
+    .pt-id {
+        font-family: "Muli";
+        font-size: 9px !important;
+        font-weight: 500 !important;
+        color: #8B8B8B !important;
+    }
+    .btwn-patient {
+        padding: 0px 0px 0px 5px !important;
+    }
+    .device-img {
+        width: 5rem !important;
+        min-height: 5rem !important;
+    }
+    .tick-icon {
+        width: 0.8rem !important;
+    }
+    .tick-icon-alignment {
+        position: absolute;
+        left: 3px;
+    }
+    .butn-styl {
+        font-size: 7px !important;
+        font-weight: 500 !important;
+        background: #55B9C6 !important;
+        color: white !important;
+    }
+    .butn-styl1 {
+        font-size: 7px !important;
+        font-weight: 500 !important;
+    }
+    .butn-styl2 {
+        font-size: 7px !important;
+        font-weight: 500 !important;
+    }
+    .t-18 {
+        font-family: "Muli" !important;
+        font-size: 12px;
+        font-weight: 600;
+        color: #140202;
+        white-space: nowrap;
+    }
+    .t-14 {
+        font-family: "Muli" !important;
+        font-size: 10px;
+        font-weight: 600;
+        color: #140202;
+        white-space: nowrap;
+    }
+    .t-13bold {
+        font-family: "Muli" !important;
+        font-size: 10px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0px !important;
+        color: #000000 !important;
+        opacity: 1 !important;
+    }
+    .t-13normal {
+        font-family: "Muli" !important;
+        font-size: 9px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0px !important;
+        color: #000000 !important;
+        opacity: 1 !important;
+    }
+    .test-img-1-padding {
+        padding: 5px 5px;
+        text-align: center;
+    }
+    .test-img-3-padding {
+        padding: 16px 5px;
+        text-align: center;
+    }
+    .test-1-img {
+        width: 2rem !important;
+        padding-bottom: 8px;
+        margin: auto;
+    }
+    .test-2-img {
+        /* width: 4.5rem !important; */
+        min-width: 4.5rem !important;
+        margin-left: 5px;
+        padding-bottom: 20px;
+    }
+    .test-3-img {
+        min-width: 5rem;
+        margin-left: -12px;
+    }
+    .test-img-text {
+        text-align: center;
+        font-size: 8px;
+        font-weight: 500;
+        color: #000000;
+        padding-bottom: 25px;
+    }
+    .test-img-3-text {
+        text-align: center;
+        font-size: 8px;
+        font-weight: 500;
+        color: #000000;
+        padding: 10px 0 0 0;
+    }
+    .test-ready-head {
+        padding: 0 !important;
+    }
+    ::ng-deep .mat-step-text-label {
+        font-size: 10px !important;
+        font-weight: bolder !important;
+        font-family: "Muli";
+        letter-spacing: 0px;
+        color: #000000;
+        opacity: 1;
+    }
+    .get-sample-head {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: bold;
+        padding: 15px;
+        letter-spacing: 0px;
+        color: #140202;
+        opacity: 1;
+    }
+    .btn-text-style-1 {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: normal;
+        letter-spacing: 0px;
+        opacity: 1;
+        outline-style: none;
+        background-color: transparent;
+        padding: 0 25px;
+        color: #474747;
+        border: 1px solid #707070;
+        height: 25px;
+        line-height: 1;
+        border-radius: 10px;
+    }
+    .btn-text-style-2 {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 0px;
+        opacity: 1;
+        outline-style: none;
+        background-color: #53B9C6;
+        padding: 0 30px;
+        color: white;
+        height: 25px;
+        line-height: 1;
+        border-radius: 10px;
+    }
+    .modal-title {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0px;
+    }
+    .modal-body-data {
+        font-family: "Muli";
+        font-size: 10px;
+        font-weight: 500;
+        color: #000000;
+    }
+    .file-img {
+        max-width: 1rem;
+        margin-right: 1.2rem;
+    }
+    .share-img {
+        max-width: 1.3rem;
+    }
+    .test-head-data {
+        display: block;
+        line-height: 0%;
+    }
+    .test-head-icons {
+        display: flex;
+        line-height: 3;
+        margin-right: auto;
+    }
+    .table-data {
+        font-family: 'Muli' !important;
+        font-weight: normal !important;
+        font-size: 11px !important;
+        vertical-align: middle;
+        white-space: nowrap;
+        color: #140202;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .before-pop-icon {
+        width: 0.5rem;
+        height: 0.4rem;
+        margin-top: 6px;
+        margin-left: 5px;
+    }
+    ::ng-deep .mat-tab-label .mat-tab-label-content {
+        font-family: 'Muli' !important;
+        font-size: 11px;
+        font-weight: bold;
+        color: #2C3136;
+    }
+    .component-heading {
+        font-family: 'Muli' !important;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0px;
+        color: #3E454C;
+        border-bottom: 1px solid gray;
+        width: 100%;
+        opacity: 1;
+    }
+    .label2 {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: 600;
+        color: #000000;
+    }
+    /* .small-screen {
+        text-align: center;
+    } */
+    .value2 {
+        font-family: "Muli";
+        font-size: 10px;
+        font-weight: 500;
+        color: #000000;
+        line-height: 3;
+        padding-left: 50px;
+        line-break: anywhere !important;
+    }
+    .value2dt {
+        height: 25px;
+        font-family: "Muli";
+        font-size: 12px;
+        font-weight: 500;
+        color: #000000;
+    }
+    .value2 input {
+        height: 25px !important;
+        background: transparent;
+        border: 1px solid #CCCCCC;
+        opacity: 1;
+        border-radius: 0.25rem;
+        padding: 10px;
+    }
+    .value2-width {
+        width: 70%;
+    }
+    .input-group input {
+        height: 25px !important;
+        background: transparent;
+        border: 1px solid #CCCCCC;
+        opacity: 1;
+        padding: 10px;
+    }
+    .input-group-append {
+        height: 25px !important;
+        border-radius: 0 0.25rem 0.25rem 0;
+        background: transparent;
+        border: 1px solid #CCCCCC;
+        opacity: 1;
+    }
+    /* .radio-inline {
+        padding: 0 10px 0 0;
+    } */
+    .radio-btn-right {
+        margin-right: auto;
+    }
+    .search-text {
+        font-family: "Muli";
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: #171819 !important;
+        opacity: 1;
+    }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -846,6 +1216,33 @@ input[type='radio']:checked:after {
     }
     .btwn-patient {
         padding: 0px 0px 0px 5px !important;
+    }
+    .test-ready-head {
+        padding: 0 30px !important;
+    }
+    .get-sample-head {
+        font-family: "Muli";
+        font-size: 11px;
+        font-weight: bold;
+        color: #000000;
+        padding: 15px;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .file-img {
+        max-width: 1rem;
+        margin-right: 1.2rem;
+    }
+    .share-img {
+        max-width: 1rem;
+    }
+    .test-head-data {
+        display: flex;
+    }
+    .test-head-icons {
+        display: flex;
+        line-height: 3;
+        margin-right: 17px;
     }
 }
 
@@ -956,11 +1353,41 @@ input[type='radio']:checked:after {
     .btwn-patient {
         padding: 0px 0px 0px 5px !important;
     }
+    .test-ready-head {
+        padding: 0 30px !important;
+    }
+    .get-sample-head {
+        font-family: "Muli";
+        font-size: 12px;
+        font-weight: bold;
+        color: #000000;
+        padding: 15px;
+        letter-spacing: 0px;
+        opacity: 1;
+    }
+    .file-img {
+        max-width: 1rem;
+        margin-right: 1.2rem;
+    }
+    .share-img {
+        max-width: 1rem;
+    }
+    .test-head-data {
+        display: flex;
+    }
+    .test-head-icons {
+        display: flex;
+        line-height: 3;
+        margin-right: 18px;
+    }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
 @media only screen and (min-width: 1200px) {
+    .generated-test-data {
+        padding: 20px;
+    }
     table thead tr th {
         font-family: 'Muli' !important;
         font-weight: 300 !important;
@@ -1483,3 +1910,7 @@ input[type='radio']:checked:after {
     margin-top: 30px !important;
     margin-left: 60px !important;
 }
+
+/* input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+} */

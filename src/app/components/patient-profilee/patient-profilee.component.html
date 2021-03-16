@@ -17,6 +17,10 @@
           <div class="row p-1 pt-2">
             <div class="col-md-10">
               <form [formGroup]="patientProfileForm">
+                <div class="row" style="padding: 10px 0 10px 15px;">
+                  <div class="btn btn-sm scan-id-btn-stl" style="cursor: pointer;"
+                    (click)="openScanIdCardMethod(openScanIdCardModelContent)">Scan Identity Card</div>
+                </div>
                 <div class="row pb-0">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -293,15 +297,15 @@
               <div class="">
                 <span class="size11" style="color: #140202;">{{
                   patientFamilyData.dieseaseName ||
-                    patientFamilyData.healthCondition
-                }}</span>
+                  patientFamilyData.healthCondition
+                  }}</span>
               </div>
             </div>
             <div class="col-md-5 p-0">
               <div class="">
                 <span class="size11" style="color: #140202;">{{
                   patientFamilyData.relationship
-                }}</span>
+                  }}</span>
               </div>
             </div>
           </div>
@@ -338,8 +342,8 @@
               <div class="">
                 <span class="size11" style="color: #140202;">{{
                   patientFamilyAllergie.allergyInformation ||
-                    patientFamilyAllergie.name
-                }}</span>
+                  patientFamilyAllergie.name
+                  }}</span>
               </div>
             </div>
           </div>
@@ -872,7 +876,7 @@
               <div class="">
                 <span style="font-size: 9px; font-weight: 600;">{{
                   patientScreeningRecordsData.recordFilePath.split("/")[3].substr(0,30)
-                }}</span>
+                  }}</span>
               </div>
             </div>
           </div>
@@ -955,4 +959,178 @@
       </div>
     </form>
   </div>
+</ng-template>
+
+<ng-template #openScanIdCardModelContent let-modal>
+
+  <div class="modal-header" style="color: #ffffff;
+  background: #53B9C6 0% 0% no-repeat padding-box;border: 1px solid #CECECE;opacity: 1;">
+    <div class="modal-title justify-content-center" style="" id="modal-basic-title">Scan Identity Card</div>
+    <img (click)="modal.close('Close click')" style="cursor: pointer;width: 1.2rem;"
+      src="../../../../assets/images/ui/Icons/patient-medical-module/Icon material-cancel.png">
+  </div>
+  <div class="modal-body bg-white" style="padding: 0px;">
+    <div>
+      <div class="container" style="padding: 20px 30px;max-height: 80vh;overflow: auto;">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-12 p-2 id-card-label">
+            Please upload clean and readable photo of front and back side of your identity document (National ID, Health
+            Insurence ID)
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-12 p-2 id-card-label">
+            Select ID card Type
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="  mb-3">
+              <select class="form-control"
+                style="height: 30px;padding: 0 15px; border: 1px solid grey;border-radius: 15px;" id="sel1">
+                <option>NATIONAL IDENTITY CARD</option>
+                <option>HEALTH INSURANCE IDENTITY CARD</option>
+              </select>
+
+              <!-- <mat-select (selectionChange)="showData($event.value)" panelClass="my-panel" style="color: black;"
+              placeholder="SELECT A CARD TYPE">
+              <mat-option *ngFor="let letSearch of searchByValue" [value]="letSearch.viewValue">
+                {{letSearch.viewValue}}
+              </mat-option>
+            </mat-select> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-2" style="border: 2px dashed #8f9092;opacity: 1;">
+              <div *ngIf="!selectedFrontImg" style="padding: 10px 5px;">
+                <img class="img-fluid" style="border: 1px solid transparent;" src="{{previewImg11}}"
+                  onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+              </div>
+              <div *ngIf="selectedFrontImg" style="text-align: center;margin-top: 65px;margin-bottom: 65px;">
+                <div class="justify-content-center ">
+                  <div class="container">
+                    <div class="row ">
+                      <div class="img-move input-group " style="justify-content: center;">
+                        <input type="file" class="form-control" name="file" id="inputGroupFile01" #fileInput11
+                          aria-describedby="inputGroupFileAddon01" accept=".png, .jpg, .jpeg"
+                          (change)="fileProgress11($event)" class="d-none">
+                        <img class="img-camera" (click)="fileInput11.click()"
+                          src="../../../assets/images/ui/Medical-Personnel-Module/icons/ionic-md-camera.png">
+                      </div>
+                    </div>
+                    <div class="row" style="justify-content: center;">
+                      <div class="img-below-text">ID Front</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-2" style="border: 2px dashed #8f9092;opacity: 1; ">
+              <!--height: 28vh;-->
+              <div *ngIf="!selectedBackImg" style="padding: 10px 5px;">
+                <img class="" style="border: 1px solid transparent;" src="{{previewImg2}}"
+                  onerror="this.src='../../../assets/images/ui/Icons/1x/profile-1.png';">
+              </div>
+              <div *ngIf="selectedBackImg" style="text-align: center;margin-top: 65px;margin-bottom: 65px;">
+                <div class="justify-content-center ">
+                  <div class="container">
+                    <div class="row ">
+                      <div class="img-move input-group " style="justify-content: center;">
+                        <input type="file" class="form-control" name="file" id="inputGroupFile01" #fileInput2
+                          aria-describedby="inputGroupFileAddon01" accept=".png, .jpg, .jpeg"
+                          (change)="fileProgress2($event)" class="d-none">
+                        <img class="img-camera" (click)="fileInput2.click()"
+                          src="../../../assets/images/ui/Medical-Personnel-Module/icons/ionic-md-camera.png">
+                      </div>
+                    </div>
+                    <div class="row" style="justify-content: center;">
+                      <div class="img-below-text">ID Back</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6" style="display: flex;padding: 10px 20px;">
+            <button class="btn btn-sm btn-text-style-2 mr-3">Submit</button>
+            <div class="button-styles">Redo</div>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-md-6">
+            <div>
+              <label class="id-card-label">Patient ID</label>
+            </div>
+            <div>
+              <input type="text" class="id-card-input">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div>
+              <label class="id-card-label">Gender</label>
+            </div>
+            <div>
+              <input type="text" class="id-card-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-md-6">
+            <div>
+              <label class="id-card-label">First Name</label>
+            </div>
+            <div>
+              <input type="text" class="id-card-input">
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div>
+              <label class="id-card-label">Last Name</label>
+            </div>
+            <div>
+              <input type="text" class="id-card-input">
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="padding-top: 5px;">
+          <div class="col-md-6">
+            <div>
+              <label class="id-card-label">Date of Birth</label>
+            </div>
+            <div>
+              <input type="text" class="id-card-input">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-12">
+
+            <div style="text-align: center;margin-top: 20px; margin-bottom: 25px;">
+
+              <div class="row" style="justify-content: center;">
+                <button class="btn btn-sm btn-text-style-2" (click)="modal.close('Close click')">Ok
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </ng-template>
