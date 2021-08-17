@@ -402,7 +402,8 @@ export class ManageDeviceComponent implements OnInit {
   openDeviceInfoMethod(openDeviceInfoModelContent, selectedDEviceInformation) {
     // this.selectedDeviceInformation = selectedDEviceInformation;
     // console.log("the selected device data...", selectedDEviceInformation)
-    this.modalService.open(openDeviceInfoModelContent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', windowClass: 'modal-lg', backdrop: "static", }).result.then((result) => {
+    this.modalService.open(openDeviceInfoModelContent, { ariaLabelledBy: 'modal-basic-title', size: 'lg', windowClass: 'modal-lg', 
+    backdrop: "static", }).result.then((result) => {
       //centered: true, 
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

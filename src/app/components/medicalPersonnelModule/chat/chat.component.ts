@@ -93,7 +93,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
   @ViewChild('items', { static: false }) msgElement: QueryList<any>;
 
   @ViewChild('fileInput', { static: true }) el: ElementRef;
-  constructor(private dialogRef: MatDialog, private socket: Socket, private refData: MatDialogRef<MedicalPersonnelAppointmentsComponent>,
+  constructor(private dialogRef: MatDialog, private socket: Socket, 
+    private refData: MatDialogRef<MedicalPersonnelAppointmentsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder,
     private chatService: ChatService, private modalService: NgbModal, private _snackBar: MatSnackBar,
     private cd: ChangeDetectorRef, private connectionService: ConnectionService, private http: HttpClient,
